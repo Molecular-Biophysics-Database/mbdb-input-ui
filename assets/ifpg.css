@@ -1,0 +1,118 @@
+:root {
+    --mbdb-font-tiny: 8pt;
+    --mbdb-font-small: 10pt;
+    --mbdb-font-normal: 12pt;
+    --mbdb-font-large: 14pt;
+    --mbdb-font-xlarge: 18pt;
+    --mbdb-font-xxlarge: 22pt;
+    --mbdb-font-mega: 32pt;
+    --mbdb-font-uber: 48pt;
+
+    --mbdb-hgap: 0.5rem;
+    --mbdb-2hgap: calc(2 * var(--mbdb-hgap));
+    --mbdb-h2gap: calc(0.5 * var(--mbdb-hgap));
+    --mbdb-vgap: 0.5rem;
+    --mbdb-2vgap: calc(2 * var(--mbdb-vgap));
+    --mbdb-v2gap: calc(0.5 * var(--mbdb-vgap));
+
+    --mbdb-form-pad: 10px;
+
+    --mbdb-anim-speed: 200ms;
+
+    --mbdb-clr-frames: #ccc;
+}
+
+.mbdb-array-tainer {
+}
+
+.mbdb-array-complex-header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-hgap);
+    grid-column: 1 / 3;
+    justify-content: end;
+}
+.mbdb-array-complex-header-line {
+    background-color: var(--mbdb-clr-frames);
+    flex: 1;
+    height: 1px;
+}
+
+.mbdb-form-nav-list-item-title {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-h2gap);
+
+    transition: background-color var(--mbdb-anim-speed);
+}
+
+.mbdb-form-nav-list-item-title-highlighted {
+    background-color: #ffcb49;
+}
+
+.mbdb-form-nav-link {
+    color: black;
+    font-weight: bold;
+}
+
+.mbdb-form-nav-link-highlighted {
+    text-decoration: underline;
+}
+
+.mbdb-help-popup-trigger {
+    color: #aaa;
+}
+
+.mbdb-input-tainer {
+    padding-right: var(--mbdb-2hgap);
+}
+
+.mbdb-item-grid {
+    align-items: center;
+    border-left: 1px solid var(--mbdb-clr-frames);
+    display: grid;
+    column-gap: var(--mbdb-2hgap);
+    grid-template-columns: auto 1fr;
+    padding-left: var(--mbdb-form-pad);
+    padding-top: var(--mbdb-form-pad);
+    row-gap: var(--mbdb-vgap);
+}
+
+.mbdb-item-grid-bad-data {
+    border-left: 1px solid red;
+}
+
+.mbdb-item-label {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-hgap)
+}
+
+.mbdb-item-label-text {
+    font-size: var(--mbdb-font-normal);
+}
+
+.mbdb-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mbdb-vgap);
+    grid-column: span 2;
+    padding-left: var(--mbdb-form-pad);
+    padding-top: var(--mbdb-form-pad);
+    padding-bottom: var(--mbdb-form-pad);
+}
+
+.mbdb-section-label {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-hgap)
+}
+
+.mbdb-section-label-text {
+    font-size: var(--mbdb-font-normal);
+    font-weight: bold;
+}

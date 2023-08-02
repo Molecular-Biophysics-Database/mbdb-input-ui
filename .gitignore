@@ -1,0 +1,7 @@
+.eslintrc.js
+tsconfig.tsbuildinfo
+tsconfig.development.tsbuildinfo
+
+dist/
+lib/
+node_modules/

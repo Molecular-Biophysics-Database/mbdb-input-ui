@@ -1,0 +1,47 @@
+{
+  "name": "input_form_playground",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "build": "npm run build-tsc-dev && npm run build-webpack",
+    "build-dev": "npm run build-tsc-dev && npm run build-webpack-dev",
+    "serve-dev": "concurrently -c \"green,blue\" --names \"tsc\" --kill-others \"npm:watch-tsc-dev\" \"npm:build-webpack-serve-dev\"",
+
+    "build-tsc": "tsc --build tsconfig.json",
+    "build-tsc-dev": "tsc --build tsconfig.development.json",
+    "watch-tsc-dev": "tsc --build tsconfig.development.json --watch --incremental",
+
+    "build-webpack": "webpack --mode production --config ./webpack.config.js",
+    "build-webpack-dev": "webpack --mode development --config ./webpack.config.js",
+    "build-webpack-serve-dev": "webpack serve --mode development --config ./webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-plotly.js": "^2.6.0",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "concurrently": "^7.1.0",
+    "file-loader": "^6.2.0",
+    "typescript": "^5.1.6",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-icon": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
+    "tslib": "^2.6.1",
+    "uuid": "^9.0.0",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
