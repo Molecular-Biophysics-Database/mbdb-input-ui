@@ -14,7 +14,7 @@ function configureItem(item: Item, cfg: Partial<ConfigurationItem>) {
         if (!Schema.hasComplexInput(item)) {
             console.warn(`Attempted to reorder items in an item "${item.tag}" that does not have complex input. This is not allowed.`);
         } else {
-            reorderChildrenSpecific(item, cfg.order);
+            reorderChildren(item, cfg.order);
         }
     }
     if (cfg.label) {
@@ -113,7 +113,7 @@ function getSpecificConfiguree(schema: Input, path: string[]) {
     return item;
 }
 
-function reorderChildrenSpecific(item: ComplexItem, order: ConfigurationItem['order']) {
+function reorderChildren(item: ComplexItem, order: ConfigurationItem['order']) {
     let input = item.input;
     for (const o of order) {
         const fromIdx = input.findIndex((x) => x.tag === o.tag);
@@ -123,7 +123,7 @@ function reorderChildrenSpecific(item: ComplexItem, order: ConfigurationItem['or
             throw new Error(`Requested item child position ${o.index} but the item has only ${input.length} children`);
 
         const i = input.splice(fromIdx, 1);
-        input = [...input.slice(0, o.index), ...i, ...input.slice(o.index + 1)];
+        input = [...input.slice(0, o.index), ...i, ...input.slice(o.index)];
     }
 
     item.input = input;
