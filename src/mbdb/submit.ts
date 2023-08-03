@@ -5,7 +5,7 @@ export async function submitToMbdb(baseUrl: string, apiEndpoint: string, data: M
         throw new Error('No base URL of the MBDB database was set in the configuration file.');
     }
 
-    const url = `${baseUrl}/${apiEndpoint}`;
+    const url = `${baseUrl}/${apiEndpoint}/`;
 
     try {
         return await fetch(

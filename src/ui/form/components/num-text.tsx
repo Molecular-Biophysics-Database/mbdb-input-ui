@@ -35,7 +35,7 @@ type Props = {
     help?: Help,
     label: string,
     path: Path,
-    validator: Validator,
+    validator: Validator<string>,
 };
 export function TextualInput({ label, help, path, validator }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);

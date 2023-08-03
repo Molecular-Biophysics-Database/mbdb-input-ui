@@ -196,9 +196,7 @@ function validateData(data: DataTree, path: Path, item: Item) {
 
         return;
     } else {
-        // No NO NO: We need to fix the validator behavior so that they are type-safe
-        const validator = Validators.commonForItem(item);
-        value.isValid = validator(value.payload as any);
+        value.isValid = Validators.validateCommon(item, value.payload);
 
         if (Schema.hasUuidInput(item) && !value.isValid) {
             throw new Error(`Item at path ${path} is an automatically generated UUIDv4 but its value "${value.payload}" is not a valid UUIDv4`);

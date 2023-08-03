@@ -1,7 +1,8 @@
 import { Item, Schema } from './';
 import { Uuid } from './uuid';
-import { daysInMonth } from '../util';
 import { CalendarDate } from './value';
+import { assert } from '../assert';
+import { daysInMonth } from '../util';
 
 const Zero = '0'.charCodeAt(0);
 const Nine = '9'.charCodeAt(0);
@@ -138,7 +139,7 @@ export const CommonValidators = {
     },
 };
 
-export type Validator = (v: string) => boolean;
+export type Validator<T> = (v: T) => boolean;
 
 export const Validators = {
     commonForItem(item: Item) {
@@ -158,10 +159,12 @@ export const Validators = {
                     return item.isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateInt(v, item.minimum, item.maximum); }
                         : (v: string) => { return validateInt(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
-                } else {
+                } else if (item.input === 'float') {
                     return item.isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateFloat(v, item.minimum, item.maximum); }
                         : (v: string) => { return validateFloat(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
+                } else {
+                    assert(false, `Unknown textual-like input "${item.input}"`);
                 }
             } else {
                 return item.isRequired ? CommonValidators.isSet : CommonValidators.alwaysValid;
@@ -172,4 +175,9 @@ export const Validators = {
 
         throw new Error(`No common validator is defined for item ${item.tag} of input type ${item.input}`);
     },
+
+    validateCommon<T>(item: Item, value: T) {
+        const v = this.commonForItem(item);
+        return v(value);
+    }
 };
