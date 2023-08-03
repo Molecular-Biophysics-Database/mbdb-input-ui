@@ -127,7 +127,7 @@ export function ArrayContainer({ item, path }: Props) {
                     handler.set(innerPath, value);
                 }}
                 key='b+'
-            >+</SButton>
+            >+ {niceLabel(item.label)}</SButton>
         );
     } else if (Schema.hasVariantInput(item)) {
         for (let idx = 0; idx < array.length; idx++) {
@@ -149,7 +149,7 @@ export function ArrayContainer({ item, path }: Props) {
                     handler.set(Data.Path.index(array.length, path), variantData);
                 }}
                 key='b+'
-            >+</SButton>
+            >+ {niceLabel(item.label)}</SButton>
         );
     } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item)) {
         arrayIsSimple = true;
@@ -184,7 +184,7 @@ export function ArrayContainer({ item, path }: Props) {
                         : Value.defaultForItem(item)
                     handler.set(Data.Path.index(array.length, path), initialValue);
                 }}
-            >+</SButton>
+            >+ {niceLabel(item.label)}</SButton>
         );
     } else if (Schema.hasIgnoredInput(item)) {
         return null;
