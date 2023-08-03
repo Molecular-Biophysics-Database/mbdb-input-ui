@@ -38,6 +38,10 @@
     flex: 1;
     height: 1px;
 }
+.mbdb-array-complex-header-title {
+    font: var(--mbdb-font-large);
+    font-weight: bold;
+}
 
 .mbdb-form-nav-list-item-title {
     background: none;

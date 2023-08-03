@@ -64,22 +64,29 @@ function CannotDeleteItemModal(props: CannotDeleteItemModalProps) {
     );
 }
 
-function ComplexArrayHeader({ idx, path, setDeletionError }: { idx: number, path: Path, setDeletionError: (err: string) => void }) {
+type ComplexArrayHeaderProps = {
+    title: string,
+    idx: number,
+    path: Path,
+    setDeletionError: (err: string) => void,
+}
+function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
     const { handler } = React.useContext(FormContextInstance);
 
     return (
         <div className='mbdb-array-complex-header'>
-            <div className='mbdb-array-complex-header-line' />
             <SButton
                 color='red'
                 onClick={() => {
-                    const delPath = Data.Path.index(idx, path);
+                    const delPath = Data.Path.index(props.idx, props.path);
                     if (!handler.canDelete(delPath)) {
-                        setDeletionError(`Cannot delete item on path "${Data.Path.toString(delPath)}". The item is referenced by some other items."`);
+                        props.setDeletionError(`Cannot delete item on path "${Data.Path.toString(delPath)}". The item is referenced by some other items."`);
                     } else {
                         handler.delete(delPath);
                     }
                 }}>-</SButton>
+            <div className='mbdb-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
+            <div className='mbdb-array-complex-header-line' />
         </div>
     );
 }
@@ -89,6 +96,7 @@ export type Props = {
     path: Path,
 };
 export function ArrayContainer({ item, path }: Props) {
+    const _niceLabel = React.useMemo(() => niceLabel(item.label), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
@@ -110,7 +118,7 @@ export function ArrayContainer({ item, path }: Props) {
             components.push(
                 <div className='mbdb-item-grid' key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <ComplexArrayHeader idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
+                    <ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
                     {blockComponents}
                 </div>
             );
@@ -127,14 +135,14 @@ export function ArrayContainer({ item, path }: Props) {
                     handler.set(innerPath, value);
                 }}
                 key='b+'
-            >+ {niceLabel(item.label)}</SButton>
+            >+ {_niceLabel}</SButton>
         );
     } else if (Schema.hasVariantInput(item)) {
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <div key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <ComplexArrayHeader idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
+                    <ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
                     <VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />
                 </div>
             );
@@ -149,7 +157,7 @@ export function ArrayContainer({ item, path }: Props) {
                     handler.set(Data.Path.index(array.length, path), variantData);
                 }}
                 key='b+'
-            >+ {niceLabel(item.label)}</SButton>
+            >+ {_niceLabel}</SButton>
         );
     } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item)) {
         arrayIsSimple = true;
@@ -184,7 +192,7 @@ export function ArrayContainer({ item, path }: Props) {
                         : Value.defaultForItem(item)
                     handler.set(Data.Path.index(array.length, path), initialValue);
                 }}
-            >+ {niceLabel(item.label)}</SButton>
+            >+ {_niceLabel}</SButton>
         );
     } else if (Schema.hasIgnoredInput(item)) {
         return null;
