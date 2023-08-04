@@ -131,10 +131,6 @@ function reorderChildren(item: ComplexItem, order: ConfigurationItem['order']) {
 
 export const Configuration = {
     configure(schema: Item[], config: Configuration | null) {
-        if (config === null) {
-            return schema;
-        }
-
         assert(typeof config === 'object', 'Configuration parameter must be an object');
 
         for (const prop in config) {
