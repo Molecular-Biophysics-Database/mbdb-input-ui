@@ -9,9 +9,17 @@ import { Help, Item } from '../../../schema';
 import { Data, DataTree, Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
 
-const _GroupContainer = React.memo(function _GroupContainer(props: Props & { handler: _FormContextHandler }) {
+export type Props = {
+    input: Item[],
+    label: string,
+    help?: Help,
+    path: Path,
+}
+
+export function GroupContainer(props: Props) {
+    const { handler } = React.useContext(FormContextInstance);
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
-    const data = Data.getTree(props.handler.data(), props.path);
+    const data = Data.getTree(handler.data(), props.path);
 
     let hasErrors = false;
     Data.walk(data as DataTree, (value, _path) => {
@@ -26,23 +34,4 @@ const _GroupContainer = React.memo(function _GroupContainer(props: Props & { han
             </div>
         </div>
     );
-}, (prevProps, nextProps) => {
-    return (
-        Object.is(prevProps.input, nextProps.input) &&
-        Object.is(prevProps.label, nextProps.label) &&
-        Object.is(prevProps.help, nextProps.help) &&
-        Data.Path.arePathsEqual(prevProps.path, nextProps.path)
-    );
-});
-
-export type Props = {
-    input: Item[],
-    label: string,
-    help?: Help,
-    path: Path,
-}
-
-export function GroupContainer(props: Props) {
-    const { handler } = React.useContext(FormContextInstance);
-    return <_GroupContainer {...props} handler={handler} />;
 }
