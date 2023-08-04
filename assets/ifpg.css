@@ -25,6 +25,16 @@
 .mbdb-array-tainer {
 }
 
+.mbdb-array-add-item-button {
+    width: 10rem;
+}
+
+.mbdb-array-add-item-button-tainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
 .mbdb-array-complex-header {
     align-items: center;
     display: flex;

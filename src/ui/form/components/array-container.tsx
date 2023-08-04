@@ -56,6 +56,26 @@ function _CannotDeleteItemModal(props: CannotDeleteItemModalProps) {
     );
 }
 
+type AddItemButtonProps = {
+    title: string,
+    onClick: () => void,
+};
+function AddItemButton(props: AddItemButtonProps) {
+    return (
+        <div
+            className='mbdb-array-add-item-button-tainer'
+            style={{ gridColumn: 'span 3' }}
+        >
+            <SButton
+                color='green'
+                className='mbdb-array-add-item-button'
+                key='b+'
+                onClick={props.onClick}
+            >+ {props.title}</SButton>
+        </div>
+    );
+}
+
 function CannotDeleteItemModal(props: CannotDeleteItemModalProps) {
     return (
         props.isDisplayed
@@ -125,8 +145,8 @@ export function ArrayContainer({ item, path }: Props) {
         }
 
         components.push(
-            <SButton
-                color='green'
+            <AddItemButton
+                title={_niceLabel}
                 onClick={() => {
                     const innerPath = Data.Path.index(array.length, path);
                     const value = {};
@@ -135,7 +155,7 @@ export function ArrayContainer({ item, path }: Props) {
                     handler.set(innerPath, value);
                 }}
                 key='b+'
-            >+ {_niceLabel}</SButton>
+            />
         );
     } else if (Schema.hasVariantInput(item)) {
         for (let idx = 0; idx < array.length; idx++) {
@@ -149,15 +169,15 @@ export function ArrayContainer({ item, path }: Props) {
         }
 
         components.push(
-            <SButton
-                color='green'
+            <AddItemButton
+                title={_niceLabel}
                 onClick={() => {
                     const variantData = {};
                     FormContext.makeVariantData(item, variantData, handler.refs.get());
                     handler.set(Data.Path.index(array.length, path), variantData);
                 }}
                 key='b+'
-            >+ {_niceLabel}</SButton>
+            />
         );
     } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item)) {
         arrayIsSimple = true;
@@ -182,17 +202,16 @@ export function ArrayContainer({ item, path }: Props) {
         }
 
         components.push(
-            <SButton
-                color='green'
-                style={{ gridColumn: 'span 3' }}
-                key='b+'
+            <AddItemButton
+                title={_niceLabel}
                 onClick={() => {
                     const initialValue = Schema.hasOptionsInput(item)
                         ? Schema.initialOptionsValue(item.choices, Schema.hasOptionsWithOtherInput(item))
                         : Value.defaultForItem(item)
                     handler.set(Data.Path.index(array.length, path), initialValue);
                 }}
-            >+ {_niceLabel}</SButton>
+                key='b+'
+            />
         );
     } else if (Schema.hasIgnoredInput(item)) {
         return null;
