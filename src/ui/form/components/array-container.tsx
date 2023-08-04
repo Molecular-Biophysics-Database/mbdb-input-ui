@@ -95,6 +95,8 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
 
     return (
         <div className='mbdb-array-complex-header'>
+            <div className='mbdb-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
+            <div className='mbdb-array-complex-header-line' />
             <SButton
                 color='red'
                 onClick={() => {
@@ -105,8 +107,6 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
                         handler.delete(delPath);
                     }
                 }}>-</SButton>
-            <div className='mbdb-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
-            <div className='mbdb-array-complex-header-line' />
         </div>
     );
 }
