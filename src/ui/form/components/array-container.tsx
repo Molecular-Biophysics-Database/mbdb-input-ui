@@ -71,7 +71,12 @@ function AddItemButton(props: AddItemButtonProps) {
                 className='mbdb-array-add-item-button'
                 key='b+'
                 onClick={props.onClick}
-            >+ {props.title}</SButton>
+            >
+                <div className='mbdb-array-add-item-button-inner'>
+                    <span className='mbdb-array-add-item-button-plus'>+</span>
+                    <span className='mbdb-array-add-item-button-title'>{props.title}</span>
+                </div>
+            </SButton>
         </div>
     );
 }
