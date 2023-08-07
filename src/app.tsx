@@ -95,6 +95,31 @@ function InputFormErrorDialog(props: { errors: string[] | null, onDismissed: () 
     );
 }
 
+function LoadContextErrorDialog(props: { error: string | null, onDismissed: () => void }) {
+    return (
+        <SModal
+            basic
+            open={props.error !== null}
+        >
+            <SHeader icon>
+                <SIcon name='warning' />
+                Cannot load form from file
+            </SHeader>
+            <SModal.Content>
+                <div>Cannot load form from a file because the file appears invalid</div>
+                <div>{props.error}</div>
+            </SModal.Content>
+            <SModal.Actions>
+                <SButton
+                    color='blue'
+                    inverted
+                    onClick={props.onDismissed}
+                >Got it</SButton>
+            </SModal.Actions>
+        </SModal>
+    );
+}
+
 function SubmissionErrorDialog(props: {
     error: { status: number, message: string, errors: string[], payload: MbdbData } | null,
     contextDataGetter: () => FormContext,
@@ -157,6 +182,7 @@ function App() {
     const [selectedSchema, setSelectedSchema] = React.useState<keyof typeof MbdbModels>('mst');
     const [submitError, setSubmitError] = React.useState<{ status: number, message: string, errors: string[], payload: MbdbData } | null>(null);
     const [inputFormErrors, setInputFormErrors] = React.useState<string[] | null>(null);
+    const [loadError, setLoadError] = React.useState<string | null>(null);
 
     const dataId = React.useMemo(() => uuid_v4(), []);
     const schema = React.useMemo(() => {
@@ -177,6 +203,7 @@ function App() {
     return (
         <>
             <InputFormErrorDialog errors={inputFormErrors} onDismissed={() => setInputFormErrors(null)} />
+            <LoadContextErrorDialog error={loadError} onDismissed={() => setLoadError(null)} />
             <SubmissionErrorDialog error={submitError} contextDataGetter={ctxGetter} onDismissed={() => setSubmitError(null)} />
 
             <div>
@@ -207,10 +234,10 @@ function App() {
                                         FormContext.load(json, ctxGetter());
                                         contextHandler.update();
                                     } catch (e) {
-                                        console.log(e);
+                                        setLoadError((e as Error).message);
                                     }
                                 }).catch((e) => {
-                                    console.log(e);
+                                    setLoadError((e as Error).message);
                                 })
                             }}
                             color='teal'
