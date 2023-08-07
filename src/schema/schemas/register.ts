@@ -1,14 +1,16 @@
 import { BLI } from './bli';
 import { MST } from './mst';
+import { Test1 } from './test_1';
 import { ComplexInput } from '../';
-import { Models } from '../../mbdb/models';
+import { MbdbModels } from '../../mbdb/models';
 
 export type SchemaItem = {
     name: string,
     schema: ComplexInput,
+    isTest?: boolean,
 };
 
-export const Register: { [key: keyof typeof Models]: SchemaItem } = {
+export const Register: Record<keyof typeof MbdbModels, SchemaItem> = {
     bli: {
         name: 'Bio-layer interferometry',
         schema: BLI,
@@ -16,5 +18,10 @@ export const Register: { [key: keyof typeof Models]: SchemaItem } = {
     mst: {
         name: 'Micro-scale thermophoresis',
         schema: MST,
+    },
+    test_1: {
+        name: 'Test 1',
+        schema: Test1,
+        isTest: true,
     },
 } as const;

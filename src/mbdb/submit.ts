@@ -1,4 +1,4 @@
-import { MbdbData } from './';
+import { MbdbData } from './data';
 
 export async function submitToMbdb(baseUrl: string, apiEndpoint: string, data: MbdbData) {
     if (baseUrl === '') {

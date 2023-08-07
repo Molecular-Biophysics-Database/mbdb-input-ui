@@ -49,6 +49,10 @@ function isValueArray(item: DataTreeItem): item is Value[] {
     return Array.isArray(item) && (item.length > 0 ? Value.isValue(item[0]) : true);
 }
 
+function mkChild(elem: Path[number]) {
+    return elem.kind === 'obj' ? {} : [];
+}
+
 function walk(subtree: DataTreeItem, parentPath: Path, callback: (item: Value, path: Path) => void) {
     if (Array.isArray(subtree)) {
         for (let idx = 0; idx < subtree.length; idx++) {
@@ -166,31 +170,40 @@ export const Data = {
 
     set(data: DataTree, path: Path, value: Value | Value[] | DataTree | undefined) {
         let v = data as DataTreeItem;
-        for (const elem of path.slice(0, path.length - 1)) {
-           if (elem.kind === 'obj') {
+        for (let idx = 0; idx < path.length - 1; idx++) {
+            const elem = path[idx];
+            if (elem.kind === 'obj') {
+                assert(!Array.isArray(v), 'Got an array but expected an object');
+
                 if ((v as DataTree)[elem.value] === undefined) {
-                   (v as DataTree)[elem.value] = {};
+                   (v as DataTree)[elem.value] = mkChild(path[idx + 1]);
                 }
                 v = (v as DataTree)[elem.value];
             } else if (elem.kind === 'index') {
-                if (!Array.isArray(v))
-                    v = [];
+                assert(Array.isArray(v), 'Got an object but expected an array');
                 while (v.length <= elem.value) (v as DataTree[]).push({});
                 v = v[elem.value];
             }
         }
 
-        const fk = path[path.length - 1].value;
+        const last = path[path.length - 1];
         if (value === undefined) {
             if (!isDataTree(v)) {
                 assert(false, `Attempted to delete value from an array on path "${Data.Path.toString(path)}".`);
             } else {
-                assert(v[fk] !== undefined, `Attempted to delete non-existent value on path "${Data.Path.toString(path)}"`);
-                delete v[fk];
+                assert(v[last.value] !== undefined, `Attempted to delete non-existent value on path "${Data.Path.toString(path)}"`);
+                delete v[last.value];
             }
         } else {
-            // @ts-ignore We can to this here because the code above guarantees that the last item will be of the correct type
-            v[fk] = value;
+            if (last.kind === 'obj') {
+                assert(!Array.isArray(v), 'Got an array but expected an object');
+                // @ts-ignore
+                v[last.value] = value;
+            } else if (last.kind === 'index') {
+                assert(Array.isArray(v), 'Got an object but expected an array');
+                // @ts-ignore
+                v[last.value] = value;
+            }
         }
     },
 

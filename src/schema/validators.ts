@@ -178,6 +178,6 @@ export const Validators = {
 
     validateCommon<T>(item: Item, value: T) {
         const v = this.commonForItem(item);
-        return v(value);
+        return v(value as any);
     }
 };

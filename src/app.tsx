@@ -13,10 +13,11 @@ import { FormContext, FormContextInstance } from './context';
 import { FormContextHandler, _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
 import { Form } from './ui/form';
-import { Mbdb, MbdbData } from './mbdb';
-import { Models as MbdbModels } from './mbdb/models';
+import { Mbdb } from './mbdb';
+import { MbdbData } from './mbdb/data';
+import { MbdbModels } from './mbdb/models';
 import { submitToMbdb } from './mbdb/submit';
-import { Item } from './schema';
+import { ComplexItem, Item } from './schema';
 import { Configuration } from './schema/configuration';
 import { Persistence } from './schema/persistence';
 import { LoadFileButton } from './ui/load-file-button';
@@ -180,7 +181,7 @@ function App() {
                         {/* First row */}
                         <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
                         <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema)).toApi)}>Dump MBDB-schema object</SButton>
+                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema) as ComplexItem).toApi)}>Dump MBDB-schema object</SButton>
 
                         {/* Second row */}
                         <SButton
@@ -214,7 +215,7 @@ function App() {
                         <SButton
                             color='blue'
                             onClick={() => {
-                                const { toApi, errors } = Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema));
+                                const { toApi, errors } = Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema) as ComplexItem);
 
                                 if (errors.length === 0) {
                                     submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {

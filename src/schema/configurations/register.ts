@@ -1,9 +1,10 @@
 import { BLI } from './bli';
 import { MST } from './mst';
 import { Configuration } from '../configuration';
-import { Models } from '../../mbdb/models';
+import { MbdbModels } from '../../mbdb/models';
 
-export const Register: { [key: keyof typeof Models]: Configuration } = {
+export const Register: Record<keyof typeof MbdbModels, Configuration> = {
     bli: BLI,
     mst: MST,
+    test_1: {},
 } as const;

@@ -1,4 +1,4 @@
-import { MbdbData } from "../../../mbdb";
+import { MbdbData } from "../../../mbdb/data";
 import { DataTree, Path } from '../../../schema/data';
 
 export type CustomComponent<CustomData> = {

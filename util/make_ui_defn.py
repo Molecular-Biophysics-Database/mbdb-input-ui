@@ -79,6 +79,10 @@ def _warn(msg):
     print('WARNING: {}'.format(msg))
 
 
+def append_path(tail, prefix):
+    return prefix + ('/' if prefix else '') + tail
+
+
 def closing_string_index(s: str):
     N = len(s)
 
@@ -137,12 +141,12 @@ def get_help_fields(item):
     return help_fields
 
 
-def item_defn(item, defs, name):
+def item_defn(item, defs, name, mbdbPath):
     defn = {}
     help_fields = get_help_fields(item)
 
     if 'properties' in item:
-        defn['input'] = ui_defn(item['properties'], defs)
+        defn['input'] = ui_defn(item['properties'], defs, mbdbPath)
     elif 'use' in item:
         inner_item, is_custom = get_item_from_defs(item['use'], defs)
         if is_custom:
@@ -152,7 +156,7 @@ def item_defn(item, defs, name):
             if isinstance(inner_item, str):
                 defn['input'] = inner_item
             else:
-                defn = item_defn(inner_item, defs, name)
+                defn = item_defn(inner_item, defs, name, mbdbPath)
     elif 'type' in item:
         t = item['type']
         if t == 'boolean':
@@ -193,8 +197,8 @@ def item_defn(item, defs, name):
 
             variants = {}
             for name, schema in item['schemas'].items():
-                ui = make_ui_item(name, schema)
-                inner_defn = item_defn(schema, defs, name)
+                ui = make_ui_item(name, schema, mbdbPath)
+                inner_defn = item_defn(schema, defs, name, mbdbPath)
 
                 if not mark_discriminator_item_as_discriminator(inner_defn, discriminator):
                     pp.pprint(inner_defn)
@@ -237,7 +241,7 @@ def item_defn(item, defs, name):
 
     return defn
 
-def make_ui_item(name, props):
+def make_ui_item(name, props, mbdbPath):
     required = False
     if 'required' in props and props['required']:
         required = True
@@ -246,7 +250,8 @@ def make_ui_item(name, props):
         'tag': mbdb_tag(name),
         'label': mbdb_tag(name),
         'isArray': name.endswith('[]'),
-        'isRequired': required
+        'isRequired': required,
+        'mbdbPath': mbdbPath,
     }
 
 
@@ -302,7 +307,7 @@ def oarepo_definition_to_ui(input_file: Path):
     if not top_level_defn:
         raise UIGSchemaError('Model does not define anything')
 
-    return ui_defn(top_level_defn, defs)
+    return ui_defn(top_level_defn, defs, '')
 
 
 def repurpose_id_as_referenceable_id(defn, reference_as):
@@ -431,11 +436,12 @@ def to_js_variant(input, indent):
     return out
 
 
-def ui_defn(defn, defs):
+def ui_defn(defn, defs, parentMbdbPath):
     ui = []
     for name, props in defn.items():
-        item = make_ui_item(name, props)
-        input_defn = item_defn(props, defs, name)
+        mbdbPath = append_path(name, parentMbdbPath)
+        item = make_ui_item(name, props, mbdbPath)
+        input_defn = item_defn(props, defs, name, mbdbPath)
         item = { **item, **input_defn }
 
         ui.append(item)

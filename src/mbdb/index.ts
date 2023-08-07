@@ -1,28 +1,11 @@
+import { MbdbData } from './data';
 import { assert } from '../assert';
 import { FormContext } from '../context';
 import { Register } from '../ui/form/custom-components/register';
-import { Item, Schema, VariantItem } from '../schema';
+import { ComplexItem, Item, Schema, VariantItem } from '../schema';
 import { Data, DataTree, Path } from '../schema/data';
 import { Traverse } from '../schema/traverse';
 import { Value } from '../schema/value';
-
-export type MbdbScalar = number | string | boolean;
-export type MbdbData = { [key: string]: MbdbData | MbdbData[] | MbdbScalar | MbdbScalar[] };
-
-
-function isArray(obj: MbdbData | MbdbScalar[]): obj is MbdbData {
-    return Array.isArray(obj);
-}
-function isArrayKey(k: keyof MbdbData | keyof MbdbScalar[]): k is keyof MbdbData {
-    return typeof k === 'number';
-}
-
-function isTree(obj: MbdbData | MbdbScalar[]): obj is MbdbData {
-    return typeof obj === 'object' && !Array.isArray(obj);
-}
-function isTreeKey(k: keyof MbdbData | keyof MbdbScalar[]): k is keyof MbdbData {
-    return typeof k === 'string';
-}
 
 function pruneEmpty(data: Record<string, any>) {
     for (const prop in data) {
@@ -38,130 +21,119 @@ function pruneEmpty(data: Record<string, any>) {
     }
 }
 
-function toModelJsonSimpleItem(internalData: DataTree, data: MbdbData | MbdbScalar[], parentPath: Path, item: Item, k: keyof MbdbData | keyof MbdbScalar[], errors: string[]) {
-    assert((isTree(data) && isTreeKey(k)) || (isArray(data) && isArrayKey(k)), `Mismatching "MbdbData/string" or "MbdbScalar[]/number" value/key pair with values "${data.toString()}" / "${k.toString()}"`);
-
+function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item) {
     if (Schema.hasRelatedToInput(item)) {
-        const idPath = Data.Path.path('id', parentPath);
-        const id = Data.getValue(internalData, idPath);
-
-        if (Value.isEmpty(id)) {
-            return; // Empty ID means no data
+        const id = Data.getValue(internalData, Data.Path.path('id', internalParentPath));
+        if (!Value.isEmpty(id)) {
+            const tree = Data.getTree(internalData, internalParentPath);
+            for (const k in tree) {
+                const vPath = Data.Path.path(k, internalParentPath);
+                const v = Data.getValue(internalData, vPath);
+                if (!Value.isValid(v)) {
+                    errors.push(Data.Path.toString(vPath));
+                } else {
+                    const storePath = MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices);
+                    // REVIEW: Here we assume that the related data are primitive values. Can we get something else here?
+                    assert(Value.isTextual(v) || Value.isBoolean(v) || Value.isTristate(v), `Unexpected value type on path "${Data.Path.toString(vPath)}"`);
+                    MbdbData.set(mbdbData, v.payload, storePath);
+                }
+            }
         }
-
-        data[k] = {};
-        // REVIEW: Here we assume that the related data are primitive values
-        const pv = Data.getTree(internalData, parentPath);
-        for (const ik in pv) {
-            const path = Data.Path.path(ik, parentPath);
-            (data[k] as MbdbData)[ik] = Data.getValue(internalData, path);
-        }
-
-        return;
-    }
-
-    if (Schema.hasCustomInput(item)) {
+    } else if (Schema.hasCustomInput(item)) {
         const cc = Register.get(item.component);
-        data[k] = cc.toMbdb(internalData, parentPath, errors);
+        const customData = cc.toMbdb(internalData, internalParentPath, errors);
+        MbdbData.set(mbdbData, customData, MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices));
     } else {
-        const v = Data.getValue(internalData, parentPath);
+        const v = Data.getValue(internalData, internalParentPath);
 
         if (!item.isRequired && Value.isEmpty(v)) {
             return; // Ignore optional empty value
         }
-
         if (!Value.isValid(v)) {
             // Log error and ignore the value
-            errors.push(Data.Path.toString(parentPath));
+            errors.push(Data.Path.toString(internalParentPath));
             return;
         }
 
+        const storePath = MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices);
         if (Schema.hasOptionsInput(item)) {
             assert(Value.isOption(v), `Value is not an Option value`);
             const out = Schema.isOtherChoice(v) ? Value.toOtherOption(v) : Value.toOption(v);
-            data[k] = out;
-        } else {
-            if (Schema.hasBooleanInput(item)) {
-                if (item.isRequired) {
-                    data[k] = Value.toBoolean(v);
-                } else {
-                    const tv = Value.toTristate(v);
-                    if (tv === 'true') data[k] = true;
-                    else if (tv === 'false') data[k] = false;
-                    // Do not set anything if Tristate is none
-                }
-            } else if (Schema.hasCalendarDateInput(item)) {
-                const { year, month, day } = Value.toCalendarDate(v);
-                data[k] = `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            MbdbData.set(mbdbData, out, storePath);
+        } else if (Schema.hasBooleanInput(item)) {
+            if (item.isRequired) {
+                MbdbData.set(mbdbData, Value.toBoolean(v), storePath);
             } else {
-                data[k] = v.payload;
+                const tv = Value.toTristate(v);
+                if (tv === 'true') MbdbData.set(mbdbData, true, storePath);
+                else if (tv === 'false') MbdbData.set(mbdbData, false, storePath);
+                // Do not set anything if Tristate is none
             }
+        } else if (Schema.hasCalendarDateInput(item)) {
+            const { year, month, day } = Value.toCalendarDate(v);
+            const out = `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            MbdbData.set(mbdbData, out, storePath);
+        } else {
+            MbdbData.set(mbdbData, v.payload, storePath);
         }
     }
 }
 
-function toModelJsonVariantItem(internalData: DataTree, data: MbdbData, parentPath: Path, item: VariantItem, errors: string[], schema: Item) {
+function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item) {
+    if (Schema.hasComplexInput(item)) {
+        toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+    } else if (Schema.hasVariantInput(item)) {
+        toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+    } else {
+        toMbdbDataSimpleItem(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+    }
+}
+
+function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: VariantItem) {
     assert(item.discriminator !== undefined, `Item with variant input does not specify a type discriminator.`);
 
-    const v = Data.getTree(internalData, parentPath);
+    const v = Data.getTree(internalData, internalParentPath);
     const choice = FormContext.readVariantChoice(v);
     const varItem = item.input[choice];
-    assert(varItem !== undefined, `Variant choice "${choice}" is invalid for input item "${Data.Path.toString(parentPath)}}"`);
+    assert(varItem !== undefined, `Variant choice "${choice}" is invalid for input item "${Data.Path.toString(internalParentPath)}}"`);
 
     if (Schema.hasComplexInput(varItem)) {
-        toModelData(internalData, data, Data.Path.path(choice, parentPath), errors, schema);
+        toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
     } else if (Schema.hasVariantInput(varItem)) {
-        toModelJsonVariantItem(internalData, data, Data.Path.path(choice, parentPath), varItem, errors, schema);
+        toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
     } else {
-        toModelJsonSimpleItem(internalData, data, Data.Path.path(choice, parentPath), varItem, choice, errors);
+        toMbdbDataSimpleItem(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
     }
-    data[item.discriminator] = choice;
+
+    MbdbData.set(mbdbData, choice, MbdbData.Path.toPath(MbdbData.Path.extend(item.discriminator, item.mbdbPath), mbdbArrayIndices));
 }
 
-function toModelJsonItem(internalData: DataTree, data: MbdbData | MbdbScalar[], parentPath: Path, item: Item, k: keyof MbdbData | keyof MbdbScalar[], errors: string[], schema: Item) {
-    assert((isTree(data) && isTreeKey(k)) || (isArray(data) && isArrayKey(k)), `Mismatching "MbdbData/string" or "MbdbScalar[]/number" value/key pair with values "${data.toString()}" / "${k.toString()}"`);
-
-    if (Schema.hasComplexInput(item)) {
-        data[k] = {};
-        toModelData(internalData, data[k] as MbdbData, parentPath, errors, schema);
-    } else if (Schema.hasVariantInput(item)) {
-        data[k] = {};
-        toModelJsonVariantItem(internalData, data[k] as MbdbData, parentPath, item, errors, schema);
-    } else {
-        toModelJsonSimpleItem(internalData, data, parentPath, item, k, errors);
-    }
-}
-
-function toModelData(internalData: DataTree, data: MbdbData, parentPath: Path, errors: string[], schema: Item) {
-    const pv = Data.getTree(internalData, parentPath);
-    for (const k in pv) {
+function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: ComplexItem) {
+    const tree = Data.getTree(internalData, internalParentPath);
+    for (const k in tree) {
         if (Schema.isReservedKey(k)) continue;
 
-        const path = Data.Path.path(k, parentPath);
-        const item = Traverse.itemFromSchema(Traverse.objPathFromDataPath(path), schema);
+        const path = Data.Path.path(k, internalParentPath);
+        const innerItem = Traverse.itemFromSchema(k, item);
 
-        if (item.isArray) {
+        if (innerItem.isArray) {
             const v = Data.getArray(internalData, path);
 
             assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
-            const a = new Array<MbdbScalar>(v.length);
             for (let idx = 0; idx < v.length; idx++) {
-                toModelJsonItem(internalData, a, Data.Path.index(idx, path), item, idx, errors, schema);
-            }
-            if (a.length > 0) {
-                data[k] = a;
+                toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem);
             }
         } else {
-            toModelJsonItem(internalData, data, path, item, k, errors, schema);
+            toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, innerItem);
         }
     }
 }
 
 export const Mbdb = {
-    toData(ctx: FormContext, schema: Item) {
+    toData(ctx: FormContext, schema: ComplexItem) {
         const data = {};
         const errors = new Array<string>();
-        toModelData(ctx.data, data, [], errors, schema);
+        toMbdbDataTree(ctx.data, [], data, [], errors, schema);
         pruneEmpty(data);
 
         return {

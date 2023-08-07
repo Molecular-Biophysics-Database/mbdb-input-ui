@@ -27,6 +27,7 @@ type BaseItem = {
     label: string,
     isArray: boolean,
     isRequired: boolean,
+    mbdbPath: string,
     help?: Record<string, string>,
     dontDisplay?: boolean,
 };
