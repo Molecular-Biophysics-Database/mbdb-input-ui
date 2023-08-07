@@ -15,7 +15,10 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
 
     React.useEffect(() => {
         const refId = Value.toRefId(handler.getValue(path));
-        handler.refs.add(Data.Path.parent(path), referenceAs, refId);
+        if (!handler.refs.has(referenceAs, refId)) {
+            // The referenceable may have been already added if the context was loaded from a file
+            handler.refs.add(Data.Path.parent(path), referenceAs, refId);
+        }
 
         return () => {
             // We are only checking for the anchor. If the anchor is gone, it most likely means that
@@ -36,16 +39,21 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
 }
 
 export function RelatedToInput({ label, relatesTo, relatedKeys, path }: { help?: Help, label: string, relatesTo: string, relatedKeys: string[], path: Path }) {
-    const id = React.useMemo(() =>  PathId.toId(path), [path]);
+    const htmlId = React.useMemo(() =>  PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const data = handler.getTree(path);
     const referenceables = References.list(handler.refs.get(), relatesTo);
     const refingId = React.useMemo(() => Uuid.get(), []);
+    const id = data['id'];
 
-    assert(data['id'] !== undefined, `Data for RelatedTo input on path "${Data.Path.toString(path)}" does not have an "id" field, which is required.`);
-    assert(Value.isValue(data['id']), '"id" field is not a Value');
+    assert(id !== undefined, `Data for RelatedTo input on path "${Data.Path.toString(path)}" does not have an "id" field, which is required.`);
+    assert(Value.isValue(id) && Value.isRelToId(id), '"id" field is not a Value');
 
     React.useEffect(() => {
+        if (!Value.isEmpty(id)) {
+            References.ref(handler.refs.get(), relatesTo, id.payload, refingId, data);
+        }
+
         return () => {
             assert(Value.isValue(data['id']), '"id" field is not a Value');
             const refId = Value.toRelToId(data['id']);
@@ -85,14 +93,14 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, path }: { help?:
             };
         })
     ];
-    const [referenceId, setReferenceId] = React.useState(Value.toRelToId(data['id']));
+    const [referenceId, setReferenceId] = React.useState(Value.toRelToId(id));
 
     return (
         <>
-            <ItemLabel label={label} id={id} />
+            <ItemLabel label={label} id={htmlId} />
             <SDropdown
                 placeholder={`Select ${label}, if applicable`}
-                id={id}
+                id={htmlId}
                 value={referenceId}
                 onChange={(_ev, data) => {
                     const newRefId = data.value as string;

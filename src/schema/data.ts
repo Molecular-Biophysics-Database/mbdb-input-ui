@@ -34,7 +34,7 @@ function get(data: DataTree, path: Path, defaultValue?: Value) {
 }
 
 function isDataTree(item: DataTreeItem): item is DataTree {
-    return typeof item === 'object' && !Array.isArray(item);
+    return typeof item === 'object' && !Array.isArray(item) && !Value.isValue(item);
 }
 
 function isDataTreeArray(item: DataTreeItem): item is DataTree[] {
@@ -262,7 +262,7 @@ export const Data = {
         },
 
         parent(path: Path) {
-            return path.slice(0, path.length - 1);
+            return path.length < 2 ? path : path.slice(0, path.length - 1);
         },
 
         subtree(data: DataTree, path: Path): DataTree {

@@ -1,19 +1,67 @@
+import { ComplexItem, Item, Schema } from './';
 import { Data, DataTree, Path } from './data';
+import { Traverse } from './traverse';
 import { Value } from './value';
 import { assert } from '../assert';
+import { objKeys } from '../util';
+
+function gatherAnchors(anchors: Set<string>, item: Item) {
+    if (Schema.hasComplexInput(item)) {
+        for (const innerItem of item.input) {
+            gatherAnchors(anchors, innerItem);
+        }
+    } else if (Schema.hasVariantInput(item)) {
+        for (const k of objKeys(item.input)) {
+            const varItem = item.input[k];
+            gatherAnchors(anchors, varItem);
+        }
+    } else if (Schema.hasReferenceableIdInput(item)) {
+        anchors.add(item.referenceAs);
+    }
+}
+
+function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, schema: ComplexItem, objs: { refId: string, data: DataTree }[]) {
+    const dataItem = Data.getItem(data, path);
+    if (Data.isDataTree(dataItem)) {
+        for (const k in dataItem) {
+            if (Schema.isReservedKey(k))
+                continue;
+
+            const innerPath = Data.Path.path(k, path);
+            const objPath = Traverse.objPathFromDataPath(innerPath);
+            const item = Traverse.itemFromSchema(objPath, schema);
+
+            if (Schema.hasRelatedToInput(item) || Schema.hasCustomInput(item)) {
+                // Do not try to descend into these items
+                // They have a complex structure but we do not want to handle it
+            } else if (Schema.hasReferenceableIdInput(item) && item.referenceAs === anchor) {
+                const v = Data.getValue(data, Data.Path.path('__mbdb_referenceable_id', path));
+                objs.push({ refId: v.payload as string, data: Data.getTree(data, path) });
+            } else {
+                gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs);
+            }
+        }
+    } else if (Data.isDataTreeArray(dataItem)) {
+        for (let idx = 0; idx < dataItem.length; idx++) {
+            gatherRefObjsForAnchor(anchor, data, Data.Path.index(idx, path), schema, objs);
+        }
+    }
+}
 
 function gatherReferenceableIdsInData(data: DataTree, gatheredRefIds: string[]) {
     if (Array.isArray(data)) {
         gatherReferenceableIdsInDataArray(data, gatheredRefIds);
     } else {
-        for (const k in data) {
-            const _k = k as keyof typeof data;
-            if (_k === '__mbdb_referenceable_id') {
-                gatheredRefIds.push(Value.toRefId(data[_k] as Value));
-            } else if (Data.isDataTree(data[_k])) {
-                const item = data[_k];
+        for (const k of objKeys(data)) {
+            if (k === '__mbdb_referenceable_id') {
+                gatheredRefIds.push(Value.toRefId(data[k] as Value));
+            } else {
+                const item = data[k];
+
                 if (Data.isDataTree(item)) {
                     gatherReferenceableIdsInData(item, gatheredRefIds);
+                } else if (Data.isDataTreeArray(item)) {
+                    gatherReferenceableIdsInDataArray(item, gatheredRefIds);
                 }
             }
         }
@@ -142,6 +190,21 @@ export const References = {
         // console.log(`Removed a reference "${refingId}" from referenceable "${anchor}/${refId}"`);
     },
 
+    Gather: {
+        anchors(schema: ComplexItem) {
+            const anchors = new Set<string>();
+            gatherAnchors(anchors, schema);
+
+            return Array.from(anchors);
+        },
+
+        refObjsForAnchor(anchor: string, data: DataTree, schema: ComplexItem) {
+            const objs = new Array<{ refId: string, data: DataTree }>();
+            gatherRefObjsForAnchor(anchor, data, [], schema, objs);
+
+            return objs;
+        },
+    },
 
     List: {
         activeReferenceables(refs: ReferenceAnchors, rrIds: string[], onlyReferenced = false) {

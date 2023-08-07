@@ -132,7 +132,8 @@ export const Value = {
         return choices.includes(value.payload);
     },
 
-    isValue(obj: Record<string, any>): obj is Value {
+    isValue(obj?: Record<string, any>): obj is Value {
+        if (obj === undefined) return false;
         return obj['__mbdb_value'] === true;
     },
 
