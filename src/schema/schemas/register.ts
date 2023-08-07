@@ -7,7 +7,6 @@ import { MbdbModels } from '../../mbdb/models';
 export type SchemaItem = {
     name: string,
     schema: ComplexInput,
-    isTest?: boolean,
 };
 
 export const Register: Record<keyof typeof MbdbModels, SchemaItem> = {
@@ -22,6 +21,5 @@ export const Register: Record<keyof typeof MbdbModels, SchemaItem> = {
     test_1: {
         name: 'Test 1',
         schema: Test1,
-        isTest: true,
     },
 } as const;

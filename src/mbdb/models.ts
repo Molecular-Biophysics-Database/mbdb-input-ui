@@ -3,6 +3,7 @@ import { Register as SchemasRegister, SchemaItem } from '../schema/schemas/regis
 export type MbdbModel = {
     apiEndpoint: string,
     schema: SchemaItem,
+    dummy?: boolean,
 };
 
 export const MbdbModels: Record<'bli' | 'mst' | 'test_1', MbdbModel> = {
@@ -17,5 +18,6 @@ export const MbdbModels: Record<'bli' | 'mst' | 'test_1', MbdbModel> = {
     test_1: {
         apiEndpoint: '',
         schema: SchemasRegister.test_1,
+        dummy: true,
     },
 } as const;

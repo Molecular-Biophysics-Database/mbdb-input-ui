@@ -1,20 +1,24 @@
+import { objKeys } from '../util';
+
 const ConfigObj = {
     baseUrl: '',
+    isDevel: false as boolean,
 };
 
 function apply(cfg: { [key: string]: any }) {
-    for (const k in ConfigObj) {
+    for (const k of objKeys(ConfigObj)) {
         const item = cfg[k as keyof typeof cfg];
         if (item === undefined) continue;
 
-        if (typeof item === typeof ConfigObj[k as keyof typeof ConfigObj]) {
-            ConfigObj[k as keyof typeof ConfigObj] = item;
+        const ref = ConfigObj[k];
+        if (typeof item === typeof ref) {
+            (ConfigObj[k] as typeof ref) = item;
         }
     }
 }
 
 export const Config = {
-    get(k: keyof typeof ConfigObj) {
+    get<K extends keyof typeof ConfigObj>(k: K): (typeof ConfigObj)[K]  {
         return ConfigObj[k];
     },
 

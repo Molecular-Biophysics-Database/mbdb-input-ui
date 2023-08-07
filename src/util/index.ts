@@ -19,6 +19,10 @@ export function isLeapYear(year: number) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
+export function objKeys<T extends object>(obj: T): (keyof T)[] {
+    return Object.keys(obj) as (keyof T)[];
+}
+
 export function replaceAll(s: string, replacee: string, replacer: string) {
     let idx = s.indexOf(replacee);
     while (idx >= 0) {

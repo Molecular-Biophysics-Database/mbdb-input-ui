@@ -21,6 +21,7 @@ import { ComplexItem, Item } from './schema';
 import { Configuration } from './schema/configuration';
 import { Persistence } from './schema/persistence';
 import { LoadFileButton } from './ui/load-file-button';
+import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
 
 // HAKZ HAKZ HAKZ
@@ -142,10 +143,13 @@ function SubmissionErrorDialog(props: {
 function App() {
     const keeper = getKeeper();
     const availableSchemas = React.useMemo(() => {
+        const isDevel = Config.get('isDevel');
         const avail = [];
-        for (const key in SchemasRegister) {
+        for (const key of objKeys(SchemasRegister)) {
             const s = SchemasRegister[key as keyof typeof MbdbModels];
-            avail.push({ key, text: s.name, value: key });
+            if (!MbdbModels[key].dummy || isDevel) {
+                avail.push({ key, text: s.name, value: key });
+            }
         }
 
         return avail;
