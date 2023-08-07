@@ -30,14 +30,11 @@ function applyInitialDataItem(inData: DataTree, path: Path, item: Item, data: Da
         // We need special handling here because "related-to" item contains an object.
         const itemData = Data.getTree(inData, path);
         if (!Value.isValue(itemData['id']) || !Value.isRelToId(itemData['id'])) {
-            throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema (data for "related-to" are invalid)`);
+            throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema ("related-to" item does not have "id")`);
         }
-        // TODO: We should not trust the input data to have the name set correctly.
-        // This should be read from the referenced item. We cannot do it right away though because
-        // the referenced item may not have been read yet.
-        if (!Value.isValue(itemData['name']) || !Value.isTextual(itemData['name'])) {
-            throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema (data for "related-to" are invalid)`);
-        }
+
+        // "related-to" item can have other items in its data object. These items are read and checked
+        // later when the entire data tree is read.
 
         Data.set(data, path, itemData);
     } else {
@@ -166,7 +163,7 @@ function buildReferences(data: DataTree, schema: ComplexItem) {
         }
     }
 
-    checkReferences(data, [], references, schema);
+    checkAndFixupReferences(data, [], references, schema);
 
     return references;
 }
@@ -208,7 +205,7 @@ function checkItemDataSchema(data: Value, item: Item) {
     }
 }
 
-function checkReferences(data: DataTree, path: Path, references: ReferenceAnchors, schema: ComplexItem) {
+function checkAndFixupReferences(data: DataTree, path: Path, references: ReferenceAnchors, schema: ComplexItem) {
     const dataItem = Data.getItem(data, path);
     if (Data.isDataTree(dataItem)) {
         for (const k in dataItem) {
@@ -226,13 +223,26 @@ function checkReferences(data: DataTree, path: Path, references: ReferenceAnchor
                 if (!References.has(references, item.relatesTo, refId)) {
                     throw new Error(`Item on path "${Data.Path.toString(innerPath)}" references a referenceable that does not exist.`);
                 }
+
+                // We cannot trust that the related keys set by the "related-to" item
+                // are actually correct. We need to get them from the referenceable.
+                const ref = References.get(references, item.relatesTo, refId);
+                for (const rk of item.relatedKeys) {
+                    if (rk === 'id') continue;
+                    const rv = ref.data[rk];
+                    if (!Value.isValue(rv) || !Value.isTextual(rv)) {
+                        throw new Error(`Item on path "${Data.Path.toString(innerPath)}" expected its referenceable to have a key "${rk}" but the referenceable does not have it.`);
+                    }
+
+                    Data.set(data, Data.Path.path(rk, innerPath), rv);
+                }
             } else {
-                checkReferences(data, Data.Path.path(k, path), references, schema);
+                checkAndFixupReferences(data, Data.Path.path(k, path), references, schema);
             }
         }
     } else if (Data.isDataTreeArray(dataItem)) {
         for (let idx = 0; idx < dataItem.length; idx++) {
-            checkReferences(data, Data.Path.index(idx, path), references, schema);
+            checkAndFixupReferences(data, Data.Path.index(idx, path), references, schema);
         }
     }
 }
