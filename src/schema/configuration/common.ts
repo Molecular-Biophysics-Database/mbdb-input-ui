@@ -105,6 +105,10 @@ export const Common = {
         'general_parameters/record/resource_type': {
             dontDisplay: true,
         },
+        'general_parameters/record/subject_category': {
+            dontDisplay: true,
+            defaultValue: 'Biophysics',
+        },
     'general_parameters/schema_version': {
         dontDisplay: true,
     },
