@@ -15,8 +15,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.2',
-                        title: '0.9.2',
+                        tag: '0.9.0',
+                        title: '0.9.0',
                     },
                 ],
                 help: {
@@ -56,8 +56,8 @@ export const MST = [
                         input: 'options',
                         choices: [
                             {
-                                tag: 'Dataset',
-                                title: 'Dataset',
+                                tag: 'dataset',
+                                title: 'dataset',
                             },
                         ],
                         help: {
@@ -217,25 +217,14 @@ export const MST = [
                                 mbdbPath: 'general_parameters/record/project/owner',
                                 input: [
                                     {
-                                        tag: 'given_name',
-                                        label: 'given_name',
+                                        tag: 'full_name',
+                                        label: 'full_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/record/project/owner/given_name',
+                                        mbdbPath: 'general_parameters/record/project/owner/full_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The given name(s), including middlename(s), of the person',
-                                        },
-                                    },
-                                    {
-                                        tag: 'family_name',
-                                        label: 'family_name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/record/project/owner/family_name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The family name(s) the person',
+                                            en: 'The full name of the person',
                                         },
                                     },
                                     {
@@ -246,7 +235,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/record/project/owner/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                            en: 'Persistent identifier associated with the publication',
                                         },
                                     },
                                     {
@@ -377,25 +366,14 @@ export const MST = [
                                 mbdbPath: 'general_parameters/associated_publications/main/authors[]',
                                 input: [
                                     {
-                                        tag: 'given_name',
-                                        label: 'given_name',
+                                        tag: 'full_name',
+                                        label: 'full_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/given_name',
+                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/full_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The given name(s), including middlename(s), of the person',
-                                        },
-                                    },
-                                    {
-                                        tag: 'family_name',
-                                        label: 'family_name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/family_name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The family name(s) the person',
+                                            en: 'The full name of the person',
                                         },
                                     },
                                     {
@@ -406,7 +384,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/associated_publications/main/authors[]/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                            en: 'Persistent identifier associated with the publication',
                                         },
                                     },
                                     {
@@ -512,25 +490,14 @@ export const MST = [
                                 mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]',
                                 input: [
                                     {
-                                        tag: 'given_name',
-                                        label: 'given_name',
+                                        tag: 'full_name',
+                                        label: 'full_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/given_name',
+                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/full_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The given name(s), including middlename(s), of the person',
-                                        },
-                                    },
-                                    {
-                                        tag: 'family_name',
-                                        label: 'family_name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/family_name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The family name(s) the person',
+                                            en: 'The full name of the person',
                                         },
                                     },
                                     {
@@ -541,7 +508,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                            en: 'Persistent identifier associated with the publication',
                                         },
                                     },
                                     {
@@ -618,25 +585,14 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/depositor',
                         input: [
                             {
-                                tag: 'given_name',
-                                label: 'given_name',
+                                tag: 'full_name',
+                                label: 'full_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/depositor/given_name',
+                                mbdbPath: 'general_parameters/depositors/depositor/full_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The given name(s), including middlename(s), of the person',
-                                },
-                            },
-                            {
-                                tag: 'family_name',
-                                label: 'family_name',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/depositor/family_name',
-                                input: 'string',
-                                help: {
-                                    en: 'The family name(s) the person',
+                                    en: 'The full name of the person',
                                 },
                             },
                             {
@@ -647,7 +603,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/depositor/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                    en: 'Persistent identifier associated with the publication',
                                 },
                             },
                             {
@@ -671,25 +627,14 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/principal_contact',
                         input: [
                             {
-                                tag: 'given_name',
-                                label: 'given_name',
+                                tag: 'full_name',
+                                label: 'full_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/principal_contact/given_name',
+                                mbdbPath: 'general_parameters/depositors/principal_contact/full_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The given name(s), including middlename(s), of the person',
-                                },
-                            },
-                            {
-                                tag: 'family_name',
-                                label: 'family_name',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/principal_contact/family_name',
-                                input: 'string',
-                                help: {
-                                    en: 'The family name(s) the person',
+                                    en: 'The full name of the person',
                                 },
                             },
                             {
@@ -700,7 +645,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/principal_contact/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                    en: 'Persistent identifier associated with the publication',
                                 },
                             },
                             {
@@ -724,25 +669,14 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/contributors[]',
                         input: [
                             {
-                                tag: 'given_name',
-                                label: 'given_name',
+                                tag: 'full_name',
+                                label: 'full_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/contributors[]/given_name',
+                                mbdbPath: 'general_parameters/depositors/contributors[]/full_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The given name(s), including middlename(s), of the person',
-                                },
-                            },
-                            {
-                                tag: 'family_name',
-                                label: 'family_name',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/contributors[]/family_name',
-                                input: 'string',
-                                help: {
-                                    en: 'The family name(s) the person',
+                                    en: 'The full name of the person',
                                 },
                             },
                             {
@@ -753,7 +687,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/contributors[]/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                    en: 'Persistent identifier associated with the publication',
                                 },
                             },
                             {
@@ -976,25 +910,14 @@ export const MST = [
                                         mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]',
                                         input: [
                                             {
-                                                tag: 'given_name',
-                                                label: 'given_name',
+                                                tag: 'full_name',
+                                                label: 'full_name',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/given_name',
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/full_name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'The given name(s), including middlename(s), of the person',
-                                                },
-                                            },
-                                            {
-                                                tag: 'family_name',
-                                                label: 'family_name',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/family_name',
-                                                input: 'string',
-                                                help: {
-                                                    en: 'The family name(s) the person',
+                                                    en: 'The full name of the person',
                                                 },
                                             },
                                             {
@@ -1005,7 +928,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/identifiers[]',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
+                                                    en: 'Persistent identifier associated with the publication',
                                                 },
                                             },
                                             {
@@ -2001,7 +1924,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -3377,7 +3300,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -8254,7 +8177,7 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
-                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                         },
                                                                     },
                                                                     {
@@ -10777,7 +10700,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -12137,7 +12060,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -14193,7 +14116,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -15553,7 +15476,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -17946,7 +17869,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -19322,7 +19245,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -24199,7 +24122,7 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
-                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                         },
                                                                     },
                                                                     {
@@ -26241,7 +26164,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/inchikey',
                                         input: 'string',
                                         help: {
-                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                         },
                                     },
                                     {
@@ -27450,7 +27373,7 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/inchikey',
                                                         input: 'string',
                                                         help: {
-                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                         },
                                                     },
                                                     {
@@ -31492,7 +31415,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
