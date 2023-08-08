@@ -28,7 +28,10 @@ function elementTopOffset(id: string) {
 }
 
 function isNavigationAnchor(item: Item) {
-    return Schema.hasComplexInput(item) || item.isArray;
+    return (
+        Schema.hasComplexInput(item) ||
+        (item.isArray && !(Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)))
+    );
 }
 
 function isNavItemVisible(bRect: Rect | null, htmlId: string) {
@@ -72,15 +75,22 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                     if (item.isArray) {
                         const data = Data.getArray(ctxHandler.data(), path);
 
-                        for (let idx = 0; idx < data.length; idx++) {
-                            const itemHtmlId = PathId.extendId(idx, htmlId, true);
-                            const innerList = navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
+                        if (data.length === 0) {
                             listItems.push(
-                                <NavigationListItem label={`${item.label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
-                                    {innerList}
-                                </NavigationListItem>
+                                <NavigationListItem label={item.label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} />
                             );
                             ctr++;
+                        } else {
+                            for (let idx = 0; idx < data.length; idx++) {
+                                const itemHtmlId = PathId.extendId(idx, htmlId, true);
+                                const innerList = navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
+                                listItems.push(
+                                    <NavigationListItem label={`${item.label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
+                                        {innerList}
+                                    </NavigationListItem>
+                                );
+                                ctr++;
+                            }
                         }
                     } else {
                         const innerList = navigationList(item.input, ctxHandler, htmlId, level + 1, tainerRect);
@@ -112,7 +122,7 @@ type NavigationListItemProps = {
     tainerRect: Rect | null,
     level: number,
     isVariant?: boolean,
-    children: JSX.Element | JSX.Element[] | null
+    children?: JSX.Element | JSX.Element[] | null
 };
 function NavigationListItem(props: NavigationListItemProps) {
     const { handler } = React.useContext(FormContextInstance);
@@ -134,10 +144,13 @@ function NavigationListItem(props: NavigationListItemProps) {
     });
 
     let hasErrors = false;
-    if (props.children === null) {
-        Data.walk(handler.getTree(path), (value) => {
-            hasErrors = hasErrors || !Value.isValid(value);
-        });
+    if (!props.children) {
+        // Walk only if we are on the top of a data tree
+        if (Data.isDataTree(handler.getItem(path))) {
+            Data.walk(handler.getTree(path), (value) => {
+                hasErrors = hasErrors || !Value.isValid(value);
+            });
+        }
     } else {
         Data.walkShallow(handler.getTree(path), (value) => {
             hasErrors = hasErrors || !Value.isValid(value);
@@ -156,7 +169,7 @@ function NavigationListItem(props: NavigationListItemProps) {
                 </div>
             </div>
             <div>
-                {props.children}
+                {props.children ?? null}
             </div>
         </div>
     );

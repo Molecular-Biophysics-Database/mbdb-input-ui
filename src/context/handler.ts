@@ -93,6 +93,10 @@ function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormConte
             return data.__mbdb_variant_choice;
         },
 
+        hasItem(path: Path) {
+            return Data.has(ctxGetter().data, path);
+        },
+
         putVariantChoice(data: DataTree, choice: string) {
             data.__mbdb_variant_choice = choice;
         },

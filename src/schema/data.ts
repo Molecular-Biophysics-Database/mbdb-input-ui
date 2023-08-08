@@ -98,7 +98,7 @@ export type Path = ({ kind: 'obj', value: string } | { kind: 'index', value: num
 export const Data = {
     getArray(data: DataTree, path: Path): DataTree[] | Value[] {
         const v = get(data, path);
-        assert(Array.isArray(v), `get(Array) function must return an array but it returned something else. This happened with path "${Data.Path.toString(path)}".`);
+        assert(Array.isArray(v), `getArray() function must return an array but it returned something else. This happened with path "${Data.Path.toString(path)}".`);
 
         return v;
     },
@@ -109,7 +109,7 @@ export const Data = {
 
     getTree(data: DataTree, path: Path): DataTree {
         const v = get(data, path);
-        assert(isDataTree(v), `get() function must return a tree but it returned something else. This happened with path "${Data.Path.toString(path)}".`);
+        assert(isDataTree(v), `getTree() function must return a tree but it returned something else. This happened with path "${Data.Path.toString(path)}".`);
 
         return v;
     },
