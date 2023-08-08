@@ -82,8 +82,11 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                             ctr++;
                         } else {
                             for (let idx = 0; idx < data.length; idx++) {
+                                // Array items can be collapsed. If they are, do not list their content.
+                                const isCollapsed = ctxHandler.navigation.isCollapsed(ctxHandler.getItem(Data.Path.index(idx, path)));
+
                                 const itemHtmlId = PathId.extendId(idx, htmlId, true);
-                                const innerList = navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
+                                const innerList = isCollapsed ? null : navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
                                 listItems.push(
                                     <NavigationListItem label={`${item.label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
                                         {innerList}
@@ -147,7 +150,7 @@ function NavigationListItem(props: NavigationListItemProps) {
     if (!props.children) {
         // Walk only if we are on the top of a data tree
         if (Data.isDataTree(handler.getItem(path))) {
-            Data.walk(handler.getTree(path), (value) => {
+            Data.walkValues(handler.getTree(path), (value) => {
                 hasErrors = hasErrors || !Value.isValid(value);
             });
         }

@@ -6,7 +6,7 @@ import { component } from '../render';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
 import { Help, Item } from '../../../schema';
-import { Data, DataTree, Path } from '../../../schema/data';
+import { Data, Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
 
 export type Props = {
@@ -22,7 +22,7 @@ export function GroupContainer(props: Props) {
     const data = Data.getTree(handler.data(), props.path);
 
     let hasErrors = false;
-    Data.walk(data as DataTree, (value, _path) => {
+    Data.walkValues(data, (value, _path) => {
         hasErrors = hasErrors || !Value.isValid(value);
     });
 

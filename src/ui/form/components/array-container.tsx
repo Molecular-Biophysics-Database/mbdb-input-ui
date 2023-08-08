@@ -10,11 +10,19 @@ import { niceLabel } from '../util';
 import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
+import { _FormContextHandler } from '../../../context/handler';
 import { Item, Schema } from '../../../schema';
-import { Data, Path } from '../../../schema/data';
+import { Data, DataTreeItem, Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
 
 const GridInArrayStyle = { display: 'grid', rowGap: '0.5rem', gridTemplateColumns: '0 1fr auto' };
+
+function deepRemoveCollapsed(item: DataTreeItem, handler: _FormContextHandler) {
+    Data.walkTree(item, (inItem) => {
+        handler.navigation.removeItem(inItem);
+    });
+    handler.navigation.removeItem(item);
+}
 
 const ArrayAnchor = React.memo(function _ArrayAnchor({ path, idx }: { path: Path, idx: number }) {
     const htmlId = PathId.toId(Data.Path.index(idx, path));
@@ -76,6 +84,33 @@ function CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
     );
 }
 
+type CollapsibleElementProps = {
+    content: JSX.Element | (JSX.Element | null)[],
+    idx: number,
+    path: Path,
+    title: string,
+    setDeletionError: (err: string) => void,
+    handler: _FormContextHandler,
+};
+function CollapsibleElement(props: CollapsibleElementProps) {
+    const handler = props.handler;
+    const dataItem = handler.getItem(Data.Path.index(props.idx, props.path));
+    const isCollapsed = handler.navigation.isCollapsed(dataItem);
+
+    return (
+        <div className='mbdb-array-collapsible-tainer'>
+            <Collapsible
+                header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} setDeletionError={(err) => props.setDeletionError(err)} />}
+                content={props.content}
+                onCollapsedExpanded={(isCollapsed) => {
+                    handler.navigation.setCollapsed(dataItem, isCollapsed);
+                }}
+                isCollapsed={isCollapsed}
+            />
+        </div>
+    );
+}
+
 type ComplexArrayHeaderProps = {
     title: string,
     idx: number,
@@ -96,6 +131,9 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
                     if (!handler.canDelete(delPath)) {
                         props.setDeletionError(`Cannot delete item on path "${Data.Path.toString(delPath)}". The item is referenced by some other items."`);
                     } else {
+                        const toDelete = handler.getItem(Data.Path.index(props.idx, props.path));
+                        deepRemoveCollapsed(toDelete, handler);
+
                         handler.delete(delPath);
                     }
                 }}>-</SButton>
@@ -130,16 +168,18 @@ export function ArrayContainer({ item, path }: Props) {
             components.push(
                 <div className='mbdb-item-grid' key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <div className='mbdb-array-collapsible-tainer'>
-                        <Collapsible
-                            header={<ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />}
-                            content={
-                                <div className='mbdb-item-grid'>
-                                    {blockComponents}
-                                </div>
-                            }
-                        />
-                    </div>
+                    <CollapsibleElement
+                        title={_niceLabel}
+                        idx={idx}
+                        path={path}
+                        content={
+                            <div className='mbdb-item-grid'>
+                                {blockComponents}
+                            </div>
+                        }
+                        setDeletionError={setDeletionError}
+                        handler={handler}
+                    />
                 </div>
             );
         }
@@ -162,12 +202,14 @@ export function ArrayContainer({ item, path }: Props) {
             components.push(
                 <div key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <div className='mbdb-array-collapsible-tainer'>
-                        <Collapsible
-                            header={<ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />}
-                            content={<VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />}
-                        />
-                    </div>
+                    <CollapsibleElement
+                        title={_niceLabel}
+                        idx={idx}
+                        path={path}
+                        content={<VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />}
+                        setDeletionError={setDeletionError}
+                        handler={handler}
+                    />
                 </div>
             );
         }

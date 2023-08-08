@@ -263,6 +263,10 @@ function App() {
 }
 
 export function FormBlock(props: { schema: Item[], contextValue: { handler: _FormContextHandler } }) {
+    React.useEffect(() => {
+        props.contextValue.handler.navigation.clear();
+    }, [props.schema]);
+
     return (
         <FormContextInstance.Provider value={props.contextValue}>
             <Form schema={props.schema} />

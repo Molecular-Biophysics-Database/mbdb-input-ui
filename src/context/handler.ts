@@ -97,6 +97,34 @@ function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormConte
             return Data.has(ctxGetter().data, path);
         },
 
+        navigation: {
+            collapsedItems: new Set<object>(),
+
+            clear() {
+                this.collapsedItems.clear();
+            },
+
+            isCollapsed(dataItem: object) {
+                return this.collapsedItems.has(dataItem);
+            },
+
+            removeItem(dataItem: object) {
+                this.collapsedItems.delete(dataItem);
+            },
+
+            setCollapsed(dataItem: object, collapsed: boolean) {
+                if (collapsed) {
+                    assert(!this.collapsedItems.has(dataItem), 'Attempted to set item as collapsed but that item is already set as collapsed.');
+                    this.collapsedItems.add(dataItem);
+                } else {
+                    assert(this.collapsedItems.has(dataItem), 'Attempted to set item as expanded but that item is already set as expanded.');
+                    this.collapsedItems.delete(dataItem);
+                }
+
+                doUpdate();
+            },
+        },
+
         putVariantChoice(data: DataTree, choice: string) {
             data.__mbdb_variant_choice = choice;
         },

@@ -53,16 +53,18 @@ function mkChild(elem: Path[number]) {
     return elem.kind === 'obj' ? {} : [];
 }
 
-function walk(subtree: DataTreeItem, parentPath: Path, callback: (item: Value, path: Path) => void) {
+function walk(subtree: DataTreeItem, parentPath: Path, callback: (item: DataTreeItem, path: Path) => void, onlyLeaves: boolean) {
     if (Array.isArray(subtree)) {
         for (let idx = 0; idx < subtree.length; idx++) {
             const elem = subtree[idx];
             const path = Data.Path.index(idx, parentPath);
 
             if (isDescendable(elem)) {
-                walk(elem, path, callback);
+                if (!onlyLeaves) callback(elem, path);
+                walk(elem, path, callback, onlyLeaves);
             } else {
-                callback(elem as Value, path);
+                assert(Value.isValue(elem), `Expected a Value object but got something else.`);
+                callback(elem, path);
             }
         }
     } else if (isDataTree(subtree)) {
@@ -74,7 +76,8 @@ function walk(subtree: DataTreeItem, parentPath: Path, callback: (item: Value, p
             const path = Data.Path.path(prop, parentPath);
 
             if (isDescendable(item)) {
-                walk(item, path, callback);
+                if (!onlyLeaves) callback(item, path);
+                walk(item, path, callback, onlyLeaves);
             } else {
                 assert(Value.isValue(item), `Expected a Value object but got something else.`);
                 callback(item, path);
@@ -207,11 +210,19 @@ export const Data = {
         }
     },
 
-    walk(subtree: DataTree, callback: (item: Value, path: Path) => void) {
+    walkTree(subtree: DataTreeItem, callback: (item: DataTreeItem, path: Path) => void) {
         if (Value.isValue(subtree)) {
             callback(subtree, []);
         } else {
-            walk(subtree, [], callback);
+            walk(subtree, [], callback, false);
+        }
+    },
+
+    walkValues(subtree: DataTreeItem, callback: (item: Value, path: Path) => void) {
+        if (Value.isValue(subtree)) {
+            callback(subtree, []);
+        } else {
+            walk(subtree, [], callback as (item: DataTreeItem, path: Path) => void, true);
         }
     },
 
