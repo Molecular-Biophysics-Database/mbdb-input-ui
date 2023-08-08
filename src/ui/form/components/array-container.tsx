@@ -7,6 +7,7 @@ import { VariantInput } from './variant';
 import { PathId } from '../path-id';
 import { component, scalarComponent } from '../render';
 import { niceLabel } from '../util';
+import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
 import { Item, Schema } from '../../../schema';
@@ -129,8 +130,16 @@ export function ArrayContainer({ item, path }: Props) {
             components.push(
                 <div className='mbdb-item-grid' key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
-                    {blockComponents}
+                    <div className='mbdb-array-collapsible-tainer'>
+                        <Collapsible
+                            header={<ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />}
+                            content={
+                                <div className='mbdb-item-grid'>
+                                    {blockComponents}
+                                </div>
+                            }
+                        />
+                    </div>
                 </div>
             );
         }
@@ -153,8 +162,12 @@ export function ArrayContainer({ item, path }: Props) {
             components.push(
                 <div key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
-                    <ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />
-                    <VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />
+                    <div className='mbdb-array-collapsible-tainer'>
+                        <Collapsible
+                            header={<ComplexArrayHeader title={_niceLabel} idx={idx} path={path} setDeletionError={(err) => setDeletionError(err)} />}
+                            content={<VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />}
+                        />
+                    </div>
                 </div>
             );
         }
