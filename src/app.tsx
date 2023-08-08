@@ -171,7 +171,7 @@ function App() {
             </ErrorDialog>
             <SubmissionErrorDialog error={submitError} contextDataGetter={ctxGetter} onDismissed={() => setSubmitError(null)} />
 
-            <div>
+            <div className='mbdb-app-tainer'>
                 <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdb-hgap)' }}>
                     <div style={{ display: 'grid', gap: 'var(--mbdb-hgap)', gridTemplateColumns: 'auto auto auto' }}>
                         {/* First row */}
@@ -264,11 +264,9 @@ function App() {
 
 export function FormBlock(props: { schema: Item[], contextValue: { handler: _FormContextHandler } }) {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1em', height: '95vh' }}>
-            <FormContextInstance.Provider value={props.contextValue}>
-                <Form schema={props.schema} />
-            </FormContextInstance.Provider>
-        </div>
+        <FormContextInstance.Provider value={props.contextValue}>
+            <Form schema={props.schema} />
+        </FormContextInstance.Provider>
     );
 }
 
