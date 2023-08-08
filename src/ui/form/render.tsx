@@ -14,11 +14,11 @@ import { Item, Schema } from '../../schema';
 import { Data, Path } from '../../schema/data';
 import { Validators } from '../../schema/validators';
 
-export function component(item: Item, path: Path, key?: string | number) {
+export function component(item: Item, path: Path, key?: string | number, noLabel = false) {
     if (item.isArray) {
         return <ArrayContainer item={item} path={Data.Path.path(item.tag, path)} key={key} />
     } else {
-        return scalarComponent(item, !!item.isRequired, Data.Path.path(item.tag, path), key);
+        return scalarComponent(item, !!item.isRequired, Data.Path.path(item.tag, path), key, noLabel);
     }
 }
 

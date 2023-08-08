@@ -152,6 +152,16 @@
     font-size: var(--mbdb-font-normal);
 }
 
+.mbdb-variant-selection-tainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-form-pad);
+    /* padding cannot be negative so we have to use a crutch with margins */
+    margin-bottom: calc(-1 * var(--mbdb-form-pad));
+    margin-top: calc(-1 * var(--mbdb-form-pad));
+}
+
 .mbdb-section {
     display: flex;
     flex-direction: column;

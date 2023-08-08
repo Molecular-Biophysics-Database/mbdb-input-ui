@@ -55,7 +55,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, path, va
     ), [input]);
     const [cannotChangeError, setCannotChangeError] = React.useState(false);
 
-    const varComponent = component(input[variantChoice], path);
+    const varComponent = component(input[variantChoice], path, void 0, true);
     return (
         <>
             <CannotChangeVariantErrorDialog
@@ -65,19 +65,23 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, path, va
 
             <div className='mbdb-section'>
                 <VariantAnchor path={Data.Path.path(variantChoice, path)} />
-                <SDropdown
-                    value={variantChoice}
-                    onChange={(_ev, data) => {
-                        if (canChangeVariantChoice(handler, path)) {
-                            handler.setVariantChoice(path, data.value as string);
-                        } else {
-                            setCannotChangeError(true);
-                        }
-                    }}
-                    options={opts}
-                    selection
-                    fluid
-                />
+                <div className='mbdb-variant-selection-tainer'>
+                    <div className='mbdb-section-label-text'>Type</div>
+                    <SDropdown
+                        value={variantChoice}
+                        onChange={(_ev, data) => {
+                            if (canChangeVariantChoice(handler, path)) {
+                                handler.setVariantChoice(path, data.value as string);
+                            } else {
+                                setCannotChangeError(true);
+                            }
+                        }}
+                        options={opts}
+                        className='mbdb-section-label-text'
+                        selection
+                        fluid
+                    />
+                </div>
                 {varComponent}
             </div>
         </>
