@@ -252,7 +252,7 @@ export function ArrayContainer({ item, path }: Props) {
                 title={_niceLabel}
                 onClick={() => {
                     const initialValue = Schema.hasOptionsInput(item)
-                        ? Schema.initialOptionsValue(item.choices, Schema.hasOptionsWithOtherInput(item))
+                        ? Schema.initialOptionsValue(item.choices, true, Schema.hasOptionsWithOtherInput(item))
                         : Value.defaultForItem(item)
                     handler.set(Data.Path.index(array.length, path), initialValue);
                 }}
