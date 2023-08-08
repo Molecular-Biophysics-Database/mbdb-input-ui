@@ -48,7 +48,7 @@ function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, sche
     }
 }
 
-function gatherReferenceableIdsInData(data: DataTree, gatheredRefIds: string[]) {
+function gatherReferenceableIdsInData(data: DataTree | DataTree[], gatheredRefIds: string[]) {
     if (Array.isArray(data)) {
         gatherReferenceableIdsInDataArray(data, gatheredRefIds);
     } else {
@@ -223,10 +223,14 @@ export const References = {
         },
 
         referenceableIdsInData(data: DataTree, dataPath: Path) {
-            const subtree = Data.Path.subtree(data, dataPath);
             const rrIds = new Array<string>();
 
-            gatherReferenceableIdsInData(subtree, rrIds);
+            const item = Data.getItem(data, dataPath);
+            if (Data.isDataTree(item) || Data.isDataTreeArray(item)) {
+                gatherReferenceableIdsInData(item, rrIds);
+            }
+            // else: A plain value cannot be a referenceable
+
             return rrIds;
         },
     },

@@ -210,37 +210,30 @@ export function ArrayContainer({ item, path }: Props) {
         throw new Error(`Do not know how to create array input for item "${item.tag}" with input type "${item.input}"`);
     }
 
-    if (arrayIsSimple) {
-        return (
-            <>
-                <CannotDeleteItemErrorDialog
-                    isOpen={deletionError !== null}
-                    message={deletionError}
-                    onDismissed={() => setDeletionError(null)}
-                />
+    return (
+        <>
+            <CannotDeleteItemErrorDialog
+                isOpen={deletionError !== null}
+                message={deletionError}
+                onDismissed={() => setDeletionError(null)}
+            />
 
-                <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
-                    <div style={{ ...GridInArrayStyle }}>
+            {arrayIsSimple
+                ? (
+                    <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
+                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
+                        <div style={{ ...GridInArrayStyle }}>
+                            {components}
+                        </div>
+                    </div>
+                )
+                : (
+                    <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
+                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
                         {components}
                     </div>
-                </div>
-            </>
-        );
-    } else {
-        return (
-            <>
-                <CannotDeleteItemErrorDialog
-                    isOpen={deletionError !== null}
-                    message={deletionError}
-                    onDismissed={() => setDeletionError(null)}
-                />
-
-                <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
-                    {components}
-                </div>
-            </>
-        );
-    }
+                )
+            }
+        </>
+    );
 }
