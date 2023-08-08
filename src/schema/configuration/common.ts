@@ -93,6 +93,12 @@ export const Common = {
             { tag: 'title', index: 0 },
         ],
     },
+        'general_parameters/record/date_available': {
+            dontDisplay: true,
+        },
+        'general_parameters/record/deposition_date': {
+            dontDisplay: true,
+        },
         'general_parameters/record/resource_type_general': {
             dontDisplay: true,
         },
