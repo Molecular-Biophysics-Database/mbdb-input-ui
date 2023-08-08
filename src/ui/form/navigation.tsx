@@ -60,7 +60,7 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
             const htmlId = PathId.extendId(choice, parentHtmlId);
             const innerList = navigationList(schema[choice].input, ctxHandler, htmlId, level + 1, tainerRect);
             listItems.push(
-                <NavigationListItem label={choice} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} isVariant>
+                <NavigationListItem label={niceLabel(choice, !!schema[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} isVariant>
                     {innerList}
                 </NavigationListItem>
             );
@@ -70,6 +70,7 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
             if (isNavigationAnchor(item)) {
                 const htmlId = PathId.extendId(item.tag, parentHtmlId);
                 const path = PathId.toPath(htmlId);
+                const label = niceLabel(item.label, !!item.dontTransformLabels);
 
                 if (Data.has(ctxHandler.data(), path)) {
                     if (item.isArray) {
@@ -77,7 +78,7 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
 
                         if (data.length === 0) {
                             listItems.push(
-                                <NavigationListItem label={item.label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} />
+                                <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} />
                             );
                             ctr++;
                         } else {
@@ -88,7 +89,7 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                                 const itemHtmlId = PathId.extendId(idx, htmlId, true);
                                 const innerList = isCollapsed ? null : navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
                                 listItems.push(
-                                    <NavigationListItem label={`${item.label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
+                                    <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
                                         {innerList}
                                     </NavigationListItem>
                                 );
@@ -98,7 +99,7 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                     } else {
                         const innerList = navigationList(item.input, ctxHandler, htmlId, level + 1, tainerRect);
                         listItems.push(
-                            <NavigationListItem label={item.label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr}>
+                            <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr}>
                                 {innerList}
                             </NavigationListItem>
                         );
@@ -168,7 +169,7 @@ function NavigationListItem(props: NavigationListItemProps) {
                     name={hasErrors ? 'warning sign' : 'chevron right'}
                 />
                 <div>
-                    <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{niceLabel(props.label)}</a>
+                    <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
                 </div>
             </div>
             <div>
