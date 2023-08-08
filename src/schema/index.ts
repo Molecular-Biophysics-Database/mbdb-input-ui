@@ -199,5 +199,6 @@ export const Schema = {
         return item.choices.map((c) => c.tag);
     },
 
+    EmptyOptionValue: '__mbdb_empty_option',
     OtherChoice: '__mbdb_other_choice',
 };

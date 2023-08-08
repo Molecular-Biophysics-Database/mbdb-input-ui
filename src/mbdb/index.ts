@@ -58,8 +58,14 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
         const storePath = MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices);
         if (Schema.hasOptionsInput(item)) {
             assert(Value.isOption(v), `Value is not an Option value`);
-            const out = Schema.isOtherChoice(v) ? Value.toOtherOption(v) : Value.toOption(v);
-            MbdbData.set(mbdbData, out, storePath);
+            if (Value.isEmptyOption(v)) {
+                if (item.isRequired) {
+                    errors.push(Data.Path.toString(internalParentPath));
+                }
+            } else {
+                const out = Schema.isOtherChoice(v) ? Value.toOtherOption(v) : Value.toOption(v);
+                MbdbData.set(mbdbData, out, storePath);
+            }
         } else if (Schema.hasBooleanInput(item)) {
             if (item.isRequired) {
                 MbdbData.set(mbdbData, Value.toBoolean(v), storePath);

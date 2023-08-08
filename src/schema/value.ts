@@ -66,6 +66,13 @@ export const Value = {
         return v;
     },
 
+    emptyOption(isValid = true) {
+        const v = this.option(Schema.EmptyOptionValue);
+        v.isValid = isValid;
+
+        return v;
+    },
+
     isBoolean(value: Value): value is TValue<boolean> {
         return typeof value.payload === 'boolean';
     },
@@ -86,6 +93,14 @@ export const Value = {
     isEmpty(value: Value) {
         if (typeof value.payload === 'string') {
             return value.payload === '';
+        } else {
+            return false;
+        }
+    },
+
+    isEmptyOption(value: Value) {
+        if (this.isOption(value)) {
+            return value.payload.tag === Schema.EmptyOptionValue;
         } else {
             return false;
         }

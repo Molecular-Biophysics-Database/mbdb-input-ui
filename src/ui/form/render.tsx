@@ -44,9 +44,9 @@ export function scalarComponent(item: Item, isRequired: boolean, path: Path, key
         }
     } else if (Schema.hasOptionsInput(item)) {
         if (Schema.hasOptionsWithOtherInput(item)) {
-            return <OptionsWithOtherInput choices={item.choices} label={label} help={item.help} path={path} dontTransformContent={!!item.dontTransformContent} key={key} />;
+            return <OptionsWithOtherInput choices={item.choices} label={label} help={item.help} path={path} isRequired={isRequired} dontTransformContent={!!item.dontTransformContent} key={key} />;
         } else {
-            return <OptionsInput choices={item.choices} label={label} help={item.help} path={path} dontTransformContent={!!item.dontTransformContent} key={key} />;
+            return <OptionsInput choices={item.choices} label={label} help={item.help} path={path} isRequired={isRequired} dontTransformContent={!!item.dontTransformContent} key={key} />;
         }
     } else if (Schema.hasBooleanInput(item)) {
         return (

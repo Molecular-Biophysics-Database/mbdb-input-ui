@@ -11,7 +11,7 @@ import { niceLabel } from '../util';
 import { SOnChange } from '../typedefs';
 import { assert } from '../../../assert';
 import { FormContextInstance } from '../../../context';
-import { Choice, Help, Schema } from '../../../schema';
+import { Choice, Help, OptionsItem, Schema } from '../../../schema';
 import { Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
 import { CommonValidators } from '../../../schema/validators';
@@ -24,6 +24,17 @@ type Option = {
 
 const BorderStyle = { border: '1px solid #ccc' };
 const PadStyle = { padding: '10px' };
+
+function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean, emptyOption: boolean) {
+    const opts = choices.map((choice, idx) => ({
+        key: idx,
+        text: niceLabel(choice.title, dontTransform),
+        value: choice.tag,
+    }));
+    if (emptyOption) opts.push({ key: opts.length, text: '(Not set)', value: Schema.EmptyOptionValue });
+
+    return opts;
+};
 
 const Selection = React.memo(function _Selection({ id, onChange, options, value }: { id: string, onChange: SOnChange<SDropdownProps>, options: Option[], value: string }) {
     return (
@@ -50,24 +61,21 @@ export type Props = {
     help?: Help,
     path: Path,
     dontTransformContent?: boolean,
+    isRequired: boolean,
 }
 
 export function OptionsInput(props: Props) {
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const opts = React.useMemo(() => {
-        return props.choices.map((choice, idx) => ({
-            key: idx,
-            text: niceLabel(choice.title, !!props.dontTransformContent),
-            value: choice.tag,
-        }))
+        return mkOptions(props.choices, !!props.dontTransformContent, !props.isRequired);
     }, [props.choices]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined, `No choice with tag "${tag}"`);
+        assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
 
-        handler.set(props.path, Value.option(tag));
+        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption() : Value.option(tag));
     };
 
     const v = handler.getValue(props.path);
@@ -87,11 +95,7 @@ export function OptionsInput(props: Props) {
 export function OptionsWithOtherInput(props: Props) {
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const opts = React.useMemo(() => {
-        return props.choices.map((choice, idx) => ({
-            key: idx,
-            text: niceLabel(choice.title, !!props.dontTransformContent),
-            value: choice.tag,
-        }))
+        return mkOptions(props.choices, !!props.dontTransformContent, !props.isRequired);
     }, [props.choices]);
     const { handler } = React.useContext(FormContextInstance);
 
@@ -101,9 +105,9 @@ export function OptionsWithOtherInput(props: Props) {
     const onChangeOptions: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined, `No choice with tag "${tag}"`);
+        assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
 
-        handler.set(props.path, Value.option(tag, value.payload.other));
+        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption() : Value.option(tag));
     };
     const onChangeText: SOnChange<SInputProps> = (_ev, data) => {
         const v = data.value as string;
