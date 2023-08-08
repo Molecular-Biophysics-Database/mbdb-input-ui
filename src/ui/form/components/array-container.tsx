@@ -121,7 +121,7 @@ export type Props = {
     path: Path,
 };
 export function ArrayContainer({ item, path }: Props) {
-    const _niceLabel = React.useMemo(() => niceLabel(item.label), [item]);
+    const _niceLabel = React.useMemo(() => niceLabel(item.label, !!item.dontTransformLabels), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
@@ -234,7 +234,7 @@ export function ArrayContainer({ item, path }: Props) {
                 />
 
                 <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                    <SectionLabel label={niceLabel(item.label)} help={item.help} />
+                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
                     <div style={{ ...GridInArrayStyle }}>
                         {components}
                     </div>
@@ -251,7 +251,7 @@ export function ArrayContainer({ item, path }: Props) {
                 />
 
                 <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                    <SectionLabel label={niceLabel(item.label)} help={item.help} />
+                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
                     {components}
                 </div>
             </>

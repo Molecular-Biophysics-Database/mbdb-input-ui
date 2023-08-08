@@ -26,7 +26,7 @@ import { doDownload, FileTypes } from './util/download';
 
 // HAKZ HAKZ HAKZ
 import { Register as SchemasRegister } from './schema/schemas/register';
-import { Register as ConfigRegister } from './schema/configurations/register';
+import { Register as ConfigRegister } from './schema/configuration/register';
 
 function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext, mbdbObj: MbdbData) {
     let dbg = '';

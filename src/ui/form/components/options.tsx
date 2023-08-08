@@ -49,6 +49,7 @@ export type Props = {
     label: string,
     help?: Help,
     path: Path,
+    dontTransformContent?: boolean,
 }
 
 export function OptionsInput(props: Props) {
@@ -56,7 +57,7 @@ export function OptionsInput(props: Props) {
     const opts = React.useMemo(() => {
         return props.choices.map((choice, idx) => ({
             key: idx,
-            text: niceLabel(choice.title),
+            text: niceLabel(choice.title, !!props.dontTransformContent),
             value: choice.tag,
         }))
     }, [props.choices]);
@@ -88,7 +89,7 @@ export function OptionsWithOtherInput(props: Props) {
     const opts = React.useMemo(() => {
         return props.choices.map((choice, idx) => ({
             key: idx,
-            text: niceLabel(choice.title),
+            text: niceLabel(choice.title, !!props.dontTransformContent),
             value: choice.tag,
         }))
     }, [props.choices]);

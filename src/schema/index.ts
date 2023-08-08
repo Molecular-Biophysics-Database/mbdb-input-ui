@@ -30,6 +30,8 @@ type BaseItem = {
     mbdbPath: string,
     help?: Record<string, string>,
     dontDisplay?: boolean,
+    dontTransformContent?: boolean,
+    dontTransformLabels?: boolean,
 };
 export type Item = BaseItem & { input: Input };
 export type TItem<T extends Item['input'], DefaultValue = never> = BaseItem & { input: T, defaultValue?: DefaultValue, };

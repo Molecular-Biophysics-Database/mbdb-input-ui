@@ -48,6 +48,10 @@ export const Common = {
         ],
     },
 
+    '*/unit': {
+        dontTransformContent: true,
+    },
+
     'general_parameters/instrument': {
         order: [
             { tag: 'name', index: 0 },

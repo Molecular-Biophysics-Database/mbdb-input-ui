@@ -1,9 +1,11 @@
-import { assert } from '../assert';
-import { ComplexItem, Item, Input, Schema } from './';
+import { ComplexItem, Item, Input, Schema } from '../';
+import { assert } from '../../assert';
 
 export type ConfigurationItem = {
     defaultValue: string | number | boolean,
     dontDisplay: boolean,
+    dontTransformContent: boolean,
+    dontTransformLabels: boolean,
     label: string,
     order: { tag: string, index: number }[],
 };
@@ -22,6 +24,12 @@ function configureItem(item: Item, cfg: Partial<ConfigurationItem>) {
     }
     if (cfg.dontDisplay) {
         item.dontDisplay = true;
+    }
+    if (cfg.dontTransformContent) {
+        item.dontTransformContent = true;
+    }
+    if (cfg.dontTransformLabels) {
+        item.dontTransformLabels = true;
     }
     if (cfg.defaultValue !== undefined) {
         if (Schema.hasNumericInput(item)) {

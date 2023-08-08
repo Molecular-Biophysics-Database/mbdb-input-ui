@@ -23,7 +23,7 @@ export function component(item: Item, path: Path, key?: string | number) {
 }
 
 export function scalarComponent(item: Item, isRequired: boolean, path: Path, key: string | number | undefined, noLabel = false) {
-    const label = noLabel ? '' : niceLabel(item.label);
+    const label = noLabel ? '' : niceLabel(item.label, !!item.dontTransformLabels);
 
     if (item.dontDisplay) return null;
 
@@ -44,9 +44,9 @@ export function scalarComponent(item: Item, isRequired: boolean, path: Path, key
         }
     } else if (Schema.hasOptionsInput(item)) {
         if (Schema.hasOptionsWithOtherInput(item)) {
-            return <OptionsWithOtherInput choices={item.choices} label={label} help={item.help} path={path} key={key} />;
+            return <OptionsWithOtherInput choices={item.choices} label={label} help={item.help} path={path} dontTransformContent={!!item.dontTransformContent} key={key} />;
         } else {
-            return <OptionsInput choices={item.choices} label={label} help={item.help} path={path} key={key} />;
+            return <OptionsInput choices={item.choices} label={label} help={item.help} path={path} dontTransformContent={!!item.dontTransformContent} key={key} />;
         }
     } else if (Schema.hasBooleanInput(item)) {
         return (
