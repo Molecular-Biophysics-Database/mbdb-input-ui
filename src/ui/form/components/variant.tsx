@@ -55,8 +55,6 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, path, va
     ), [input]);
     const [cannotChangeError, setCannotChangeError] = React.useState(false);
 
-    console.log('rr');
-
     const varComponent = component(input[variantChoice], path);
     return (
         <>
