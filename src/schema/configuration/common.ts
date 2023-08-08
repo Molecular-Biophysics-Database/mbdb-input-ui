@@ -48,6 +48,10 @@ export const Common = {
         ],
     },
 
+    '*/pH': {
+        dontTransformLabels: true,
+    },
+
     '*/unit': {
         dontTransformContent: true,
     },
