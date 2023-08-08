@@ -1,15 +1,13 @@
 import React from 'react';
 import {
     Button as SButton,
-    Header as SHeader,
-    Icon as SIcon,
-    Modal as SModal
 } from 'semantic-ui-react';
 import { SectionLabel } from './label';
 import { VariantInput } from './variant';
 import { PathId } from '../path-id';
 import { component, scalarComponent } from '../render';
 import { niceLabel } from '../util';
+import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
 import { Item, Schema } from '../../../schema';
 import { Data, Path } from '../../../schema/data';
@@ -27,32 +25,20 @@ const ArrayAnchor = React.memo(function _ArrayAnchor({ path, idx }: { path: Path
 });
 
 
-type CannotDeleteItemModalProps = {
-    isDisplayed: boolean,
+type CannotDeleteItemErrorDialogProps = {
+    isOpen: boolean,
     message: string | null,
     onDismissed: () => void,
 }
-function _CannotDeleteItemModal(props: CannotDeleteItemModalProps) {
+function _CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
     return (
-        <SModal
-            basic
-            open={props.isDisplayed}
+        <ErrorDialog
+            isOpen={props.isOpen}
+            title='Cannot delete item'
+            onDismissed={props.onDismissed}
         >
-            <SHeader icon>
-                <SIcon name='warning sign' />
-                Cannot delete item
-            </SHeader>
-            <SModal.Content>
-                {props.message ?? '(No specific error message was provided)'}
-            </SModal.Content>
-            <SModal.Actions>
-                <SButton
-                    color='blue'
-                    inverted
-                    onClick={props.onDismissed}
-                >Got it</SButton>
-            </SModal.Actions>
-        </SModal>
+            <div>{props.message ?? '(No specific error message was provided)'}</div>
+        </ErrorDialog>
     );
 }
 
@@ -81,10 +67,10 @@ function AddItemButton(props: AddItemButtonProps) {
     );
 }
 
-function CannotDeleteItemModal(props: CannotDeleteItemModalProps) {
+function CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
     return (
-        props.isDisplayed
-            ? <_CannotDeleteItemModal {...props} />
+        props.isOpen
+            ? <_CannotDeleteItemErrorDialog {...props} />
             : null
     );
 }
@@ -227,8 +213,8 @@ export function ArrayContainer({ item, path }: Props) {
     if (arrayIsSimple) {
         return (
             <>
-                <CannotDeleteItemModal
-                    isDisplayed={deletionError !== null}
+                <CannotDeleteItemErrorDialog
+                    isOpen={deletionError !== null}
                     message={deletionError}
                     onDismissed={() => setDeletionError(null)}
                 />
@@ -244,8 +230,8 @@ export function ArrayContainer({ item, path }: Props) {
     } else {
         return (
             <>
-                <CannotDeleteItemModal
-                    isDisplayed={deletionError !== null}
+                <CannotDeleteItemErrorDialog
+                    isOpen={deletionError !== null}
                     message={deletionError}
                     onDismissed={() => setDeletionError(null)}
                 />

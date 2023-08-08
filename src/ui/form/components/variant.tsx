@@ -1,13 +1,8 @@
 import React from 'react';
 import { Dropdown as SDropdown } from 'semantic-ui-react';
-import {
-    Button as SButton,
-    Header as SHeader,
-    Icon as SIcon,
-    Modal as SModal
-} from 'semantic-ui-react';
 import { PathId } from '../path-id';
 import { component } from '../render';
+import { ErrorDialog } from '../../error-dialog';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
 import { VariantInput } from '../../../schema';
@@ -17,35 +12,23 @@ function canChangeVariantChoice(handler: _FormContextHandler, path: Path) {
     return !handler.refs.isItemReferenced(path);
 }
 
-type CannotChangeVariantErrorProps =  { isDisplayed: boolean, onDismissed: () => void };
-function _CannotChangeVariantError({ isDisplayed, onDismissed }: CannotChangeVariantErrorProps) {
+type CannotChangeVariantErrorDialogProps =  { isOpen: boolean, onDismissed: () => void };
+function _CannotChangeVariantErrorDialog({ isOpen, onDismissed }: CannotChangeVariantErrorDialogProps) {
     return (
-        <SModal
-            basic
-            open={isDisplayed}
+        <ErrorDialog
+            isOpen={isOpen}
+            title='Cannot change variant type'
+            onDismissed={onDismissed}
         >
-            <SHeader icon>
-                <SIcon name='warning sign' />
-                Cannot change variant type
-            </SHeader>
-            <SModal.Content>
-                Cannot change this variant type to another type because the currently displayed item is referenced by some other item(s).
-            </SModal.Content>
-            <SModal.Actions>
-                <SButton
-                    color='blue'
-                    inverted
-                    onClick={onDismissed}
-                >Got it</SButton>
-            </SModal.Actions>
-        </SModal>
+            <div>Cannot change this variant type to another type because the currently displayed item is referenced by some other item(s).</div>
+        </ErrorDialog>
     );
 }
 
-function CannotChangeVariantError(props: CannotChangeVariantErrorProps) {
+function CannotChangeVariantErrorDialog(props: CannotChangeVariantErrorDialogProps) {
     return (
-        props.isDisplayed
-            ? <_CannotChangeVariantError {...props} />
+        props.isOpen
+            ? <_CannotChangeVariantErrorDialog {...props} />
             : null
     );
 }
@@ -77,8 +60,8 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, path, va
     const varComponent = component(input[variantChoice], path);
     return (
         <>
-            <CannotChangeVariantError
-                isDisplayed={cannotChangeError}
+            <CannotChangeVariantErrorDialog
+                isOpen={cannotChangeError}
                 onDismissed={() => setCannotChangeError(false)}
             />
 

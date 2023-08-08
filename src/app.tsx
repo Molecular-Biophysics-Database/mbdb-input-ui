@@ -12,6 +12,7 @@ import { Config } from './config';
 import { FormContext, FormContextInstance } from './context';
 import { FormContextHandler, _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
+import { ErrorDialog } from './ui/error-dialog';
 import { Form } from './ui/form';
 import { Mbdb } from './mbdb';
 import { MbdbData } from './mbdb/data';
@@ -61,63 +62,6 @@ function mbdbErrors(errors: { field: string, messages: string[] }[]) {
     }
 
     return out;
-}
-
-function InputFormErrorDialog(props: { errors: string[] | null, onDismissed: () => void }) {
-    return (
-        <SModal
-            basic
-            open={props.errors!== null}
-        >
-            <SHeader icon>
-                <SIcon name='warning' />
-                Cannot deposit record
-            </SHeader>
-            <SModal.Content>
-                <div>Cannot deposit record because there are some invalid values in the input</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' }}>
-                    {props.errors?.map((err, idx) => (
-                        <React.Fragment key={idx}>
-                            <div>{idx + 1}:</div>
-                            <div>{err}</div>
-                        </React.Fragment>
-                    )) ?? null}
-                </div>
-            </SModal.Content>
-            <SModal.Actions>
-                <SButton
-                    color='blue'
-                    inverted
-                    onClick={props.onDismissed}
-                >Got it</SButton>
-            </SModal.Actions>
-        </SModal>
-    );
-}
-
-function LoadContextErrorDialog(props: { error: string | null, onDismissed: () => void }) {
-    return (
-        <SModal
-            basic
-            open={props.error !== null}
-        >
-            <SHeader icon>
-                <SIcon name='warning' />
-                Cannot load form from file
-            </SHeader>
-            <SModal.Content>
-                <div>Cannot load form from a file because the file appears invalid</div>
-                <div>{props.error}</div>
-            </SModal.Content>
-            <SModal.Actions>
-                <SButton
-                    color='blue'
-                    inverted
-                    onClick={props.onDismissed}
-                >Got it</SButton>
-            </SModal.Actions>
-        </SModal>
-    );
 }
 
 function SubmissionErrorDialog(props: {
@@ -202,8 +146,29 @@ function App() {
 
     return (
         <>
-            <InputFormErrorDialog errors={inputFormErrors} onDismissed={() => setInputFormErrors(null)} />
-            <LoadContextErrorDialog error={loadError} onDismissed={() => setLoadError(null)} />
+            <ErrorDialog
+                isOpen={inputFormErrors !== null}
+                title='Cannot deposit record'
+                onDismissed={() => setInputFormErrors(null)}
+            >
+                <div>Cannot deposit record because there are some invalid values in the input</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' }}>
+                    {inputFormErrors?.map((err, idx) => (
+                        <React.Fragment key={idx}>
+                            <div>{idx + 1}:</div>
+                            <div>{err}</div>
+                        </React.Fragment>
+                    )) ?? null}
+                </div>
+            </ErrorDialog>
+            <ErrorDialog
+                isOpen={loadError !== null}
+                title='Cannot load form from file'
+                onDismissed={() => setLoadError(null)}
+            >
+                <div>Cannot load form from a file because the file appears invalid</div>
+                <div>{loadError}</div>
+            </ErrorDialog>
             <SubmissionErrorDialog error={submitError} contextDataGetter={ctxGetter} onDismissed={() => setSubmitError(null)} />
 
             <div>
