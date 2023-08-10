@@ -27,7 +27,8 @@ const MTextualInput = React.memo(function MTextualInput({ id, value, isValid, on
     return (
         Object.is(prevProps.id, nextProps.id) &&
         Object.is(prevProps.value, nextProps.value) &&
-        Object.is(prevProps.isValid, nextProps.isValid)
+        Object.is(prevProps.isValid, nextProps.isValid) &&
+        Object.is(prevProps.onChange, nextProps.onChange)
     );
 });
 
@@ -40,10 +41,10 @@ type Props = {
 export function TextualInput({ label, help, path, validator }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
-    const onChange: SOnChange<SInputProps> = (_ev, data) => {
+    const onChange: SOnChange<SInputProps> = React.useMemo(() => (_ev, data) => {
         const newValue = data.value;
         handler.set(path, Value.value(newValue, validator ? validator(newValue) : true));
-    };
+    }, []);
 
     const value = handler.getValue(path);
     return (
