@@ -88,24 +88,24 @@ export const Common = {
         ],
     },
 
-    'general_parameters/record': {
+    'general_parameters/record_information': {
         order: [
             { tag: 'title', index: 0 },
         ],
     },
-        'general_parameters/record/date_available': {
+        'general_parameters/record_information/date_available': {
             dontDisplay: true,
         },
-        'general_parameters/record/deposition_date': {
+        'general_parameters/record_information/deposition_date': {
             dontDisplay: true,
         },
-        'general_parameters/record/resource_type_general': {
+        'general_parameters/record_information/resource_type_general': {
             dontDisplay: true,
         },
-        'general_parameters/record/resource_type': {
+        'general_parameters/record_information/resource_type': {
             dontDisplay: true,
         },
-        'general_parameters/record/subject_category': {
+        'general_parameters/record_information/subject_category': {
             dontDisplay: true,
             defaultValue: 'Biophysics',
         },
