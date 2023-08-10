@@ -82,7 +82,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
         } else if (Schema.hasVocabularyInput(item)) {
             const out = Value.toVocabularyEntry(v);
             if (out.data !== null) {
-                MbdbData.set(mbdbData, { id: out.id, ...out.data?.props }, storePath);
+                MbdbData.set(mbdbData, { id: out.id }, storePath);
             }
         } else {
             // NOTE: TS cannot figure out that we cannot get a VocabularyEntry type because that is
