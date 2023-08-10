@@ -251,7 +251,7 @@ export function ArrayContainer({ item, path }: Props) {
             <AddItemButton
                 title={_niceLabel}
                 onClick={() => {
-                    handler.set(Data.Path.index(array.length, path), Value.defaultForItem(item, false));
+                    handler.set(Data.Path.index(array.length, path), Value.defaultForItem(item, true));
                 }}
                 key='b+'
             />

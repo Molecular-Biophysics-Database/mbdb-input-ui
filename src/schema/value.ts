@@ -53,18 +53,20 @@ export const Value = {
         return this.value({ year, month, day }, isValid);
     },
 
-    defaultForItem(item: Item, isValidOverride: boolean | undefined = void 0) {
+    defaultForItem(item: Item, isRequiredOverride: boolean | undefined = void 0) {
+        const isRequired = isRequiredOverride !== undefined ? isRequiredOverride : item.isRequired;
+
         if (Schema.hasBooleanInput(item)) {
             return item.isRequired ? this.boolean(false) : this.tristate('not-set');
         } else if (Schema.hasCalendarDateInput(item)) {
             const now = new Date();
             return this.calendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
         } else if (Schema.hasTextualInput(item)) {
-            return this.empty(isValidOverride !== undefined ? isValidOverride : !item.isRequired);
+            return this.empty(!isRequired);
         } else if (Schema.hasOptionsInput(item)) {
-            return Schema.initialOptionsValue(item.choices, true, Schema.hasOptionsWithOtherInput(item));
+            return Schema.initialOptionsValue(item.choices, isRequired, Schema.hasOptionsWithOtherInput(item));
         } else if (Schema.hasVocabularyInput(item)) {
-            return this.emptyVocabularyEntry(isValidOverride !== undefined ? isValidOverride : !item.isRequired);
+            return this.emptyVocabularyEntry(!isRequired);
         }
 
         assert(false, `Attempted to get default value for item "${item.tag}" with input "${item.input}" but no default value is available`);
