@@ -2,6 +2,7 @@ import { Item, Schema } from './';
 import { Tristate, isTristate } from './tristate';
 import { Uuid } from './uuid';
 import { assert } from '../assert';
+import { VocabularyEntry as MbdbVocabularyEntry, isVocabularyEntry } from '../mbdb/vocabulary';
 
 type BaseValue = {
     __mbdb_value: true,
@@ -20,7 +21,8 @@ export type Option = {
 
 export type VocabularyEntry = {
     id: string,
-    data: { [key: string]: any }, // NOTE: More sophistication might be needed in the future
+    title: string,
+    data: MbdbVocabularyEntry | null,
 };
 
 export type Value = BaseValue & {
@@ -83,7 +85,7 @@ export const Value = {
     },
 
     emptyVocabularyEntry(isValid: boolean) {
-        return this.vocabularyEntry('', {}, isValid);
+        return this.vocabularyEntry('', '', null, isValid);
     },
 
     isBoolean(value: Value): value is TValue<boolean> {
@@ -175,7 +177,7 @@ export const Value = {
         const p = value.payload as any;
         return (
             typeof p['id'] === 'string' &&
-            typeof p['data'] === 'object'
+            (p['data'] === null || isVocabularyEntry(p['data']))
         );
     },
 
@@ -276,7 +278,7 @@ export const Value = {
         return { __mbdb_value: true as true, payload, isValid };
     },
 
-    vocabularyEntry(id: string, data: VocabularyEntry['data'], isValid: boolean) {
-        return this.value<VocabularyEntry>({ id, data }, isValid);
+    vocabularyEntry(id: string, title: string, data: VocabularyEntry['data'], isValid: boolean) {
+        return this.value<VocabularyEntry>({ id, title, data }, isValid);
     },
 };

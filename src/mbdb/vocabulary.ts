@@ -2,17 +2,17 @@ import { Config } from '../config';
 import { Net } from '../util/net';
 import { Json } from '../util/types';
 
-export type Vocabulary = (
-    {
-        id: string,
-        type: string,
-        title: {
-            [key: string]: string,
-            en: string
-        },
-        props: Json,
-    } & Json
-)[];
+export type VocabularyEntry = {
+    id: string,
+    type: string,
+    title: {
+        [key: string]: string,
+        en: string
+    },
+    props: Json,
+} & Json;
+export type Vocabulary = VocabularyEntry[];
+
 const Cache = new Map<string, Vocabulary>;
 
 function makeUrl(type: string) {
@@ -30,19 +30,25 @@ function isVocabulary(obj: any): obj is Vocabulary {
     if (!Array.isArray(obj)) return false;
 
     for (const elem of obj) {
-        if (typeof elem !== 'object') return false;
-        if (typeof elem['id'] !== 'string' || typeof elem['id'] !== 'string') return false;
-
-        const title = elem['title'];
-        if (!title) return false;
-        if (!title['en']) return false;
-        for (const prop in title) {
-            if (typeof title[prop] !== 'string') return false;
-        }
-
-        const props = elem['props'];
-        if (!props || typeof props !== 'object') return false;
+        if (!isVocabularyEntry(elem)) return false;
     }
+
+    return true;
+}
+
+export function isVocabularyEntry(obj: any): obj is VocabularyEntry {
+    if (typeof obj !== 'object') return false;
+    if (typeof obj['id'] !== 'string' || typeof obj['id'] !== 'string') return false;
+
+    const title = obj['title'];
+    if (!title) return false;
+    if (!title['en']) return false;
+    for (const prop in title) {
+        if (typeof title[prop] !== 'string') return false;
+    }
+
+    const props = obj['props'];
+    if (!props || typeof props !== 'object') return false;
 
     return true;
 }

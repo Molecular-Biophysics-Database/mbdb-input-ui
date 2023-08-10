@@ -5,10 +5,10 @@ import { PathId } from '../path-id';
 import { niceLabel } from '../util';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
-import { Vocabulary } from '../../../mbdb/vocabulary';
+import { Vocabulary, VocabularyEntry } from '../../../mbdb/vocabulary';
 import { Help } from '../../../schema';
 import { Path } from '../../../schema/data';
-import { Value, VocabularyEntry } from '../../../schema/value';
+import { Value } from '../../../schema/value';
 import {objKeys} from '../../../util';
 
 // The Search component provided by "semantic-ui-react" package has a rather awkward API.
@@ -29,7 +29,8 @@ type SearchAction = {
     results: SearchResult[],
 };
 type SearchResult = {
-    __vocabularyentry: Vocabulary[number]; // Don't ask and don't rename...
+    title: string, // This needs to be here to keep in line with the props expected by the custom rendering function
+    __vocabularyentry: VocabularyEntry; // Don't ask and don't rename...
 };
 
 type Actions = SearchAction | VocLoadedAction;
@@ -80,6 +81,7 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
     label: string,
     help?: Help,
     loading: boolean,
+    value: string,
     results: SearchResult[],
     vocabulary: Vocabulary,
     onSearch: (ev: SyntheticEvent, data: object) => void,
@@ -92,6 +94,7 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
             <SSearch
                 id={props.id}
                 loading={props.loading}
+                value={props.value}
                 results={props.results}
                 onResultSelect={props.onSelected}
                 onSearchChange={props.onSearch}
@@ -128,21 +131,31 @@ export function VocabularyInput(props: Props) {
         if (!data['value'] || typeof data['value'] !== 'string') {
             dispatch({ type: 'search', results: EmptyResults });
 
+            // User has cleared the field, invalidate the data
             handler.set(props.path, Value.emptyVocabularyEntry(!props.isRequired));
         } else {
             const query = data.value;
-            const results = state.vocabulary.filter((x) => x.title.en.toLowerCase().includes(query)).map((x) => ({ title: x.title.en, __vocabularyentry: x }));
+            const lwrQuery = query.toLowerCase();
+            const results = state.vocabulary.filter((x) => x.title.en.toLowerCase().includes(lwrQuery)).map((x) => ({ title: x.title.en, __vocabularyentry: x }));
 
             dispatch({ type: 'search', results });
-        }
-    }, [state]);
 
-    const onSelected = React.useMemo(() => (_ev: SyntheticEvent, data: Record<string, any>) => {
+            // User has changed the input field. Let's create an invalid value
+            // with the title that matches the user input. Otherwise we'd mess up the display
+            const emptyish = Value.emptyVocabularyEntry(false);
+            emptyish.payload.title = query;
+            handler.set(props.path, emptyish);
+        }
+    }, [state, props.path]);
+
+    const onSelected = React.useMemo(() => {
+        return (_ev: SyntheticEvent, data: Record<string, any>) => {
         const ve = data.result.__vocabularyentry as VocabularyEntry;
-        const v = Value.vocabularyEntry(ve.id, data, true);
+        const v = Value.vocabularyEntry(ve.id, ve.title.en, ve, true);
 
         handler.set(props.path, v);
-    }, []);
+        }
+    }, [props.path]);
 
     React.useEffect(() => {
         // TODO: We do not handle the case where the component can be unmounted
@@ -159,12 +172,15 @@ export function VocabularyInput(props: Props) {
         });
     }, [props.vocabularyType]);
 
+    const v = Value.toVocabularyEntry(handler.getValue(props.path));
+
     return (
         <MVocabularyInput
             id={id}
             label={props.label}
             help={props.help}
             loading={state.loading}
+            value={v.title}
             results={state.results}
             vocabulary={state.vocabulary}
             onSearch={onSearch}

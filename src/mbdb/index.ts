@@ -1,4 +1,4 @@
-import { MbdbData } from './data';
+import { MbdbData, MbdbScalar } from './data';
 import { assert } from '../assert';
 import { FormContext } from '../context';
 import { Register } from '../ui/form/custom-components/register';
@@ -79,11 +79,15 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             const { year, month, day } = Value.toCalendarDate(v);
             const out = `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
             MbdbData.set(mbdbData, out, storePath);
-        } else if (Schema.hasVariantInput(item)) {
-            // TODO: Ignore for now
-            // const _out = Value.toVocabularyEntry(v);
+        } else if (Schema.hasVocabularyInput(item)) {
+            const out = Value.toVocabularyEntry(v);
+            if (out.data !== null) {
+                MbdbData.set(mbdbData, { id: out.id, ...out.data?.props }, storePath);
+            }
         } else {
-            MbdbData.set(mbdbData, v.payload, storePath);
+            // NOTE: TS cannot figure out that we cannot get a VocabularyEntry type because that is
+            //       covered by the hasVocabularyInput() check, hence the cast to MbdbScalar.
+            MbdbData.set(mbdbData, v.payload as MbdbScalar, storePath);
         }
     }
 }

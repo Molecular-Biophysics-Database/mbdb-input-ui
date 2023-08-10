@@ -44,7 +44,7 @@ export function TextualInput({ label, help, path, validator }: Props) {
     const onChange: SOnChange<SInputProps> = React.useMemo(() => (_ev, data) => {
         const newValue = data.value;
         handler.set(path, Value.value(newValue, validator ? validator(newValue) : true));
-    }, []);
+    }, [path]);
 
     const value = handler.getValue(path);
     return (

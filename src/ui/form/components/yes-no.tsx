@@ -68,19 +68,14 @@ const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange }: { id
             fluid
         />
     );
-}, (prevProps, nextProps) => {
-    return (
-        Object.is(prevProps.id, nextProps.id) &&
-        Object.is(prevProps.value, nextProps.value)
-    );
 });
 
 export function TristateInput({ label, help, path }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
-    const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
+    const onChange: SOnChange<SDropdownProps> = React.useMemo(() => (_ev, data) => {
         handler.set(path, Value.tristate(data.value as Tristate));
-    };
+    }, [path]);
 
     const v = Value.toTristate(handler.getValue(path, Value.tristate('not-set')));
     return (
