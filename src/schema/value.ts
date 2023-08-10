@@ -14,12 +14,17 @@ export type CalendarDate = {
 };
 
 export type Option = {
-    tag: string;
-    other?: string;
+    tag: string,
+    other?: string,
+};
+
+export type VocabularyEntry = {
+    id: string,
+    data: { [key: string]: any }, // NOTE: More sophistication might be needed in the future
 };
 
 export type Value = BaseValue & {
-    payload: boolean | string | CalendarDate | Option | Tristate,
+    payload: boolean | string | CalendarDate | Option | Tristate | VocabularyEntry,
     isValid: boolean,
 };
 export type TValue<T extends Value['payload']> = BaseValue & {
@@ -46,14 +51,18 @@ export const Value = {
         return this.value({ year, month, day }, isValid);
     },
 
-    defaultForItem(item: Item) {
+    defaultForItem(item: Item, isValidOverride: boolean | undefined = void 0) {
         if (Schema.hasBooleanInput(item)) {
             return item.isRequired ? this.boolean(false) : this.tristate('not-set');
         } else if (Schema.hasCalendarDateInput(item)) {
             const now = new Date();
             return this.calendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
         } else if (Schema.hasTextualInput(item)) {
-            return this.empty(!item.isRequired);
+            return this.empty(isValidOverride !== undefined ? isValidOverride : !item.isRequired);
+        } else if (Schema.hasOptionsInput(item)) {
+            return Schema.initialOptionsValue(item.choices, true, Schema.hasOptionsWithOtherInput(item));
+        } else if (Schema.hasVocabularyInput(item)) {
+            return this.emptyVocabularyEntry(isValidOverride !== undefined ? isValidOverride : !item.isRequired);
         }
 
         assert(false, `Attempted to get default value for item "${item.tag}" with input "${item.input}" but no default value is available`);
@@ -71,6 +80,10 @@ export const Value = {
         v.isValid = isValid;
 
         return v;
+    },
+
+    emptyVocabularyEntry(isValid: boolean) {
+        return this.vocabularyEntry('', {}, isValid);
     },
 
     isBoolean(value: Value): value is TValue<boolean> {
@@ -149,7 +162,21 @@ export const Value = {
 
     isValue(obj?: Record<string, any>): obj is Value {
         if (obj === undefined) return false;
-        return obj['__mbdb_value'] === true;
+        return (
+            obj['__mbdb_value'] === true &&
+            obj['payload'] !== undefined &&
+            typeof obj['isValid'] === 'boolean'
+        );
+    },
+
+    isVocabularyEntry(value: Value): value is TValue<VocabularyEntry> {
+        if (typeof value.payload !== 'object') return false;
+
+        const p = value.payload as any;
+        return (
+            typeof p['id'] === 'string' &&
+            typeof p['data'] === 'object'
+        );
     },
 
     option(tag: string, other?: string) {
@@ -239,5 +266,9 @@ export const Value = {
 
     value<T>(payload: T, isValid = false) {
         return { __mbdb_value: true as true, payload, isValid };
-    }
+    },
+
+    vocabularyEntry(id: string, data: VocabularyEntry['data'], isValid: boolean) {
+        return this.value<VocabularyEntry>({ id, data }, isValid);
+    },
 };

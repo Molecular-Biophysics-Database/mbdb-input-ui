@@ -3,11 +3,11 @@ import React from 'react';
 import { SectionLabel } from './label';
 import { PathId } from '../path-id';
 import { component } from '../render';
+import { subtreeHasErrors } from '../util';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
 import { Help, Item } from '../../../schema';
-import { Data, Path } from '../../../schema/data';
-import { Value } from '../../../schema/value';
+import { Path } from '../../../schema/data';
 
 export type Props = {
     input: Item[],
@@ -19,12 +19,7 @@ export type Props = {
 export function GroupContainer(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
-    const data = Data.getTree(handler.data(), props.path);
-
-    let hasErrors = false;
-    Data.walkValues(data, (value, _path) => {
-        hasErrors = hasErrors || !Value.isValid(value);
-    });
+    const hasErrors = subtreeHasErrors(handler.data(), props.path);
 
     return (
         <div className='mbdb-section' id={id}>

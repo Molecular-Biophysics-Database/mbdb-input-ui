@@ -225,7 +225,7 @@ export function ArrayContainer({ item, path }: Props) {
                 key='b+'
             />
         );
-    } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item)) {
+    } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item) || Schema.hasVocabularyInput(item)) {
         arrayIsSimple = true;
 
         for (let idx = 0; idx < array.length; idx++) {
@@ -251,10 +251,7 @@ export function ArrayContainer({ item, path }: Props) {
             <AddItemButton
                 title={_niceLabel}
                 onClick={() => {
-                    const initialValue = Schema.hasOptionsInput(item)
-                        ? Schema.initialOptionsValue(item.choices, true, Schema.hasOptionsWithOtherInput(item))
-                        : Value.defaultForItem(item)
-                    handler.set(Data.Path.index(array.length, path), initialValue);
+                    handler.set(Data.Path.index(array.length, path), Value.defaultForItem(item, false));
                 }}
                 key='b+'
             />

@@ -220,6 +220,15 @@ def item_defn(item, defs, name, mbdbPath):
             defn['input'] = 'related-to'
             defn['relatesTo'] = mbdb_relates_to(item['model'])
             defn['relatedKeys'] = mbdb_related_keys(item['keys']);
+        elif t == 'vocabulary':
+            if 'vocabulary-type' not in item:
+                raise UIGSchemaError(f'Field "{item.tag}" is a vocabulary but it does not specify vocabulary-type')
+            if 'keys' not in item:
+                raise UIGSchemaError(f'Field "{item.tag}" is a vocabulary but it does not specify any keys')
+
+            defn['input'] = 'vocabulary'
+            defn['vocabularyType'] = item['vocabulary-type']
+            defn['vocabularyKeys'] = item['keys']
         else:
             _warn(f'Type "{t}" is not handled, setting its input type to "ignore".')
             defn['input'] = 'ignore'

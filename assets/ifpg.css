@@ -183,3 +183,17 @@
     font-size: var(--mbdb-font-normal);
     font-weight: bold;
 }
+
+.mbdb-voc-entry-detail-name {
+    font-weight: bold;
+}
+
+.mbdb-voc-entry-details {
+    display: grid;
+    column-gap: var(--mbdb-hgap);
+    grid-template-columns: auto 1fr;
+}
+
+.mbdb-voc-entry-title {
+    font-weight: bold;
+}

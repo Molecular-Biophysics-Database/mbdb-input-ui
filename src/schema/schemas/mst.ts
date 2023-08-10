@@ -15,8 +15,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.0',
-                        title: '0.9.0',
+                        tag: '0.9.2',
+                        title: '0.9.2',
                     },
                 ],
                 help: {
@@ -56,8 +56,8 @@ export const MST = [
                         input: 'options',
                         choices: [
                             {
-                                tag: 'dataset',
-                                title: 'dataset',
+                                tag: 'Dataset',
+                                title: 'Dataset',
                             },
                         ],
                         help: {
@@ -217,14 +217,25 @@ export const MST = [
                                 mbdbPath: 'general_parameters/record/project/owner',
                                 input: [
                                     {
-                                        tag: 'full_name',
-                                        label: 'full_name',
+                                        tag: 'given_name',
+                                        label: 'given_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/record/project/owner/full_name',
+                                        mbdbPath: 'general_parameters/record/project/owner/given_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The full name of the person',
+                                            en: 'The given name(s), including middlename(s), of the person',
+                                        },
+                                    },
+                                    {
+                                        tag: 'family_name',
+                                        label: 'family_name',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/record/project/owner/family_name',
+                                        input: 'string',
+                                        help: {
+                                            en: 'The family name(s) the person',
                                         },
                                     },
                                     {
@@ -235,7 +246,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/record/project/owner/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication',
+                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                         },
                                     },
                                     {
@@ -244,7 +255,15 @@ export const MST = [
                                         isArray: true,
                                         isRequired: false,
                                         mbdbPath: 'general_parameters/record/project/owner/affiliations[]',
-                                        input: 'ignore',
+                                        input: 'vocabulary',
+                                        vocabularyType: 'affiliations',
+                                        vocabularyKeys: [
+                                            'id',
+                                            'title',
+                                            'props.city',
+                                            'props.state',
+                                            'props.country',
+                                        ],
                                         help: {
                                             en: 'The affiliation of the person',
                                         },
@@ -366,14 +385,25 @@ export const MST = [
                                 mbdbPath: 'general_parameters/associated_publications/main/authors[]',
                                 input: [
                                     {
-                                        tag: 'full_name',
-                                        label: 'full_name',
+                                        tag: 'given_name',
+                                        label: 'given_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/full_name',
+                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/given_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The full name of the person',
+                                            en: 'The given name(s), including middlename(s), of the person',
+                                        },
+                                    },
+                                    {
+                                        tag: 'family_name',
+                                        label: 'family_name',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/associated_publications/main/authors[]/family_name',
+                                        input: 'string',
+                                        help: {
+                                            en: 'The family name(s) the person',
                                         },
                                     },
                                     {
@@ -384,7 +414,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/associated_publications/main/authors[]/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication',
+                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                         },
                                     },
                                     {
@@ -393,7 +423,15 @@ export const MST = [
                                         isArray: true,
                                         isRequired: false,
                                         mbdbPath: 'general_parameters/associated_publications/main/authors[]/affiliations[]',
-                                        input: 'ignore',
+                                        input: 'vocabulary',
+                                        vocabularyType: 'affiliations',
+                                        vocabularyKeys: [
+                                            'id',
+                                            'title',
+                                            'props.city',
+                                            'props.state',
+                                            'props.country',
+                                        ],
                                         help: {
                                             en: 'The affiliation of the person',
                                         },
@@ -490,14 +528,25 @@ export const MST = [
                                 mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]',
                                 input: [
                                     {
-                                        tag: 'full_name',
-                                        label: 'full_name',
+                                        tag: 'given_name',
+                                        label: 'given_name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/full_name',
+                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/given_name',
                                         input: 'string',
                                         help: {
-                                            en: 'The full name of the person',
+                                            en: 'The given name(s), including middlename(s), of the person',
+                                        },
+                                    },
+                                    {
+                                        tag: 'family_name',
+                                        label: 'family_name',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/family_name',
+                                        input: 'string',
+                                        help: {
+                                            en: 'The family name(s) the person',
                                         },
                                     },
                                     {
@@ -508,7 +557,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/identifiers[]',
                                         input: 'string',
                                         help: {
-                                            en: 'Persistent identifier associated with the publication',
+                                            en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                         },
                                     },
                                     {
@@ -517,7 +566,15 @@ export const MST = [
                                         isArray: true,
                                         isRequired: false,
                                         mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/affiliations[]',
-                                        input: 'ignore',
+                                        input: 'vocabulary',
+                                        vocabularyType: 'affiliations',
+                                        vocabularyKeys: [
+                                            'id',
+                                            'title',
+                                            'props.city',
+                                            'props.state',
+                                            'props.country',
+                                        ],
                                         help: {
                                             en: 'The affiliation of the person',
                                         },
@@ -585,14 +642,25 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/depositor',
                         input: [
                             {
-                                tag: 'full_name',
-                                label: 'full_name',
+                                tag: 'given_name',
+                                label: 'given_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/depositor/full_name',
+                                mbdbPath: 'general_parameters/depositors/depositor/given_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The full name of the person',
+                                    en: 'The given name(s), including middlename(s), of the person',
+                                },
+                            },
+                            {
+                                tag: 'family_name',
+                                label: 'family_name',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'general_parameters/depositors/depositor/family_name',
+                                input: 'string',
+                                help: {
+                                    en: 'The family name(s) the person',
                                 },
                             },
                             {
@@ -603,7 +671,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/depositor/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication',
+                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                 },
                             },
                             {
@@ -612,7 +680,15 @@ export const MST = [
                                 isArray: true,
                                 isRequired: false,
                                 mbdbPath: 'general_parameters/depositors/depositor/affiliations[]',
-                                input: 'ignore',
+                                input: 'vocabulary',
+                                vocabularyType: 'affiliations',
+                                vocabularyKeys: [
+                                    'id',
+                                    'title',
+                                    'props.city',
+                                    'props.state',
+                                    'props.country',
+                                ],
                                 help: {
                                     en: 'The affiliation of the person',
                                 },
@@ -627,14 +703,25 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/principal_contact',
                         input: [
                             {
-                                tag: 'full_name',
-                                label: 'full_name',
+                                tag: 'given_name',
+                                label: 'given_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/principal_contact/full_name',
+                                mbdbPath: 'general_parameters/depositors/principal_contact/given_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The full name of the person',
+                                    en: 'The given name(s), including middlename(s), of the person',
+                                },
+                            },
+                            {
+                                tag: 'family_name',
+                                label: 'family_name',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'general_parameters/depositors/principal_contact/family_name',
+                                input: 'string',
+                                help: {
+                                    en: 'The family name(s) the person',
                                 },
                             },
                             {
@@ -645,7 +732,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/principal_contact/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication',
+                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                 },
                             },
                             {
@@ -654,7 +741,15 @@ export const MST = [
                                 isArray: true,
                                 isRequired: false,
                                 mbdbPath: 'general_parameters/depositors/principal_contact/affiliations[]',
-                                input: 'ignore',
+                                input: 'vocabulary',
+                                vocabularyType: 'affiliations',
+                                vocabularyKeys: [
+                                    'id',
+                                    'title',
+                                    'props.city',
+                                    'props.state',
+                                    'props.country',
+                                ],
                                 help: {
                                     en: 'The affiliation of the person',
                                 },
@@ -669,14 +764,25 @@ export const MST = [
                         mbdbPath: 'general_parameters/depositors/contributors[]',
                         input: [
                             {
-                                tag: 'full_name',
-                                label: 'full_name',
+                                tag: 'given_name',
+                                label: 'given_name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/depositors/contributors[]/full_name',
+                                mbdbPath: 'general_parameters/depositors/contributors[]/given_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The full name of the person',
+                                    en: 'The given name(s), including middlename(s), of the person',
+                                },
+                            },
+                            {
+                                tag: 'family_name',
+                                label: 'family_name',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'general_parameters/depositors/contributors[]/family_name',
+                                input: 'string',
+                                help: {
+                                    en: 'The family name(s) the person',
                                 },
                             },
                             {
@@ -687,7 +793,7 @@ export const MST = [
                                 mbdbPath: 'general_parameters/depositors/contributors[]/identifiers[]',
                                 input: 'string',
                                 help: {
-                                    en: 'Persistent identifier associated with the publication',
+                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                 },
                             },
                             {
@@ -696,7 +802,15 @@ export const MST = [
                                 isArray: true,
                                 isRequired: false,
                                 mbdbPath: 'general_parameters/depositors/contributors[]/affiliations[]',
-                                input: 'ignore',
+                                input: 'vocabulary',
+                                vocabularyType: 'affiliations',
+                                vocabularyKeys: [
+                                    'id',
+                                    'title',
+                                    'props.city',
+                                    'props.state',
+                                    'props.country',
+                                ],
                                 help: {
                                     en: 'The affiliation of the person',
                                 },
@@ -714,7 +828,13 @@ export const MST = [
                 isArray: true,
                 isRequired: false,
                 mbdbPath: 'general_parameters/funding_reference[]',
-                input: 'ignore',
+                input: 'vocabulary',
+                vocabularyType: 'grants',
+                vocabularyKeys: [
+                    'id',
+                    'title',
+                    'props.funder_name',
+                ],
                 help: {
                     en: 'List of information about the grants that supported depositors',
                 },
@@ -910,14 +1030,25 @@ export const MST = [
                                         mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]',
                                         input: [
                                             {
-                                                tag: 'full_name',
-                                                label: 'full_name',
+                                                tag: 'given_name',
+                                                label: 'given_name',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/full_name',
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/given_name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'The full name of the person',
+                                                    en: 'The given name(s), including middlename(s), of the person',
+                                                },
+                                            },
+                                            {
+                                                tag: 'family_name',
+                                                label: 'family_name',
+                                                isArray: false,
+                                                isRequired: false,
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/family_name',
+                                                input: 'string',
+                                                help: {
+                                                    en: 'The family name(s) the person',
                                                 },
                                             },
                                             {
@@ -928,7 +1059,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/identifiers[]',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Persistent identifier associated with the publication',
+                                                    en: 'Persistent identifier associated with the publication, currently only ORCIDs are allowed',
                                                 },
                                             },
                                             {
@@ -937,7 +1068,15 @@ export const MST = [
                                                 isArray: true,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/affiliations[]',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'affiliations',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.city',
+                                                    'props.state',
+                                                    'props.country',
+                                                ],
                                                 help: {
                                                     en: 'The affiliation of the person',
                                                 },
@@ -1050,7 +1189,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'variant',
@@ -1318,7 +1463,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/expression_organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'supplier',
@@ -1924,7 +2075,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -2610,7 +2761,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'variant',
@@ -2878,7 +3035,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/expression_organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'supplier',
@@ -3300,7 +3463,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -4779,7 +4942,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -5442,7 +5611,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -5727,7 +5902,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/host_organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'host_cell_type',
@@ -6106,7 +6287,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -7487,7 +7674,13 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: false,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/organism',
-                                                                        input: 'ignore',
+                                                                        input: 'vocabulary',
+                                                                        vocabularyType: 'organisms',
+                                                                        vocabularyKeys: [
+                                                                            'id',
+                                                                            'title',
+                                                                            'props.rank',
+                                                                        ],
                                                                     },
                                                                     {
                                                                         tag: 'variant',
@@ -7755,7 +7948,13 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: false,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/expression_organism',
-                                                                        input: 'ignore',
+                                                                        input: 'vocabulary',
+                                                                        vocabularyType: 'organisms',
+                                                                        vocabularyKeys: [
+                                                                            'id',
+                                                                            'title',
+                                                                            'props.rank',
+                                                                        ],
                                                                     },
                                                                     {
                                                                         tag: 'supplier',
@@ -8177,7 +8376,7 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
-                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                         },
                                                                     },
                                                                     {
@@ -9842,7 +10041,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'variant',
@@ -10110,7 +10315,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/expression_organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'supplier',
@@ -10700,7 +10911,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -11370,7 +11581,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/components[]/organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'variant',
@@ -11638,7 +11855,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/components[]/expression_organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'supplier',
@@ -12060,7 +12283,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -13258,7 +13481,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'variant',
@@ -13526,7 +13755,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/expression_organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'supplier',
@@ -14116,7 +14351,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -14786,7 +15021,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/components[]/organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'variant',
@@ -15054,7 +15295,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/components[]/expression_organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'supplier',
@@ -15476,7 +15723,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -16995,7 +17242,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'variant',
@@ -17263,7 +17516,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/expression_organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'supplier',
@@ -17869,7 +18128,7 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/inchikey',
                                                 input: 'string',
                                                 help: {
-                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                 },
                                             },
                                             {
@@ -18555,7 +18814,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'variant',
@@ -18823,7 +19088,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/expression_organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'supplier',
@@ -19245,7 +19516,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {
@@ -20724,7 +20995,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -21387,7 +21664,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -21672,7 +21955,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/host_organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'host_cell_type',
@@ -22051,7 +22340,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'description',
@@ -23432,7 +23727,13 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: false,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/organism',
-                                                                        input: 'ignore',
+                                                                        input: 'vocabulary',
+                                                                        vocabularyType: 'organisms',
+                                                                        vocabularyKeys: [
+                                                                            'id',
+                                                                            'title',
+                                                                            'props.rank',
+                                                                        ],
                                                                     },
                                                                     {
                                                                         tag: 'variant',
@@ -23700,7 +24001,13 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: false,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/expression_organism',
-                                                                        input: 'ignore',
+                                                                        input: 'vocabulary',
+                                                                        vocabularyType: 'organisms',
+                                                                        vocabularyKeys: [
+                                                                            'id',
+                                                                            'title',
+                                                                            'props.rank',
+                                                                        ],
                                                                     },
                                                                     {
                                                                         tag: 'supplier',
@@ -24122,7 +24429,7 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
-                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                         },
                                                                     },
                                                                     {
@@ -25457,7 +25764,13 @@ export const MST = [
                                         isArray: false,
                                         isRequired: false,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
-                                        input: 'ignore',
+                                        input: 'vocabulary',
+                                        vocabularyType: 'organisms',
+                                        vocabularyKeys: [
+                                            'id',
+                                            'title',
+                                            'props.rank',
+                                        ],
                                     },
                                     {
                                         tag: 'variant',
@@ -25725,7 +26038,13 @@ export const MST = [
                                         isArray: false,
                                         isRequired: false,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/expression_organism',
-                                        input: 'ignore',
+                                        input: 'vocabulary',
+                                        vocabularyType: 'organisms',
+                                        vocabularyKeys: [
+                                            'id',
+                                            'title',
+                                            'props.rank',
+                                        ],
                                     },
                                     {
                                         tag: 'supplier',
@@ -26164,7 +26483,7 @@ export const MST = [
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/inchikey',
                                         input: 'string',
                                         help: {
-                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                         },
                                     },
                                     {
@@ -26683,7 +27002,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'variant',
@@ -26951,7 +27276,13 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: false,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/expression_organism',
-                                                        input: 'ignore',
+                                                        input: 'vocabulary',
+                                                        vocabularyType: 'organisms',
+                                                        vocabularyKeys: [
+                                                            'id',
+                                                            'title',
+                                                            'props.rank',
+                                                        ],
                                                     },
                                                     {
                                                         tag: 'supplier',
@@ -27373,7 +27704,7 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/inchikey',
                                                         input: 'string',
                                                         help: {
-                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                            en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                         },
                                                     },
                                                     {
@@ -28685,7 +29016,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'description',
@@ -29181,7 +29518,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'description',
@@ -29299,7 +29642,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/host_organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'host_cell_type',
@@ -29678,7 +30027,13 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: false,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
-                                                input: 'ignore',
+                                                input: 'vocabulary',
+                                                vocabularyType: 'organisms',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.rank',
+                                                ],
                                             },
                                             {
                                                 tag: 'description',
@@ -30725,7 +31080,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'variant',
@@ -30993,7 +31354,13 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: false,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/expression_organism',
-                                                                input: 'ignore',
+                                                                input: 'vocabulary',
+                                                                vocabularyType: 'organisms',
+                                                                vocabularyKeys: [
+                                                                    'id',
+                                                                    'title',
+                                                                    'props.rank',
+                                                                ],
                                                             },
                                                             {
                                                                 tag: 'supplier',
@@ -31415,7 +31782,7 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
-                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers\' field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                    en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                 },
                                                             },
                                                             {

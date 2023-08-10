@@ -5,7 +5,7 @@ import {
     Icon as SIcon,
 } from 'semantic-ui-react';
 import { PathId } from './path-id';
-import { niceLabel } from './util';
+import { niceLabel, subtreeHasErrors } from './util';
 import { assert } from '../../assert';
 import { FormContextInstance } from '../../context';
 import { _FormContextHandler } from '../../context/handler';
@@ -149,12 +149,7 @@ function NavigationListItem(props: NavigationListItemProps) {
 
     let hasErrors = false;
     if (!props.children) {
-        // Walk only if we are on the top of a data tree
-        if (Data.isDataTree(handler.getItem(path))) {
-            Data.walkValues(handler.getTree(path), (value) => {
-                hasErrors = hasErrors || !Value.isValid(value);
-            });
-        }
+        hasErrors = subtreeHasErrors(handler.data(), path);
     } else {
         Data.walkShallow(handler.getTree(path), (value) => {
             hasErrors = hasErrors || !Value.isValid(value);

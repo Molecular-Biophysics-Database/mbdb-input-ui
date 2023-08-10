@@ -1,10 +1,9 @@
 import { MbdbData } from './data';
 
 export async function submitToMbdb(baseUrl: string, apiEndpoint: string, data: MbdbData) {
-    if (baseUrl === '') {
-        throw new Error('No base URL of the MBDB database was set in the configuration file.');
-    }
-
+    // BEWARE, BEWARE, BEWARE:
+    // The inconsistency, or rather lack of thereof, is about the hit you in the face.
+    // This URL *must* end with a trailing slash, otherwise the API request will fail.
     const url = `${baseUrl}/${apiEndpoint}/`;
 
     try {
