@@ -4,6 +4,12 @@ const StringEncoder = new TextEncoder();
 
 export type NullableAbrtCtrl = AbortController | null;
 
+type AbortableFetch = {
+    response: Promise<Response>,
+    aborter: AbortController | null,
+    timeoutTimer?: ReturnType<typeof setTimeout>,
+}
+
 function serveBlob(blob: Blob, filename: string) {
     const objUrl = URL.createObjectURL(blob);
 
@@ -24,7 +30,7 @@ function serveBlob(blob: Blob, filename: string) {
 }
 
 export const Net = {
-    abortableFetch(info: URL | RequestInfo, init?: RequestInit) {
+    abortableFetch(info: URL | RequestInfo, init?: RequestInit): AbortableFetch {
         const aborter = new AbortController();
 
         return {
@@ -40,13 +46,13 @@ export const Net = {
         }
     },
 
-    fetchWithTimeout(info: URL | RequestInfo, init: RequestInit | undefined, timeoutMs: number) {
+    fetchWithTimeout(info: URL | RequestInfo, init: RequestInit | undefined, timeoutMs: number): AbortableFetch {
         assert(timeoutMs > 0, `Fetch timeout must be a positive number but got ${timeoutMs}`);
 
         const pending = this.abortableFetch(info, init);
-        setTimeout(() => Net.abortFetch(pending.aborter), timeoutMs);
+        const timeoutTimer = setTimeout(() => Net.abortFetch(pending.aborter), timeoutMs);
 
-        return pending;
+        return { ...pending, timeoutTimer };
     },
 
     isAbortError(e: Error) {
@@ -76,6 +82,12 @@ export const Net = {
         }
 
         return params;
+    },
+
+    async resolveFetch(fetch: AbortableFetch) {
+        if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+
+        return await fetch.response;
     },
 
     serveFile(mimeType: string, data: string, filename: string) {

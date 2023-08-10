@@ -70,13 +70,13 @@ export const Vocabulary = {
             15000
         );
 
-        const req = await pending.response;
-        if (!req.ok) {
-            throw new Error(`"Error ${req.status}" response to vocabulary request for "${type}" vocabulary type.`);
+        const resp = await Net.resolveFetch(pending);
+        if (!resp.ok) {
+            throw new Error(`"Error ${resp.status}" response to vocabulary request for "${type}" vocabulary type.`);
         }
 
-        const resp = await req.json();
-        const voc = resp['hits']?.['hits'];
+        const json = await resp.json();
+        const voc = json['hits']?.['hits'];
         if (!voc) {
             throw new Error(`Unexpected response to vocabulary request for "${type}" vocabulary type.`);
         }
