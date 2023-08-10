@@ -1,10 +1,10 @@
 import { Common } from './common';
 
-export const BLI = {
+export const SPR = {
     ...Common,
 
     'general_parameters/technique': {
-        defaultValue: 'Bio-layer interferometry (BLI)',
+        defaultValue: 'Surface plasmon resonance (SPR)',
         dontDisplay: true,
     },
 };

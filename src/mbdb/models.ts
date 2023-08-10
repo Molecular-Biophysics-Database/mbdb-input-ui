@@ -6,7 +6,7 @@ export type MbdbModel = {
     dummy?: boolean,
 };
 
-export const MbdbModels: Record<'bli' | 'mst' | 'test_1', MbdbModel> = {
+export const MbdbModels: Record<'bli' | 'mst' | 'spr' | 'test_1', MbdbModel> = {
     bli: {
         apiEndpoint: 'api/mbdb-bli',
         schema: SchemasRegister.bli,
@@ -14,6 +14,10 @@ export const MbdbModels: Record<'bli' | 'mst' | 'test_1', MbdbModel> = {
     mst: {
         apiEndpoint: 'api/mbdb-mst',
         schema: SchemasRegister.mst,
+    },
+    spr: {
+        apiEndpoint: 'api/mbdb-spr',
+        schema: SchemasRegister.spr,
     },
     test_1: {
         apiEndpoint: '',

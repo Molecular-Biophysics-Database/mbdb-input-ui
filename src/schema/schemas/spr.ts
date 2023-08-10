@@ -1,4 +1,4 @@
-export const BLI = [
+export const SPR = [
     {
         tag: 'general_parameters',
         label: 'general_parameters',
@@ -31027,12 +31027,12 @@ export const BLI = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.1',
-                        title: '0.9.1',
+                        tag: '0.9.0',
+                        title: '0.9.0',
                     },
                 ],
                 help: {
-                    en: 'The schema version used to annotate the BLI method specific parameters',
+                    en: 'The schema version used to annotate the SPR method specific parameters',
                 },
             },
             {
@@ -31061,62 +31061,32 @@ export const BLI = [
                 },
             },
             {
-                tag: 'plates',
-                label: 'plates',
-                isArray: true,
-                isRequired: false,
-                mbdbPath: 'method_specific_parameters/plates[]',
+                tag: 'sensor',
+                label: 'sensor',
+                isArray: false,
+                isRequired: true,
+                mbdbPath: 'method_specific_parameters/sensor',
                 input: [
                     {
                         tag: 'id',
                         label: 'id',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/id',
-                        input: 'referenceable-id',
-                        referenceAs: 'plate',
-                    },
-                    {
-                        tag: 'name',
-                        label: 'name',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/name',
-                        input: 'string',
+                        mbdbPath: 'method_specific_parameters/sensor/id',
+                        input: 'uuid',
                         help: {
-                            en: 'Name (id) of the plate which must be unique within a record',
+                            en: 'The id of the sensor as given by the supplier',
                         },
                     },
                     {
-                        tag: 'wells',
-                        label: 'wells',
+                        tag: 'surface_properties',
+                        label: 'surface_properties',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/wells',
-                        input: 'options',
-                        choices: [
-                            {
-                                tag: '96',
-                                title: '96',
-                            },
-                            {
-                                tag: '384',
-                                title: '384',
-                            },
-                        ],
-                        help: {
-                            en: 'Number of wells in the plate',
-                        },
-                    },
-                    {
-                        tag: 'type',
-                        label: 'type',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/type',
+                        mbdbPath: 'method_specific_parameters/sensor/surface_properties',
                         input: 'string',
                         help: {
-                            en: 'The type of the plate',
+                            en: 'The type surface properties the sensor has. e.g. Protein A',
                         },
                     },
                     {
@@ -31124,14 +31094,14 @@ export const BLI = [
                         label: 'supplier',
                         isArray: false,
                         isRequired: true,
-                        mbdbPath: 'method_specific_parameters/plates[]/supplier',
+                        mbdbPath: 'method_specific_parameters/sensor/supplier',
                         input: [
                             {
                                 tag: 'name',
                                 label: 'name',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/plates[]/supplier/name',
+                                mbdbPath: 'method_specific_parameters/sensor/supplier/name',
                                 input: 'string',
                                 help: {
                                     en: 'Name of the supplier',
@@ -31142,7 +31112,7 @@ export const BLI = [
                                 label: 'catalog_number',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/plates[]/supplier/catalog_number',
+                                mbdbPath: 'method_specific_parameters/sensor/supplier/catalog_number',
                                 input: 'string',
                                 help: {
                                     en: 'The catalog number or identifier of the item',
@@ -31153,7 +31123,7 @@ export const BLI = [
                                 label: 'further_information',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/plates[]/supplier/further_information[]',
+                                mbdbPath: 'method_specific_parameters/sensor/supplier/further_information[]',
                                 input: 'string',
                                 help: {
                                     en: 'Further information e.g. batch number',
@@ -31162,100 +31132,86 @@ export const BLI = [
                         ],
                     },
                     {
-                        tag: 'sealing',
-                        label: 'sealing',
+                        tag: 'sensor_initialization',
+                        label: 'sensor_initialization',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/sealing',
-                        input: 'string',
+                        mbdbPath: 'method_specific_parameters/sensor/sensor_initialization',
+                        input: 'options',
+                        choices: [
+                            {
+                                tag: 'Air',
+                                title: 'Air',
+                            },
+                            {
+                                tag: 'Glycerol',
+                                title: 'Glycerol',
+                            },
+                        ],
                         help: {
-                            en: 'The type of sealing used to seal the top of the plate',
+                            en: 'How the initialization of the senor was performed',
                         },
                     },
                     {
-                        tag: 'surface_modification',
-                        label: 'surface_modification',
+                        tag: 'previously_used',
+                        label: 'previously_used',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/plates[]/surface_modification',
-                        input: [
-                            {
-                                tag: 'type',
-                                label: 'type',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/plates[]/surface_modification/type',
-                                input: 'string',
-                                help: {
-                                    en: 'The expected type of surface of the wells after the modification (e.g. BSA coated)',
-                                },
-                            },
-                            {
-                                tag: 'protocol',
-                                label: 'protocol',
-                                isArray: true,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/plates[]/surface_modification/protocol[]',
-                                input: [
-                                    {
-                                        tag: 'name',
-                                        label: 'name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/plates[]/surface_modification/protocol[]/name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Descriptive name of the step',
-                                        },
-                                    },
-                                    {
-                                        tag: 'description',
-                                        label: 'description',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/plates[]/surface_modification/protocol[]/description',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Short description of the step',
-                                        },
-                                    },
-                                ],
-                                help: {
-                                    en: 'List of protocol steps used to modify the surface of the wells',
-                                },
-                            },
-                        ],
+                        mbdbPath: 'method_specific_parameters/sensor/previously_used',
+                        input: 'boolean',
+                        help: {
+                            en: 'Whether or not the sensor was used in previous measurements',
+                        },
                     },
                 ],
-                help: {
-                    en: 'List of the plate types used for the measurements',
-                },
             },
             {
-                tag: 'sensors',
-                label: 'sensors',
+                tag: 'measurement_positions',
+                label: 'measurement_positions',
                 isArray: true,
                 isRequired: false,
-                mbdbPath: 'method_specific_parameters/sensors[]',
+                mbdbPath: 'method_specific_parameters/measurement_positions[]',
                 input: [
                     {
                         tag: 'id',
                         label: 'id',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/id',
+                        mbdbPath: 'method_specific_parameters/measurement_positions[]/id',
                         input: 'referenceable-id',
-                        referenceAs: 'bli-sensor',
+                        referenceAs: 'spr-measurement-position',
                     },
                     {
                         tag: 'name',
                         label: 'name',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/name',
+                        mbdbPath: 'method_specific_parameters/measurement_positions[]/name',
                         input: 'string',
                         help: {
-                            en: 'Descriptive name of the sensor',
+                            en: 'Name of measurement spot',
+                        },
+                    },
+                    {
+                        tag: 'flow_cell',
+                        label: 'flow_cell',
+                        isArray: false,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/measurement_positions[]/flow_cell',
+                        input: 'string',
+                        help: {
+                            en: 'The flow cell where the measurement spot is located',
+                        },
+                    },
+                    {
+                        tag: 'position',
+                        label: 'position',
+                        isArray: false,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/measurement_positions[]/position',
+                        input: 'string',
+                        help: {
+                            en: 'Position of the measurement spot within the flow cell',
                         },
                     },
                     {
@@ -31263,14 +31219,14 @@ export const BLI = [
                         label: 'ligand_information',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/ligand_information',
+                        mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information',
                         input: [
                             {
                                 tag: 'ligand',
                                 label: 'ligand',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/ligand_information/ligand',
+                                mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand',
                                 input: 'related-to',
                                 relatesTo: 'entity',
                                 relatedKeys: [
@@ -31283,7 +31239,7 @@ export const BLI = [
                                 label: 'ligand_immobilization_chemistry',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/ligand_information/ligand_immobilization_chemistry',
+                                mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_chemistry',
                                 input: 'string',
                                 help: {
                                     en: 'The type of chemistry on ligands and surface that allows for immobilization of the ligands on the surface of the senor',
@@ -31294,14 +31250,14 @@ export const BLI = [
                                 label: 'ligand_immobilization_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/ligand_information/ligand_immobilization_protocol[]',
+                                mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_protocol[]',
                                 input: [
                                     {
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/sensors[]/ligand_information/ligand_immobilization_protocol[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -31312,7 +31268,7 @@ export const BLI = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/sensors[]/ligand_information/ligand_immobilization_protocol[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -31325,152 +31281,9 @@ export const BLI = [
                             },
                         ],
                     },
-                    {
-                        tag: 'sensor_id',
-                        label: 'sensor_id',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/sensor_id',
-                        input: 'string',
-                        help: {
-                            en: 'The id of the sensor as given by the supplier',
-                        },
-                    },
-                    {
-                        tag: 'surface_properties',
-                        label: 'surface_properties',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/surface_properties',
-                        input: 'string',
-                        help: {
-                            en: 'The type of surface properties the sensor has, e.g. Protein A',
-                        },
-                    },
-                    {
-                        tag: 'supplier',
-                        label: 'supplier',
-                        isArray: false,
-                        isRequired: true,
-                        mbdbPath: 'method_specific_parameters/sensors[]/supplier',
-                        input: [
-                            {
-                                tag: 'name',
-                                label: 'name',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/supplier/name',
-                                input: 'string',
-                                help: {
-                                    en: 'Name of the supplier',
-                                },
-                            },
-                            {
-                                tag: 'catalog_number',
-                                label: 'catalog_number',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/supplier/catalog_number',
-                                input: 'string',
-                                help: {
-                                    en: 'The catalog number or identifier of the item',
-                                },
-                            },
-                            {
-                                tag: 'further_information',
-                                label: 'further_information',
-                                isArray: true,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/supplier/further_information[]',
-                                input: 'string',
-                                help: {
-                                    en: 'Further information e.g. batch number',
-                                },
-                            },
-                        ],
-                    },
-                    {
-                        tag: 'hydration_time',
-                        label: 'hydration_time',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/hydration_time',
-                        input: [
-                            {
-                                tag: 'value',
-                                label: 'value',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/hydration_time/value',
-                                input: 'float',
-                                minimum: 0.0,
-                                help: {
-                                    en: 'Numerical value of the time point or duration',
-                                },
-                            },
-                            {
-                                tag: 'value_error',
-                                label: 'value_error',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/sensors[]/hydration_time/value_error',
-                                input: 'custom',
-                                component: 'value-error',
-                            },
-                            {
-                                tag: 'unit',
-                                label: 'unit',
-                                isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'method_specific_parameters/sensors[]/hydration_time/unit',
-                                input: 'options',
-                                choices: [
-                                    {
-                                        tag: 'nanoseconds',
-                                        title: 'nanoseconds',
-                                    },
-                                    {
-                                        tag: 'microseconds',
-                                        title: 'microseconds',
-                                    },
-                                    {
-                                        tag: 'milliseconds',
-                                        title: 'milliseconds',
-                                    },
-                                    {
-                                        tag: 'seconds',
-                                        title: 'seconds',
-                                    },
-                                    {
-                                        tag: 'minutes',
-                                        title: 'minutes',
-                                    },
-                                    {
-                                        tag: 'hours',
-                                        title: 'hours',
-                                    },
-                                    {
-                                        tag: 'days',
-                                        title: 'days',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        tag: 'previously_used',
-                        label: 'previously_used',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/sensors[]/previously_used',
-                        input: 'boolean',
-                        help: {
-                            en: 'Whether or not the sensor was used for previous measurements',
-                        },
-                    },
                 ],
                 help: {
-                    en: 'List of the senors used for the measurements, reference sensors included',
+                    en: 'Information about each of the positions where data was collected including reference positions',
                 },
             },
             {
@@ -31487,7 +31300,7 @@ export const BLI = [
                         isRequired: false,
                         mbdbPath: 'method_specific_parameters/measurement_protocol[]/id',
                         input: 'referenceable-id',
-                        referenceAs: 'bli-protocol-step',
+                        referenceAs: 'spr-measurement-step',
                     },
                     {
                         tag: 'name',
@@ -31497,7 +31310,7 @@ export const BLI = [
                         mbdbPath: 'method_specific_parameters/measurement_protocol[]/name',
                         input: 'string',
                         help: {
-                            en: 'Descriptive name (id) of the a step in the measurement protocol which must be unique within a record',
+                            en: 'Descriptive name (id) of the step in the measurement protocol which must be unique within a record',
                         },
                     },
                     {
@@ -31535,6 +31348,10 @@ export const BLI = [
                             {
                                 tag: 'Activation',
                                 title: 'Activation',
+                            },
+                            {
+                                tag: 'Enhancement',
+                                title: 'Enhancement',
                             },
                         ],
                         help: {
@@ -31678,48 +31495,72 @@ export const BLI = [
                         ],
                     },
                     {
-                        tag: 'shaking_speed',
-                        label: 'shaking_speed',
+                        tag: 'flow',
+                        label: 'flow',
                         isArray: false,
                         isRequired: true,
-                        mbdbPath: 'method_specific_parameters/measurement_protocol[]/shaking_speed',
+                        mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow',
                         input: [
                             {
-                                tag: 'value',
-                                label: 'value',
+                                tag: 'rate',
+                                label: 'rate',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/shaking_speed/value',
-                                input: 'int',
-                                minimum: 0,
+                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/rate',
+                                input: 'float',
+                                minimum: 0.0,
                                 help: {
-                                    en: 'The numerical value of the shaking speed of the plate during the measurement step in the units defined in the general parameters',
+                                    en: 'Numerical value of the flow-rate',
                                 },
-                            },
-                            {
-                                tag: 'value_error',
-                                label: 'value_error',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/shaking_speed/value_error',
-                                input: 'custom',
-                                component: 'value-error',
                             },
                             {
                                 tag: 'unit',
                                 label: 'unit',
                                 isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/shaking_speed/unit',
+                                isRequired: true,
+                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/unit',
                                 input: 'options',
                                 choices: [
                                     {
-                                        tag: 'RPM',
-                                        title: 'RPM',
+                                        tag: 'mL/min',
+                                        title: 'mL/min',
+                                    },
+                                    {
+                                        tag: 'µl/s',
+                                        title: 'µl/s',
+                                    },
+                                ],
+                            },
+                            {
+                                tag: 'direction',
+                                label: 'direction',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/direction',
+                                input: 'options',
+                                choices: [
+                                    {
+                                        tag: 'Vertical',
+                                        title: 'Vertical',
+                                    },
+                                    {
+                                        tag: 'Horizontal',
+                                        title: 'Horizontal',
                                     },
                                 ],
                                 help: {
-                                    en: 'The reported error of the value of the shaking speed (e.g. standard deviation, % error)',
+                                    en: 'Direction of the flow',
+                                },
+                            },
+                            {
+                                tag: 'path',
+                                label: 'path',
+                                isArray: true,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/path[]',
+                                input: 'ignore',
+                                help: {
+                                    en: 'list of the flow-path, in terms of measurement postitions. measurement postitions that are connected by a flow running serially  though them should be mentioned within the inner list, while parallel flows should be mentioned in the outer list',
                                 },
                             },
                         ],
@@ -31737,60 +31578,60 @@ export const BLI = [
                 mbdbPath: 'method_specific_parameters/measurements[]',
                 input: [
                     {
-                        tag: 'sensor',
-                        label: 'sensor',
+                        tag: 'measurement_position',
+                        label: 'measurement_position',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/measurements[]/sensor',
+                        mbdbPath: 'method_specific_parameters/measurements[]/measurement_position',
                         input: 'related-to',
-                        relatesTo: 'bli-sensor',
+                        relatesTo: 'spr-measurement-position',
                         relatedKeys: [
                             'id',
                             'name',
                         ],
                     },
                     {
-                        tag: 'measurement_protocol_step',
-                        label: 'measurement_protocol_step',
+                        tag: 'reference_measurement_position',
+                        label: 'reference_measurement_position',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/measurements[]/measurement_protocol_step',
+                        mbdbPath: 'method_specific_parameters/measurements[]/reference_measurement_position',
                         input: 'related-to',
-                        relatesTo: 'bli-protocol-step',
+                        relatesTo: 'spr-measurement-position',
                         relatedKeys: [
                             'id',
                             'name',
                         ],
                     },
                     {
-                        tag: 'sample',
-                        label: 'sample',
-                        isArray: false,
-                        isRequired: true,
-                        mbdbPath: 'method_specific_parameters/measurements[]/sample',
+                        tag: 'samples',
+                        label: 'samples',
+                        isArray: true,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]',
                         input: [
                             {
-                                tag: 'plate',
-                                label: 'plate',
+                                tag: 'measurement_step',
+                                label: 'measurement_step',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/plate',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/measurement_step',
                                 input: 'related-to',
-                                relatesTo: 'plate',
+                                relatesTo: 'spr-measurement-step',
                                 relatedKeys: [
                                     'id',
                                     'name',
                                 ],
                             },
                             {
-                                tag: 'well_position',
-                                label: 'well_position',
+                                tag: 'position',
+                                label: 'position',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/well_position',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/position',
                                 input: 'string',
                                 help: {
-                                    en: 'The position the well (in the plate) where the sample was during the measurement',
+                                    en: 'Position of the sample within the sample holder',
                                 },
                             },
                             {
@@ -31798,7 +31639,7 @@ export const BLI = [
                                 label: 'chemical_environment',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/chemical_environment',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/chemical_environment',
                                 input: 'related-to',
                                 relatesTo: 'chemical-environment',
                                 relatedKeys: [
@@ -31811,14 +31652,14 @@ export const BLI = [
                                 label: 'analytes',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]',
                                 input: [
                                     {
                                         tag: 'entity',
                                         label: 'entity',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/entity',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/entity',
                                         input: 'related-to',
                                         relatesTo: 'entity',
                                         relatedKeys: [
@@ -31831,14 +31672,14 @@ export const BLI = [
                                         label: 'concentration',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration',
                                         input: [
                                             {
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/value',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/value',
                                                 input: 'float',
                                                 minimum: -1.0,
                                                 help: {
@@ -31850,7 +31691,7 @@ export const BLI = [
                                                 label: 'value_error',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/value_error',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
                                             },
@@ -31859,7 +31700,7 @@ export const BLI = [
                                                 label: 'unit',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/unit',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/unit',
                                                 input: 'options',
                                                 choices: [
                                                     {
@@ -31945,7 +31786,7 @@ export const BLI = [
                                                 label: 'obtained_by',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/obtained_by',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_by',
                                                 input: 'options',
                                                 choices: [
                                                     {
@@ -31971,14 +31812,14 @@ export const BLI = [
                                                 label: 'obtained_protocol',
                                                 isArray: true,
                                                 isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/obtained_protocol[]',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/obtained_protocol[]/name',
+                                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/name',
                                                         input: 'string',
                                                         help: {
                                                             en: 'Descriptive name of the step',
@@ -31989,7 +31830,7 @@ export const BLI = [
                                                         label: 'description',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/analytes[]/concentration/obtained_protocol[]/description',
+                                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/description',
                                                         input: 'string',
                                                         help: {
                                                             en: 'Short description of the step',
@@ -32004,7 +31845,7 @@ export const BLI = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of names (ids) of entities (from the entities of interest defined in the general parameters) that was used to alter the behavior of the target(s) or entities present at varying concentrations for a series of measurements and their concentrations',
+                                    en: 'List of names (ids) of entities (from the entities of interest defined in the general parameters) that was used to alter the behavior of the target(s) or entities present at varying concentrations for a series of measurements',
                                 },
                             },
                             {
@@ -32012,14 +31853,14 @@ export const BLI = [
                                 label: 'temperature',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature',
                                 input: [
                                     {
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/value',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/value',
                                         input: 'float',
                                         help: {
                                             en: 'Numeric value of the temperature',
@@ -32030,7 +31871,7 @@ export const BLI = [
                                         label: 'value_error',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/value_error',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/value_error',
                                         input: 'custom',
                                         component: 'value-error',
                                     },
@@ -32039,7 +31880,7 @@ export const BLI = [
                                         label: 'operational_value',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/operational_value',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/operational_value',
                                         input: 'options',
                                         choices: [
                                             {
@@ -32064,7 +31905,7 @@ export const BLI = [
                                         label: 'unit',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/unit',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/unit',
                                         input: 'options',
                                         choices: [
                                             {
@@ -32086,7 +31927,7 @@ export const BLI = [
                                         label: 'obtained_by',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/obtained_by',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/obtained_by',
                                         input: 'options',
                                         choices: [
                                             {
@@ -32112,7 +31953,7 @@ export const BLI = [
                                         label: 'controlled',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/temperature/controlled',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/controlled',
                                         input: 'boolean',
                                         help: {
                                             en: 'Whether the temperature was actively controlled',
@@ -32121,18 +31962,18 @@ export const BLI = [
                                 ],
                             },
                             {
-                                tag: 'preparation_protocol',
-                                label: 'preparation_protocol',
+                                tag: 'preparation',
+                                label: 'preparation',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]',
                                 input: [
                                     {
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -32143,7 +31984,7 @@ export const BLI = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -32155,125 +31996,410 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'List of samples that went across a measurement position during data collection',
+                        },
                     },
                     {
-                        tag: 'measured_data',
-                        label: 'measured_data',
-                        isArray: false,
+                        tag: 'reference_samples',
+                        label: 'reference_samples',
+                        isArray: true,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data',
+                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]',
                         input: [
                             {
-                                tag: 'time',
-                                label: 'time',
+                                tag: 'measurement_step',
+                                label: 'measurement_step',
                                 isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/measured_data/time',
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/measurement_step',
+                                input: 'related-to',
+                                relatesTo: 'spr-measurement-step',
+                                relatedKeys: [
+                                    'id',
+                                    'name',
+                                ],
+                            },
+                            {
+                                tag: 'position',
+                                label: 'position',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/position',
+                                input: 'string',
+                                help: {
+                                    en: 'Position of the sample within the sample holder',
+                                },
+                            },
+                            {
+                                tag: 'chemical_environment',
+                                label: 'chemical_environment',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/chemical_environment',
+                                input: 'related-to',
+                                relatesTo: 'chemical-environment',
+                                relatedKeys: [
+                                    'id',
+                                    'name',
+                                ],
+                            },
+                            {
+                                tag: 'analytes',
+                                label: 'analytes',
+                                isArray: true,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]',
                                 input: [
                                     {
-                                        tag: 'id',
-                                        label: 'id',
+                                        tag: 'entity',
+                                        label: 'entity',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/time/id',
-                                        input: 'uuid',
-                                        help: {
-                                            en: 'Unique ID for the measured data to be used as a link',
-                                        },
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/entity',
+                                        input: 'related-to',
+                                        relatesTo: 'entity',
+                                        relatedKeys: [
+                                            'id',
+                                            'name',
+                                        ],
                                     },
                                     {
-                                        tag: 'name',
-                                        label: 'name',
+                                        tag: 'concentration',
+                                        label: 'concentration',
+                                        isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration',
+                                        input: [
+                                            {
+                                                tag: 'value',
+                                                label: 'value',
+                                                isArray: false,
+                                                isRequired: false,
+                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/value',
+                                                input: 'float',
+                                                minimum: -1.0,
+                                                help: {
+                                                    en: 'The numerical value of the concentration, -1 if unknown',
+                                                },
+                                            },
+                                            {
+                                                tag: 'value_error',
+                                                label: 'value_error',
+                                                isArray: false,
+                                                isRequired: false,
+                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/value_error',
+                                                input: 'custom',
+                                                component: 'value-error',
+                                            },
+                                            {
+                                                tag: 'unit',
+                                                label: 'unit',
+                                                isArray: false,
+                                                isRequired: true,
+                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/unit',
+                                                input: 'options',
+                                                choices: [
+                                                    {
+                                                        tag: 'M',
+                                                        title: 'M',
+                                                    },
+                                                    {
+                                                        tag: 'mM',
+                                                        title: 'mM',
+                                                    },
+                                                    {
+                                                        tag: 'µM',
+                                                        title: 'µM',
+                                                    },
+                                                    {
+                                                        tag: 'nM',
+                                                        title: 'nM',
+                                                    },
+                                                    {
+                                                        tag: 'pM',
+                                                        title: 'pM',
+                                                    },
+                                                    {
+                                                        tag: 'fM',
+                                                        title: 'fM',
+                                                    },
+                                                    {
+                                                        tag: 'aM',
+                                                        title: 'aM',
+                                                    },
+                                                    {
+                                                        tag: 'g/L',
+                                                        title: 'g/L',
+                                                    },
+                                                    {
+                                                        tag: 'mg/mL',
+                                                        title: 'mg/mL',
+                                                    },
+                                                    {
+                                                        tag: 'µg/mL',
+                                                        title: 'µg/mL',
+                                                    },
+                                                    {
+                                                        tag: 'ng/mL',
+                                                        title: 'ng/mL',
+                                                    },
+                                                    {
+                                                        tag: 'mol/kg',
+                                                        title: 'mol/kg',
+                                                    },
+                                                    {
+                                                        tag: 'mmol/kg',
+                                                        title: 'mmol/kg',
+                                                    },
+                                                    {
+                                                        tag: 'v/v %',
+                                                        title: 'v/v %',
+                                                    },
+                                                    {
+                                                        tag: 'w/w %',
+                                                        title: 'w/w %',
+                                                    },
+                                                    {
+                                                        tag: 'v/w %',
+                                                        title: 'v/w %',
+                                                    },
+                                                    {
+                                                        tag: 'w/v %',
+                                                        title: 'w/v %',
+                                                    },
+                                                    {
+                                                        tag: 'U/ml',
+                                                        title: 'U/ml',
+                                                    },
+                                                    {
+                                                        tag: '% saturated',
+                                                        title: '% saturated',
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                tag: 'obtained_by',
+                                                label: 'obtained_by',
+                                                isArray: false,
+                                                isRequired: false,
+                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_by',
+                                                input: 'options',
+                                                choices: [
+                                                    {
+                                                        tag: 'Measurement',
+                                                        title: 'Measurement',
+                                                    },
+                                                    {
+                                                        tag: 'Calculation',
+                                                        title: 'Calculation',
+                                                    },
+                                                    {
+                                                        tag: 'Assumption',
+                                                        title: 'Assumption',
+                                                    },
+                                                    {
+                                                        tag: 'Other',
+                                                        title: 'Other',
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                tag: 'obtained_protocol',
+                                                label: 'obtained_protocol',
+                                                isArray: true,
+                                                isRequired: false,
+                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]',
+                                                input: [
+                                                    {
+                                                        tag: 'name',
+                                                        label: 'name',
+                                                        isArray: false,
+                                                        isRequired: false,
+                                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/name',
+                                                        input: 'string',
+                                                        help: {
+                                                            en: 'Descriptive name of the step',
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: 'description',
+                                                        label: 'description',
+                                                        isArray: false,
+                                                        isRequired: false,
+                                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/description',
+                                                        input: 'string',
+                                                        help: {
+                                                            en: 'Short description of the step',
+                                                        },
+                                                    },
+                                                ],
+                                                help: {
+                                                    en: 'Information of how the concentration was obtained (e.g, Absorbance at 280 nm, buffer absorbance subtraction, extinction coefficient',
+                                                },
+                                            },
+                                        ],
+                                    },
+                                ],
+                                help: {
+                                    en: 'List of names (ids) of entities (from the entities of interest defined in the general parameters) that was used to alter the behavior of the target(s) or entities present at varying concentrations for a series of measurements',
+                                },
+                            },
+                            {
+                                tag: 'temperature',
+                                label: 'temperature',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature',
+                                input: [
+                                    {
+                                        tag: 'value',
+                                        label: 'value',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/time/name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Short descriptive name of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'values',
-                                        label: 'values',
-                                        isArray: true,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/time/values[]',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/value',
                                         input: 'float',
                                         help: {
-                                            en: 'The numerical values of the data series',
+                                            en: 'Numeric value of the temperature',
+                                        },
+                                    },
+                                    {
+                                        tag: 'value_error',
+                                        label: 'value_error',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/value_error',
+                                        input: 'custom',
+                                        component: 'value-error',
+                                    },
+                                    {
+                                        tag: 'operational_value',
+                                        label: 'operational_value',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/operational_value',
+                                        input: 'options',
+                                        choices: [
+                                            {
+                                                tag: 'Room temperature',
+                                                title: 'Room temperature',
+                                            },
+                                            {
+                                                tag: 'On Ice',
+                                                title: 'On Ice',
+                                            },
+                                            {
+                                                tag: 'Other',
+                                                title: 'Other',
+                                            },
+                                        ],
+                                        help: {
+                                            en: 'If the temperature was defined by the procedure rather than the numerical value the value can be specified here (e.g. Room temperature, on ice, etc.)',
                                         },
                                     },
                                     {
                                         tag: 'unit',
                                         label: 'unit',
                                         isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/unit',
+                                        input: 'options',
+                                        choices: [
+                                            {
+                                                tag: 'K',
+                                                title: 'K',
+                                            },
+                                            {
+                                                tag: '°C',
+                                                title: '°C',
+                                            },
+                                            {
+                                                tag: '°F',
+                                                title: '°F',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        tag: 'obtained_by',
+                                        label: 'obtained_by',
+                                        isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/obtained_by',
+                                        input: 'options',
+                                        choices: [
+                                            {
+                                                tag: 'Measurement',
+                                                title: 'Measurement',
+                                            },
+                                            {
+                                                tag: 'Calculation',
+                                                title: 'Calculation',
+                                            },
+                                            {
+                                                tag: 'Assumption',
+                                                title: 'Assumption',
+                                            },
+                                            {
+                                                tag: 'Other',
+                                                title: 'Other',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        tag: 'controlled',
+                                        label: 'controlled',
+                                        isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/time/unit',
-                                        input: 'string',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/controlled',
+                                        input: 'boolean',
                                         help: {
-                                            en: 'The numerical values of the data series',
+                                            en: 'Whether the temperature was actively controlled',
                                         },
                                     },
                                 ],
                             },
                             {
-                                tag: 'response',
-                                label: 'response',
-                                isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/measured_data/response',
+                                tag: 'preparation',
+                                label: 'preparation',
+                                isArray: true,
+                                isRequired: false,
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]',
                                 input: [
-                                    {
-                                        tag: 'id',
-                                        label: 'id',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/response/id',
-                                        input: 'uuid',
-                                        help: {
-                                            en: 'Unique ID for the measured data to be used as a link',
-                                        },
-                                    },
                                     {
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/response/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/name',
                                         input: 'string',
                                         help: {
-                                            en: 'Short descriptive name of the data series',
+                                            en: 'Descriptive name of the step',
                                         },
                                     },
                                     {
-                                        tag: 'values',
-                                        label: 'values',
-                                        isArray: true,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/response/values[]',
-                                        input: 'float',
-                                        help: {
-                                            en: 'The numerical values of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'unit',
-                                        label: 'unit',
+                                        tag: 'description',
+                                        label: 'description',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/response/unit',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/description',
                                         input: 'string',
                                         help: {
-                                            en: 'The numerical values of the data series',
+                                            en: 'Short description of the step',
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'List of steps taken to prepare the sample',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'List of samples that went across the reference measurement position during data collection',
+                        },
                     },
                 ],
                 help: {
-                    en: 'List of measurement where each step from each sensor is considered a single measurement',
+                    en: 'List of measurements where the complete output from a single sensor going through the measurement protocol is considered a separate measurement',
                 },
             },
             {
