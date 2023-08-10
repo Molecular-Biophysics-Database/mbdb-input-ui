@@ -1,4 +1,5 @@
 import { Config } from '../config';
+import { Net } from '../util/net';
 import { Json } from '../util/types';
 
 export type Vocabulary = (
@@ -51,7 +52,7 @@ export const Vocabulary = {
         if (!forceRefresh && Cache.has(type)) return Cache.get(type)!;
 
         const url = makeUrl(type);
-        const req = await fetch(
+        const pending = Net.fetchWithTimeout(
             url,
             {
                 method: 'GET',
@@ -59,8 +60,11 @@ export const Vocabulary = {
                     'Content-Type': 'application/json',
                 },
                 cache: 'no-cache',
-            }
+            },
+            15000
         );
+
+        const req = await pending.response;
         if (!req.ok) {
             throw new Error(`"Error ${req.status}" response to vocabulary request for "${type}" vocabulary type.`);
         }

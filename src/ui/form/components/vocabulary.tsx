@@ -104,10 +104,7 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
     for (const k of objKeys(nextProps)) {
         if (k === 'handler') continue;
 
-        if (!Object.is(prevProps[k], nextProps[k])) {
-            console.log(k);
-            return false;
-        }
+        if (!Object.is(prevProps[k], nextProps[k])) return false;
     }
 
     return true;
@@ -148,9 +145,18 @@ export function VocabularyInput(props: Props) {
     }, []);
 
     React.useEffect(() => {
+        // TODO: We do not handle the case where the component can be unmounted
+        //       before the vocabulary fetch operation completes. This might
+        //       trigger a warning in React because this function will attempts
+        //       to change the state of an unmounted component.
         Vocabulary.get(props.vocabularyType).then((voc) => {
             dispatch({ type: 'voc-loaded', voc });
-        }).catch(e => console.error(e));
+        }).catch(e => {
+            console.error(e);
+            // TODO: We need to indicate to the user that the vocabulary has failed to loaded
+            //       and provide an option to try to reaload it.
+            dispatch({ type: 'voc-loaded', voc: [] });
+        });
     }, [props.vocabularyType]);
 
     return (

@@ -254,6 +254,14 @@ export const Value = {
         return value.payload;
     },
 
+    toVocabularyEntry(value: Value) {
+        if (!this.isVocabularyEntry(value)) {
+            throw new Error(`Value with payload ${value.payload} is not a vocabulary entry value`);
+        }
+
+        return value.payload;
+    },
+
     tristate(tfn: Tristate) {
         assert(isTristate(tfn), `Value ${tfn} is not a valid tristate value`);
 

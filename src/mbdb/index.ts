@@ -79,6 +79,9 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             const { year, month, day } = Value.toCalendarDate(v);
             const out = `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
             MbdbData.set(mbdbData, out, storePath);
+        } else if (Schema.hasVariantInput(item)) {
+            // TODO: Ignore for now
+            // const _out = Value.toVocabularyEntry(v);
         } else {
             MbdbData.set(mbdbData, v.payload, storePath);
         }

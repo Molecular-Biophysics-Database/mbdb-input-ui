@@ -1,3 +1,5 @@
+import { assert } from '../assert';
+
 const StringEncoder = new TextEncoder();
 
 export type NullableAbrtCtrl = AbortController | null;
@@ -22,11 +24,29 @@ function serveBlob(blob: Blob, filename: string) {
 }
 
 export const Net = {
+    abortableFetch(info: URL | RequestInfo, init?: RequestInit) {
+        const aborter = new AbortController();
+
+        return {
+            response: fetch(info, { ...init, signal: aborter.signal }),
+            aborter
+        };
+    },
+
     abortFetch(aborter: AbortController | null) {
         if (aborter !== null) {
             if (aborter.signal.aborted === false)
                 aborter.abort();
         }
+    },
+
+    fetchWithTimeout(info: URL | RequestInfo, init: RequestInit | undefined, timeoutMs: number) {
+        assert(timeoutMs > 0, `Fetch timeout must be a positive number but got ${timeoutMs}`);
+
+        const pending = this.abortableFetch(info, init);
+        setTimeout(() => Net.abortFetch(pending.aborter), timeoutMs);
+
+        return pending;
     },
 
     isAbortError(e: Error) {
