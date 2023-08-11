@@ -21,7 +21,7 @@ export type Props = {
 };
 
 export const ItemLabel = React.memo(function _ItemLabel({ label, markAsRequired, help, id }: Props & { id: string }) {
-    if (!label) return null;
+    if (!label) return <div />;
 
     return (
         <div className='mbdb-item-label'>
@@ -35,7 +35,7 @@ export const ItemLabel = React.memo(function _ItemLabel({ label, markAsRequired,
 });
 
 export const SectionLabel = React.memo(function _SectionLabel({ label, markAsRequired, help }: Props) {
-    if (!label) return null;
+    if (!label) return <div />;
 
     return (
         <div className='mbdb-section-label'>
