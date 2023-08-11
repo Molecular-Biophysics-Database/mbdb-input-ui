@@ -66,7 +66,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
                 onDismissed={() => setCannotChangeError(false)}
             />
 
-            <div className={clsx('mbdb-section', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
+            <div className={clsx('mbdb-section', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
                 <VariantAnchor path={Data.Path.path(variantChoice, path)} />
                 <div className='mbdb-variant-selection-tainer'>
                     <div className='mbdb-section-label-text'>Type</div>

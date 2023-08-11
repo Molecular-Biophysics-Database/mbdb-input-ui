@@ -19,7 +19,11 @@
 
     --mbdb-anim-speed: 200ms;
 
-    --mbdb-clr-frames: #ccc;
+    --mbdb-clr-base: #dff2ff;
+    --mbdb-clr-based1: #88cdfe;
+    --mbdb-clr-based2: #4097d5;
+
+    --mbdb-border-radius: 5px;
 }
 
 .mbdb-app-tainer {
@@ -69,7 +73,7 @@
     justify-content: end;
 }
 .mbdb-array-complex-header-line {
-    background-color: var(--mbdb-clr-frames);
+    background-color: var(--mbdb-clr-based1);
     flex: 1;
     height: 1px;
 }
@@ -78,8 +82,12 @@
     font-weight: bold;
 }
 
+.mbdb-block {
+    border-radius: var(--mbdb-border-radius);
+}
+
 .mbdb-block-dark {
-    background-color: #eee;
+    background-color: #dff2ff;
 }
 
 .mbdb-block-light {
@@ -142,7 +150,7 @@
 }
 
 .mbdb-help-popup-trigger {
-    color: #aaa;
+    color: var(--mbdb-clr-based2);
 }
 
 .mbdb-input-tainer {
@@ -151,7 +159,7 @@
 
 .mbdb-item-grid {
     align-items: center;
-    border-left: 1px solid var(--mbdb-clr-frames);
+    border-left: 1px solid var(--mbdb-clr-based1);
     display: grid;
     column-gap: var(--mbdb-2hgap);
     grid-template-columns: auto 1fr;

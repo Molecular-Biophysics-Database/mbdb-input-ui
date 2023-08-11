@@ -176,7 +176,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                         idx={idx}
                         path={path}
                         content={
-                            <div className={clsx('mbdb-item-grid', !darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
+                            <div className={clsx('mbdb-item-grid', 'mbdb-block', !darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
                                 {blockComponents}
                             </div>
                         }
@@ -275,7 +275,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
 
             {arrayIsSimple
                 ? (
-                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
+                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         <div style={{ ...GridInArrayStyle }}>
                             {components}
@@ -283,7 +283,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                     </div>
                 )
                 : (
-                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
+                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         {components}
                     </div>

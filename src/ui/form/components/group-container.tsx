@@ -25,7 +25,7 @@ export function GroupContainer(props: Props) {
     const darkBlk = useDarkBlock(props.nestLevel);
 
     return (
-        <div className={clsx('mbdb-section', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={id}>
+        <div className={clsx('mbdb-section', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={id}>
             <SectionLabel label={props.label} markAsRequired={props.isRequired} help={props.help} />
             <div className={clsx('mbdb-item-grid', hasErrors && 'mbdb-item-grid-bad-data')}>
                 {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.path, idx))}
