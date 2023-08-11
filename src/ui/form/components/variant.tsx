@@ -74,7 +74,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
                 'mbdb-section', hasErrors && 'mbdb-section-has-errors',
                 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
                 <VariantAnchor path={Data.Path.path(variantChoice, path)} />
-                <div className='mbdb-variant-selection-tainer'>
+                <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
                     <div className='mbdb-section-label-text'>Type</div>
                     <SDropdown
                         value={variantChoice}

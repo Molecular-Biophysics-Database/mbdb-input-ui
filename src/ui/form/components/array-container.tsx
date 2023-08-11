@@ -121,7 +121,7 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
     const { handler } = React.useContext(FormContextInstance);
 
     return (
-        <div className='mbdb-array-complex-header'>
+        <div className='mbdb-array-complex-header mbdb-right-offset'>
             <div className='mbdb-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
             <div className='mbdb-array-complex-header-line' />
             <SButton
@@ -235,7 +235,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <React.Fragment key={idx}>
-                    {scalarComponent(item, true, nestLevel, Data.Path.index(idx, path), undefined, true)}
+                    {scalarComponent(item, true, nestLevel, Data.Path.index(idx, path), undefined, true, true)}
                     <SButton
                         style={{ marginLeft: '1rem' }}
                         color='red'
@@ -278,7 +278,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                 ? (
                     <div className={tainerCls} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
-                        <div style={{ ...GridInArrayStyle }}>
+                        <div className='mbdb-right-offset' style={{ ...GridInArrayStyle }}>
                             {components}
                         </div>
                     </div>

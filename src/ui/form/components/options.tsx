@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import {
     Dropdown as SDropdown,
@@ -36,15 +37,21 @@ function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean, empt
     return opts;
 };
 
-const Selection = React.memo(function _Selection({ id, onChange, options, value }: { id: string, onChange: SOnChange<SDropdownProps>, options: Option[], value: string }) {
+const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset }: {
+    id: string,
+    onChange: SOnChange<SDropdownProps>,
+    options: Option[]
+    value: string,
+    noRightOffset?: boolean,
+}) {
     return (
         <SDropdown
+            className={clsx(!noRightOffset && 'mbdb-right-offset')}
             id={id}
             value={value}
             onChange={onChange}
             options={options}
             selection
-            fluid
         />
     );
 }, (prevProps, nextProps) => {
@@ -61,6 +68,7 @@ export type Props = {
     help?: Help,
     path: Path,
     dontTransformContent?: boolean,
+    noRightOffset?: boolean,
     isRequired: boolean,
 }
 
@@ -87,6 +95,7 @@ export function OptionsInput(props: Props) {
                 options={opts}
                 value={Value.toOption(v)}
                 onChange={onChange}
+                noRightOffset={props.noRightOffset}
             />
         </>
     );
@@ -122,17 +131,18 @@ export function OptionsWithOtherInput(props: Props) {
                 options={opts}
                 value={value.payload.tag}
                 onChange={onChangeOptions}
+                noRightOffset={props.noRightOffset}
             />
             {Schema.isOtherChoice(value)
                 ? (
                     <div style={{ ...BorderStyle, ...PadStyle }}>
                         <SInput
+                            className={clsx(!props.noRightOffset && 'mbdb-right-offset')}
                             id={id}
                             type='text'
                             value={Value.toOtherOption(value)}
                             error={false}
                             onChange={onChangeText}
-                            fluid
                         />
                     </div>
                 )

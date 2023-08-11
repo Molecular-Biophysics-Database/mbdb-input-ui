@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import {
     Input as SInput,
@@ -12,9 +13,16 @@ import { Path } from '../../../schema/data';
 import { Validator } from '../../../schema/validators';
 import { Value } from '../../../schema/value';
 
-const MTextualInput = React.memo(function MTextualInput({ id, value, isValid, onChange }: { id: string, value: string, isValid: boolean, onChange: SOnChange<SInputProps> }) {
+const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, onChange, noRightOffset }: {
+    id: string,
+    value: string,
+    isValid: boolean,
+    onChange: SOnChange<SInputProps>,
+    noRightOffset?: boolean,
+}) {
     return (
         <SInput
+            className={clsx(!noRightOffset && 'mbdb-right-offset')}
             id={id}
             type='text'
             value={value}
@@ -28,6 +36,7 @@ const MTextualInput = React.memo(function MTextualInput({ id, value, isValid, on
         Object.is(prevProps.id, nextProps.id) &&
         Object.is(prevProps.value, nextProps.value) &&
         Object.is(prevProps.isValid, nextProps.isValid) &&
+        Object.is(prevProps.noRightOffset, nextProps.noRightOffset) &&
         Object.is(prevProps.onChange, nextProps.onChange)
     );
 });
@@ -38,8 +47,9 @@ type Props = {
     isRequired: boolean,
     path: Path,
     validator: Validator<string>,
+    noRightOffset?: boolean,
 };
-export function TextualInput({ label, isRequired, help, path, validator }: Props) {
+export function TextualInput({ label, isRequired, help, path, validator, noRightOffset }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SInputProps> = React.useMemo(() => (_ev, data) => {
@@ -51,7 +61,7 @@ export function TextualInput({ label, isRequired, help, path, validator }: Props
     return (
         <>
             <ItemLabel label={label} markAsRequired={isRequired} help={help} id={id} />
-            <MTextualInput id={id} value={Value.toTextual(value)} isValid={value.isValid} onChange={onChange} />
+            <_TextualInput id={id} value={Value.toTextual(value)} isValid={value.isValid} noRightOffset={noRightOffset} onChange={onChange} />
         </>
     );
 }

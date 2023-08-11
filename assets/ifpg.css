@@ -84,7 +84,9 @@
 }
 
 .mbdb-block {
-    border-radius: var(--mbdb-border-radius);
+    border-top-left-radius: var(--mbdb-border-radius);
+    border-bottom-left-radius: var(--mbdb-border-radius);
+
 }
 
 .mbdb-block-dark {
@@ -154,7 +156,6 @@
 }
 
 .mbdb-input-tainer {
-    padding-right: var(--mbdb-2hgap);
 }
 
 .mbdb-item-grid {
@@ -182,13 +183,17 @@
     width: 20rem;
 }
 
+.mbdb-right-offset {
+    margin-right: calc(2 * var(--mbdb-form-pad));
+}
+
 .mbdb-section {
     border-left: 1px solid transparent;
     display: flex;
     flex-direction: column;
     gap: var(--mbdb-vgap);
     grid-column: span 2;
-    padding: var(--mbdb-form-pad);
+    padding: var(--mbdb-form-pad) 0 var(--mbdb-form-pad) var(--mbdb-form-pad);
 }
 
 .mbdb-section-has-errors {

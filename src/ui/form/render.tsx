@@ -23,7 +23,7 @@ export function component(item: Item, nestLevel: number, path: Path, key?: strin
     }
 }
 
-export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, path: Path, key: string | number | undefined, noLabel = false) {
+export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, path: Path, key: string | number | undefined, noLabel = false, noRightOffset = false) {
     const label = noLabel ? '' : niceLabel(item.label, !!item.dontTransformLabels);
 
     if (item.dontDisplay) return null;
@@ -35,25 +35,77 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
     } else if (Schema.hasTextualInput(item)) {
         if (Schema.hasNumericInput(item)) {
             if (item.input === 'int') {
-                return <IntInput label={label} help={item.help} isRequired={isRequired} path={path} validator={Validators.commonForItem(item)} key={key} />;
+                return (
+                    <IntInput
+                        label={label}
+                        help={item.help}
+                        isRequired={isRequired}
+                        path={path}
+                        validator={Validators.commonForItem(item)}
+                        noRightOffset={noRightOffset}
+                        key={key}
+                    />
+                );
             } else if (item.input === 'float') {
-                return <FloatInput label={label} help={item.help} isRequired={isRequired} path={path} validator={Validators.commonForItem(item)} key={key} />;
+                return (
+                    <FloatInput
+                        label={label}
+                        help={item.help}
+                        isRequired={isRequired}
+                        path={path}
+                        validator={Validators.commonForItem(item)}
+                        noRightOffset={noRightOffset}
+                        key={key}
+                    />
+                );
             }
             assert(false, `Unhandled numeric input "${item.input}"`);
         } else {
-            return <StringInput label={label} help={item.help} isRequired={isRequired} path={path} validator={Validators.commonForItem(item, isRequired)} key={key} />;
+            return (
+                <StringInput
+                    label={label}
+                    help={item.help}
+                    isRequired={isRequired}
+                    path={path}
+                    validator={Validators.commonForItem(item, isRequired)}
+                    noRightOffset={noRightOffset}
+                    key={key}
+                />
+            );
         }
     } else if (Schema.hasOptionsInput(item)) {
         if (Schema.hasOptionsWithOtherInput(item)) {
-            return <OptionsWithOtherInput choices={item.choices} label={label} help={item.help} path={path} isRequired={isRequired} dontTransformContent={!!item.dontTransformContent} key={key} />;
+            return (
+                <OptionsWithOtherInput
+                    choices={item.choices}
+                    label={label}
+                    help={item.help}
+                    path={path}
+                    isRequired={isRequired}
+                    dontTransformContent={!!item.dontTransformContent}
+                    key={key}
+                    noRightOffset={noRightOffset}
+                />
+            );
         } else {
-            return <OptionsInput choices={item.choices} label={label} help={item.help} path={path} isRequired={isRequired} dontTransformContent={!!item.dontTransformContent} key={key} />;
+            return (
+                <OptionsInput
+                    choices={item.choices}
+                    label={label}
+                    help={item.help}
+                    path={path}
+                    isRequired={isRequired}
+                    dontTransformContent={!!item.dontTransformContent}
+                    noRightOffset={noRightOffset}
+                    key={key}
+                />
+            );
         }
     } else if (Schema.hasBooleanInput(item)) {
         return (
             isRequired
-                ? <BooleanInput label={label} path={path} help={item.help} key={key} />
-                : <TristateInput label={label} path={path} help={item.help} key={key} />
+                ? <BooleanInput label={label} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
+                : <TristateInput label={label} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
         );
     } else if (Schema.hasCalendarDateInput(item)) {
         return <CalendarDateInput label={label} isRequired={isRequired} path={path} help={item.help} key={key} />;

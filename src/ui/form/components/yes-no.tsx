@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import {
     Checkbox as SCheckbox,
@@ -14,9 +15,15 @@ import { Path } from '../../../schema/data';
 import { Tristate } from '../../../schema/tristate';
 import { Value } from '../../../schema/value';
 
-const Checkbox = React.memo(function _Checkbox({ id, checked, onChange }: { id: string, checked: boolean, onChange: SOnChange<SCheckboxProps> }) {
+const Checkbox = React.memo(function _Checkbox({ id, checked, onChange, noRightOffset }: {
+    id: string,
+    checked: boolean,
+    onChange: SOnChange<SCheckboxProps>,
+    noRightOffset?: boolean,
+}) {
     return (
         <SCheckbox
+            className={clsx(!noRightOffset && 'mbdb-right-offset')}
             id={id}
             checked={checked}
             onChange={onChange}
@@ -32,8 +39,9 @@ const Checkbox = React.memo(function _Checkbox({ id, checked, onChange }: { id: 
 
 export type Props = {
     label: string,
-    help?: Help,
     path: Path,
+    help?: Help,
+    noRightOffset?: boolean,
 }
 
 export function BooleanInput({ label, help, path }: Props) {
@@ -57,15 +65,20 @@ const TristateOptions = [
     { value: 'false' as Tristate, text: 'No' },
     { value: 'not-set' as Tristate, text: '(Not set)' },
 ];
-const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange }: { id: string, value: Tristate, onChange: SOnChange<SDropdownProps> }) {
+const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange, noRightOffset }: {
+    id: string,
+    value: Tristate,
+    onChange: SOnChange<SDropdownProps>,
+    noRightOffset?: boolean,
+}) {
     return (
         <SDropdown
+            className={clsx(!noRightOffset && 'mbdb-right-offset')}
             id={id}
             value={value}
             options={TristateOptions}
             onChange={onChange}
             selection
-            fluid
         />
     );
 });
