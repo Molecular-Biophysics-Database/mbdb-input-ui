@@ -90,6 +90,20 @@
     gap: var(--mbdb-2hgap);
 }
 
+.mbdb-field-is-required-marker {
+    font-size: var(--mbdb-font-tiny);
+    margin-left: var(--mbdb-h2gap);
+    vertical-align: super;
+}
+
+.mbdb-field-is-required-marker-item {
+    color: #777;
+}
+
+.mbdb-field-is-required-marker-section {
+    color: black;
+}
+
 .mbdb-form-nav-list-item-title {
     background: none;
     display: flex;
@@ -106,6 +120,7 @@
 .mbdb-form-nav-link {
     color: black;
     font-weight: bold;
+    padding-right: var(--mbdb-hgap);
 }
 
 .mbdb-form-nav-link-highlighted {
@@ -152,18 +167,9 @@
     font-size: var(--mbdb-font-normal);
 }
 
-.mbdb-field-is-required-marker {
-    font-size: var(--mbdb-font-tiny);
-    margin-left: var(--mbdb-h2gap);
-    vertical-align: super;
-}
-
-.mbdb-field-is-required-marker-item {
-    color: #777;
-}
-
-.mbdb-field-is-required-marker-section {
-    color: black;
+.mbdb-navigation-tainer {
+    overflow-y: scroll;
+    width: 20rem;
 }
 
 .mbdb-section {

@@ -7,8 +7,8 @@ export function Form({ schema }: { schema: Item[] }) {
     const inputRef = React.useRef(null);
 
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 'var(--mbdb-2hgap)', overflow: 'hidden' }}>
-            <div style={{ overflow: 'scroll' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: '0', overflow: 'hidden' }}>
+            <div className='mbdb-navigation-tainer'>
                 <Navigation schema={schema} inputRef={inputRef} />
             </div>
 

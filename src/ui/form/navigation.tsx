@@ -163,9 +163,7 @@ function NavigationListItem(props: NavigationListItemProps) {
                     onClick={() => scrollIntoView(actualTargetId)}
                     name={hasErrors ? 'warning sign' : 'chevron right'}
                 />
-                <div>
-                    <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
-                </div>
+                <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
             </div>
             <div>
                 {props.children ?? null}
