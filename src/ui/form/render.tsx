@@ -41,7 +41,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
             }
             assert(false, `Unhandled numeric input "${item.input}"`);
         } else {
-            return <StringInput label={label} help={item.help} isRequired={isRequired} path={path} validator={Validators.commonForItem(item)} key={key} />;
+            return <StringInput label={label} help={item.help} isRequired={isRequired} path={path} validator={Validators.commonForItem(item, isRequired)} key={key} />;
         }
     } else if (Schema.hasOptionsInput(item)) {
         if (Schema.hasOptionsWithOtherInput(item)) {

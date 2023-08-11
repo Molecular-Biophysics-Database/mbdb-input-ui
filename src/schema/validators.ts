@@ -142,7 +142,9 @@ export const CommonValidators = {
 export type Validator<T> = (v: T) => boolean;
 
 export const Validators = {
-    commonForItem(item: Item) {
+    commonForItem(item: Item, isRequiredOverride?: boolean) {
+        const isRequired = isRequiredOverride !== undefined ? isRequiredOverride : item.isRequired;
+
         if (Schema.hasBooleanInput(item)) {
             return CommonValidators.alwaysValid;
         } else if (Schema.hasCalendarDateInput(item)) {
@@ -156,18 +158,18 @@ export const Validators = {
         } else if (Schema.hasTextualInput(item)) {
             if (Schema.hasNumericInput(item)) {
                 if (item.input === 'int') {
-                    return item.isRequired
+                    return isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateInt(v, item.minimum, item.maximum); }
                         : (v: string) => { return validateInt(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
                 } else if (item.input === 'float') {
-                    return item.isRequired
+                    return isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateFloat(v, item.minimum, item.maximum); }
                         : (v: string) => { return validateFloat(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
                 } else {
                     assert(false, `Unknown textual-like input "${item.input}"`);
                 }
             } else {
-                return item.isRequired ? CommonValidators.isSet : CommonValidators.alwaysValid;
+                return isRequired ? CommonValidators.isSet : CommonValidators.alwaysValid;
             }
         } else if (Schema.hasOptionsInput(item)) {
             return CommonValidators.alwaysValid;
