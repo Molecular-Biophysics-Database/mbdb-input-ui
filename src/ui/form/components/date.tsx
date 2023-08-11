@@ -6,6 +6,7 @@ import { FormContextInstance } from '../../../context';
 import { Help } from '../../../schema';
 import { Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
+import { CommonValidators } from '../../../schema/validators';
 import { clamp, daysInMonth, isLeapYear } from '../../../util';
 
 export type Props = {
@@ -30,19 +31,21 @@ export function CalendarDateInput({ label, isRequired, help, path }: Props) {
                 <SInput
                     style={{ width: '6em' }}
                     type='number'
-                    min={1600}
+                    min={1}
                     max={3000}
                     value={dateInput.y}
                     onChange={(_ev, data) => {
                         let yN = parseInt(data.value);
                         let _d = day;
                         if (!isNaN(yN)) {
-                            const newYear = clamp(yN, 1600, 3000);
+                            const newYear = clamp(yN, 1, 3000);
                             const newDay = !isLeapYear(newYear) && month === 2 && day === 29 ? 28 : day;
 
                             yN = newYear;
                             _d = newDay;
-                            handler.set(path, Value.calendarDate(newYear, month, newDay));
+
+                            const v = Value.calendarDate(newYear, month, newDay, CommonValidators.isCalendarDate({ year: newYear, month, day: newDay }));
+                            handler.set(path, v);
                         } else {
                             handler.set(path, Value.calendarDate(year, month, day, false));
                         }
