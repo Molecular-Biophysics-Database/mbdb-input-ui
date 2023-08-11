@@ -163,6 +163,7 @@ function NavigationListItem(props: NavigationListItemProps) {
                 <SIcon
                     onClick={() => scrollIntoView(actualTargetId)}
                     name={hasErrors ? 'warning sign' : 'chevron right'}
+                    color={hasErrors ? 'red' : 'black'}
                 />
                 <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
             </div>
