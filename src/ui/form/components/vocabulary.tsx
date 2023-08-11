@@ -79,6 +79,7 @@ function Result(props: any) {
 const MVocabularyInput = React.memo(function _VocabularyInput(props: {
     id: string,
     label: string,
+    isRequired: boolean,
     help?: Help,
     loading: boolean,
     value: string,
@@ -90,7 +91,7 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
 }) {
     return (
         <>
-            <ItemLabel id={props.id} label={props.label} help={props.help} />
+            <ItemLabel id={props.id} label={props.label} markAsRequired={props.isRequired} help={props.help} />
             <SSearch
                 id={props.id}
                 loading={props.loading}
@@ -178,6 +179,7 @@ export function VocabularyInput(props: Props) {
         <MVocabularyInput
             id={id}
             label={props.label}
+            isRequired={props.isRequired}
             help={props.help}
             loading={state.loading}
             value={v.title}

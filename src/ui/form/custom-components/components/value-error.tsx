@@ -113,7 +113,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
 
         return (
             <React.Fragment key={reactKey}>
-                <ItemLabel label='Value error' id={id} />
+                <ItemLabel label='Value error' markAsRequired={false} id={id} />
                 <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto 1fr', gap: 'var(--mbdb-hgap)', width: '100%'}}>
                     <div style={Cell}>
                         <FloatInput
@@ -121,6 +121,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('lower_error', path)}
                             validator={validator}
+                            isRequired={false}
                         />
                     </div>
                     <div style={Cell}>
@@ -129,6 +130,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('upper_error', path)}
                             validator={validator}
+                            isRequired={false}
                         />
                     </div>
                     <div style={Cell}>
@@ -137,9 +139,10 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('error_level', path)}
                             validator={validator}
+                            isRequired={false}
                         />
                     </div>
-                    <ItemLabel id={idIsRel} label='Errors are relative' />
+                    <ItemLabel id={idIsRel} markAsRequired={false} label='Errors are relative' />
                     <SCheckbox
                         id={idIsRel}
                         checked={Value.toBoolean(handler.getValue(Data.Path.path('errors_are_relative', path)))}

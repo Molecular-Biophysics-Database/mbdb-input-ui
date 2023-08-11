@@ -12,6 +12,7 @@ import { Path } from '../../../schema/data';
 export type Props = {
     input: Item[],
     label: string,
+    isRequired: boolean,
     help?: Help,
     path: Path,
 }
@@ -23,7 +24,7 @@ export function GroupContainer(props: Props) {
 
     return (
         <div className='mbdb-section' id={id}>
-            <SectionLabel label={props.label} help={props.help} />
+            <SectionLabel label={props.label} markAsRequired={props.isRequired} help={props.help} />
             <div className={clsx('mbdb-item-grid', hasErrors && 'mbdb-item-grid-bad-data')}>
                 {props.input.map((im, idx) => component(im, props.path, idx))}
             </div>

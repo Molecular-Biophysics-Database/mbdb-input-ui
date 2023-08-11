@@ -38,7 +38,15 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
     return null;
 }
 
-export function RelatedToInput({ label, relatesTo, relatedKeys, path }: { help?: Help, label: string, relatesTo: string, relatedKeys: string[], path: Path }) {
+export type RelatedToProps = {
+    help?: Help,
+    label: string,
+    isRequired: boolean,
+    relatesTo: string,
+    relatedKeys: string[],
+    path: Path
+};
+export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path }: RelatedToProps) {
     const htmlId = React.useMemo(() =>  PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const data = handler.getTree(path);
@@ -97,7 +105,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, path }: { help?:
 
     return (
         <>
-            <ItemLabel label={label} id={htmlId} />
+            <ItemLabel label={label} markAsRequired={isRequired} id={htmlId} />
             <SDropdown
                 placeholder={`Select ${label}, if applicable`}
                 id={htmlId}

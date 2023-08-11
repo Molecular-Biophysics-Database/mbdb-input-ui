@@ -273,7 +273,7 @@ export function ArrayContainer({ item, path }: Props) {
             {arrayIsSimple
                 ? (
                     <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
+                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         <div style={{ ...GridInArrayStyle }}>
                             {components}
                         </div>
@@ -281,7 +281,7 @@ export function ArrayContainer({ item, path }: Props) {
                 )
                 : (
                     <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
-                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} help={item.help} />
+                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         {components}
                     </div>
                 )

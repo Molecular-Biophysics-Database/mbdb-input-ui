@@ -10,11 +10,12 @@ import { clamp, daysInMonth, isLeapYear } from '../../../util';
 
 export type Props = {
     label: string,
+    isRequired: boolean,
     help?: Help,
     path: Path,
 }
 
-export function CalendarDateInput({ label, help, path }: Props) {
+export function CalendarDateInput({ label, isRequired, help, path }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const value = handler.getValue(path);
@@ -23,7 +24,7 @@ export function CalendarDateInput({ label, help, path }: Props) {
 
     return (
         <>
-            <ItemLabel id={id} label={label} help={help} />
+            <ItemLabel id={id} label={label} markAsRequired={isRequired} help={help} />
             <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: '1em' }}>
                 <div>Year</div>
                 <SInput

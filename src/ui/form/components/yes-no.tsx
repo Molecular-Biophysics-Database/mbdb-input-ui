@@ -46,7 +46,7 @@ export function BooleanInput({ label, help, path }: Props) {
     const checked = Value.toBoolean(handler.getValue(path, Value.boolean(false)));
     return (
         <>
-            <ItemLabel label={label} help={help} id={id} />
+            <ItemLabel label={label} help={help} markAsRequired={true} id={id} />
             <Checkbox id={id} checked={checked} onChange={onChange} />
         </>
     );
@@ -80,7 +80,7 @@ export function TristateInput({ label, help, path }: Props) {
     const v = Value.toTristate(handler.getValue(path, Value.tristate('not-set')));
     return (
         <>
-            <ItemLabel label={label} help={help} id={id} />
+            <ItemLabel label={label} help={help} markAsRequired={false} id={id} />
             <YesNoUnset id={id} value={v} onChange={onChange} />
         </>
     );

@@ -81,7 +81,7 @@ export function OptionsInput(props: Props) {
     const v = handler.getValue(props.path);
     return (
         <>
-            <ItemLabel label={props.label} help={props.help} id={id} />
+            <ItemLabel label={props.label} help={props.help} markAsRequired={props.isRequired} id={id} />
             <Selection
                 id={id}
                 options={opts}
@@ -116,7 +116,7 @@ export function OptionsWithOtherInput(props: Props) {
 
     return (
         <>
-            <ItemLabel label={props.label} help={props.help} id={id} />
+            <ItemLabel label={props.label} help={props.help} markAsRequired={props.isRequired} id={id} />
             <Selection
                 id={id}
                 options={opts}
