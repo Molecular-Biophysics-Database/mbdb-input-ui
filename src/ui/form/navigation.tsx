@@ -13,6 +13,7 @@ import { Input, Item, Schema } from '../../schema';
 import { Data } from '../../schema/data';
 import { Value } from '../../schema/value';
 
+const TopCorrection = 5;
 const MaximumNesting = 10;
 
 type Rect = { top: number, bottom: number };
@@ -42,7 +43,7 @@ function isNavItemVisible(bRect: Rect | null, htmlId: string) {
 }
 
 function isVisible(bRect: Rect, topOffset: number) {
-    return topOffset >= bRect.top && topOffset < bRect.bottom;
+    return topOffset >= bRect.top - TopCorrection && topOffset < bRect.bottom;
 }
 
 function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, tainerRect: Rect | null) {

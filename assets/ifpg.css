@@ -22,6 +22,7 @@
     --mbdb-clr-base: #dff2ff;
     --mbdb-clr-based1: #88cdfe;
     --mbdb-clr-based2: #4097d5;
+    --mbdb-clr-based3: #0b72ba;
 
     --mbdb-border-radius: 5px;
 }
@@ -130,7 +131,7 @@
 }
 
 .mbdb-form-nav-list-item-title-highlighted {
-    background-color: #ffcb49;
+    background-color: var(--mbdb-clr-base);
 }
 
 .mbdb-form-nav-link {
@@ -138,9 +139,8 @@
     font-weight: bold;
     padding-right: var(--mbdb-hgap);
 }
-
-.mbdb-form-nav-link-highlighted {
-    text-decoration: underline;
+.mbdb-form-nav-link:hover {
+    color: var(--mbdb-clr-based3);
 }
 
 .mbdb-form-root {
