@@ -8,7 +8,7 @@ import { SectionLabel } from './label';
 import { VariantInput } from './variant';
 import { PathId } from '../path-id';
 import { scalarComponent } from '../render';
-import { niceLabel, useDarkBlock } from '../util';
+import { niceLabel, subtreeHasErrors, useDarkBlock } from '../util';
 import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
@@ -153,6 +153,11 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
     const darkBlk = useDarkBlock(nestLevel);
+    const hasErrors = subtreeHasErrors(handler.data(), path);
+    const tainerCls = clsx(
+        'mbdb-section', hasErrors && 'mbdb-section-has-errors',
+        'mbdb-array-tainer',
+        'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light');
 
     const components = [];
     let arrayIsSimple = false;
@@ -271,7 +276,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
 
             {arrayIsSimple
                 ? (
-                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
+                    <div className={tainerCls} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         <div style={{ ...GridInArrayStyle }}>
                             {components}
@@ -279,7 +284,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                     </div>
                 )
                 : (
-                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', 'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
+                    <div className={tainerCls} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         {components}
                     </div>
