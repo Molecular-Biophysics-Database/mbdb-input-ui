@@ -46,8 +46,8 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
     } else {
         const v = Data.getValue(internalData, internalParentPath);
 
-        if (!item.isRequired && Value.isEmpty(v)) {
-            return; // Ignore optional empty value
+        if (!item.isRequired && Value.isEmpty(v) && !item.isArray) {
+            return; // Ignore optional empty value but only if the value not directly in an array
         }
         if (!Value.isValid(v)) {
             // Log error and ignore the value
