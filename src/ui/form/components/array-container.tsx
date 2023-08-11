@@ -3,10 +3,11 @@ import React from 'react';
 import {
     Button as SButton,
 } from 'semantic-ui-react';
+import { GroupContainer } from './group-container';
 import { SectionLabel } from './label';
 import { VariantInput } from './variant';
 import { PathId } from '../path-id';
-import { component, scalarComponent } from '../render';
+import { scalarComponent } from '../render';
 import { niceLabel, useDarkBlock } from '../util';
 import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
@@ -99,16 +100,14 @@ function CollapsibleElement(props: CollapsibleElementProps) {
     const isCollapsed = handler.navigation.isCollapsed(dataItem);
 
     return (
-        <div className='mbdb-array-collapsible-tainer'>
-            <Collapsible
-                header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} setDeletionError={(err) => props.setDeletionError(err)} />}
-                content={props.content}
-                onCollapsedExpanded={(isCollapsed) => {
-                    handler.navigation.setCollapsed(dataItem, isCollapsed);
-                }}
-                isCollapsed={isCollapsed}
-            />
-        </div>
+        <Collapsible
+            header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} setDeletionError={(err) => props.setDeletionError(err)} />}
+            content={props.content}
+            onCollapsedExpanded={(isCollapsed) => {
+                handler.navigation.setCollapsed(dataItem, isCollapsed);
+            }}
+            isCollapsed={isCollapsed}
+        />
     );
 }
 
@@ -160,30 +159,27 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
 
     if (Schema.hasComplexInput(item)) {
         for (let idx = 0; idx < array.length; idx++) {
-            const blockComponents = [];
-            for (let jdx = 0; jdx < item.input.length; jdx++) {
-                const innerItem = item.input[jdx];
-                blockComponents.push(
-                    component(innerItem, nestLevel + 1, Data.Path.index(idx, path), `${idx}-${jdx}`)
-                );
-            }
-
             components.push(
-                <div className='mbdb-item-grid' key={idx}>
+                <React.Fragment key={idx}>
                     <ArrayAnchor path={path} idx={idx} />
                     <CollapsibleElement
                         title={_niceLabel}
                         idx={idx}
                         path={path}
                         content={
-                            <div className={clsx('mbdb-item-grid', 'mbdb-block', !darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
-                                {blockComponents}
-                            </div>
+                            <GroupContainer
+                                input={item.input}
+                                label=''
+                                isRequired={item.isRequired}
+                                nestLevel={nestLevel + 1}
+                                help={item.help}
+                                path={Data.Path.index(idx, path)}
+                            />
                         }
                         setDeletionError={setDeletionError}
                         handler={handler}
                     />
-                </div>
+                </React.Fragment>
             );
         }
 
