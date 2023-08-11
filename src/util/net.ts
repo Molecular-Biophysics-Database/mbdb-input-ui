@@ -8,6 +8,7 @@ type AbortableFetch = {
     response: Promise<Response>,
     aborter: AbortController | null,
     timeoutTimer?: ReturnType<typeof setTimeout>,
+    timedOutAfter?: number,
 }
 
 function serveBlob(blob: Blob, filename: string) {
@@ -50,9 +51,12 @@ export const Net = {
         assert(timeoutMs > 0, `Fetch timeout must be a positive number but got ${timeoutMs}`);
 
         const pending = this.abortableFetch(info, init);
-        const timeoutTimer = setTimeout(() => Net.abortFetch(pending.aborter), timeoutMs);
+        pending.timeoutTimer = setTimeout(() => {
+            Net.abortFetch(pending.aborter);
+            pending.timedOutAfter = timeoutMs;
+        }, timeoutMs);
 
-        return { ...pending, timeoutTimer };
+        return pending;
     },
 
     isAbortError(e: Error) {
@@ -85,9 +89,20 @@ export const Net = {
     },
 
     async resolveFetch(fetch: AbortableFetch) {
-        if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+        try {
+            const resp = await fetch.response;
 
-        return await fetch.response;
+            if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+            return resp;
+        } catch (e) {
+            if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+
+            if (Net.isAbortError(e as Error) && fetch.timedOutAfter) {
+                throw new Error(`Request has timed out after ${fetch.timedOutAfter} ms`);
+            } else {
+                throw e;
+            }
+        }
     },
 
     serveFile(mimeType: string, data: string, filename: string) {

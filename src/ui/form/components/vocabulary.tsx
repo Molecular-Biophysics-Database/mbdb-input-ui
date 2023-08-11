@@ -165,7 +165,7 @@ export function VocabularyInput(props: Props) {
         Vocabulary.get(props.vocabularyType).then((voc) => {
             dispatch({ type: 'voc-loaded', voc });
         }).catch(e => {
-            console.error(e);
+            console.error(`Failed to get vocabulary: ${(e as Error).message}`);
             // TODO: We need to indicate to the user that the vocabulary has failed to loaded
             //       and provide an option to try to reaload it.
             dispatch({ type: 'voc-loaded', voc: [] });
