@@ -159,17 +159,11 @@
 
 .mbdb-item-grid {
     align-items: center;
-    border-left: 1px solid var(--mbdb-clr-based1);
     display: grid;
     column-gap: var(--mbdb-2hgap);
     grid-template-columns: auto 1fr;
-    padding-left: var(--mbdb-form-pad);
     padding-top: var(--mbdb-form-pad);
     row-gap: var(--mbdb-vgap);
-}
-
-.mbdb-item-grid-bad-data {
-    border-left: 1px solid red;
 }
 
 .mbdb-item-label {
@@ -189,6 +183,7 @@
 }
 
 .mbdb-section {
+    border-left: 1px solid transparent;
     display: flex;
     flex-direction: column;
     gap: var(--mbdb-vgap);
@@ -196,6 +191,10 @@
     padding-left: var(--mbdb-form-pad);
     padding-top: var(--mbdb-form-pad);
     padding-bottom: var(--mbdb-form-pad);
+}
+
+.mbdb-section-has-errors {
+    border-left: 1px solid red;
 }
 
 .mbdb-section-label {

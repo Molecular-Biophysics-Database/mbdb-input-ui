@@ -17,9 +17,12 @@ const _GroupContainer = React.memo(function MGroupContainer(props: Props & {
     id: string,
 }) {
     return (
-        <div className={clsx('mbdb-section', 'mbdb-block', props.darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={props.id}>
+        <div className={clsx(
+            'mbdb-section', props.hasErrors && 'mbdb-section-has-errors',
+            'mbdb-block', props.darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light'
+        )} id={props.id}>
             <SectionLabel label={props.label} markAsRequired={props.isRequired} help={props.help} />
-            <div className={clsx('mbdb-item-grid', props.hasErrors && 'mbdb-item-grid-bad-data')}>
+            <div className='mbdb-item-grid'>
                 {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.path, idx))}
             </div>
         </div>
