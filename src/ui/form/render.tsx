@@ -15,23 +15,23 @@ import { Item, Schema } from '../../schema';
 import { Data, Path } from '../../schema/data';
 import { Validators } from '../../schema/validators';
 
-export function component(item: Item, path: Path, key?: string | number, noLabel = false) {
+export function component(item: Item, nestLevel: number, path: Path, key?: string | number, noLabel = false) {
     if (item.isArray) {
-        return <ArrayContainer item={item} path={Data.Path.path(item.tag, path)} key={key} />
+        return <ArrayContainer item={item} nestLevel={nestLevel} path={Data.Path.path(item.tag, path)} key={key} />
     } else {
-        return scalarComponent(item, !!item.isRequired, Data.Path.path(item.tag, path), key, noLabel);
+        return scalarComponent(item, !!item.isRequired, nestLevel, Data.Path.path(item.tag, path), key, noLabel);
     }
 }
 
-export function scalarComponent(item: Item, isRequired: boolean, path: Path, key: string | number | undefined, noLabel = false) {
+export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, path: Path, key: string | number | undefined, noLabel = false) {
     const label = noLabel ? '' : niceLabel(item.label, !!item.dontTransformLabels);
 
     if (item.dontDisplay) return null;
 
     if (Schema.hasComplexInput(item)) {
-        return <GroupContainer input={item.input} label={label} help={item.help} isRequired={isRequired} path={path} key={key} />
+        return <GroupContainer input={item.input} label={label} help={item.help} isRequired={isRequired} nestLevel={nestLevel} path={path} key={key} />
     } else if (Schema.hasVariantInput(item)) {
-        return <VariantInput input={item.input} label={label} path={path} key={key} />;
+        return <VariantInput input={item.input} label={label} nestLevel={nestLevel} path={path} key={key} />;
     } else if (Schema.hasTextualInput(item)) {
         if (Schema.hasNumericInput(item)) {
             if (item.input === 'int') {

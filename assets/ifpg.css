@@ -78,6 +78,14 @@
     font-weight: bold;
 }
 
+.mbdb-block-dark {
+    background-color: #eee;
+}
+
+.mbdb-block-light {
+    background-color: #fff;
+}
+
 .mbdb-collapsible-tainer {
     display: flex;
     flex-direction: column;
@@ -199,9 +207,6 @@
     display: flex;
     flex-direction: row;
     gap: var(--mbdb-form-pad);
-    /* padding cannot be negative so we have to use a crutch with margins */
-    margin-bottom: calc(-1 * var(--mbdb-form-pad));
-    margin-top: calc(-1 * var(--mbdb-form-pad));
 }
 
 .mbdb-voc-entry-detail-name {

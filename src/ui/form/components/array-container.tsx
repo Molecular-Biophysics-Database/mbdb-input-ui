@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import {
     Button as SButton,
@@ -6,7 +7,7 @@ import { SectionLabel } from './label';
 import { VariantInput } from './variant';
 import { PathId } from '../path-id';
 import { component, scalarComponent } from '../render';
-import { niceLabel } from '../util';
+import { niceLabel, useDarkBlock } from '../util';
 import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
@@ -143,14 +144,16 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
 
 export type Props = {
     item: Item,
+    nestLevel: number,
     path: Path,
 };
-export function ArrayContainer({ item, path }: Props) {
+export function ArrayContainer({ item, nestLevel, path }: Props) {
     const _niceLabel = React.useMemo(() => niceLabel(item.label, !!item.dontTransformLabels), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
+    const darkBlk = useDarkBlock(nestLevel);
 
     const components = [];
     let arrayIsSimple = false;
@@ -161,7 +164,7 @@ export function ArrayContainer({ item, path }: Props) {
             for (let jdx = 0; jdx < item.input.length; jdx++) {
                 const innerItem = item.input[jdx];
                 blockComponents.push(
-                    component(innerItem, Data.Path.index(idx, path), `${idx}-${jdx}`)
+                    component(innerItem, nestLevel + 1, Data.Path.index(idx, path), `${idx}-${jdx}`)
                 );
             }
 
@@ -173,7 +176,7 @@ export function ArrayContainer({ item, path }: Props) {
                         idx={idx}
                         path={path}
                         content={
-                            <div className='mbdb-item-grid'>
+                            <div className={clsx('mbdb-item-grid', !darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
                                 {blockComponents}
                             </div>
                         }
@@ -206,7 +209,7 @@ export function ArrayContainer({ item, path }: Props) {
                         title={_niceLabel}
                         idx={idx}
                         path={path}
-                        content={<VariantInput input={item.input} label={item.label} path={Data.Path.index(idx, path)} />}
+                        content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} path={Data.Path.index(idx, path)} />}
                         setDeletionError={setDeletionError}
                         handler={handler}
                     />
@@ -231,7 +234,7 @@ export function ArrayContainer({ item, path }: Props) {
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <React.Fragment key={idx}>
-                    {scalarComponent(item, true, Data.Path.index(idx, path), undefined, true)}
+                    {scalarComponent(item, true, nestLevel, Data.Path.index(idx, path), undefined, true)}
                     <SButton
                         style={{ marginLeft: '1rem' }}
                         color='red'
@@ -272,7 +275,7 @@ export function ArrayContainer({ item, path }: Props) {
 
             {arrayIsSimple
                 ? (
-                    <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
+                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         <div style={{ ...GridInArrayStyle }}>
                             {components}
@@ -280,7 +283,7 @@ export function ArrayContainer({ item, path }: Props) {
                     </div>
                 )
                 : (
-                    <div className='mbdb-section mbdb-array-tainer' id={tainerId}>
+                    <div className={clsx('mbdb-section', 'mbdb-array-tainer', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
                         {components}
                     </div>

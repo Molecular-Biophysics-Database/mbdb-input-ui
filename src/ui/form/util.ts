@@ -2,6 +2,12 @@ import { replaceAll } from '../../util';
 import { Data, DataTree, Path } from '../../schema/data';
 import { objKeys } from '../../util';
 
+export function niceLabel(label: string, noop = false) {
+    if (label.length === 0 || noop) return label;
+
+    return label[0].toLocaleUpperCase() + replaceAll(label.substring(1), '_', ' ');
+}
+
 export function subtreeHasErrors(data: DataTree, path: Path): boolean {
     const item = Data.getItem(data, path);
 
@@ -40,8 +46,6 @@ export function subtreeHasErrors(data: DataTree, path: Path): boolean {
     }
 }
 
-export function niceLabel(label: string, noop = false) {
-    if (label.length === 0 || noop) return label;
-
-    return label[0].toLocaleUpperCase() + replaceAll(label.substring(1), '_', ' ');
+export function useDarkBlock(nestLevel: number) {
+    return nestLevel % 2 === 1;
 }
