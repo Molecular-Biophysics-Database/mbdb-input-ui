@@ -164,7 +164,7 @@
     column-gap: var(--mbdb-2hgap);
     grid-template-columns: auto 1fr;
     padding-top: var(--mbdb-form-pad);
-    row-gap: var(--mbdb-vgap);
+    row-gap: var(--mbdb-form-pad);
 }
 
 .mbdb-item-label {
