@@ -16,6 +16,7 @@
     --mbdb-v2gap: calc(0.5 * var(--mbdb-vgap));
 
     --mbdb-form-pad: var(--mbdb-2hgap);
+    --mbdb-form-pad2: calc(0.5 * var(--mbdb-2hgap));
 
     --mbdb-anim-speed: 200ms;
 
@@ -163,8 +164,8 @@
     display: grid;
     column-gap: var(--mbdb-2hgap);
     grid-template-columns: auto 1fr;
-    padding-top: var(--mbdb-form-pad);
-    row-gap: var(--mbdb-form-pad);
+    padding-top: var(--mbdb-form-pad2);
+    row-gap: var(--mbdb-form-pad2);
 }
 
 .mbdb-item-label {
@@ -193,6 +194,7 @@
     flex-direction: column;
     gap: var(--mbdb-vgap);
     grid-column: span 2;
+    margin-top: var(--mbdb-form-pad2);
     padding: var(--mbdb-form-pad) 0 var(--mbdb-form-pad) var(--mbdb-form-pad);
 }
 
