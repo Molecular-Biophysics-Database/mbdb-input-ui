@@ -9,7 +9,7 @@ import { niceLabel, subtreeHasErrors } from './util';
 import { assert } from '../../assert';
 import { FormContextInstance } from '../../context';
 import { _FormContextHandler } from '../../context/handler';
-import { Input, Item, Schema } from '../../schema';
+import { Input, Item, Schema, TopLevelItem } from '../../schema';
 import { Data } from '../../schema/data';
 import { Value } from '../../schema/value';
 
@@ -150,7 +150,7 @@ function NavigationListItem(props: NavigationListItemProps) {
 
     let hasErrors = false;
     if (!props.children) {
-        hasErrors = subtreeHasErrors(handler.data(), path);
+        hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
     } else {
         Data.walkShallow(handler.getTree(path), (value) => {
             hasErrors = hasErrors || !Value.isValid(value);
@@ -190,7 +190,7 @@ NavigationListItem.propTypes = {
 
 export type NavigationProps = {
     inputRef: React.RefObject<HTMLDivElement>,
-    schema: Item[],
+    schema: TopLevelItem,
 };
 export class Navigation extends React.Component<NavigationProps> {
     static contextType = FormContextInstance;
@@ -230,6 +230,6 @@ export class Navigation extends React.Component<NavigationProps> {
         const { handler } = this.context as { handler: _FormContextHandler }; // What the hell is up with this?
         const input = this.props.inputRef?.current;
 
-        return navigationList(this.props.schema, handler, '', 0, input ? input.getBoundingClientRect() : null);
+        return navigationList(this.props.schema.input, handler, '', 0, input ? input.getBoundingClientRect() : null);
     }
 }

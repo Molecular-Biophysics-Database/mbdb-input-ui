@@ -129,7 +129,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
                         for (const relKey of relatedKeys) {
                             const innerPath = Data.Path.path(relKey, path);
                             if (relKey === 'id') {
-                                handler.set(innerPath, Value.empty());
+                                handler.set(innerPath, Value.empty(!isRequired));
                             } else {
                                 handler.unset(innerPath, true);
                             }

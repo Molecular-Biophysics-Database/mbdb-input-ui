@@ -1,5 +1,6 @@
 import { assert } from '../assert';
 import { FormContext } from './';
+import { TopLevelItem } from '../schema';
 import { Data, DataTree, DataTreeItem, Path } from '../schema/data';
 import { References } from '../schema/references';
 import { Value } from '../schema/value';
@@ -157,6 +158,10 @@ function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormConte
                 References.remove(ctxGetter().references, referenceAs, refId);
                 if (!passive) doUpdate();
             },
+        },
+
+        schema(): TopLevelItem {
+            return ctxGetter().schema;
         },
 
         set(path: Path, value: Value | DataTree, passive = false) {

@@ -18,7 +18,7 @@ import { Mbdb } from './mbdb';
 import { MbdbData } from './mbdb/data';
 import { MbdbModels } from './mbdb/models';
 import { submitToMbdb } from './mbdb/submit';
-import { ComplexItem, Item } from './schema';
+import { TopLevelItem } from './schema';
 import { Configuration } from './schema/configuration';
 import { Persistence } from './schema/persistence';
 import { LoadFileButton } from './ui/load-file-button';
@@ -43,10 +43,6 @@ function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext
 
     console.log(dbg);
     navigator.clipboard.writeText(dbg);
-}
-
-function fakeItTillYouMakeIt(inner: Item[]) {
-    return { input: inner } as Item;
 }
 
 function mbdbErrors(errors: { field: string, messages: string[] }[]) {
@@ -177,7 +173,7 @@ function App() {
                         {/* First row */}
                         <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
                         <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema) as ComplexItem).toApi)}>Dump MBDB-schema object</SButton>
+                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), schema).toApi)}>Dump MBDB-schema object</SButton>
 
                         {/* Second row */}
                         <SButton
@@ -211,7 +207,7 @@ function App() {
                         <SButton
                             color='blue'
                             onClick={() => {
-                                const { toApi, errors } = Mbdb.toData(ctxGetter(), fakeItTillYouMakeIt(schema) as ComplexItem);
+                                const { toApi, errors } = Mbdb.toData(ctxGetter(), schema);
 
                                 if (errors.length === 0) {
                                     submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
@@ -262,7 +258,7 @@ function App() {
     );
 }
 
-export function FormBlock(props: { schema: Item[], contextValue: { handler: _FormContextHandler } }) {
+export function FormBlock(props: { schema: TopLevelItem, contextValue: { handler: _FormContextHandler } }) {
     React.useEffect(() => {
         props.contextValue.handler.navigation.clear();
     }, [props.schema]);

@@ -1,4 +1,4 @@
-import { ComplexItem, Item, Input, Schema } from '../';
+import { ComplexItem, Item, Input, Schema, TopLevelItem } from '../';
 import { assert } from '../../assert';
 
 export type ConfigurationItem = {
@@ -138,7 +138,7 @@ function reorderChildren(item: ComplexItem, order: ConfigurationItem['order']) {
 }
 
 export const Configuration = {
-    configure(schema: Item[], config: Configuration | null) {
+    configure(schema: TopLevelItem, config: Configuration | null): TopLevelItem {
         assert(typeof config === 'object', 'Configuration parameter must be an object');
 
         for (const prop in config) {
@@ -154,11 +154,9 @@ export const Configuration = {
                 // children of 'constituents/ items.
                 const pattern = prop.split('/').slice(1);
 
-                let itemsToConsider = schema;
                 let configurees = new Array<Item>();
                 for (const tok of pattern) {
-                    configurees = getAllConfigurees(itemsToConsider, tok);
-                    itemsToConsider = configurees;
+                    configurees = getAllConfigurees(schema.input, tok);
                 }
 
                 for (const configuree of configurees) {
@@ -167,7 +165,7 @@ export const Configuration = {
             } else {
                 const path = prop.split('/');
 
-                const configuree = getSpecificConfiguree(schema, path);
+                const configuree = getSpecificConfiguree(schema.input, path);
                 if (configuree) {
                     configureItem(configuree, cfg);
                 }

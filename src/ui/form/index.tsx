@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigation } from './navigation';
 import { Input } from './input';
-import { Item } from '../../schema';
+import { TopLevelItem } from '../../schema';
 
-export function Form({ schema }: { schema: Item[] }) {
+export function Form({ schema }: { schema: TopLevelItem }) {
     const inputRef = React.useRef(null);
 
     return (

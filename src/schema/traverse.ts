@@ -1,12 +1,12 @@
-import { Item, Schema } from './';
+import { AnyItem, Item, Schema } from './';
 import { Path } from './data';
 import { assert } from '../assert';
 
 export const Traverse = {
-    itemFromSchema(objPath: string, schema: Item) {
+    itemFromSchema(objPath: string, schema: AnyItem): Item {
         const toks = objPath.split('/');
 
-        let item: Item | undefined = schema
+        let item: Item | undefined = schema as Item;
         let idx;
         for (idx = 0; idx < toks.length; idx++) {
             const tok = toks[idx];

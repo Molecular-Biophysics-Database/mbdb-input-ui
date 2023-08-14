@@ -8,6 +8,10 @@ type BaseValue = {
     __mbdb_value: true,
 };
 
+function mkValue<T>(payload: T, isValid = false) {
+    return { __mbdb_value: true as true, payload, isValid };
+};
+
 export type CalendarDate = {
     year: number,
     month: number,
@@ -46,11 +50,11 @@ export const Value = {
     },
 
     boolean(tf: boolean): TValue<boolean> {
-        return this.value(tf, true);
+        return mkValue(tf, true);
     },
 
     calendarDate(year: number, month: number, day: number, isValid = true): TValue<CalendarDate> {
-        return this.value({ year, month, day }, isValid);
+        return mkValue({ year, month, day }, isValid);
     },
 
     defaultForItem(item: Item, isRequiredOverride: boolean | undefined = void 0) {
@@ -73,7 +77,7 @@ export const Value = {
     },
 
     empty(isValid = false) {
-        const v = this.value('');
+        const v = mkValue('');
         v.isValid = isValid;
 
         return v;
@@ -184,11 +188,11 @@ export const Value = {
     },
 
     option(tag: string, other?: string) {
-        return Value.value({ tag, other }, true);
+        return mkValue({ tag, other }, true);
     },
 
     refId(): TValue<string> {
-        return Value.value(Uuid.get(), true);
+        return mkValue(Uuid.get(), true);
     },
 
     toBoolean(value: Value) {
@@ -266,21 +270,21 @@ export const Value = {
         return value.payload;
     },
 
+    textual(text: string, isValid: boolean): TValue<string> {
+        return mkValue<string>(text, isValid);
+    },
+
     tristate(tfn: Tristate) {
         assert(isTristate(tfn), `Value ${tfn} is not a valid tristate value`);
 
-        return Value.value(tfn, true);
+        return mkValue(tfn, true);
     },
 
     uuid(): TValue<string> {
-        return Value.value(Uuid.get(), true);
-    },
-
-    value<T>(payload: T, isValid = false) {
-        return { __mbdb_value: true as true, payload, isValid };
+        return mkValue(Uuid.get(), true);
     },
 
     vocabularyEntry(id: string, title: string, data: VocabularyEntry['data'], isValid: boolean) {
-        return this.value<VocabularyEntry>({ id, title, data }, isValid);
+        return mkValue<VocabularyEntry>({ id, title, data }, isValid);
     },
 };

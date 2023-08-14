@@ -153,7 +153,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
     const darkBlk = useDarkBlock(nestLevel);
-    const hasErrors = subtreeHasErrors(handler.data(), path);
+    const hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
     const tainerCls = clsx(
         'mbdb-section', hasErrors && 'mbdb-section-has-errors',
         'mbdb-array-tainer',

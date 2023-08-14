@@ -2,7 +2,7 @@ import { MbdbData, MbdbScalar } from './data';
 import { assert } from '../assert';
 import { FormContext } from '../context';
 import { Register } from '../ui/form/custom-components/register';
-import { ComplexItem, Item, Schema, VariantItem } from '../schema';
+import { Item, Schema, TopLevelItem, VariantItem } from '../schema';
 import { Data, DataTree, Path } from '../schema/data';
 import { Traverse } from '../schema/traverse';
 import { Value } from '../schema/value';
@@ -121,7 +121,7 @@ function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbd
     MbdbData.set(mbdbData, choice, MbdbData.Path.toPath(MbdbData.Path.extend(item.discriminator, item.mbdbPath), mbdbArrayIndices));
 }
 
-function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: ComplexItem) {
+function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: TopLevelItem) {
     const tree = Data.getTree(internalData, internalParentPath);
     for (const k in tree) {
         if (Schema.isReservedKey(k)) continue;
@@ -131,10 +131,15 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
 
         if (innerItem.isArray) {
             const v = Data.getArray(internalData, path);
+            const minItems = innerItem.minItems ?? 0;
 
-            assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
-            for (let idx = 0; idx < v.length; idx++) {
-                toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem);
+            if (innerItem.isRequired && v.length < minItems) {
+                errors.push(`${Data.Path.toString(path)} must have at least ${minItems} but it has only ${v.length} items.`);
+            } else {
+                assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
+                for (let idx = 0; idx < v.length; idx++) {
+                    toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem);
+                }
             }
         } else {
             toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, innerItem);
@@ -143,7 +148,7 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
 }
 
 export const Mbdb = {
-    toData(ctx: FormContext, schema: ComplexItem) {
+    toData(ctx: FormContext, schema: TopLevelItem) {
         const data = {};
         const errors = new Array<string>();
         toMbdbDataTree(ctx.data, [], data, [], errors, schema);

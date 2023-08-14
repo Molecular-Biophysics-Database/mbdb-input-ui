@@ -250,18 +250,30 @@ def item_defn(item, defs, name, mbdbPath):
 
     return defn
 
-def make_ui_item(name, props, mbdbPath):
-    required = False
-    if 'required' in props and props['required']:
-        required = True
 
-    return {
+def make_ui_item(name, props, mbdbPath):
+    isArray = name.endswith('[]')
+    required = 'required' in props and props['required']
+
+    if '^minItems' in props:
+        if not isArray:
+            raise UIGSchemaError(f'Item {name} defines "^minItems" it is not an array.')
+        else:
+            minItems = props['^minItems']
+            required = required or minItems > 0
+
+    item = {
         'tag': mbdb_tag(name),
         'label': mbdb_tag(name),
-        'isArray': name.endswith('[]'),
+        'isArray': isArray,
         'isRequired': required,
         'mbdbPath': mbdbPath,
     }
+
+    if '^minItems' in props:
+        item['minItems'] = props['^minItems']
+
+    return item
 
 
 def mark_discriminator_item_as_discriminator(defn, discr):

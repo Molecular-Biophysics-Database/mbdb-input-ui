@@ -1,12 +1,12 @@
-import { ComplexItem, Item, Schema } from './';
+import { AnyItem, Schema, TopLevelItem } from './';
 import { Data, DataTree, Path } from './data';
 import { Traverse } from './traverse';
 import { Value } from './value';
 import { assert } from '../assert';
 import { objKeys } from '../util';
 
-function gatherAnchors(anchors: Set<string>, item: Item) {
-    if (Schema.hasComplexInput(item)) {
+function gatherAnchors(anchors: Set<string>, item: AnyItem) {
+    if (Schema.isTopLevelItem(item) || Schema.hasComplexInput(item)) {
         for (const innerItem of item.input) {
             gatherAnchors(anchors, innerItem);
         }
@@ -20,7 +20,7 @@ function gatherAnchors(anchors: Set<string>, item: Item) {
     }
 }
 
-function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, schema: ComplexItem, objs: { refId: string, data: DataTree }[]) {
+function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, schema: TopLevelItem, objs: { refId: string, data: DataTree }[]) {
     const dataItem = Data.getItem(data, path);
     if (Data.isDataTree(dataItem)) {
         for (const k in dataItem) {
@@ -191,14 +191,14 @@ export const References = {
     },
 
     Gather: {
-        anchors(schema: ComplexItem) {
+        anchors(schema: TopLevelItem) {
             const anchors = new Set<string>();
             gatherAnchors(anchors, schema);
 
             return Array.from(anchors);
         },
 
-        refObjsForAnchor(anchor: string, data: DataTree, schema: ComplexItem) {
+        refObjsForAnchor(anchor: string, data: DataTree, schema: TopLevelItem) {
             const objs = new Array<{ refId: string, data: DataTree }>();
             gatherRefObjsForAnchor(anchor, data, [], schema, objs);
 

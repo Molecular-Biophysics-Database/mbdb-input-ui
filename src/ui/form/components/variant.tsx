@@ -115,7 +115,7 @@ export type Props = {
 export function VariantInput(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const variantChoice = handler.getVariantChoice(props.path);
-    const hasErrors = subtreeHasErrors(handler.data(), props.path)
+    const hasErrors = subtreeHasErrors(handler.data(), props.path, handler.schema());
 
     return <_VariantInput {...props} variantChoice={variantChoice} hasErrors={hasErrors} handler={handler} />;
 }

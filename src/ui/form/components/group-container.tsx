@@ -52,7 +52,7 @@ export type Props = {
 export function GroupContainer(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
-    const hasErrors = subtreeHasErrors(handler.data(), props.path);
+    const hasErrors = subtreeHasErrors(handler.data(), props.path, handler.schema());
     const darkBlk = useDarkBlock(props.nestLevel);
 
     return <_GroupContainer {...props} handler={handler} darkBlk={darkBlk} hasErrors={hasErrors} id={id} />;

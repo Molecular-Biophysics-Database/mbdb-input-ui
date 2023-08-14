@@ -54,7 +54,7 @@ export function TextualInput({ label, isRequired, help, path, validator, noRight
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SInputProps> = React.useMemo(() => (_ev, data) => {
         const newValue = data.value;
-        handler.set(path, Value.value(newValue, validator ? validator(newValue) : true));
+        handler.set(path, Value.textual(newValue, validator ? validator(newValue) : true));
     }, [path]);
 
     const value = handler.getValue(path);

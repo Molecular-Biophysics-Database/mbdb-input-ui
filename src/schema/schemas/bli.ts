@@ -3021,8 +3021,9 @@ export const BLI = [
                                                 tag: 'components',
                                                 label: 'components',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]',
+                                                minItems: 1,
                                                 input: {
                                                     Polymer: {
                                                         tag: 'Polymer',
@@ -11182,8 +11183,9 @@ export const BLI = [
                                 tag: 'composition',
                                 label: 'composition',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]',
+                                minItems: 1,
                                 input: {
                                     Chemical: {
                                         tag: 'Chemical',
@@ -11855,8 +11857,9 @@ export const BLI = [
                         tag: 'chemical_environments',
                         label: 'chemical_environments',
                         isArray: true,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]',
+                        minItems: 1,
                         input: [
                             {
                                 tag: 'id',
@@ -14450,8 +14453,9 @@ export const BLI = [
                                                 tag: 'components',
                                                 label: 'components',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]',
+                                                minItems: 1,
                                                 input: {
                                                     Polymer: {
                                                         tag: 'Polymer',
@@ -22640,8 +22644,9 @@ export const BLI = [
                         tag: 'entities_of_interest',
                         label: 'entities_of_interest',
                         isArray: true,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]',
+                        minItems: 1,
                         input: {
                             Polymer: {
                                 tag: 'Polymer',
@@ -24212,8 +24217,9 @@ export const BLI = [
                                         tag: 'components',
                                         label: 'components',
                                         isArray: true,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]',
+                                        minItems: 1,
                                         input: {
                                             Polymer: {
                                                 tag: 'Polymer',
@@ -30940,8 +30946,9 @@ export const BLI = [
                         tag: 'entities_involved',
                         label: 'entities_involved',
                         isArray: true,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/entities_involved[]',
+                        minItems: 1,
                         input: [
                             {
                                 tag: 'entity',
@@ -31064,8 +31071,9 @@ export const BLI = [
                 tag: 'plates',
                 label: 'plates',
                 isArray: true,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/plates[]',
+                minItems: 1,
                 input: [
                     {
                         tag: 'id',
@@ -31235,8 +31243,9 @@ export const BLI = [
                 tag: 'sensors',
                 label: 'sensors',
                 isArray: true,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/sensors[]',
+                minItems: 1,
                 input: [
                     {
                         tag: 'id',
@@ -31477,8 +31486,9 @@ export const BLI = [
                 tag: 'measurement_protocol',
                 label: 'measurement_protocol',
                 isArray: true,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/measurement_protocol[]',
+                minItems: 1,
                 input: [
                     {
                         tag: 'id',
@@ -31733,8 +31743,9 @@ export const BLI = [
                 tag: 'measurements',
                 label: 'measurements',
                 isArray: true,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/measurements[]',
+                minItems: 1,
                 input: [
                     {
                         tag: 'sensor',
@@ -32280,8 +32291,9 @@ export const BLI = [
                 tag: 'data_analysis',
                 label: 'data_analysis',
                 isArray: true,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/data_analysis[]',
+                minItems: 1,
                 input: [
                     {
                         tag: 'derived_parameter',
