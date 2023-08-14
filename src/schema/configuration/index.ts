@@ -154,9 +154,9 @@ export const Configuration = {
                 // children of 'constituents/ items.
                 const pattern = prop.split('/').slice(1);
 
-                let configurees = new Array<Item>();
+                let configurees = schema.input;
                 for (const tok of pattern) {
-                    configurees = getAllConfigurees(schema.input, tok);
+                    configurees = getAllConfigurees(configurees, tok);
                 }
 
                 for (const configuree of configurees) {
