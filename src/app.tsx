@@ -140,6 +140,34 @@ function App() {
     }, []);
     const [contextValue, setContextValue] = React.useState({ handler: contextHandler });
 
+    const _submitToMbdb = (noSanityChecks = false) => {
+        const { toApi, errors } = Mbdb.toData(ctxGetter(), schema, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
+
+        if (errors.length === 0 || noSanityChecks) {
+            submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
+                if (resp.ok) {
+                    setSubmitError(null)
+                } else {
+                    resp.json().then((j) => {
+                        setSubmitError({
+                            status: resp.status,
+                            message: j.message || resp.statusText,
+                            errors: mbdbErrors(j.errors ?? []),
+                            payload: toApi, // The metadata object, we probably won't need this in production
+                        });
+                    })
+                }
+            }).catch((e) => setSubmitError({
+                status: 0,
+                message: e.message,
+                errors: [],
+                payload: toApi, // The metadata object, we probably won't need this in production
+            }));
+        } else {
+            setInputFormErrors(errors);
+        }
+    };
+
     return (
         <>
             <ErrorDialog
@@ -169,11 +197,12 @@ function App() {
 
             <div className='mbdb-app-tainer'>
                 <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdb-hgap)' }}>
-                    <div style={{ display: 'grid', gap: 'var(--mbdb-hgap)', gridTemplateColumns: 'auto auto auto' }}>
+                    <div style={{ display: 'grid', gap: 'var(--mbdb-hgap)', gridTemplateColumns: 'auto auto auto auto' }}>
                         {/* First row */}
                         <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
                         <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
                         <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), schema).toApi)}>Dump MBDB-schema object</SButton>
+                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), schema, { dontPrune: true, ignoreErrors: true }).toApi)}>Dump MBDB-schema object (no nicening)</SButton>
 
                         {/* Second row */}
                         <SButton
@@ -206,36 +235,17 @@ function App() {
                         />
                         <SButton
                             color='blue'
-                            onClick={() => {
-                                const { toApi, errors } = Mbdb.toData(ctxGetter(), schema);
-
-                                if (errors.length === 0) {
-                                    submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
-                                        if (resp.ok) {
-                                            setSubmitError(null)
-                                        } else {
-                                            resp.json().then((j) => {
-                                                setSubmitError({
-                                                    status: resp.status,
-                                                    message: j.message || resp.statusText,
-                                                    errors: mbdbErrors(j.errors ?? []),
-                                                    payload: toApi, // The metadata object, we probably won't need this in production
-                                                });
-                                            })
-                                        }
-                                    }).catch((e) => setSubmitError({
-                                        status: 0,
-                                        message: e.message,
-                                        errors: [],
-                                        payload: toApi, // The metadata object, we probably won't need this in production
-                                    }));
-                                } else {
-                                    setInputFormErrors(errors);
-                                }
-                            }}
+                            onClick={() => _submitToMbdb()}
                         >
                             <SIcon name='cloud upload' />
-                            Deposit record (yes, really!)
+                            Deposit record
+                        </SButton>
+                        <SButton
+                            color='blue'
+                            onClick={() => _submitToMbdb(true)}
+                        >
+                            <SIcon name='cloud upload' />
+                            Deposit record (without sanity checks)
                         </SButton>
                     </div>
 

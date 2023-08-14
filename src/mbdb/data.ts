@@ -9,7 +9,7 @@ export type MbdbScalar = number | string | boolean;
 export type MbdbData = { [key: string]: MbdbData | MbdbData[] | MbdbScalar | MbdbScalar[] };
 
 export const MbdbData = {
-    set(data: MbdbData, value: MbdbData | MbdbScalar, path: Path) {
+    set(data: MbdbData, value: MbdbData | MbdbData[] | MbdbScalar, path: Path) {
         let v: MbdbData | MbdbData[] = data;
 
         for (let idx = 0; idx < path.length - 1; idx++) {
@@ -42,7 +42,7 @@ export const MbdbData = {
 
     Path: {
         extend(tail: string, prefix: string) {
-            return prefix.length === 0 ? tail : prefix + '/' +tail;
+            return prefix.length === 0 ? tail : prefix + '/' + tail;
         },
 
         toPath(mbdbPath: string, arrayIndices: number[]) {
@@ -50,13 +50,18 @@ export const MbdbData = {
 
             const path: Path = [];
             let aIdx = 0;
-            for (const tok of toks) {
-                if (tok.endsWith('[]')) {
-                    const i = arrayIndices[aIdx++];
-                    assert(i !== undefined, `Undefined array index when creating a Path from mbdbPath. This happened with mbdbPath "${mbdbPath}" and array indices "${arrayIndices.join(', ')}"`);
+            for (let tIdx = 0; tIdx < toks.length; tIdx++) {
+                const tok = toks[tIdx];
 
+                if (tok.endsWith('[]')) {
                     path.push({ kind: 'obj', value: tok.substring(0, tok.length - 2) });
-                    path.push({ kind: 'index', value: i });
+
+                    if (tIdx !== toks.length - 1) {
+                        const i = arrayIndices[aIdx++];
+                        assert(i !== undefined, `Undefined array index when creating a Path from mbdbPath. This happened with mbdbPath "${mbdbPath}" and array indices "${arrayIndices.join(', ')}"`);
+
+                        path.push({ kind: 'index', value: i });
+                    }
                 } else {
                     path.push({ kind: 'obj', value: tok });
                 }

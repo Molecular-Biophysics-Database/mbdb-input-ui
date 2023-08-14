@@ -7,6 +7,13 @@ import { Data, DataTree, Path } from '../schema/data';
 import { Traverse } from '../schema/traverse';
 import { Value } from '../schema/value';
 
+type SerializationOptions = Omit<Options, 'dontPrune'>;
+
+export type Options = {
+    dontPrune?: boolean,
+    ignoreErrors?: boolean,
+};
+
 function pruneEmpty(data: Record<string, any>) {
     for (const prop in data) {
         const child = data[prop as keyof typeof data];
@@ -21,7 +28,7 @@ function pruneEmpty(data: Record<string, any>) {
     }
 }
 
-function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item) {
+function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item, options: SerializationOptions) {
     if (Schema.hasRelatedToInput(item)) {
         const id = Data.getValue(internalData, Data.Path.path('id', internalParentPath));
         if (!Value.isEmpty(id)) {
@@ -49,7 +56,8 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
         if (!item.isRequired && Value.isEmpty(v) && !item.isArray) {
             return; // Ignore optional empty value but only if the value not directly in an array
         }
-        if (!Value.isValid(v)) {
+
+        if (!Value.isValid(v) && !options.ignoreErrors) {
             // Log error and ignore the value
             errors.push(Data.Path.toString(internalParentPath));
             return;
@@ -92,17 +100,17 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
     }
 }
 
-function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item) {
+function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item, options: SerializationOptions) {
     if (Schema.hasComplexInput(item)) {
-        toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+        toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
     } else if (Schema.hasVariantInput(item)) {
-        toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+        toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
     } else {
-        toMbdbDataSimpleItem(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item);
+        toMbdbDataSimpleItem(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
     }
 }
 
-function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: VariantItem) {
+function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: VariantItem, options: SerializationOptions) {
     assert(item.discriminator !== undefined, `Item with variant input does not specify a type discriminator.`);
 
     const v = Data.getTree(internalData, internalParentPath);
@@ -111,17 +119,17 @@ function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbd
     assert(varItem !== undefined, `Variant choice "${choice}" is invalid for input item "${Data.Path.toString(internalParentPath)}}"`);
 
     if (Schema.hasComplexInput(varItem)) {
-        toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
+        toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
     } else if (Schema.hasVariantInput(varItem)) {
-        toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
+        toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
     } else {
-        toMbdbDataSimpleItem(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem);
+        toMbdbDataSimpleItem(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
     }
 
     MbdbData.set(mbdbData, choice, MbdbData.Path.toPath(MbdbData.Path.extend(item.discriminator, item.mbdbPath), mbdbArrayIndices));
 }
 
-function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: TopLevelItem) {
+function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: TopLevelItem, options: SerializationOptions) {
     const tree = Data.getTree(internalData, internalParentPath);
     for (const k in tree) {
         if (Schema.isReservedKey(k)) continue;
@@ -133,26 +141,34 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
             const v = Data.getArray(internalData, path);
             const minItems = innerItem.minItems ?? 0;
 
-            if (innerItem.isRequired && v.length < minItems) {
+            if (innerItem.isRequired && v.length < minItems && !options.ignoreErrors) {
                 errors.push(`${Data.Path.toString(path)} must have at least ${minItems} but it has only ${v.length} items.`);
             } else {
                 assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
-                for (let idx = 0; idx < v.length; idx++) {
-                    toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem);
+
+                if (v.length > 0) {
+                    for (let idx = 0; idx < v.length; idx++) {
+                        toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem, options);
+                    }
+                } else {
+                    MbdbData.set(mbdbData, [], MbdbData.Path.toPath(innerItem.mbdbPath, mbdbArrayIndices));
                 }
             }
         } else {
-            toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, innerItem);
+            toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, innerItem, options);
         }
     }
 }
 
 export const Mbdb = {
-    toData(ctx: FormContext, schema: TopLevelItem) {
+    toData(ctx: FormContext, schema: TopLevelItem, options?: Options) {
         const data = {};
         const errors = new Array<string>();
-        toMbdbDataTree(ctx.data, [], data, [], errors, schema);
-        pruneEmpty(data);
+        toMbdbDataTree(ctx.data, [], data, [], errors, schema, options ?? {});
+
+        if (!options?.dontPrune) {
+            pruneEmpty(data);
+        }
 
         return {
             toApi: {
