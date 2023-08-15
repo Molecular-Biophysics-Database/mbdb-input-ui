@@ -18,9 +18,10 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                 if (!Value.isValid(v)) {
                     errors.push(Data.Path.toString(vPath));
                 } else {
-                    const storePath = MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices);
+                    const storePath = MbdbData.Path.toPath(`${item.mbdbPath}/${k}`, mbdbArrayIndices);
+
                     // REVIEW: Here we assume that the related data are primitive values. Can we get something else here?
-                    assert(Value.isTextual(v) || Value.isBoolean(v) || Value.isTristate(v), `Unexpected value type on path "${Data.Path.toString(vPath)}"`);
+                    assert(Value.isTextual(v) || Value.isBoolean(v) || Value.isTristate(v), `Unexpected value type on path "${Data.Path.toString(vPath)}."`);
                     MbdbData.set(mbdbData, v.payload, storePath);
                 }
             }
