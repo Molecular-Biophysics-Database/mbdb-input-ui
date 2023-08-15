@@ -180,7 +180,7 @@ function checkItemDataSchema(data: Value, item: Item) {
     if (Schema.hasOptionsInput(item)) {
         if (!Value.isOption(data)) return false;
 
-        if (item.choices.find((c) => c.tag === data.payload.tag) === undefined) {
+        if ((item.choices.find((c) => c.tag === data.payload.tag) === undefined) && (!item.isRequired && data.payload.tag !== Schema.EmptyOptionValue)) {
             return false;
         }
         if (Schema.hasOptionsWithOtherInput(item)) {
@@ -198,6 +198,8 @@ function checkItemDataSchema(data: Value, item: Item) {
         return item.isRequired ? Value.isBoolean(data) : Value.isTristate(data);
     } else if (Schema.hasCalendarDateInput(item)) {
         return Value.isCalendarDate(data);
+    } else if (Schema.hasVocabularyInput(item)) {
+        return Value.isVocabularyEntry(data);
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {
         return true;
     } else {
@@ -219,22 +221,34 @@ function checkAndFixupReferences(data: DataTree, path: Path, references: Referen
                 continue;
             } else if (Schema.hasRelatedToInput(item)) {
                 const v = Data.getValue(data, Data.Path.path('id', innerPath));
-                const refId = Value.toRefId(v);
-                if (!References.has(references, item.relatesTo, refId)) {
-                    throw new Error(`Item on path "${Data.Path.toString(innerPath)}" references a referenceable that does not exist.`);
-                }
 
-                // We cannot trust that the related keys set by the "related-to" item
-                // are actually correct. We need to get them from the referenceable.
-                const ref = References.get(references, item.relatesTo, refId);
-                for (const rk of item.relatedKeys) {
-                    if (rk === 'id') continue;
-                    const rv = ref.data[rk];
-                    if (!Value.isValue(rv) || !Value.isTextual(rv)) {
-                        throw new Error(`Item on path "${Data.Path.toString(innerPath)}" expected its referenceable to have a key "${rk}" but the referenceable does not have it.`);
+                if (!Value.isEmpty(v)) {
+                    const refId = Value.toRelToId(v);
+                    if (!References.has(references, item.relatesTo, refId)) {
+                        throw new Error(`Item on path "${Data.Path.toString(innerPath)}" references a referenceable that does not exist.`);
                     }
 
-                    Data.set(data, Data.Path.path(rk, innerPath), rv);
+                    // We cannot trust that the related keys set by the "related-to" item
+                    // are actually correct. We need to get them from the referenceable.
+                    //
+                    // To elaborate, suppose that a "related-to" item references a field
+                    // called "name" in a referenceable. We need to do two checks here.
+                    // First, we need to check that the referenceable actually has a field called "name".
+                    // Second, since we cannot do proper referencing here, we need to take the value of
+                    // the referenceable's "name" field and copy it into "related-to"'s name field.
+                    // This is the correct way how to ensure consistency. Referenceable is considered
+                    // to be the "source of truth".
+
+                    const ref = References.get(references, item.relatesTo, refId);
+                    for (const rk of item.relatedKeys) {
+                        if (rk === 'id') continue;
+                        const rv = ref.data[rk];
+                        if (!Value.isValue(rv) || !Value.isTextual(rv)) {
+                            throw new Error(`Item on path "${Data.Path.toString(innerPath)}" expected its referenceable to have a key "${rk}" but the referenceable does not have it.`);
+                        }
+
+                        Data.set(data, Data.Path.path(rk, innerPath), rv);
+                    }
                 }
             } else {
                 checkAndFixupReferences(data, Data.Path.path(k, path), references, schema);
@@ -282,7 +296,7 @@ function validateData(data: DataTree, path: Path, item: Item) {
         value.isValid = Validators.validateCommon(item, value.payload);
 
         if (Schema.hasUuidInput(item) && !value.isValid) {
-            throw new Error(`Item at path ${path} is an automatically generated UUIDv4 but its value "${value.payload}" is not a valid UUIDv4`);
+            throw new Error(`Item at path ${Data.Path.toString(path)} is an automatically generated UUIDv4 but its value "${value.payload}" is not a valid UUIDv4`);
         }
     }
 }

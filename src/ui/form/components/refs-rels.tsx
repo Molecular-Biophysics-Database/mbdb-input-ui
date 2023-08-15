@@ -16,7 +16,8 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
     React.useEffect(() => {
         const refId = Value.toRefId(handler.getValue(path));
         if (!(handler.refs.hasAnchor(referenceAs) && handler.refs.has(referenceAs, refId))) {
-            // The referenceable may have been already added if the context was loaded from a file
+            // The referenceable may have been already added if the context was loaded from a file.
+            // In that case we would not take this if-branch
             handler.refs.add(Data.Path.parent(path), referenceAs, refId);
         }
 

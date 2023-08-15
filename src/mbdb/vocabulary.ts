@@ -88,4 +88,8 @@ export const Vocabulary = {
 
         return voc;
     },
+
+    getCached(type: string) {
+        return Cache.get(type);
+    },
 };

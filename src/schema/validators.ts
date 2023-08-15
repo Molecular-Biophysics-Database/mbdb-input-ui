@@ -1,7 +1,8 @@
 import { Item, Schema } from './';
 import { Uuid } from './uuid';
-import { CalendarDate } from './value';
+import { CalendarDate, Value, VocabularyEntry } from './value';
 import { assert } from '../assert';
+import { Vocabulary } from '../mbdb/vocabulary';
 import { daysInMonth } from '../util';
 
 const Zero = '0'.charCodeAt(0);
@@ -28,12 +29,25 @@ function validateInt(v: string, min: number | undefined, max: number | undefined
     return CommonValidators.isInRange(parseInt(v), min, max);
 }
 
+function validateVocabulary(v: VocabularyEntry, vocabularyType: string, isRequired: boolean) {
+    const { id, title, data } = v;
+    if (Value.isEmptyVocabularyEntry(Value.vocabularyEntry(id, title, data, false))) {
+        return !isRequired;
+    } else {
+        const voc = Vocabulary.getCached(vocabularyType);
+        if (!voc) return true; // If we do not have a vocabulary to check against, optimistically assume that the value is okay
+
+        return !!voc.find((e) => e.id === v.id);
+    }
+}
+
 export const CommonValidators = {
     alwaysValid(_v: any) {
         return true;
     },
 
-    isCalendarDate({ year, month, day }: CalendarDate) {
+    isCalendarDate(v: CalendarDate) {
+        const { year, month, day } = v;
         if (year < 1600 || year > 3000 || month < 1 || month > 12 || day < 1 || day > 31) {
             return false;
         }
@@ -139,7 +153,7 @@ export const CommonValidators = {
     },
 };
 
-export type Validator<T> = (v: T) => boolean;
+export type Validator<T extends Value['payload']> = (v: T) => boolean;
 
 export const Validators = {
     commonForItem(item: Item, isRequiredOverride?: boolean) {
@@ -173,12 +187,14 @@ export const Validators = {
             }
         } else if (Schema.hasOptionsInput(item)) {
             return CommonValidators.alwaysValid;
+        } else if (Schema.hasVocabularyInput(item)) {
+            return (v: VocabularyEntry) => validateVocabulary(v, item.vocabularyType, item.isRequired);
         }
 
         throw new Error(`No common validator is defined for item ${item.tag} of input type ${item.input}`);
     },
 
-    validateCommon<T>(item: Item, value: T) {
+    validateCommon<T extends Value['payload']>(item: Item, value: T) {
         const v = this.commonForItem(item);
         return v(value as any);
     }

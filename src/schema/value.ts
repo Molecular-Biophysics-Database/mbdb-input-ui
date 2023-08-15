@@ -127,6 +127,12 @@ export const Value = {
         }
     },
 
+    isEmptyVocabularyEntry(value: TValue<VocabularyEntry>) {
+        const p = value.payload;
+
+        return p.data === null && p.id === '' && p.title === '';
+    },
+
     isOption(value: Value): value is TValue<Option> {
         if (typeof value.payload !== 'object') {
             return false;
