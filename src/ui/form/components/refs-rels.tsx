@@ -107,6 +107,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
         <>
             <ItemLabel label={label} markAsRequired={isRequired} id={htmlId} />
             <SDropdown
+                className='mbdb-right-offset'
                 placeholder={`Select ${label}, if applicable`}
                 id={htmlId}
                 value={referenceId}
@@ -148,7 +149,6 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
                 }}
                 options={opts}
                 selection
-                fluid
             />
         </>
     );
