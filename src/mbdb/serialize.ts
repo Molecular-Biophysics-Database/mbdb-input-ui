@@ -126,12 +126,11 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
             } else {
                 assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
 
-                if (v.length > 0) {
-                    for (let idx = 0; idx < v.length; idx++) {
-                        toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem, options);
-                    }
-                } else {
-                    MbdbData.set(mbdbData, [], MbdbData.Path.toPath(innerItem.mbdbPath, mbdbArrayIndices));
+                // The logic around this code never creates empty arrays. This is intentional because there should be no valid
+                // reason to ever write empty arrays to the Mbdb data object. Empty array is expressed as the array key
+                // not being present at all in the parent object.
+                for (let idx = 0; idx < v.length; idx++) {
+                    toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem, options);
                 }
             }
         } else {

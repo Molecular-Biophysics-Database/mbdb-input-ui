@@ -1,5 +1,13 @@
-import { Path } from '../schema/data';
+import { Data, Path } from '../schema/data';
 import { assert } from '../assert';
+
+function isScalar(v: MbdbData | MbdbData[] | MbdbScalar | MbdbScalar[]): v is MbdbScalar {
+    return (
+        typeof v === 'boolean' ||
+        typeof v === 'number' ||
+        typeof v === 'string'
+    );
+}
 
 function mkChild(elem: Path[number]) {
     return elem.kind === 'obj' ? {} : [];
@@ -9,7 +17,33 @@ export type MbdbScalar = number | string | boolean;
 export type MbdbData = { [key: string]: MbdbData | MbdbData[] | MbdbScalar | MbdbScalar[] };
 
 export const MbdbData = {
-    set(data: MbdbData, value: MbdbData | MbdbData[] | MbdbScalar, path: Path) {
+    getScalar(data: MbdbData, path: Path): MbdbScalar | undefined {
+        let v: MbdbData | MbdbData[] = data;
+
+        for (let idx = 0; idx < path.length; idx++) {
+            const elem = path[idx];
+            if (elem === undefined) return void 0;
+
+            if (elem.kind === 'obj') {
+                assert(!Array.isArray(v), 'Got an array but expected an object');
+
+                if (v[elem.value] === undefined) {
+                    v[elem.value] = mkChild(path[idx + 1]);
+                }
+                v = v[elem.value] as MbdbData;
+            } else if (elem.kind === 'index') {
+                assert(Array.isArray(v), 'Got an object but expected an array');
+                while (v.length <= elem.value) v.push({});
+                v = v[elem.value];
+            }
+        }
+
+        assert(isScalar(v), `Expected a MbdbScalar but got something else on Path "${Data.Path.toString(path)}"`);
+
+        return v;
+    },
+
+    set(data: MbdbData, value: MbdbData | MbdbScalar, path: Path) {
         let v: MbdbData | MbdbData[] = data;
 
         for (let idx = 0; idx < path.length - 1; idx++) {
@@ -50,18 +84,13 @@ export const MbdbData = {
 
             const path: Path = [];
             let aIdx = 0;
-            for (let tIdx = 0; tIdx < toks.length; tIdx++) {
-                const tok = toks[tIdx];
-
+            for (const tok of toks) {
                 if (tok.endsWith('[]')) {
+                    const i = arrayIndices[aIdx++];
+                    assert(i !== undefined, `Undefined array index when creating a Path from mbdbPath. This happened with mbdbPath "${mbdbPath}" and array indices "${arrayIndices.join(', ')}"`);
+
                     path.push({ kind: 'obj', value: tok.substring(0, tok.length - 2) });
-
-                    if (tIdx !== toks.length - 1) {
-                        const i = arrayIndices[aIdx++];
-                        assert(i !== undefined, `Undefined array index when creating a Path from mbdbPath. This happened with mbdbPath "${mbdbPath}" and array indices "${arrayIndices.join(', ')}"`);
-
-                        path.push({ kind: 'index', value: i });
-                    }
+                    path.push({ kind: 'index', value: i });
                 } else {
                     path.push({ kind: 'obj', value: tok });
                 }
