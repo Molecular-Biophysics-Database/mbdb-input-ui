@@ -379,6 +379,7 @@ export const FormContext = {
                 throw new Error(`Attempted to set default value "${dv}" for options input "${item.tag}" but such value is invalid for that item.`);
 
             iv.payload.tag = dv;
+            iv.isValid = Validators.commonForItem(item)(iv.payload);
             data[item.tag] = iv;
         } else if (Schema.hasTextualInput(item)) {
             data[item.tag] = Value.textual(item.defaultValue!, true);
