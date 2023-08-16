@@ -43,7 +43,7 @@ function toCalendarDate(s: string): CalendarDate {
     return { year: nYear, month: nMonth, day: nDay };
 }
 
-function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors) {
+function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     for (const innerItem of item.input) {
         if (innerItem.isArray) {
             const innerItemPath = Data.Path.path(innerItem.tag, parentPath);
@@ -52,22 +52,22 @@ function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, pa
 
             if (mbdbArray) {
                 for (let idx = 0; idx < mbdbArray.length; idx++) {
-                    toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references);
+                    toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references, options);
                 }
             } else {
                 Data.set(data, innerItemPath, []);
             }
         } else {
-            toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references);
+            toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references, options);
         }
     }
 }
 
-function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors) {
+function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     if (Schema.hasComplexInput(item)) {
-        toInternalData(item, mbdbData, itemPath, data, references);
+        toInternalData(item, mbdbData, itemPath, data, references, options);
     } else if (Schema.hasVariantInput(item)) {
-        toInternalDataVariant(item, mbdbData, itemPath, data, references);
+        toInternalDataVariant(item, mbdbData, itemPath, data, references, options);
     } else if (Schema.hasCustomInput(item)) {
         const cc = CustomComponentsRegister.get(item.component);
         if (!cc) {
@@ -102,13 +102,17 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
                     Data.set(data, storePath, value);
                 }
             } else {
+                if (item.isRequired && !options.allowPartials) {
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object do not contain it.`);
+                }
+
                 Data.set(data, Data.Path.path('id', itemPath), Value.empty());
             }
         } else {
             const mbdbScalar = MbdbData.getScalar(mbdbData, loadPath);
 
             if (mbdbScalar === undefined) {
-                if (item.isRequired) {
+                if (item.isRequired && !options.allowPartials) {
                     throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object do not contain it.`);
                 } else {
                     Data.set(data, itemPath, getDefaultTrivialData(item, references));
@@ -195,7 +199,7 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
     }
 }
 
-function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors) {
+function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     const variantRoot = {} as DataTree;
     FormContext.makeVariantData(item, variantRoot, references);
 
@@ -229,19 +233,23 @@ function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: 
         // Now we have the "root" and default data set for the Variant.
         // The next step is to descend into the variant to set the content. This must be done only for the type
         // specified by the discriminator.
-        toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references);
+        toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references, options);
     }
 }
 
+export type Options = {
+    allowPartials?: boolean,
+};
+
 export const Deserialize = {
-    deserialize(item: TopLevelItem, references: ReferenceAnchors, mbdbData: MbdbData) {
+    deserialize(item: TopLevelItem, references: ReferenceAnchors, mbdbData: MbdbData, options?: Options) {
         const data = {};
-        toInternalData(item, mbdbData, [], data, references);
+        toInternalData(item, mbdbData, [], data, references, options ?? {});
 
         return data;
     },
 
-    async fromFile(item: TopLevelItem, references: ReferenceAnchors, file: File) {
+    async fromFile(item: TopLevelItem, references: ReferenceAnchors, file: File, options?: Options) {
         const text = await file.text();
         const json = JSON.parse(text);
         const metadata = json['metadata'];
@@ -250,6 +258,6 @@ export const Deserialize = {
             throw new Error('Mbdb source data must contain a "metadata" object. The object is either not present or it has a wrong type.');
         }
 
-        return Deserialize.deserialize(item, references, metadata);
+        return Deserialize.deserialize(item, references, metadata, options ?? {});
     },
 };

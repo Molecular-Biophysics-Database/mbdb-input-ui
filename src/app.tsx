@@ -283,6 +283,23 @@ function App() {
                             color='olive'
                             fluid
                         />
+                        <LoadFileButton
+                            title='Load form from Mbdb data (allow partial input)'
+                            onLoaded={(file) => {
+                                MbdbDeserialize.fromFile(ctxGetter().schema, ctxGetter().references, file, { allowPartials: true }).then((internalData) => {
+                                    try {
+                                        FormContext.load(internalData, ctxGetter());
+                                        contextHandler.update();
+                                    } catch (e) {
+                                        setLoadError({ title: 'Cannot load form from MBDB data file', message: (e as Error).message });
+                                    }
+                                }).catch((e) => {
+                                    setLoadError({ title: 'Cannot load form from MBDB data file', message: (e as Error).message });
+                                })
+                            }}
+                            color='olive'
+                            fluid
+                        />
                     </div>
 
                     <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-hgap)' }}>
