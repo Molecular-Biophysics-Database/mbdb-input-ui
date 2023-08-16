@@ -35,7 +35,7 @@ function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, sche
                 // Do not try to descend into these items
                 // They have a complex structure but we do not want to handle it
             } else if (Schema.hasReferenceableIdInput(item) && item.referenceAs === anchor) {
-                const v = Data.getValue(data, Data.Path.path('__mbdb_referenceable_id', path));
+                const v = Data.getValue(data, Data.Path.path(Schema.ReferenceableId, path));
                 objs.push({ refId: v.payload as string, data: Data.getTree(data, path) });
             } else {
                 gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs);
@@ -53,7 +53,7 @@ function gatherReferenceableIdsInData(data: DataTree | DataTree[], gatheredRefId
         gatherReferenceableIdsInDataArray(data, gatheredRefIds);
     } else {
         for (const k of objKeys(data)) {
-            if (k === '__mbdb_referenceable_id') {
+            if (k === Schema.ReferenceableId) {
                 gatheredRefIds.push(Value.toRefId(data[k] as Value));
             } else {
                 const item = data[k];

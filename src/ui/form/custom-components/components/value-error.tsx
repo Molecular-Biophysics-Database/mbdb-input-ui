@@ -7,6 +7,7 @@ import { PathId } from '../../path-id';
 import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
 import { FormContextInstance } from '../../../../context';
+import { MbdbData } from '../../../../mbdb/data';
 import { Data, DataTree, Path } from '../../../../schema/data';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
@@ -26,6 +27,19 @@ function setMbdbValueData(mbdbValue: Record<string, string | boolean>, data: Dat
     const v = Data.getValue(data, Data.Path.path(name, parentPath));
     if ((Value.isTextual(v) && v.payload !== '') || Value.isBoolean(v)) {
         mbdbValue[name] = v.payload;
+    }
+}
+
+function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'errors_are_relative'>, data: DataTree) {
+    const err = mbdbData[name];
+    if (err === undefined) {
+        data[name] = Value.empty();
+    } else {
+        if (typeof err !== 'string') {
+            throw new Error(`Value of "${name}" field in ValueError custom component was expected to be a string.`);
+        }
+
+        data[name] = Value.textual(err, false);
     }
 }
 
@@ -74,6 +88,19 @@ export const ValueError: CustomComponent<ValueErrorData> = {
             error_level: Value.empty(true),
             errors_are_relative: Value.boolean(false),
         };
+    },
+
+    fromMbdb(mbdbData: MbdbData) {
+        const out = {} as DataTree;
+
+        setErrorData(mbdbData, 'lower_error', out);
+        setErrorData(mbdbData, 'upper_error', out);
+        setErrorData(mbdbData, 'error_level', out);
+
+        // Yeah, I know...
+        out['errors_are_relative'] = Value.boolean(!!mbdbData['errors_are_relative']);
+
+        return out;
     },
 
     toMbdb(data: DataTree, path: Path, errors: string[]) {

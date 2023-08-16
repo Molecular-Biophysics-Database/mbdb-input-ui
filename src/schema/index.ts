@@ -231,4 +231,6 @@ export const Schema = {
 
     EmptyOptionValue: '__mbdb_empty_option',
     OtherChoice: '__mbdb_other_choice',
+    ReferenceableId: '__mbdb_referenceable_id',
+    VariantChoice: '__mbdb_variant_choice',
 };

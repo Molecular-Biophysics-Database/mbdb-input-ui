@@ -15,8 +15,10 @@ import { getKeeper } from './context/keeper';
 import { ErrorDialog } from './ui/error-dialog';
 import { Form } from './ui/form';
 import { Mbdb } from './mbdb';
+import { Deserialize as MbdbDeserialize } from './mbdb/deserialize';
 import { MbdbData } from './mbdb/data';
 import { MbdbModels } from './mbdb/models';
+import { Serialize as MbdbSerialize } from './mbdb/serialize';
 import { submitToMbdb } from './mbdb/submit';
 import { TopLevelItem } from './schema';
 import { Configuration } from './schema/configuration';
@@ -122,7 +124,7 @@ function App() {
     const [selectedSchema, setSelectedSchema] = React.useState<keyof typeof MbdbModels>('mst');
     const [submitError, setSubmitError] = React.useState<{ status: number, message: string, errors: string[], payload: MbdbData } | null>(null);
     const [inputFormErrors, setInputFormErrors] = React.useState<string[] | null>(null);
-    const [loadError, setLoadError] = React.useState<string | null>(null);
+    const [loadError, setLoadError] = React.useState<{ title: string, message: string } | null>(null);
 
     const dataId = React.useMemo(() => uuid_v4(), []);
     const schema = React.useMemo(() => {
@@ -141,7 +143,7 @@ function App() {
     const [contextValue, setContextValue] = React.useState({ handler: contextHandler });
 
     const _submitToMbdb = (noSanityChecks = false) => {
-        const { toApi, errors } = Mbdb.toData(ctxGetter(), schema, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
+        const { toApi, errors } = Mbdb.toData(ctxGetter(), noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
 
         if (errors.length === 0 || noSanityChecks) {
             submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
@@ -187,11 +189,11 @@ function App() {
             </ErrorDialog>
             <ErrorDialog
                 isOpen={loadError !== null}
-                title='Cannot load form from file'
+                title={loadError?.title ?? ''}
                 onDismissed={() => setLoadError(null)}
             >
                 <div>Cannot load form from a file because the file appears invalid</div>
-                <div>{loadError}</div>
+                <div>{loadError?.message}</div>
             </ErrorDialog>
             <SubmissionErrorDialog error={submitError} contextDataGetter={ctxGetter} onDismissed={() => setSubmitError(null)} />
 
@@ -201,8 +203,8 @@ function App() {
                         {/* First row */}
                         <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
                         <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), schema).toApi)}>Dump MBDB-schema object</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), schema, { dontPrune: true, ignoreErrors: true }).toApi)}>Dump MBDB-schema object (no nicening)</SButton>
+                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter()).toApi)}>Dump MBDB-schema object</SButton>
+                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), { dontPrune: true, ignoreErrors: true }).toApi)}>Dump MBDB-schema object (no nicening)</SButton>
 
                         {/* Second row */}
                         <SButton
@@ -224,10 +226,10 @@ function App() {
                                         FormContext.load(json, ctxGetter());
                                         contextHandler.update();
                                     } catch (e) {
-                                        setLoadError((e as Error).message);
+                                        setLoadError({ title: 'Cannot load form from Internal Input file', message: (e as Error).message });
                                     }
                                 }).catch((e) => {
-                                    setLoadError((e as Error).message);
+                                    setLoadError({ title: 'Cannot load form from Internal Input file', message: (e as Error).message });
                                 })
                             }}
                             color='teal'
@@ -247,6 +249,40 @@ function App() {
                             <SIcon name='cloud upload' />
                             Deposit record (without sanity checks)
                         </SButton>
+
+                        {/* Third row */}
+                        <SButton
+                            style={{ flex: 1 }}
+                            color='olive'
+                            onClick={() => {
+                                try {
+                                    const json = MbdbSerialize.toJson(ctxGetter())
+                                    doDownload('mbdb_data', json, FileTypes.json);
+                                } catch (errors) {
+                                    console.log(errors);
+                                }
+                            }}
+                        >
+                            <SIcon name='download' />
+                            Save form as Mbdb data
+                        </SButton>
+                        <LoadFileButton
+                            title='Load form from Mbdb data'
+                            onLoaded={(file) => {
+                                MbdbDeserialize.fromFile(ctxGetter().schema, ctxGetter().references, file).then((internalData) => {
+                                    try {
+                                        FormContext.load(internalData, ctxGetter());
+                                        contextHandler.update();
+                                    } catch (e) {
+                                        setLoadError({ title: 'Cannot load form from MBDB data file', message: (e as Error).message });
+                                    }
+                                }).catch((e) => {
+                                    setLoadError({ title: 'Cannot load form from MBDB data file', message: (e as Error).message });
+                                })
+                            }}
+                            color='olive'
+                            fluid
+                        />
                     </div>
 
                     <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-hgap)' }}>

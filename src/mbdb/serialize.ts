@@ -127,7 +127,7 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
                 assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
 
                 // The logic around this code never creates empty arrays. This is intentional because there should be no valid
-                // reason to ever write empty arrays to the Mbdb data object. Empty array is expressed as the array key
+                // reason to ever write empty arrays to the Mbdb data object. Empty array is expressed as the array object
                 // not being present at all in the parent object.
                 for (let idx = 0; idx < v.length; idx++) {
                     toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem, options);
@@ -145,12 +145,21 @@ export type Options = {
 };
 
 export const Serialize = {
-    serialize(ctx: FormContext, schema: TopLevelItem, options?: Options): { data: MbdbData, errors: string [] } {
+    serialize(ctx: FormContext, options?: Options): { data: MbdbData, errors: string [] } {
         const data = {};
         const errors = new Array<string>();
 
-        toMbdbDataTree(ctx.data, [], data, [], errors, schema, options ?? {});
+        toMbdbDataTree(ctx.data, [], data, [], errors, ctx.schema, options ?? {});
 
         return { data, errors };
+    },
+
+    toJson(ctx: FormContext) {
+        const { data, errors } = this.serialize(ctx, {});
+        if (errors.length !== 0) {
+            throw errors;
+        }
+
+        return JSON.stringify({ metadata: data }, void 0, 2);
     },
 };

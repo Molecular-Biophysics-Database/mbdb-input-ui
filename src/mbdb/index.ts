@@ -1,6 +1,5 @@
 import { Options as SerializationOptions, Serialize } from './serialize';
 import { FormContext } from '../context';
-import { TopLevelItem } from '../schema';
 
 export type Options = {
     dontPrune?: boolean,
@@ -21,8 +20,8 @@ function pruneEmpty(data: Record<string, any>) {
 }
 
 export const Mbdb = {
-    toData(ctx: FormContext, schema: TopLevelItem, options?: Options) {
-        const { data, errors } = Serialize.serialize(ctx, schema, options);
+    toData(ctx: FormContext, options?: Options) {
+        const { data, errors } = Serialize.serialize(ctx, options);
 
         if (!options?.dontPrune) {
             pruneEmpty(data);

@@ -197,8 +197,15 @@ export const Value = {
         return mkValue({ tag, other }, true);
     },
 
-    refId(): TValue<string> {
-        return mkValue(Uuid.get(), true);
+    refId(v?: string): TValue<string> {
+        if (!v) {
+            return mkValue(Uuid.get(), true);
+        } else {
+            if (!Uuid.check(v)) {
+                throw new Error(`Attempted to set referenceable ID to a value "${v}" that is not a valid UUIDv4.`);
+            }
+            return mkValue(v, true);
+        }
     },
 
     toBoolean(value: Value) {
@@ -286,8 +293,15 @@ export const Value = {
         return mkValue(tfn, true);
     },
 
-    uuid(): TValue<string> {
-        return mkValue(Uuid.get(), true);
+    uuid(v?: string): TValue<string> {
+        if (!v) {
+            return mkValue(Uuid.get(), true);
+        } else {
+            if (!Uuid.check(v)) {
+                throw new Error(`Attempted to set referenceable ID to a value "${v}" that is not a valid UUIDv4.`);
+            }
+            return mkValue(v, true);
+        }
     },
 
     vocabularyEntry(id: string, title: string, data: VocabularyEntry['data'], isValid: boolean) {

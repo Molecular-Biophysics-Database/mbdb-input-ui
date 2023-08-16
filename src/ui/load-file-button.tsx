@@ -7,9 +7,9 @@ import {
 import { v4 } from 'uuid';
 import { FileTypes } from '../util/download';
 
-const Reserved = ['title', 'onLoaded'] as (keyof Props)[];
-function sbtnProps(props: Props) {
-    const sprops: Omit<Props, 'title' | 'onLoaded'> =  {};
+const Reserved = ['title', 'onLoaded'] as (keyof LoadFileButtonProps)[];
+function sbtnProps(props: LoadFileButtonProps) {
+    const sprops = {} as any;
     for (const p in props) {
         if (!Reserved.includes(p)) sprops[p] = props[p];
     }
@@ -17,11 +17,11 @@ function sbtnProps(props: Props) {
     return sprops;
 }
 
-export type Props = {
+export type LoadFileButtonProps = {
     title: string,
     onLoaded: (file: File) => void,
 } & SButtonProps;
-export function LoadFileButton(props: Props) {
+export function LoadFileButton(props: LoadFileButtonProps) {
     const id = React.useMemo(() => v4(), []);
     const labelRef = React.useRef<HTMLLabelElement>(null);
 
