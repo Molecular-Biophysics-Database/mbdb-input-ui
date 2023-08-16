@@ -198,6 +198,8 @@ function checkItemDataSchema(data: Value, item: Item) {
         return item.isRequired ? Value.isBoolean(data) : Value.isTristate(data);
     } else if (Schema.hasCalendarDateInput(item)) {
         return Value.isCalendarDate(data);
+    } else if (Schema.hasUuidInput(item)) {
+        return Value.isUuid(data);
     } else if (Schema.hasVocabularyInput(item)) {
         return Value.isVocabularyEntry(data);
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {
