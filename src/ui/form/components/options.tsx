@@ -26,24 +26,27 @@ type Option = {
 const BorderStyle = { border: '1px solid #ccc' };
 const PadStyle = { padding: '10px' };
 
-function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean, emptyOption: boolean) {
+function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean) {
     const opts = choices.map((choice, idx) => ({
         key: idx,
         text: niceLabel(choice.title, dontTransform),
         value: choice.tag,
     }));
-    if (emptyOption) opts.push({ key: opts.length, text: '(Not set)', value: Schema.EmptyOptionValue });
+    opts.push({ key: opts.length, text: '(Not set)', value: Schema.EmptyOptionValue });
 
     return opts;
 };
 
-const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset }: {
+const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset, error }: {
     id: string,
     onChange: SOnChange<SDropdownProps>,
     options: Option[]
     value: string,
     noRightOffset?: boolean,
+    error?: boolean,
 }) {
+    console.log(error);
+
     return (
         <SDropdown
             className={clsx(!noRightOffset && 'mbdb-right-offset')}
@@ -52,6 +55,7 @@ const Selection = React.memo(function _Selection({ id, onChange, options, value,
             onChange={onChange}
             options={options}
             selection
+            error={error}
         />
     );
 }, (prevProps, nextProps) => {
@@ -75,7 +79,7 @@ export type Props = {
 export function OptionsInput(props: Props) {
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const opts = React.useMemo(() => {
-        return mkOptions(props.choices, !!props.dontTransformContent, !props.isRequired);
+        return mkOptions(props.choices, !!props.dontTransformContent);
     }, [props.choices]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
@@ -83,7 +87,7 @@ export function OptionsInput(props: Props) {
         const choice = props.choices.find((c) => c.tag === tag);
         assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
 
-        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption() : Value.option(tag));
+        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
 
     const v = handler.getValue(props.path);
@@ -96,6 +100,7 @@ export function OptionsInput(props: Props) {
                 value={Value.toOption(v)}
                 onChange={onChange}
                 noRightOffset={props.noRightOffset}
+                error={Value.isEmptyOption(v) && props.isRequired}
             />
         </>
     );
@@ -104,7 +109,7 @@ export function OptionsInput(props: Props) {
 export function OptionsWithOtherInput(props: Props) {
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const opts = React.useMemo(() => {
-        return mkOptions(props.choices, !!props.dontTransformContent, !props.isRequired);
+        return mkOptions(props.choices, !!props.dontTransformContent);
     }, [props.choices]);
     const { handler } = React.useContext(FormContextInstance);
 
@@ -116,7 +121,7 @@ export function OptionsWithOtherInput(props: Props) {
         const choice = props.choices.find((c) => c.tag === tag);
         assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
 
-        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption() : Value.option(tag));
+        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
     const onChangeText: SOnChange<SInputProps> = (_ev, data) => {
         const v = data.value as string;
@@ -132,6 +137,7 @@ export function OptionsWithOtherInput(props: Props) {
                 value={value.payload.tag}
                 onChange={onChangeOptions}
                 noRightOffset={props.noRightOffset}
+                error={Value.isEmptyOption(value) && props.isRequired}
             />
             {Schema.isOtherChoice(value)
                 ? (

@@ -103,7 +103,7 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
                 }
             } else {
                 if (item.isRequired && !options.allowPartials) {
-                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object do not contain it.`);
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
                 }
 
                 Data.set(data, Data.Path.path('id', itemPath), Value.empty());
@@ -113,7 +113,7 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
 
             if (mbdbScalar === undefined) {
                 if (item.isRequired && !options.allowPartials) {
-                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object do not contain it.`);
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
                 } else {
                     Data.set(data, itemPath, getDefaultTrivialData(item, references));
                     return;
@@ -242,14 +242,14 @@ export type Options = {
 };
 
 export const Deserialize = {
-    deserialize(item: TopLevelItem, references: ReferenceAnchors, mbdbData: MbdbData, options?: Options) {
+    deserialize(ctx: FormContext, mbdbData: MbdbData, options?: Options) {
         const data = {};
-        toInternalData(item, mbdbData, [], data, references, options ?? {});
+        toInternalData(ctx.schema, mbdbData, [], data, ctx.references, options ?? {});
 
         return data;
     },
 
-    async fromFile(item: TopLevelItem, references: ReferenceAnchors, file: File, options?: Options) {
+    async fromFile(ctx: FormContext, file: File, options?: Options) {
         const text = await file.text();
         const json = JSON.parse(text);
         const metadata = json['metadata'];
@@ -258,6 +258,6 @@ export const Deserialize = {
             throw new Error('Mbdb source data must contain a "metadata" object. The object is either not present or it has a wrong type.');
         }
 
-        return Deserialize.deserialize(item, references, metadata, options ?? {});
+        return Deserialize.deserialize(ctx, metadata, options ?? {});
     },
 };

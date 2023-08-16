@@ -374,7 +374,7 @@ export const FormContext = {
             }
 
             const dv = item.defaultValue!;
-            const iv = Schema.initialOptionsValue(item.choices, item.isRequired, allowsOther);
+            const iv = Schema.initialOptionsValue(item.isRequired);
             if (item.choices.find((c) => c.tag === dv) === undefined)
                 throw new Error(`Attempted to set default value "${dv}" for options input "${item.tag}" but such value is invalid for that item.`);
 

@@ -269,7 +269,7 @@ function App() {
                         <LoadFileButton
                             title='Load form from Mbdb data'
                             onLoaded={(file) => {
-                                MbdbDeserialize.fromFile(ctxGetter().schema, ctxGetter().references, file).then((internalData) => {
+                                MbdbDeserialize.fromFile(ctxGetter(), file).then((internalData) => {
                                     try {
                                         FormContext.load(internalData, ctxGetter());
                                         contextHandler.update();
@@ -286,7 +286,7 @@ function App() {
                         <LoadFileButton
                             title='Load form from Mbdb data (allow partial input)'
                             onLoaded={(file) => {
-                                MbdbDeserialize.fromFile(ctxGetter().schema, ctxGetter().references, file, { allowPartials: true }).then((internalData) => {
+                                MbdbDeserialize.fromFile(ctxGetter(), file, { allowPartials: true }).then((internalData) => {
                                     try {
                                         FormContext.load(internalData, ctxGetter());
                                         contextHandler.update();
