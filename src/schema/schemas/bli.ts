@@ -15,8 +15,8 @@ export const BLI = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.3',
-                        title: '0.9.3',
+                        tag: '0.9.4',
+                        title: '0.9.4',
                     },
                 ],
                 help: {
@@ -10849,25 +10849,25 @@ export const BLI = [
                 ],
             },
             {
-                tag: 'physical_environment_at_sample_handling',
-                label: 'physical_environment_at_sample_handling',
+                tag: 'physical_conditions_at_sample_handling',
+                label: 'physical_conditions_at_sample_handling',
                 isArray: false,
                 isRequired: false,
-                mbdbPath: 'general_parameters/physical_environment_at_sample_handling',
+                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling',
                 input: [
                     {
                         tag: 'temperature',
                         label: 'temperature',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature',
+                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature',
                         input: [
                             {
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/value',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value',
                                 input: 'float',
                                 help: {
                                     en: 'Numeric value of the temperature',
@@ -10878,7 +10878,7 @@ export const BLI = [
                                 label: 'value_error',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/value_error',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value_error',
                                 input: 'custom',
                                 component: 'value-error',
                             },
@@ -10887,7 +10887,7 @@ export const BLI = [
                                 label: 'operational_value',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/operational_value',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/operational_value',
                                 input: 'options',
                                 choices: [
                                     {
@@ -10912,7 +10912,7 @@ export const BLI = [
                                 label: 'unit',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/unit',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/unit',
                                 input: 'options',
                                 choices: [
                                     {
@@ -10934,7 +10934,7 @@ export const BLI = [
                                 label: 'obtained_by',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/obtained_by',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/obtained_by',
                                 input: 'options',
                                 choices: [
                                     {
@@ -10960,7 +10960,7 @@ export const BLI = [
                                 label: 'controlled',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/temperature/controlled',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/controlled',
                                 input: 'boolean',
                                 help: {
                                     en: 'Whether the temperature was actively controlled',
@@ -10973,14 +10973,14 @@ export const BLI = [
                         label: 'pressure',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure',
+                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure',
                         input: [
                             {
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure/value',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value',
                                 input: 'float',
                                 help: {
                                     en: 'Numeric value of the pressure',
@@ -10991,7 +10991,7 @@ export const BLI = [
                                 label: 'value_error',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure/value_error',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value_error',
                                 input: 'custom',
                                 component: 'value-error',
                             },
@@ -11000,7 +11000,7 @@ export const BLI = [
                                 label: 'unit',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure/unit',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/unit',
                                 input: 'options',
                                 choices: [
                                     {
@@ -11050,7 +11050,7 @@ export const BLI = [
                                 label: 'obtained_by',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure/obtained_by',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/obtained_by',
                                 input: 'options',
                                 choices: [
                                     {
@@ -11076,7 +11076,7 @@ export const BLI = [
                                 label: 'controlled',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/pressure/controlled',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/controlled',
                                 input: 'boolean',
                                 help: {
                                     en: 'Whether the pressure was actively controlled',
@@ -11089,14 +11089,14 @@ export const BLI = [
                         label: 'humidity',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity',
+                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity',
                         input: [
                             {
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity/value',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value',
                                 input: 'float',
                                 help: {
                                     en: 'Numeric value of the humidity',
@@ -11107,7 +11107,7 @@ export const BLI = [
                                 label: 'value_error',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity/value_error',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value_error',
                                 input: 'custom',
                                 component: 'value-error',
                             },
@@ -11116,7 +11116,7 @@ export const BLI = [
                                 label: 'unit',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity/unit',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/unit',
                                 input: 'options',
                                 choices: [
                                     {
@@ -11138,7 +11138,7 @@ export const BLI = [
                                 label: 'obtained_by',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity/obtained_by',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/obtained_by',
                                 input: 'options',
                                 choices: [
                                     {
@@ -11164,7 +11164,7 @@ export const BLI = [
                                 label: 'controlled',
                                 isArray: false,
                                 isRequired: false,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/humidity/controlled',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/controlled',
                                 input: 'boolean',
                                 help: {
                                     en: 'Whether the humidity was actively controlled',
@@ -11177,14 +11177,14 @@ export const BLI = [
                         label: 'atmosphere',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere',
+                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere',
                         input: [
                             {
                                 tag: 'composition',
                                 label: 'composition',
                                 isArray: true,
                                 isRequired: true,
-                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]',
+                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]',
                                 minItems: 1,
                                 input: {
                                     Chemical: {
@@ -11192,14 +11192,14 @@ export const BLI = [
                                         label: 'Chemical',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]',
+                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]',
                                         input: [
                                             {
                                                 tag: 'inchikey',
                                                 label: 'inchikey',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/inchikey',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
                                                     en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
@@ -11210,7 +11210,7 @@ export const BLI = [
                                                 label: 'additional_identifiers',
                                                 isArray: true,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/additional_identifiers[]',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/additional_identifiers[]',
                                                 input: 'string',
                                                 help: {
                                                     en: 'Unique and persistent identifier from an external source; options of sources are CAS number, Pubchem Compound ID, and Pubchem Substance ID',
@@ -11221,7 +11221,7 @@ export const BLI = [
                                                 label: 'isotopic_labeling',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/isotopic_labeling',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/isotopic_labeling',
                                                 input: 'string',
                                                 help: {
                                                     en: 'If the isotopic composition of the chemical was altered from the naturally occurring one, it can be specified here (e.g. 15N, 13C)',
@@ -11232,14 +11232,14 @@ export const BLI = [
                                                 label: 'molecular_weight',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/molecular_weight',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight',
                                                 input: [
                                                     {
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/molecular_weight/value',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
                                                             en: 'The numerical value of the molecular weight',
@@ -11250,7 +11250,7 @@ export const BLI = [
                                                         label: 'value_error',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/molecular_weight/value_error',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
                                                     },
@@ -11259,7 +11259,7 @@ export const BLI = [
                                                         label: 'unit',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/molecular_weight/unit',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/unit',
                                                         input: 'options',
                                                         choices: [
                                                             {
@@ -11287,14 +11287,14 @@ export const BLI = [
                                                 label: 'supplier',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/supplier',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/supplier/name',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/name',
                                                         input: 'string',
                                                         help: {
                                                             en: 'Name of the supplier',
@@ -11305,7 +11305,7 @@ export const BLI = [
                                                         label: 'catalog_number',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/supplier/catalog_number',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/catalog_number',
                                                         input: 'string',
                                                         help: {
                                                             en: 'The catalog number or identifier of the item',
@@ -11316,7 +11316,7 @@ export const BLI = [
                                                         label: 'further_information',
                                                         isArray: true,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/supplier/further_information[]',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/further_information[]',
                                                         input: 'string',
                                                         help: {
                                                             en: 'Further information e.g. batch number',
@@ -11329,14 +11329,14 @@ export const BLI = [
                                                 label: 'quality_controls',
                                                 isArray: true,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]',
                                                 input: [
                                                     {
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/parameter',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
                                                             {
@@ -11373,7 +11373,7 @@ export const BLI = [
                                                         label: 'technique',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/technique',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
                                                             en: 'Which technique was used (e.g. SDS-PAGE MALDI-TOF, DLS, etc.)',
@@ -11384,21 +11384,21 @@ export const BLI = [
                                                         label: 'storage_until_measurement',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement',
                                                         input: [
                                                             {
                                                                 tag: 'temperature',
                                                                 label: 'temperature',
                                                                 isArray: false,
                                                                 isRequired: true,
-                                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature',
+                                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature',
                                                                 input: [
                                                                     {
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
                                                                             en: 'Numeric value of the temperature',
@@ -11409,7 +11409,7 @@ export const BLI = [
                                                                         label: 'value_error',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
                                                                     },
@@ -11418,7 +11418,7 @@ export const BLI = [
                                                                         label: 'operational_value',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/operational_value',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/operational_value',
                                                                         input: 'options',
                                                                         choices: [
                                                                             {
@@ -11443,7 +11443,7 @@ export const BLI = [
                                                                         label: 'unit',
                                                                         isArray: false,
                                                                         isRequired: true,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/unit',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/unit',
                                                                         input: 'options',
                                                                         choices: [
                                                                             {
@@ -11465,7 +11465,7 @@ export const BLI = [
                                                                         label: 'obtained_by',
                                                                         isArray: false,
                                                                         isRequired: true,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/obtained_by',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/obtained_by',
                                                                         input: 'options',
                                                                         choices: [
                                                                             {
@@ -11491,7 +11491,7 @@ export const BLI = [
                                                                         label: 'controlled',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
                                                                             en: 'Whether the temperature was actively controlled',
@@ -11504,14 +11504,14 @@ export const BLI = [
                                                                 label: 'duration',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration',
+                                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration',
                                                                 input: [
                                                                     {
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
                                                                         help: {
@@ -11523,7 +11523,7 @@ export const BLI = [
                                                                         label: 'value_error',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
                                                                     },
@@ -11532,7 +11532,7 @@ export const BLI = [
                                                                         label: 'unit',
                                                                         isArray: false,
                                                                         isRequired: true,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/unit',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/unit',
                                                                         input: 'options',
                                                                         choices: [
                                                                             {
@@ -11572,14 +11572,14 @@ export const BLI = [
                                                                 label: 'storage_preparation',
                                                                 isArray: true,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]',
+                                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]',
                                                                 input: [
                                                                     {
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
                                                                             en: 'Descriptive name of the step',
@@ -11590,7 +11590,7 @@ export const BLI = [
                                                                         label: 'description',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
+                                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
                                                                             en: 'Short description of the step',
@@ -11608,7 +11608,7 @@ export const BLI = [
                                                         label: 'report',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
@@ -11624,7 +11624,7 @@ export const BLI = [
                                                 label: 'additional_specifications',
                                                 isArray: true,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/additional_specifications[]',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/additional_specifications[]',
                                                 input: 'string',
                                                 help: {
                                                     en: 'Additional information about the chemical can be specified here (e.g. RNase free water, recrystallization, desalting)',
@@ -11635,7 +11635,7 @@ export const BLI = [
                                                 label: 'name',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/name',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/name',
                                                 input: 'string',
                                                 help: {
                                                     en: 'Short descriptive name (id) of the constituent, must be unique within a record',
@@ -11646,7 +11646,7 @@ export const BLI = [
                                                 label: 'type',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/type',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
                                                     {
@@ -11663,14 +11663,14 @@ export const BLI = [
                                                 label: 'concentration',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration',
+                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration',
                                                 input: [
                                                     {
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/value',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
                                                         help: {
@@ -11682,7 +11682,7 @@ export const BLI = [
                                                         label: 'value_error',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/value_error',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
                                                     },
@@ -11691,7 +11691,7 @@ export const BLI = [
                                                         label: 'unit',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/unit',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/unit',
                                                         input: 'options',
                                                         choices: [
                                                             {
@@ -11777,7 +11777,7 @@ export const BLI = [
                                                         label: 'obtained_by',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/obtained_by',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_by',
                                                         input: 'options',
                                                         choices: [
                                                             {
@@ -11803,14 +11803,14 @@ export const BLI = [
                                                         label: 'obtained_protocol',
                                                         isArray: true,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]',
+                                                        mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/name',
+                                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
                                                                     en: 'Descriptive name of the step',
@@ -11821,7 +11821,7 @@ export const BLI = [
                                                                 label: 'description',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/physical_environment_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/description',
+                                                                mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
                                                                     en: 'Short description of the step',
