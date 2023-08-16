@@ -23,7 +23,6 @@
   "devDependencies": {
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "@types/react-plotly.js": "^2.6.0",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
@@ -36,8 +35,8 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-icon": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
