@@ -30,7 +30,7 @@ function validateInt(v: string, min: number | undefined, max: number | undefined
 }
 
 function validateOptions(v: Option, choices: Choice[], isRequired: boolean): boolean {
-    if (v.tag === Schema.EmptyOptionValue && isRequired) return false;
+    if (v.tag === Schema.EmptyOptionValue) return !isRequired;
 
     return (choices.find((c) => c.tag === v.tag) !== undefined) || (v.tag === Schema.OtherChoice && v.other !== undefined);
 }
