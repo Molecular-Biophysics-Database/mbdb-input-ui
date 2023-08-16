@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as RDC from 'react-dom/client';
 import { v4 as uuid_v4 } from 'uuid';
 import {
     Button as SButton,
@@ -341,7 +341,9 @@ export async function initApp(elemId: string) {
 
     try {
         await Config.load();
-        ReactDOM.render(<App />, appRoot);
+        const root = RDC.createRoot(appRoot);
+
+        root.render(<App />);
     } catch (e) {
         console.log(`Failed to load application configuration: ${e}`);
     }
