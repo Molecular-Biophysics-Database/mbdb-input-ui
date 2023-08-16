@@ -1,6 +1,6 @@
-import { Item, Schema } from './';
+import { Choice, Item, Schema } from './';
 import { Uuid } from './uuid';
-import { CalendarDate, Value, VocabularyEntry } from './value';
+import { CalendarDate, Option, Value, VocabularyEntry } from './value';
 import { assert } from '../assert';
 import { Vocabulary } from '../mbdb/vocabulary';
 import { daysInMonth } from '../util';
@@ -27,6 +27,12 @@ function validateInt(v: string, min: number | undefined, max: number | undefined
     }
 
     return CommonValidators.isInRange(parseInt(v), min, max);
+}
+
+function validateOptions(v: Option, choices: Choice[], isRequired: boolean): boolean {
+    if (v.tag === Schema.EmptyOptionValue && isRequired) return false;
+
+    return (choices.find((c) => c.tag === v.tag) !== undefined) || (v.tag === Schema.OtherChoice && v.other !== undefined);
 }
 
 function validateVocabulary(v: VocabularyEntry, vocabularyType: string, isRequired: boolean) {
@@ -186,7 +192,7 @@ export const Validators = {
                 return isRequired ? CommonValidators.isSet : CommonValidators.alwaysValid;
             }
         } else if (Schema.hasOptionsInput(item)) {
-            return CommonValidators.alwaysValid;
+            return (v: Option) => validateOptions(v, item.choices, isRequired);
         } else if (Schema.hasVocabularyInput(item)) {
             return (v: VocabularyEntry) => validateVocabulary(v, item.vocabularyType, item.isRequired);
         }

@@ -85,7 +85,7 @@ export function OptionsInput(props: Props) {
     const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
+        assert(choice !== undefined || tag === Schema.EmptyOptionValue, `No choice with tag "${tag}"`);
 
         handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
@@ -119,7 +119,7 @@ export function OptionsWithOtherInput(props: Props) {
     const onChangeOptions: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined || (tag === Schema.EmptyOptionValue && !props.isRequired), `No choice with tag "${tag}"`);
+        assert(choice !== undefined || tag === Schema.EmptyOptionValue, `No choice with tag "${tag}"`);
 
         handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
