@@ -45,8 +45,6 @@ const Selection = React.memo(function _Selection({ id, onChange, options, value,
     noRightOffset?: boolean,
     error?: boolean,
 }) {
-    console.log(error);
-
     return (
         <SDropdown
             className={clsx(!noRightOffset && 'mbdb-right-offset')}
