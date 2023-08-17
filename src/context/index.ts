@@ -180,7 +180,7 @@ function checkItemDataSchema(data: Value, item: Item) {
     if (Schema.hasOptionsInput(item)) {
         if (!Value.isOption(data)) return false;
 
-        if ((item.choices.find((c) => c.tag === data.payload.tag) === undefined) && (!item.isRequired && data.payload.tag !== Schema.EmptyOptionValue)) {
+        if ((item.choices.find((c) => c.tag === data.payload.tag) === undefined) && (!item.isRequired && data.payload.tag !== Schema.EmptyChoice)) {
             return false;
         }
         if (Schema.hasOptionsWithOtherInput(item)) {

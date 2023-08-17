@@ -221,7 +221,7 @@ export const Schema = {
         return item.choices.map((c) => c.tag);
     },
 
-    EmptyOptionValue: '__mbdb_empty_option',
+    EmptyChoice: '__mbdb_empty_choice',
     OtherChoice: '__mbdb_other_choice',
     ReferenceableId: '__mbdb_referenceable_id',
     VariantChoice: '__mbdb_variant_choice',

@@ -84,7 +84,7 @@ export const Value = {
     },
 
     emptyOption(isValid = true) {
-        const v = this.option(Schema.EmptyOptionValue);
+        const v = this.option(Schema.EmptyChoice);
         v.isValid = isValid;
 
         return v;
@@ -121,7 +121,7 @@ export const Value = {
 
     isEmptyOption(value: Value) {
         if (this.isOption(value)) {
-            return value.payload.tag === Schema.EmptyOptionValue;
+            return value.payload.tag === Schema.EmptyChoice;
         } else {
             return false;
         }

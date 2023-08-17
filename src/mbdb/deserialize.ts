@@ -43,7 +43,7 @@ function toCalendarDate(s: string): CalendarDate {
     return { year: nYear, month: nMonth, day: nDay };
 }
 
-function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     for (const innerItem of item.input) {
         if (innerItem.isArray) {
             const innerItemPath = Data.Path.path(innerItem.tag, parentPath);
@@ -52,22 +52,22 @@ function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, pa
 
             if (mbdbArray) {
                 for (let idx = 0; idx < mbdbArray.length; idx++) {
-                    toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references, options);
+                    await toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references, options);
                 }
             } else {
                 Data.set(data, innerItemPath, []);
             }
         } else {
-            toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references, options);
+            await toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references, options);
         }
     }
 }
 
-function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     if (Schema.hasComplexInput(item)) {
-        toInternalData(item, mbdbData, itemPath, data, references, options);
+        await toInternalData(item, mbdbData, itemPath, data, references, options);
     } else if (Schema.hasVariantInput(item)) {
-        toInternalDataVariant(item, mbdbData, itemPath, data, references, options);
+        await toInternalDataVariant(item, mbdbData, itemPath, data, references, options);
     } else if (Schema.hasCustomInput(item)) {
         const cc = CustomComponentsRegister.get(item.component);
         if (!cc) {
@@ -108,6 +108,40 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
 
                 Data.set(data, Data.Path.path('id', itemPath), Value.empty());
             }
+        } else if (Schema.hasVocabularyInput(item)) {
+            const mbdbVoc = MbdbData.getObject(mbdbData, loadPath);
+
+            if (mbdbVoc) {
+                const id = mbdbVoc['id'];
+                if (id === undefined) {
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is a Vocabulary item but it does not specify an id.`);
+                } else if (id === null) {
+                    Data.set(data, itemPath, Value.emptyVocabularyEntry(!item.isRequired));
+                } else if (typeof id !== 'string') {
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is a Vocabulary item but its id has a wrong type.`);
+                } else {
+                    try {
+                        const voc = await Vocabulary.get(item.vocabularyType);
+                        const vocItem = voc.find((e) => e.id === id);
+                        if (vocItem === undefined) {
+                            throw new Error(`Item on MbdbPath "${item.mbdbPath}" is a Vocabulary item but its id does not exist in the vocabulary that is currently available.`);
+                        } else {
+                            Data.set(data, itemPath, Value.vocabularyEntry(id, vocItem.title.en, vocItem, true));
+                        }
+                    } catch (e) {
+                        console.warn(`Failed to fetch vocabulary "${item.vocabularyType}" for item on MbdbPath "${item.mbdbPath}".`);
+
+                        // Since we cannot verify the item, let's just set an empty value ant have the user deal with the fallout
+                        Data.set(data, itemPath, Value.emptyVocabularyEntry(!item.isRequired));
+                    }
+                }
+            } else {
+                if (item.isRequired && !options.allowPartials) {
+                    throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
+                }
+
+                Data.set(data, itemPath, Value.emptyVocabularyEntry(!item.isRequired));
+            }
         } else {
             const mbdbScalar = MbdbData.getScalar(mbdbData, loadPath);
 
@@ -129,33 +163,18 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
                 Data.set(data, itemPath, value);
             } else if (Schema.hasOptionsInput(item)) {
                 if (typeof mbdbScalar !== 'string') {
-                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an options item "${item.tag}" is not a string.`);
+                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Option item "${item.tag}" is not a string.`);
                 }
 
                 if (item.choices.find((c) => c.tag === mbdbScalar) === undefined) {
                     if (Schema.hasOptionsWithOtherInput(item)) {
-                        const value = Value.option(Schema.OtherChoice, mbdbScalar);
-                        Data.set(data, itemPath, value);
+                        Data.set(data, itemPath, Value.option(Schema.OtherChoice, mbdbScalar));
                     } else {
                         throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an options item "${item.tag}" is not amongst the allowed choices and the item does not allow "other" choice.`);
                     }
                 } else {
-                    const value = Value.option(mbdbScalar);
-                    Data.set(data, itemPath, value);
+                    Data.set(data, itemPath, Value.option(mbdbScalar));
                 }
-            } else if (Schema.hasVocabularyInput(item)) {
-                if (typeof mbdbScalar !== 'string') {
-                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a vocabulary item "${item.tag}" is not a string.`);
-                }
-
-                const voc = Vocabulary.getCached(item.vocabularyType);
-                if (!voc) return; // We don't have the voc so the safest thing to do is just ignore the item
-                const vocItem = voc.find((e) => e.id === mbdbScalar);
-                if (!vocItem) {
-                    throw new Error(`Value of MbdbPath on MbdbPath "${item.mbdbPath}" for a vocabulary item "${item.tag}" references a non-existing vocabulary item ID.`);
-                }
-
-                Data.set(data, itemPath, Value.vocabularyEntry(mbdbScalar, vocItem.title.en, vocItem, true));
             } else if (Schema.hasReferenceableIdInput(item)) {
                 if (typeof mbdbScalar !== 'string') {
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a ReferenceableId item "${item.tag}" is not a string.`);
@@ -199,7 +218,7 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
     }
 }
 
-function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
     const variantRoot = {} as DataTree;
     FormContext.makeVariantData(item, variantRoot, references);
 
@@ -233,7 +252,7 @@ function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: 
         // Now we have the "root" and default data set for the Variant.
         // The next step is to descend into the variant to set the content. This must be done only for the type
         // specified by the discriminator.
-        toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references, options);
+        await toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references, options);
     }
 }
 
@@ -242,19 +261,19 @@ export type Options = {
 };
 
 export const Deserialize = {
-    deserialize(ctx: FormContext, mbdbData: MbdbData, options?: Options) {
+    async deserialize(ctx: FormContext, mbdbData: MbdbData, options?: Options) {
         const data = {};
-        toInternalData(ctx.schema, mbdbData, [], data, ctx.references, options ?? {});
+        await toInternalData(ctx.schema, mbdbData, [], data, ctx.references, options ?? {});
 
         return data;
     },
 
     async fromFile(ctx: FormContext, file: File, options?: Options) {
         const text = await file.text();
-        return Deserialize.fromJson(ctx, text, options);
+        return await Deserialize.fromJson(ctx, text, options);
     },
 
-    fromJson(ctx: FormContext, input: string, options?: Options) {
+    async fromJson(ctx: FormContext, input: string, options?: Options) {
         const json = JSON.parse(input);
         const metadata = json['metadata'];
 
@@ -262,6 +281,6 @@ export const Deserialize = {
             throw new Error('Mbdb source data must contain a "metadata" object. The object is either not present or it has a wrong type.');
         }
 
-        return Deserialize.deserialize(ctx, metadata, options ?? {});
+        return await Deserialize.deserialize(ctx, metadata, options ?? {});
     },
 };

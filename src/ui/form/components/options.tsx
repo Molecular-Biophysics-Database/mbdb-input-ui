@@ -32,7 +32,7 @@ function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean) {
         text: niceLabel(choice.title, dontTransform),
         value: choice.tag,
     }));
-    opts.push({ key: opts.length, text: '(Not set)', value: Schema.EmptyOptionValue });
+    opts.push({ key: opts.length, text: '(Not set)', value: Schema.EmptyChoice });
 
     return opts;
 };
@@ -83,9 +83,9 @@ export function OptionsInput(props: Props) {
     const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined || tag === Schema.EmptyOptionValue, `No choice with tag "${tag}"`);
+        assert(choice !== undefined || tag === Schema.EmptyChoice, `No choice with tag "${tag}"`);
 
-        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
+        handler.set(props.path, tag === Schema.EmptyChoice ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
 
     const v = handler.getValue(props.path);
@@ -117,9 +117,9 @@ export function OptionsWithOtherInput(props: Props) {
     const onChangeOptions: SOnChange<SDropdownProps> = (_ev, data) => {
         const tag = data.value as string;
         const choice = props.choices.find((c) => c.tag === tag);
-        assert(choice !== undefined || tag === Schema.EmptyOptionValue, `No choice with tag "${tag}"`);
+        assert(choice !== undefined || tag === Schema.EmptyChoice, `No choice with tag "${tag}"`);
 
-        handler.set(props.path, tag === Schema.EmptyOptionValue ? Value.emptyOption(!props.isRequired) : Value.option(tag));
+        handler.set(props.path, tag === Schema.EmptyChoice ? Value.emptyOption(!props.isRequired) : Value.option(tag));
     };
     const onChangeText: SOnChange<SInputProps> = (_ev, data) => {
         const v = data.value as string;
