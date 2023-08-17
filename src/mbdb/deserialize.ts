@@ -184,7 +184,7 @@ function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a string.`);
                 }
                 if (!Uuid.check(mbdbScalar)) {
-                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a valud UUIDv4`);
+                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a valud UUIDv4.`);
                 }
 
                 Data.set(data, itemPath, Value.uuid(mbdbScalar));
@@ -251,7 +251,11 @@ export const Deserialize = {
 
     async fromFile(ctx: FormContext, file: File, options?: Options) {
         const text = await file.text();
-        const json = JSON.parse(text);
+        return Deserialize.fromJson(ctx, text, options);
+    },
+
+    fromJson(ctx: FormContext, input: string, options?: Options) {
+        const json = JSON.parse(input);
         const metadata = json['metadata'];
 
         if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) {
