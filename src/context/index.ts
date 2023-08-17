@@ -37,6 +37,7 @@ function applyInitialDataItem(inData: DataTree, path: Path, item: Item, data: Da
         // later when the entire data tree is read.
 
         Data.set(data, path, itemData);
+        validateData(data, path, item);
     } else {
         const itemData = Data.getValue(inData, path);
         if (!checkItemDataSchema(itemData, item)) {
@@ -283,18 +284,18 @@ function setVariantChoice(data: DataTree, path: Path, choice: string) {
 }
 
 function validateData(data: DataTree, path: Path, item: Item) {
-    if (Schema.hasRelatedToInput(item)) {
-        return; // Do not validate "related-to" input because it does not have any "own" data
-    }
-
-    const value = Data.getValue(data, path);
 
     if (Schema.hasCustomInput(item)) {
         const cc = Register.get(item.input);
+        const value = Data.getValue(data, path);
         cc.validateData(value);
 
         return;
+    } else if (Schema.hasRelatedToInput(item)) {
+        const value = Data.getValue(data, Data.Path.path('id', path));
+        value.isValid = Value.isEmpty(value) ? !item.isRequired : true; // We assume that we cannot get a broken relation at this stage of validation
     } else {
+        const value = Data.getValue(data, path);
         value.isValid = Validators.validateCommon(item, value.payload);
 
         if (Schema.hasUuidInput(item) && !value.isValid) {
