@@ -284,7 +284,6 @@ function setVariantChoice(data: DataTree, path: Path, choice: string) {
 }
 
 function validateData(data: DataTree, path: Path, item: Item) {
-
     if (Schema.hasCustomInput(item)) {
         const cc = Register.get(item.input);
         const value = Data.getValue(data, path);

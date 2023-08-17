@@ -11,7 +11,6 @@ import { FormContextInstance } from '../../context';
 import { _FormContextHandler } from '../../context/handler';
 import { Input, Item, Schema, TopLevelItem } from '../../schema';
 import { Data } from '../../schema/data';
-import { Value } from '../../schema/value';
 
 const TopCorrection = 5;
 const MaximumNesting = 10;
@@ -148,14 +147,7 @@ function NavigationListItem(props: NavigationListItemProps) {
         }
     });
 
-    let hasErrors = false;
-    if (!props.children) {
-        hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
-    } else {
-        Data.walkShallow(handler.getTree(path), (value) => {
-            hasErrors = hasErrors || !Value.isValid(value);
-        });
-    }
+    const hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
 
     return (
         <div className='mbdb-form-nav-list-item'>
