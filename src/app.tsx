@@ -78,8 +78,8 @@ function SubmissionErrorDialog(props: {
                 Deposition failed
             </SHeader>
             <SModal.Content>
-                <div>Deposition failed because the database reported an error</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' }}>
+                <div className='mbdb-deposition-error-report'>Deposition failed because the database reported an error</div>
+                <div className='mbdb-deposition-error-report' style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-2hgap)' }}>
                     {props.error
                         ?
                             <>
@@ -158,7 +158,14 @@ function App() {
                             errors: mbdbErrors(j.errors ?? []),
                             payload: toApi, // The metadata object, we probably won't need this in production
                         });
-                    })
+                    }).catch(() => {
+                        setSubmitError({
+                            status: resp.status,
+                            message: resp.statusText,
+                            errors: [],
+                            payload: toApi,
+                        });
+                    });
                 }
             }).catch((e) => setSubmitError({
                 status: 0,
@@ -178,10 +185,10 @@ function App() {
                 title='Cannot deposit record'
                 onDismissed={() => setInputFormErrors(null)}
             >
-                <div className='mbdb-input-error-report'>Cannot deposit record because there are some invalid items in the form.</div>
-                <ul className='mbdb-input-error-report'>
+                <div className='mbdb-deposition-error-report'>Cannot deposit record because there are some invalid items in the form.</div>
+                <ul className='mbdb-deposition-error-report'>
                     {inputFormErrors?.map((err, idx) => (
-                        <li className='mbdb-input-error-report' key={idx}>
+                        <li className='mbdb-deposition-error-report' key={idx}>
                             <div>{Data.Path.toString(err.path)}</div>
                             <div>{err.message}</div>
                         </li>

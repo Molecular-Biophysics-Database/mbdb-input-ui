@@ -155,16 +155,16 @@
     color: var(--mbdb-clr-based2);
 }
 
-div.mbdb-input-error-report {
+div.mbdb-deposition-error-report {
     font-size: var(--mbdb-font-large);
 }
 
-li.mbdb-input-error-report {
+li.mbdb-deposition-error-report {
     font-size: var(--mbdb-font-large);
     margin-bottom: var(--mbdb-vgap);
 }
 
-ul.mbdb-input-error-report {
+ul.mbdb-deposition-error-report {
     list-style: square;
 }
 
