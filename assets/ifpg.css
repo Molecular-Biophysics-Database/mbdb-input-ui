@@ -155,6 +155,19 @@
     color: var(--mbdb-clr-based2);
 }
 
+div.mbdb-input-error-report {
+    font-size: var(--mbdb-font-large);
+}
+
+li.mbdb-input-error-report {
+    font-size: var(--mbdb-font-large);
+    margin-bottom: var(--mbdb-vgap);
+}
+
+ul.mbdb-input-error-report {
+    list-style: square;
+}
+
 .mbdb-input-tainer {
 }
 

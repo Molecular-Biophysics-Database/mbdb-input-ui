@@ -1,3 +1,4 @@
+import { DataError } from './';
 import { MbdbData, MbdbScalar } from './data';
 import { assert } from '../assert';
 import { FormContext } from '../context';
@@ -7,7 +8,7 @@ import { Traverse } from '../schema/traverse';
 import { Value } from '../schema/value';
 import { Register } from '../ui/form/custom-components/register';
 
-function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item, options: Options) {
+function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: Item, options: Options) {
     if (Schema.hasRelatedToInput(item)) {
         const id = Data.getValue(internalData, Data.Path.path('id', internalParentPath));
         if (!Value.isEmpty(id)) {
@@ -16,7 +17,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                 const vPath = Data.Path.path(k, internalParentPath);
                 const v = Data.getValue(internalData, vPath);
                 if (!Value.isValid(v)) {
-                    errors.push(Data.Path.toString(vPath));
+                    errors.push(DataError(vPath, 'Item has an invalid'));
                 } else {
                     const storePath = MbdbData.Path.toPath(`${item.mbdbPath}/${k}`, mbdbArrayIndices);
 
@@ -39,16 +40,19 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
 
         if (!Value.isValid(v) && !options.ignoreErrors) {
             // Log error and ignore the value
-            errors.push(Data.Path.toString(internalParentPath));
+            errors.push(DataError(
+                internalParentPath,
+                item.isRequired ? 'Item must have a value but it is empty.' : 'Item has an invalid value.'
+            ));
             return;
         }
 
         const storePath = MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices);
         if (Schema.hasOptionsInput(item)) {
-            assert(Value.isOption(v), `Value is not an Option value`);
+            assert(Value.isOption(v), 'Value is not an Option value.');
             if (Value.isEmptyOption(v)) {
                 if (item.isRequired) {
-                    errors.push(Data.Path.toString(internalParentPath));
+                    errors.push(DataError(internalParentPath, 'Field must have a value but no value was selected.'));
                 }
             } else {
                 const out = Schema.isOtherChoice(v) ? Value.toOtherOption(v) : Value.toOption(v);
@@ -80,7 +84,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
     }
 }
 
-function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: Item, options: Options) {
+function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: Item, options: Options) {
     if (Schema.hasComplexInput(item)) {
         toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
     } else if (Schema.hasVariantInput(item)) {
@@ -90,7 +94,7 @@ function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbDa
     }
 }
 
-function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: VariantItem, options: Options) {
+function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: VariantItem, options: Options) {
     assert(item.discriminator !== undefined, `Item with variant input does not specify a type discriminator.`);
 
     const v = Data.getTree(internalData, internalParentPath);
@@ -109,7 +113,7 @@ function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbd
     MbdbData.set(mbdbData, choice, MbdbData.Path.toPath(MbdbData.Path.extend(item.discriminator, item.mbdbPath), mbdbArrayIndices));
 }
 
-function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: string[], item: TopLevelItem, options: Options) {
+function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: TopLevelItem, options: Options) {
     const tree = Data.getTree(internalData, internalParentPath);
     for (const k in tree) {
         if (Schema.isReservedKey(k)) continue;
@@ -122,7 +126,7 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
             const minItems = innerItem.minItems ?? 0;
 
             if (innerItem.isRequired && v.length < minItems && !options.ignoreErrors) {
-                errors.push(`${Data.Path.toString(path)} must have at least ${minItems} but it has only ${v.length} items.`);
+                errors.push(DataError(path, `At least ${minItems} item(s) are required but only ${v.length} item(s) were provided.`));
             } else {
                 assert(Array.isArray(v), `Expected an array of values for input at object path "${Data.Path.toString(path)}"`);
 
@@ -145,9 +149,9 @@ export type Options = {
 };
 
 export const Serialize = {
-    serialize(ctx: FormContext, options?: Options): { data: MbdbData, errors: string [] } {
+    serialize(ctx: FormContext, options?: Options): { data: MbdbData, errors: DataError[] } {
         const data = {};
-        const errors = new Array<string>();
+        const errors = new Array<DataError>();
 
         toMbdbDataTree(ctx.data, [], data, [], errors, ctx.schema, options ?? {});
 

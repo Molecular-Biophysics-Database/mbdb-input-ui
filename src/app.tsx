@@ -14,7 +14,7 @@ import { FormContextHandler, _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
 import { ErrorDialog } from './ui/error-dialog';
 import { Form } from './ui/form';
-import { Mbdb } from './mbdb';
+import { DataError, Mbdb } from './mbdb';
 import { Deserialize as MbdbDeserialize } from './mbdb/deserialize';
 import { MbdbData } from './mbdb/data';
 import { MbdbModels } from './mbdb/models';
@@ -22,6 +22,7 @@ import { Serialize as MbdbSerialize } from './mbdb/serialize';
 import { submitToMbdb } from './mbdb/submit';
 import { TopLevelItem } from './schema';
 import { Configuration } from './schema/configuration';
+import { Data } from './schema/data';
 import { Persistence } from './schema/persistence';
 import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
@@ -123,7 +124,7 @@ function App() {
     }, []);
     const [selectedSchema, setSelectedSchema] = React.useState<keyof typeof MbdbModels>('mst');
     const [submitError, setSubmitError] = React.useState<{ status: number, message: string, errors: string[], payload: MbdbData } | null>(null);
-    const [inputFormErrors, setInputFormErrors] = React.useState<string[] | null>(null);
+    const [inputFormErrors, setInputFormErrors] = React.useState<DataError[] | null>(null);
     const [loadError, setLoadError] = React.useState<{ title: string, message: string } | null>(null);
 
     const dataId = React.useMemo(() => uuid_v4(), []);
@@ -177,15 +178,15 @@ function App() {
                 title='Cannot deposit record'
                 onDismissed={() => setInputFormErrors(null)}
             >
-                <div>Cannot deposit record because there are some invalid values in the input</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' }}>
+                <div className='mbdb-input-error-report'>Cannot deposit record because there are some invalid items in the form.</div>
+                <ul className='mbdb-input-error-report'>
                     {inputFormErrors?.map((err, idx) => (
-                        <React.Fragment key={idx}>
-                            <div>{idx + 1}:</div>
-                            <div>{err}</div>
-                        </React.Fragment>
+                        <li className='mbdb-input-error-report' key={idx}>
+                            <div>{Data.Path.toString(err.path)}</div>
+                            <div>{err.message}</div>
+                        </li>
                     )) ?? null}
-                </div>
+                </ul>
             </ErrorDialog>
             <ErrorDialog
                 isOpen={loadError !== null}

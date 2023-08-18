@@ -1,5 +1,14 @@
 import { Options as SerializationOptions, Serialize } from './serialize';
 import { FormContext } from '../context';
+import { Path } from '../schema/data';
+
+export type DataError = {
+    path: Path,
+    message: string,
+};
+export function DataError(path: Path, message: string): DataError {
+    return { path, message };
+}
 
 export type Options = {
     dontPrune?: boolean,

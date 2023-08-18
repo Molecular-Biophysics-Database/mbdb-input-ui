@@ -253,25 +253,23 @@ def item_defn(item, defs, name, mbdbPath):
 
 def make_ui_item(name, props, mbdbPath):
     isArray = name.endswith('[]')
-    required = 'required' in props and props['required']
-
-    if '^minItems' in props:
-        if not isArray:
-            raise UIGSchemaError(f'Item {name} defines "^minItems" it is not an array.')
-        else:
-            minItems = props['^minItems']
-            required = required or minItems > 0
 
     item = {
         'tag': mbdb_tag(name),
         'label': mbdb_tag(name),
         'isArray': isArray,
-        'isRequired': required,
+        'isRequired': False,
         'mbdbPath': mbdbPath,
     }
 
-    if '^minItems' in props:
-        item['minItems'] = props['^minItems']
+    if isArray:
+        if '^required' in props and props['^required'] == True:
+            item['isRequired'] = True
+        if '^minItems' in props:
+            item['minItems'] = props['^minItems']
+    else:
+        if 'required' in props and props['required'] == True:
+            item['isRequired'] = True
 
     return item
 

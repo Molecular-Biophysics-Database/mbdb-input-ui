@@ -10,13 +10,13 @@ export const SPR = [
                 tag: 'schema_version',
                 label: 'schema_version',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/schema_version',
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.4',
-                        title: '0.9.4',
+                        tag: '0.9.6',
+                        title: '0.9.6',
                     },
                 ],
                 help: {
@@ -34,7 +34,7 @@ export const SPR = [
                         tag: 'title',
                         label: 'title',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/title',
                         input: 'string',
                         help: {
@@ -45,7 +45,7 @@ export const SPR = [
                         tag: 'keywords',
                         label: 'keywords',
                         isArray: true,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/keywords[]',
                         input: 'string',
                         help: {
@@ -85,7 +85,7 @@ export const SPR = [
                                 tag: 'title',
                                 label: 'title',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/record_information/project/title',
                                 input: 'string',
                                 help: {
@@ -96,7 +96,7 @@ export const SPR = [
                                 tag: 'description',
                                 label: 'description',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/record_information/project/description',
                                 input: 'string',
                                 help: {
@@ -114,7 +114,7 @@ export const SPR = [
                                         tag: 'given_name',
                                         label: 'given_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/record_information/project/owner/given_name',
                                         input: 'string',
                                         help: {
@@ -125,7 +125,7 @@ export const SPR = [
                                         tag: 'family_name',
                                         label: 'family_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/record_information/project/owner/family_name',
                                         input: 'string',
                                         help: {
@@ -170,7 +170,7 @@ export const SPR = [
                         tag: 'access_rights',
                         label: 'access_rights',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/access_rights',
                         input: 'options',
                         choices: [
@@ -195,7 +195,7 @@ export const SPR = [
                         tag: 'metadata_access_rights',
                         label: 'metadata_access_rights',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/metadata_access_rights',
                         input: 'options',
                         choices: [
@@ -220,7 +220,7 @@ export const SPR = [
                         tag: 'publisher',
                         label: 'publisher',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/publisher',
                         input: 'options',
                         choices: [
@@ -237,7 +237,7 @@ export const SPR = [
                         tag: 'resource_type_general',
                         label: 'resource_type_general',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/resource_type_general',
                         input: 'options',
                         choices: [
@@ -254,7 +254,7 @@ export const SPR = [
                         tag: 'resource_type',
                         label: 'resource_type',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/resource_type',
                         input: 'string',
                         help: {
@@ -265,7 +265,7 @@ export const SPR = [
                         tag: 'internal_id',
                         label: 'internal_id',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/internal_id',
                         input: 'string',
                         help: {
@@ -276,7 +276,7 @@ export const SPR = [
                         tag: 'identifier',
                         label: 'identifier',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/identifier',
                         input: 'uuid',
                         help: {
@@ -287,7 +287,7 @@ export const SPR = [
                         tag: 'subject_category',
                         label: 'subject_category',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/subject_category',
                         input: 'options',
                         choices: [
@@ -304,7 +304,7 @@ export const SPR = [
                         tag: 'deposition_date',
                         label: 'deposition_date',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/record_information/deposition_date',
                         input: 'calendar-date',
                         help: {
@@ -342,7 +342,7 @@ export const SPR = [
                                 tag: 'given_name',
                                 label: 'given_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/depositor/given_name',
                                 input: 'string',
                                 help: {
@@ -353,7 +353,7 @@ export const SPR = [
                                 tag: 'family_name',
                                 label: 'family_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/depositor/family_name',
                                 input: 'string',
                                 help: {
@@ -403,7 +403,7 @@ export const SPR = [
                                 tag: 'given_name',
                                 label: 'given_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/principal_contact/given_name',
                                 input: 'string',
                                 help: {
@@ -414,7 +414,7 @@ export const SPR = [
                                 tag: 'family_name',
                                 label: 'family_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/principal_contact/family_name',
                                 input: 'string',
                                 help: {
@@ -464,7 +464,7 @@ export const SPR = [
                                 tag: 'given_name',
                                 label: 'given_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/contributors[]/given_name',
                                 input: 'string',
                                 help: {
@@ -475,7 +475,7 @@ export const SPR = [
                                 tag: 'family_name',
                                 label: 'family_name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/depositors/contributors[]/family_name',
                                 input: 'string',
                                 help: {
@@ -537,7 +537,7 @@ export const SPR = [
                                 tag: 'pid',
                                 label: 'pid',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/main/pid',
                                 input: 'string',
                                 help: {
@@ -559,7 +559,7 @@ export const SPR = [
                                 tag: 'publication_year',
                                 label: 'publication_year',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/main/publication_year',
                                 input: 'int',
                                 minimum: 1800,
@@ -578,7 +578,7 @@ export const SPR = [
                                         tag: 'given_name',
                                         label: 'given_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/associated_publications/main/authors[]/given_name',
                                         input: 'string',
                                         help: {
@@ -589,7 +589,7 @@ export const SPR = [
                                         tag: 'family_name',
                                         label: 'family_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/associated_publications/main/authors[]/family_name',
                                         input: 'string',
                                         help: {
@@ -635,7 +635,7 @@ export const SPR = [
                                 tag: 'resource_type',
                                 label: 'resource_type',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/main/resource_type',
                                 input: 'options',
                                 choices: [
@@ -680,7 +680,7 @@ export const SPR = [
                                 tag: 'pid',
                                 label: 'pid',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/additional[]/pid',
                                 input: 'string',
                                 help: {
@@ -702,7 +702,7 @@ export const SPR = [
                                 tag: 'publication_year',
                                 label: 'publication_year',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/additional[]/publication_year',
                                 input: 'int',
                                 minimum: 1800,
@@ -721,7 +721,7 @@ export const SPR = [
                                         tag: 'given_name',
                                         label: 'given_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/given_name',
                                         input: 'string',
                                         help: {
@@ -732,7 +732,7 @@ export const SPR = [
                                         tag: 'family_name',
                                         label: 'family_name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/associated_publications/additional[]/authors[]/family_name',
                                         input: 'string',
                                         help: {
@@ -778,7 +778,7 @@ export const SPR = [
                                 tag: 'resource_type',
                                 label: 'resource_type',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/associated_publications/additional[]/resource_type',
                                 input: 'options',
                                 choices: [
@@ -860,7 +860,7 @@ export const SPR = [
                 tag: 'collection_start_time',
                 label: 'collection_start_time',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/collection_start_time',
                 input: 'calendar-date',
                 help: {
@@ -932,7 +932,7 @@ export const SPR = [
                         tag: 'name',
                         label: 'name',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/instrument/name',
                         input: 'string',
                         help: {
@@ -961,7 +961,7 @@ export const SPR = [
                                 tag: 'report',
                                 label: 'report',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/instrument/performance_test/report',
                                 input: 'ignore',
                                 help: {
@@ -979,7 +979,7 @@ export const SPR = [
                                         tag: 'pid',
                                         label: 'pid',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/pid',
                                         input: 'string',
                                         help: {
@@ -1001,7 +1001,7 @@ export const SPR = [
                                         tag: 'publication_year',
                                         label: 'publication_year',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publication_year',
                                         input: 'int',
                                         minimum: 1800,
@@ -1020,7 +1020,7 @@ export const SPR = [
                                                 tag: 'given_name',
                                                 label: 'given_name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/given_name',
                                                 input: 'string',
                                                 help: {
@@ -1031,7 +1031,7 @@ export const SPR = [
                                                 tag: 'family_name',
                                                 label: 'family_name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/family_name',
                                                 input: 'string',
                                                 help: {
@@ -1077,7 +1077,7 @@ export const SPR = [
                                         tag: 'resource_type',
                                         label: 'resource_type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/resource_type',
                                         input: 'options',
                                         choices: [
@@ -1115,7 +1115,7 @@ export const SPR = [
                                 tag: 'sample_composition',
                                 label: 'sample_composition',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]',
                                 input: {
                                     Polymer: {
@@ -1129,7 +1129,7 @@ export const SPR = [
                                                 tag: 'polymer_type',
                                                 label: 'polymer_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/polymer_type',
                                                 input: 'options',
                                                 choices: [
@@ -1192,7 +1192,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -1301,7 +1301,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/synthesis[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -1319,7 +1319,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/synthesis[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -1330,7 +1330,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/synthesis[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -1369,7 +1369,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/biological_postprocessing[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -1387,7 +1387,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -1398,7 +1398,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -1437,7 +1437,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/chemical[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -1455,7 +1455,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/chemical[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -1466,7 +1466,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/chemical[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -1489,7 +1489,7 @@ export const SPR = [
                                                 tag: 'expression_source_type',
                                                 label: 'expression_source_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/expression_source_type',
                                                 input: 'options',
                                                 choices: [
@@ -1535,7 +1535,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -1584,7 +1584,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -1677,7 +1677,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -1697,7 +1697,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -1765,7 +1765,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -1776,7 +1776,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -1801,7 +1801,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -1838,7 +1838,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -1863,7 +1863,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -1956,7 +1956,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -1976,7 +1976,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -2044,7 +2044,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -2055,7 +2055,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -2073,7 +2073,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -2100,7 +2100,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -2111,7 +2111,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -2159,7 +2159,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -2299,7 +2299,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -2310,7 +2310,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -2337,7 +2337,7 @@ export const SPR = [
                                                 tag: 'inchikey',
                                                 label: 'inchikey',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
@@ -2377,7 +2377,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -2432,7 +2432,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -2474,7 +2474,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -2511,7 +2511,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -2536,7 +2536,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -2629,7 +2629,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -2649,7 +2649,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -2717,7 +2717,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -2728,7 +2728,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -2746,7 +2746,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -2773,7 +2773,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -2784,7 +2784,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -2832,7 +2832,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -2972,7 +2972,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -2983,7 +2983,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -3036,7 +3036,7 @@ export const SPR = [
                                                                 tag: 'polymer_type',
                                                                 label: 'polymer_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/polymer_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -3099,7 +3099,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -3208,7 +3208,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/synthesis[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -3226,7 +3226,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3237,7 +3237,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3276,7 +3276,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -3294,7 +3294,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3305,7 +3305,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3344,7 +3344,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/chemical[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -3362,7 +3362,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/chemical[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3373,7 +3373,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/chemical[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3396,7 +3396,7 @@ export const SPR = [
                                                                 tag: 'expression_source_type',
                                                                 label: 'expression_source_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/expression_source_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -3442,7 +3442,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -3491,7 +3491,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/temperature/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -3584,7 +3584,7 @@ export const SPR = [
                                                                                 tag: 'controlled',
                                                                                 label: 'controlled',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/temperature/controlled',
                                                                                 input: 'boolean',
                                                                                 help: {
@@ -3604,7 +3604,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/duration/value',
                                                                                 input: 'float',
                                                                                 minimum: 0.0,
@@ -3672,7 +3672,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/storage_preparation[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -3683,7 +3683,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/storage_preparation[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -3708,7 +3708,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -3745,7 +3745,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -3770,7 +3770,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -3863,7 +3863,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -3883,7 +3883,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -3951,7 +3951,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3962,7 +3962,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -3980,7 +3980,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -4007,7 +4007,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -4018,7 +4018,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -4039,7 +4039,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -4060,7 +4060,7 @@ export const SPR = [
                                                                 tag: 'inchikey',
                                                                 label: 'inchikey',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
@@ -4100,7 +4100,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -4155,7 +4155,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -4197,7 +4197,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -4234,7 +4234,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -4259,7 +4259,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -4352,7 +4352,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -4372,7 +4372,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -4440,7 +4440,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -4451,7 +4451,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -4469,7 +4469,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -4496,7 +4496,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -4507,7 +4507,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -4528,7 +4528,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -4555,7 +4555,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -4621,7 +4621,7 @@ export const SPR = [
                                                         tag: 'modification',
                                                         label: 'modification',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/chemical_modifications[]/modification',
                                                         input: 'string',
                                                         help: {
@@ -4639,7 +4639,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/chemical_modifications[]/protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -4650,7 +4650,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/chemical_modifications[]/protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -4678,7 +4678,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -4727,7 +4727,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -4820,7 +4820,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -4840,7 +4840,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -4908,7 +4908,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -4919,7 +4919,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -4944,7 +4944,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -4981,7 +4981,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -5006,7 +5006,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -5099,7 +5099,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -5119,7 +5119,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -5187,7 +5187,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -5198,7 +5198,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -5216,7 +5216,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -5239,7 +5239,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -5250,7 +5250,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -5277,7 +5277,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -5288,7 +5288,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -5336,7 +5336,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -5476,7 +5476,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -5487,7 +5487,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -5521,7 +5521,7 @@ export const SPR = [
                                                         tag: 'fluid',
                                                         label: 'fluid',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/fluid',
                                                         input: 'options',
                                                         choices: [
@@ -5570,7 +5570,7 @@ export const SPR = [
                                                         tag: 'health_status',
                                                         label: 'health_status',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/health_status',
                                                         input: 'string',
                                                         help: {
@@ -5606,7 +5606,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -5620,14 +5620,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -5638,7 +5638,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -5668,7 +5668,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -5761,7 +5761,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -5781,7 +5781,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -5849,7 +5849,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -5860,7 +5860,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -5889,7 +5889,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
@@ -5900,7 +5900,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                         input: 'variant-discriminator',
                                                         choices: [
@@ -5948,7 +5948,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -6088,7 +6088,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -6099,7 +6099,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -6126,7 +6126,7 @@ export const SPR = [
                                                         tag: 'fraction',
                                                         label: 'fraction',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/fraction',
                                                         input: 'options',
                                                         choices: [
@@ -6228,7 +6228,7 @@ export const SPR = [
                                                         tag: 'health_status',
                                                         label: 'health_status',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/health_status',
                                                         input: 'string',
                                                         help: {
@@ -6264,7 +6264,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -6278,14 +6278,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -6296,7 +6296,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -6326,7 +6326,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -6419,7 +6419,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -6439,7 +6439,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -6507,7 +6507,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -6518,7 +6518,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -6547,7 +6547,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
@@ -6558,7 +6558,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                         input: 'options',
                                                         choices: [
@@ -6606,7 +6606,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -6746,7 +6746,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -6757,7 +6757,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -6784,7 +6784,7 @@ export const SPR = [
                                                         tag: 'Genetic_material',
                                                         label: 'Genetic_material',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/Genetic_material',
                                                         input: 'options',
                                                         choices: [
@@ -6813,7 +6813,7 @@ export const SPR = [
                                                         tag: 'capsid_type',
                                                         label: 'capsid_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/capsid_type',
                                                         input: 'options',
                                                         choices: [
@@ -6846,7 +6846,7 @@ export const SPR = [
                                                         tag: 'envelope_type',
                                                         label: 'envelope_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/envelope_type',
                                                         input: 'options',
                                                         choices: [
@@ -6929,7 +6929,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -6943,14 +6943,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -6961,7 +6961,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -6991,7 +6991,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -7084,7 +7084,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -7104,7 +7104,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -7172,7 +7172,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -7183,7 +7183,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -7212,7 +7212,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
@@ -7223,7 +7223,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                         input: 'options',
                                                         choices: [
@@ -7271,7 +7271,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -7411,7 +7411,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -7422,7 +7422,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -7455,7 +7455,7 @@ export const SPR = [
                                                 tag: 'source',
                                                 label: 'source',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source',
                                                 input: 'options',
                                                 choices: [
@@ -7496,14 +7496,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -7514,7 +7514,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -7537,7 +7537,7 @@ export const SPR = [
                                                         tag: 'S-N(latitude)',
                                                         label: 'S-N(latitude)',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/S-N(latitude)',
                                                         input: 'float',
                                                         minimum: -90.0,
@@ -7550,7 +7550,7 @@ export const SPR = [
                                                         tag: 'W-E(longitude)',
                                                         label: 'W-E(longitude)',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/W-E(longitude)',
                                                         input: 'float',
                                                         minimum: -180.0,
@@ -7579,7 +7579,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -7672,7 +7672,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -7692,7 +7692,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -7760,7 +7760,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -7771,7 +7771,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -7800,7 +7800,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -7811,7 +7811,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -7859,7 +7859,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -7999,7 +7999,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -8010,7 +8010,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -8037,7 +8037,7 @@ export const SPR = [
                                                 tag: 'class',
                                                 label: 'class',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/class',
                                                 input: 'options',
                                                 choices: [
@@ -8061,7 +8061,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/type',
                                                         input: 'options',
                                                         choices: [
@@ -8094,7 +8094,7 @@ export const SPR = [
                                                         tag: 'number_of_mono_layers',
                                                         label: 'number_of_mono_layers',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/number_of_mono_layers',
                                                         input: 'int',
                                                         minimum: -1,
@@ -8113,7 +8113,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/size/type',
                                                                 input: 'options',
                                                                 choices: [
@@ -8142,7 +8142,7 @@ export const SPR = [
                                                                 tag: 'mean',
                                                                 label: 'mean',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/size/mean',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -8235,7 +8235,7 @@ export const SPR = [
                                                         tag: 'components',
                                                         label: 'components',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]',
                                                         input: {
                                                             Polymer: {
@@ -8249,7 +8249,7 @@ export const SPR = [
                                                                         tag: 'polymer_type',
                                                                         label: 'polymer_type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/polymer_type',
                                                                         input: 'options',
                                                                         choices: [
@@ -8312,7 +8312,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/molecular_weight/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -8421,7 +8421,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/synthesis[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -8439,7 +8439,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8450,7 +8450,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8489,7 +8489,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -8507,7 +8507,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8518,7 +8518,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8557,7 +8557,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/chemical[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -8575,7 +8575,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/chemical[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8586,7 +8586,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/chemical[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -8609,7 +8609,7 @@ export const SPR = [
                                                                         tag: 'expression_source_type',
                                                                         label: 'expression_source_type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/expression_source_type',
                                                                         input: 'options',
                                                                         choices: [
@@ -8655,7 +8655,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/supplier/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -8704,7 +8704,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -8797,7 +8797,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -8817,7 +8817,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -8885,7 +8885,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -8896,7 +8896,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -8921,7 +8921,7 @@ export const SPR = [
                                                                                 tag: 'parameter',
                                                                                 label: 'parameter',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/parameter',
                                                                                 input: 'options',
                                                                                 choices: [
@@ -8958,7 +8958,7 @@ export const SPR = [
                                                                                 tag: 'technique',
                                                                                 label: 'technique',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/technique',
                                                                                 input: 'string',
                                                                                 help: {
@@ -8983,7 +8983,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                                 input: 'float',
                                                                                                 help: {
@@ -9076,7 +9076,7 @@ export const SPR = [
                                                                                                 tag: 'controlled',
                                                                                                 label: 'controlled',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                                 input: 'boolean',
                                                                                                 help: {
@@ -9096,7 +9096,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                                 input: 'float',
                                                                                                 minimum: 0.0,
@@ -9164,7 +9164,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -9175,7 +9175,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -9193,7 +9193,7 @@ export const SPR = [
                                                                                 tag: 'report',
                                                                                 label: 'report',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
                                                                                 input: 'ignore',
                                                                                 help: {
@@ -9220,7 +9220,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -9231,7 +9231,7 @@ export const SPR = [
                                                                         tag: 'type',
                                                                         label: 'type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/type',
                                                                         input: 'variant-discriminator',
                                                                         choices: [
@@ -9252,7 +9252,7 @@ export const SPR = [
                                                                         tag: 'copy_number',
                                                                         label: 'copy_number',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/copy_number',
                                                                         input: 'float',
                                                                         minimum: -1.0,
@@ -9273,7 +9273,7 @@ export const SPR = [
                                                                         tag: 'inchikey',
                                                                         label: 'inchikey',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
@@ -9313,7 +9313,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/molecular_weight/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -9368,7 +9368,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/supplier/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -9410,7 +9410,7 @@ export const SPR = [
                                                                                 tag: 'parameter',
                                                                                 label: 'parameter',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/parameter',
                                                                                 input: 'options',
                                                                                 choices: [
@@ -9447,7 +9447,7 @@ export const SPR = [
                                                                                 tag: 'technique',
                                                                                 label: 'technique',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/technique',
                                                                                 input: 'string',
                                                                                 help: {
@@ -9472,7 +9472,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                                 input: 'float',
                                                                                                 help: {
@@ -9565,7 +9565,7 @@ export const SPR = [
                                                                                                 tag: 'controlled',
                                                                                                 label: 'controlled',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                                 input: 'boolean',
                                                                                                 help: {
@@ -9585,7 +9585,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                                 input: 'float',
                                                                                                 minimum: 0.0,
@@ -9653,7 +9653,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -9664,7 +9664,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -9682,7 +9682,7 @@ export const SPR = [
                                                                                 tag: 'report',
                                                                                 label: 'report',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
                                                                                 input: 'ignore',
                                                                                 help: {
@@ -9709,7 +9709,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -9720,7 +9720,7 @@ export const SPR = [
                                                                         tag: 'type',
                                                                         label: 'type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/type',
                                                                         input: 'variant-discriminator',
                                                                         choices: [
@@ -9741,7 +9741,7 @@ export const SPR = [
                                                                         tag: 'copy_number',
                                                                         label: 'copy_number',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/copy_number',
                                                                         input: 'float',
                                                                         minimum: -1.0,
@@ -9768,7 +9768,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/additional_specifications[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -9779,7 +9779,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/additional_specifications[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -9797,14 +9797,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -9815,7 +9815,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -9845,7 +9845,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -9938,7 +9938,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -9958,7 +9958,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -10026,7 +10026,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -10037,7 +10037,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -10066,7 +10066,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -10077,7 +10077,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -10125,7 +10125,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -10265,7 +10265,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -10276,7 +10276,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -10303,7 +10303,7 @@ export const SPR = [
                                                 tag: 'product',
                                                 label: 'product',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/product',
                                                 input: 'options',
                                                 choices: [
@@ -10332,14 +10332,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -10350,7 +10350,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -10380,7 +10380,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -10473,7 +10473,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -10493,7 +10493,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -10561,7 +10561,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -10572,7 +10572,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -10601,7 +10601,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -10612,7 +10612,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -10660,7 +10660,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -10800,7 +10800,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -10811,7 +10811,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -10866,7 +10866,7 @@ export const SPR = [
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value',
                                 input: 'float',
                                 help: {
@@ -10959,7 +10959,7 @@ export const SPR = [
                                 tag: 'controlled',
                                 label: 'controlled',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/controlled',
                                 input: 'boolean',
                                 help: {
@@ -10979,7 +10979,7 @@ export const SPR = [
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value',
                                 input: 'float',
                                 help: {
@@ -11075,7 +11075,7 @@ export const SPR = [
                                 tag: 'controlled',
                                 label: 'controlled',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/controlled',
                                 input: 'boolean',
                                 help: {
@@ -11095,7 +11095,7 @@ export const SPR = [
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value',
                                 input: 'float',
                                 help: {
@@ -11163,7 +11163,7 @@ export const SPR = [
                                 tag: 'controlled',
                                 label: 'controlled',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/controlled',
                                 input: 'boolean',
                                 help: {
@@ -11198,7 +11198,7 @@ export const SPR = [
                                                 tag: 'inchikey',
                                                 label: 'inchikey',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/inchikey',
                                                 input: 'string',
                                                 help: {
@@ -11238,7 +11238,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -11293,7 +11293,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -11335,7 +11335,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -11372,7 +11372,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -11397,7 +11397,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -11490,7 +11490,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -11510,7 +11510,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -11578,7 +11578,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -11589,7 +11589,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -11607,7 +11607,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -11634,7 +11634,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/name',
                                                 input: 'string',
                                                 help: {
@@ -11645,7 +11645,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -11669,7 +11669,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -11809,7 +11809,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -11820,7 +11820,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -11865,7 +11865,7 @@ export const SPR = [
                                 tag: 'id',
                                 label: 'id',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/id',
                                 input: 'referenceable-id',
                                 referenceAs: 'chemical-environment',
@@ -11874,7 +11874,7 @@ export const SPR = [
                                 tag: 'name',
                                 label: 'name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/name',
                                 input: 'string',
                                 help: {
@@ -11885,7 +11885,7 @@ export const SPR = [
                                 tag: 'solvent',
                                 label: 'solvent',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]',
                                 input: {
                                     Chemical: {
@@ -11899,7 +11899,7 @@ export const SPR = [
                                                 tag: 'inchikey',
                                                 label: 'inchikey',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/inchikey',
                                                 input: 'string',
                                                 help: {
@@ -11939,7 +11939,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -11994,7 +11994,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -12036,7 +12036,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -12073,7 +12073,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -12098,7 +12098,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -12191,7 +12191,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -12211,7 +12211,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -12279,7 +12279,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -12290,7 +12290,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -12308,7 +12308,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -12335,7 +12335,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/name',
                                                 input: 'string',
                                                 help: {
@@ -12346,7 +12346,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -12370,7 +12370,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -12510,7 +12510,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -12521,7 +12521,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -12561,7 +12561,7 @@ export const SPR = [
                                                 tag: 'polymer_type',
                                                 label: 'polymer_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/polymer_type',
                                                 input: 'options',
                                                 choices: [
@@ -12624,7 +12624,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -12733,7 +12733,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/synthesis[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -12751,7 +12751,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/synthesis[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -12762,7 +12762,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/synthesis[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -12801,7 +12801,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/biological_postprocessing[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -12819,7 +12819,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -12830,7 +12830,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -12869,7 +12869,7 @@ export const SPR = [
                                                                 tag: 'modification',
                                                                 label: 'modification',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/chemical[]/modification',
                                                                 input: 'string',
                                                                 help: {
@@ -12887,7 +12887,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/chemical[]/protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -12898,7 +12898,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/chemical[]/protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -12921,7 +12921,7 @@ export const SPR = [
                                                 tag: 'expression_source_type',
                                                 label: 'expression_source_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/expression_source_type',
                                                 input: 'options',
                                                 choices: [
@@ -12967,7 +12967,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -13016,7 +13016,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -13109,7 +13109,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -13129,7 +13129,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -13197,7 +13197,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -13208,7 +13208,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -13233,7 +13233,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -13270,7 +13270,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -13295,7 +13295,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -13388,7 +13388,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -13408,7 +13408,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -13476,7 +13476,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -13487,7 +13487,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -13505,7 +13505,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -13532,7 +13532,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -13543,7 +13543,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -13591,7 +13591,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -13731,7 +13731,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -13742,7 +13742,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -13769,7 +13769,7 @@ export const SPR = [
                                                 tag: 'inchikey',
                                                 label: 'inchikey',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/inchikey',
                                                 input: 'string',
                                                 help: {
@@ -13809,7 +13809,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -13864,7 +13864,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -13906,7 +13906,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -13943,7 +13943,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -13968,7 +13968,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -14061,7 +14061,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -14081,7 +14081,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -14149,7 +14149,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -14160,7 +14160,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -14178,7 +14178,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -14205,7 +14205,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -14216,7 +14216,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -14264,7 +14264,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -14404,7 +14404,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -14415,7 +14415,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -14468,7 +14468,7 @@ export const SPR = [
                                                                 tag: 'polymer_type',
                                                                 label: 'polymer_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/polymer_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -14531,7 +14531,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -14640,7 +14640,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/synthesis[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -14658,7 +14658,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14669,7 +14669,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14708,7 +14708,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -14726,7 +14726,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14737,7 +14737,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14776,7 +14776,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/chemical[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -14794,7 +14794,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/chemical[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14805,7 +14805,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/chemical[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -14828,7 +14828,7 @@ export const SPR = [
                                                                 tag: 'expression_source_type',
                                                                 label: 'expression_source_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/expression_source_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -14874,7 +14874,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -14923,7 +14923,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/temperature/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -15016,7 +15016,7 @@ export const SPR = [
                                                                                 tag: 'controlled',
                                                                                 label: 'controlled',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/temperature/controlled',
                                                                                 input: 'boolean',
                                                                                 help: {
@@ -15036,7 +15036,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/duration/value',
                                                                                 input: 'float',
                                                                                 minimum: 0.0,
@@ -15104,7 +15104,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/storage_preparation[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -15115,7 +15115,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/storage_preparation[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -15140,7 +15140,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -15177,7 +15177,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -15202,7 +15202,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -15295,7 +15295,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -15315,7 +15315,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -15383,7 +15383,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -15394,7 +15394,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -15412,7 +15412,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -15439,7 +15439,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -15450,7 +15450,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -15471,7 +15471,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -15492,7 +15492,7 @@ export const SPR = [
                                                                 tag: 'inchikey',
                                                                 label: 'inchikey',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
@@ -15532,7 +15532,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -15587,7 +15587,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -15629,7 +15629,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -15666,7 +15666,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -15691,7 +15691,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -15784,7 +15784,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -15804,7 +15804,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -15872,7 +15872,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -15883,7 +15883,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -15901,7 +15901,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -15928,7 +15928,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -15939,7 +15939,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -15960,7 +15960,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -15987,7 +15987,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value',
                                                         input: 'float',
                                                         help: {
@@ -16053,7 +16053,7 @@ export const SPR = [
                                                         tag: 'modification',
                                                         label: 'modification',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/chemical_modifications[]/modification',
                                                         input: 'string',
                                                         help: {
@@ -16071,7 +16071,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/chemical_modifications[]/protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -16082,7 +16082,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/chemical_modifications[]/protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -16110,7 +16110,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/supplier/name',
                                                         input: 'string',
                                                         help: {
@@ -16159,7 +16159,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -16252,7 +16252,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -16272,7 +16272,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -16340,7 +16340,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -16351,7 +16351,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -16376,7 +16376,7 @@ export const SPR = [
                                                         tag: 'parameter',
                                                         label: 'parameter',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/parameter',
                                                         input: 'options',
                                                         choices: [
@@ -16413,7 +16413,7 @@ export const SPR = [
                                                         tag: 'technique',
                                                         label: 'technique',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/technique',
                                                         input: 'string',
                                                         help: {
@@ -16438,7 +16438,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -16531,7 +16531,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -16551,7 +16551,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -16619,7 +16619,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -16630,7 +16630,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -16648,7 +16648,7 @@ export const SPR = [
                                                         tag: 'report',
                                                         label: 'report',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
                                                         input: 'ignore',
                                                         help: {
@@ -16671,7 +16671,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -16682,7 +16682,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -16709,7 +16709,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -16720,7 +16720,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -16768,7 +16768,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -16908,7 +16908,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -16919,7 +16919,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -16953,7 +16953,7 @@ export const SPR = [
                                                         tag: 'fluid',
                                                         label: 'fluid',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/fluid',
                                                         input: 'options',
                                                         choices: [
@@ -17002,7 +17002,7 @@ export const SPR = [
                                                         tag: 'health_status',
                                                         label: 'health_status',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/health_status',
                                                         input: 'string',
                                                         help: {
@@ -17038,7 +17038,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -17052,14 +17052,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -17070,7 +17070,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -17100,7 +17100,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -17193,7 +17193,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -17213,7 +17213,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -17281,7 +17281,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -17292,7 +17292,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -17321,7 +17321,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
@@ -17332,7 +17332,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                         input: 'variant-discriminator',
                                                         choices: [
@@ -17380,7 +17380,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -17520,7 +17520,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -17531,7 +17531,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -17558,7 +17558,7 @@ export const SPR = [
                                                         tag: 'fraction',
                                                         label: 'fraction',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/fraction',
                                                         input: 'options',
                                                         choices: [
@@ -17660,7 +17660,7 @@ export const SPR = [
                                                         tag: 'health_status',
                                                         label: 'health_status',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/health_status',
                                                         input: 'string',
                                                         help: {
@@ -17696,7 +17696,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -17710,14 +17710,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -17728,7 +17728,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -17758,7 +17758,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -17851,7 +17851,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -17871,7 +17871,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -17939,7 +17939,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -17950,7 +17950,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -17979,7 +17979,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
@@ -17990,7 +17990,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                         input: 'options',
                                                         choices: [
@@ -18038,7 +18038,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -18178,7 +18178,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -18189,7 +18189,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -18216,7 +18216,7 @@ export const SPR = [
                                                         tag: 'Genetic_material',
                                                         label: 'Genetic_material',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/Genetic_material',
                                                         input: 'options',
                                                         choices: [
@@ -18245,7 +18245,7 @@ export const SPR = [
                                                         tag: 'capsid_type',
                                                         label: 'capsid_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/capsid_type',
                                                         input: 'options',
                                                         choices: [
@@ -18278,7 +18278,7 @@ export const SPR = [
                                                         tag: 'envelope_type',
                                                         label: 'envelope_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/envelope_type',
                                                         input: 'options',
                                                         choices: [
@@ -18361,7 +18361,7 @@ export const SPR = [
                                                         tag: 'organism',
                                                         label: 'organism',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
@@ -18375,14 +18375,14 @@ export const SPR = [
                                                         tag: 'preparation_protocol',
                                                         label: 'preparation_protocol',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                         input: [
                                                             {
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -18393,7 +18393,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -18423,7 +18423,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -18516,7 +18516,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -18536,7 +18536,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -18604,7 +18604,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -18615,7 +18615,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -18644,7 +18644,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
@@ -18655,7 +18655,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                         input: 'options',
                                                         choices: [
@@ -18703,7 +18703,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -18843,7 +18843,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -18854,7 +18854,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -18887,7 +18887,7 @@ export const SPR = [
                                                 tag: 'source',
                                                 label: 'source',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source',
                                                 input: 'options',
                                                 choices: [
@@ -18928,14 +18928,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -18946,7 +18946,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -18969,7 +18969,7 @@ export const SPR = [
                                                         tag: 'S-N(latitude)',
                                                         label: 'S-N(latitude)',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/S-N(latitude)',
                                                         input: 'float',
                                                         minimum: -90.0,
@@ -18982,7 +18982,7 @@ export const SPR = [
                                                         tag: 'W-E(longitude)',
                                                         label: 'W-E(longitude)',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/W-E(longitude)',
                                                         input: 'float',
                                                         minimum: -180.0,
@@ -19011,7 +19011,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -19104,7 +19104,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -19124,7 +19124,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -19192,7 +19192,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -19203,7 +19203,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -19232,7 +19232,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -19243,7 +19243,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -19291,7 +19291,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -19431,7 +19431,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -19442,7 +19442,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -19469,7 +19469,7 @@ export const SPR = [
                                                 tag: 'class',
                                                 label: 'class',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/class',
                                                 input: 'options',
                                                 choices: [
@@ -19493,7 +19493,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/type',
                                                         input: 'options',
                                                         choices: [
@@ -19526,7 +19526,7 @@ export const SPR = [
                                                         tag: 'number_of_mono_layers',
                                                         label: 'number_of_mono_layers',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/number_of_mono_layers',
                                                         input: 'int',
                                                         minimum: -1,
@@ -19545,7 +19545,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/size/type',
                                                                 input: 'options',
                                                                 choices: [
@@ -19574,7 +19574,7 @@ export const SPR = [
                                                                 tag: 'mean',
                                                                 label: 'mean',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/size/mean',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -19667,7 +19667,7 @@ export const SPR = [
                                                         tag: 'components',
                                                         label: 'components',
                                                         isArray: true,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]',
                                                         input: {
                                                             Polymer: {
@@ -19681,7 +19681,7 @@ export const SPR = [
                                                                         tag: 'polymer_type',
                                                                         label: 'polymer_type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/polymer_type',
                                                                         input: 'options',
                                                                         choices: [
@@ -19744,7 +19744,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/molecular_weight/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -19853,7 +19853,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/synthesis[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -19871,7 +19871,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -19882,7 +19882,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -19921,7 +19921,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -19939,7 +19939,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -19950,7 +19950,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -19989,7 +19989,7 @@ export const SPR = [
                                                                                         tag: 'modification',
                                                                                         label: 'modification',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/chemical[]/modification',
                                                                                         input: 'string',
                                                                                         help: {
@@ -20007,7 +20007,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/chemical[]/protocol[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -20018,7 +20018,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/chemical[]/protocol[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -20041,7 +20041,7 @@ export const SPR = [
                                                                         tag: 'expression_source_type',
                                                                         label: 'expression_source_type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/expression_source_type',
                                                                         input: 'options',
                                                                         choices: [
@@ -20087,7 +20087,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/supplier/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -20136,7 +20136,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -20229,7 +20229,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -20249,7 +20249,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -20317,7 +20317,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -20328,7 +20328,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -20353,7 +20353,7 @@ export const SPR = [
                                                                                 tag: 'parameter',
                                                                                 label: 'parameter',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/parameter',
                                                                                 input: 'options',
                                                                                 choices: [
@@ -20390,7 +20390,7 @@ export const SPR = [
                                                                                 tag: 'technique',
                                                                                 label: 'technique',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/technique',
                                                                                 input: 'string',
                                                                                 help: {
@@ -20415,7 +20415,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                                 input: 'float',
                                                                                                 help: {
@@ -20508,7 +20508,7 @@ export const SPR = [
                                                                                                 tag: 'controlled',
                                                                                                 label: 'controlled',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                                 input: 'boolean',
                                                                                                 help: {
@@ -20528,7 +20528,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                                 input: 'float',
                                                                                                 minimum: 0.0,
@@ -20596,7 +20596,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -20607,7 +20607,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -20625,7 +20625,7 @@ export const SPR = [
                                                                                 tag: 'report',
                                                                                 label: 'report',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
                                                                                 input: 'ignore',
                                                                                 help: {
@@ -20652,7 +20652,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -20663,7 +20663,7 @@ export const SPR = [
                                                                         tag: 'type',
                                                                         label: 'type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/type',
                                                                         input: 'variant-discriminator',
                                                                         choices: [
@@ -20684,7 +20684,7 @@ export const SPR = [
                                                                         tag: 'copy_number',
                                                                         label: 'copy_number',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/copy_number',
                                                                         input: 'float',
                                                                         minimum: -1.0,
@@ -20705,7 +20705,7 @@ export const SPR = [
                                                                         tag: 'inchikey',
                                                                         label: 'inchikey',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/inchikey',
                                                                         input: 'string',
                                                                         help: {
@@ -20745,7 +20745,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/molecular_weight/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -20800,7 +20800,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/supplier/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -20842,7 +20842,7 @@ export const SPR = [
                                                                                 tag: 'parameter',
                                                                                 label: 'parameter',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/parameter',
                                                                                 input: 'options',
                                                                                 choices: [
@@ -20879,7 +20879,7 @@ export const SPR = [
                                                                                 tag: 'technique',
                                                                                 label: 'technique',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/technique',
                                                                                 input: 'string',
                                                                                 help: {
@@ -20904,7 +20904,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                                 input: 'float',
                                                                                                 help: {
@@ -20997,7 +20997,7 @@ export const SPR = [
                                                                                                 tag: 'controlled',
                                                                                                 label: 'controlled',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                                 input: 'boolean',
                                                                                                 help: {
@@ -21017,7 +21017,7 @@ export const SPR = [
                                                                                                 tag: 'value',
                                                                                                 label: 'value',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                                 input: 'float',
                                                                                                 minimum: 0.0,
@@ -21085,7 +21085,7 @@ export const SPR = [
                                                                                                 tag: 'name',
                                                                                                 label: 'name',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -21096,7 +21096,7 @@ export const SPR = [
                                                                                                 tag: 'description',
                                                                                                 label: 'description',
                                                                                                 isArray: false,
-                                                                                                isRequired: false,
+                                                                                                isRequired: true,
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                                 input: 'string',
                                                                                                 help: {
@@ -21114,7 +21114,7 @@ export const SPR = [
                                                                                 tag: 'report',
                                                                                 label: 'report',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
                                                                                 input: 'ignore',
                                                                                 help: {
@@ -21141,7 +21141,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -21152,7 +21152,7 @@ export const SPR = [
                                                                         tag: 'type',
                                                                         label: 'type',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/type',
                                                                         input: 'variant-discriminator',
                                                                         choices: [
@@ -21173,7 +21173,7 @@ export const SPR = [
                                                                         tag: 'copy_number',
                                                                         label: 'copy_number',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/copy_number',
                                                                         input: 'float',
                                                                         minimum: -1.0,
@@ -21200,7 +21200,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/additional_specifications[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -21211,7 +21211,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/additional_specifications[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -21229,14 +21229,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -21247,7 +21247,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -21277,7 +21277,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -21370,7 +21370,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -21390,7 +21390,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -21458,7 +21458,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -21469,7 +21469,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -21498,7 +21498,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -21509,7 +21509,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -21557,7 +21557,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -21697,7 +21697,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -21708,7 +21708,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -21735,7 +21735,7 @@ export const SPR = [
                                                 tag: 'product',
                                                 label: 'product',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/product',
                                                 input: 'options',
                                                 choices: [
@@ -21764,14 +21764,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -21782,7 +21782,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -21812,7 +21812,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -21905,7 +21905,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -21925,7 +21925,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -21993,7 +21993,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -22004,7 +22004,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -22033,7 +22033,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
@@ -22044,7 +22044,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -22092,7 +22092,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -22232,7 +22232,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -22243,7 +22243,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/obtained_protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -22276,7 +22276,7 @@ export const SPR = [
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH/value',
                                         input: 'float',
                                         help: {
@@ -22331,7 +22331,7 @@ export const SPR = [
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ionic_strength/value',
                                         input: 'float',
                                         minimum: 0.0,
@@ -22438,7 +22438,7 @@ export const SPR = [
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/dynamic_viscosity/value',
                                         input: 'float',
                                         minimum: 0.0,
@@ -22459,7 +22459,7 @@ export const SPR = [
                                         tag: 'unit',
                                         label: 'unit',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/dynamic_viscosity/unit',
                                         input: 'options',
                                         choices: [
@@ -22536,7 +22536,7 @@ export const SPR = [
                                         tag: 'pore_size',
                                         label: 'pore_size',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ultrafiltration_method/pore_size',
                                         input: 'options',
                                         choices: [
@@ -22659,7 +22659,7 @@ export const SPR = [
                                         tag: 'polymer_type',
                                         label: 'polymer_type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/polymer_type',
                                         input: 'options',
                                         choices: [
@@ -22722,7 +22722,7 @@ export const SPR = [
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value',
                                                 input: 'float',
                                                 help: {
@@ -22831,7 +22831,7 @@ export const SPR = [
                                                         tag: 'modification',
                                                         label: 'modification',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/synthesis[]/modification',
                                                         input: 'string',
                                                         help: {
@@ -22849,7 +22849,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/synthesis[]/protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -22860,7 +22860,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/synthesis[]/protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -22899,7 +22899,7 @@ export const SPR = [
                                                         tag: 'modification',
                                                         label: 'modification',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/biological_postprocessing[]/modification',
                                                         input: 'string',
                                                         help: {
@@ -22917,7 +22917,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -22928,7 +22928,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -22967,7 +22967,7 @@ export const SPR = [
                                                         tag: 'modification',
                                                         label: 'modification',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/chemical[]/modification',
                                                         input: 'string',
                                                         help: {
@@ -22985,7 +22985,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/chemical[]/protocol[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -22996,7 +22996,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/chemical[]/protocol[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -23019,7 +23019,7 @@ export const SPR = [
                                         tag: 'expression_source_type',
                                         label: 'expression_source_type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/expression_source_type',
                                         input: 'options',
                                         choices: [
@@ -23065,7 +23065,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/supplier/name',
                                                 input: 'string',
                                                 help: {
@@ -23114,7 +23114,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                         input: 'float',
                                                         help: {
@@ -23207,7 +23207,7 @@ export const SPR = [
                                                         tag: 'controlled',
                                                         label: 'controlled',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                         input: 'boolean',
                                                         help: {
@@ -23227,7 +23227,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -23295,7 +23295,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                         input: 'string',
                                                         help: {
@@ -23306,7 +23306,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                         input: 'string',
                                                         help: {
@@ -23331,7 +23331,7 @@ export const SPR = [
                                                 tag: 'parameter',
                                                 label: 'parameter',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/parameter',
                                                 input: 'options',
                                                 choices: [
@@ -23368,7 +23368,7 @@ export const SPR = [
                                                 tag: 'technique',
                                                 label: 'technique',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/technique',
                                                 input: 'string',
                                                 help: {
@@ -23393,7 +23393,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -23486,7 +23486,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -23506,7 +23506,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -23574,7 +23574,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -23585,7 +23585,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -23603,7 +23603,7 @@ export const SPR = [
                                                 tag: 'report',
                                                 label: 'report',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
                                                 input: 'ignore',
                                                 help: {
@@ -23639,7 +23639,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -23650,7 +23650,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -23700,7 +23700,7 @@ export const SPR = [
                                         tag: 'inchikey',
                                         label: 'inchikey',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/inchikey',
                                         input: 'string',
                                         help: {
@@ -23740,7 +23740,7 @@ export const SPR = [
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value',
                                                 input: 'float',
                                                 help: {
@@ -23795,7 +23795,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/supplier/name',
                                                 input: 'string',
                                                 help: {
@@ -23837,7 +23837,7 @@ export const SPR = [
                                                 tag: 'parameter',
                                                 label: 'parameter',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/parameter',
                                                 input: 'options',
                                                 choices: [
@@ -23874,7 +23874,7 @@ export const SPR = [
                                                 tag: 'technique',
                                                 label: 'technique',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/technique',
                                                 input: 'string',
                                                 help: {
@@ -23899,7 +23899,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -23992,7 +23992,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -24012,7 +24012,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -24080,7 +24080,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -24091,7 +24091,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -24109,7 +24109,7 @@ export const SPR = [
                                                 tag: 'report',
                                                 label: 'report',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
                                                 input: 'ignore',
                                                 help: {
@@ -24145,7 +24145,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -24156,7 +24156,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -24232,7 +24232,7 @@ export const SPR = [
                                                         tag: 'polymer_type',
                                                         label: 'polymer_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/polymer_type',
                                                         input: 'options',
                                                         choices: [
@@ -24295,7 +24295,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/molecular_weight/value',
                                                                 input: 'float',
                                                                 help: {
@@ -24404,7 +24404,7 @@ export const SPR = [
                                                                         tag: 'modification',
                                                                         label: 'modification',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/synthesis[]/modification',
                                                                         input: 'string',
                                                                         help: {
@@ -24422,7 +24422,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24433,7 +24433,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24472,7 +24472,7 @@ export const SPR = [
                                                                         tag: 'modification',
                                                                         label: 'modification',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                         input: 'string',
                                                                         help: {
@@ -24490,7 +24490,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24501,7 +24501,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24540,7 +24540,7 @@ export const SPR = [
                                                                         tag: 'modification',
                                                                         label: 'modification',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/chemical[]/modification',
                                                                         input: 'string',
                                                                         help: {
@@ -24558,7 +24558,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/chemical[]/protocol[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24569,7 +24569,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/chemical[]/protocol[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -24592,7 +24592,7 @@ export const SPR = [
                                                         tag: 'expression_source_type',
                                                         label: 'expression_source_type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/expression_source_type',
                                                         input: 'options',
                                                         choices: [
@@ -24638,7 +24638,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/supplier/name',
                                                                 input: 'string',
                                                                 help: {
@@ -24687,7 +24687,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/temperature/value',
                                                                         input: 'float',
                                                                         help: {
@@ -24780,7 +24780,7 @@ export const SPR = [
                                                                         tag: 'controlled',
                                                                         label: 'controlled',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/temperature/controlled',
                                                                         input: 'boolean',
                                                                         help: {
@@ -24800,7 +24800,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/duration/value',
                                                                         input: 'float',
                                                                         minimum: 0.0,
@@ -24868,7 +24868,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/storage_preparation[]/name',
                                                                         input: 'string',
                                                                         help: {
@@ -24879,7 +24879,7 @@ export const SPR = [
                                                                         tag: 'description',
                                                                         label: 'description',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/storage_preparation[]/description',
                                                                         input: 'string',
                                                                         help: {
@@ -24904,7 +24904,7 @@ export const SPR = [
                                                                 tag: 'parameter',
                                                                 label: 'parameter',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/parameter',
                                                                 input: 'options',
                                                                 choices: [
@@ -24941,7 +24941,7 @@ export const SPR = [
                                                                 tag: 'technique',
                                                                 label: 'technique',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/technique',
                                                                 input: 'string',
                                                                 help: {
@@ -24966,7 +24966,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -25059,7 +25059,7 @@ export const SPR = [
                                                                                 tag: 'controlled',
                                                                                 label: 'controlled',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                 input: 'boolean',
                                                                                 help: {
@@ -25079,7 +25079,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                 input: 'float',
                                                                                 minimum: 0.0,
@@ -25147,7 +25147,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -25158,7 +25158,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -25176,7 +25176,7 @@ export const SPR = [
                                                                 tag: 'report',
                                                                 label: 'report',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
                                                                 input: 'ignore',
                                                                 help: {
@@ -25203,7 +25203,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/name',
                                                         input: 'string',
                                                         help: {
@@ -25214,7 +25214,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/type',
                                                         input: 'variant-discriminator',
                                                         choices: [
@@ -25235,7 +25235,7 @@ export const SPR = [
                                                         tag: 'copy_number',
                                                         label: 'copy_number',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/copy_number',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -25256,7 +25256,7 @@ export const SPR = [
                                                         tag: 'inchikey',
                                                         label: 'inchikey',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/inchikey',
                                                         input: 'string',
                                                         help: {
@@ -25296,7 +25296,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/molecular_weight/value',
                                                                 input: 'float',
                                                                 help: {
@@ -25351,7 +25351,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/supplier/name',
                                                                 input: 'string',
                                                                 help: {
@@ -25393,7 +25393,7 @@ export const SPR = [
                                                                 tag: 'parameter',
                                                                 label: 'parameter',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/parameter',
                                                                 input: 'options',
                                                                 choices: [
@@ -25430,7 +25430,7 @@ export const SPR = [
                                                                 tag: 'technique',
                                                                 label: 'technique',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/technique',
                                                                 input: 'string',
                                                                 help: {
@@ -25455,7 +25455,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -25548,7 +25548,7 @@ export const SPR = [
                                                                                 tag: 'controlled',
                                                                                 label: 'controlled',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                 input: 'boolean',
                                                                                 help: {
@@ -25568,7 +25568,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                 input: 'float',
                                                                                 minimum: 0.0,
@@ -25636,7 +25636,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -25647,7 +25647,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -25665,7 +25665,7 @@ export const SPR = [
                                                                 tag: 'report',
                                                                 label: 'report',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
                                                                 input: 'ignore',
                                                                 help: {
@@ -25692,7 +25692,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/name',
                                                         input: 'string',
                                                         help: {
@@ -25703,7 +25703,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/type',
                                                         input: 'variant-discriminator',
                                                         choices: [
@@ -25724,7 +25724,7 @@ export const SPR = [
                                                         tag: 'copy_number',
                                                         label: 'copy_number',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/copy_number',
                                                         input: 'float',
                                                         minimum: -1.0,
@@ -25751,7 +25751,7 @@ export const SPR = [
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value',
                                                 input: 'float',
                                                 help: {
@@ -25817,7 +25817,7 @@ export const SPR = [
                                                 tag: 'modification',
                                                 label: 'modification',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/chemical_modifications[]/modification',
                                                 input: 'string',
                                                 help: {
@@ -25835,7 +25835,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/chemical_modifications[]/protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -25846,7 +25846,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/chemical_modifications[]/protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -25874,7 +25874,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/supplier/name',
                                                 input: 'string',
                                                 help: {
@@ -25923,7 +25923,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                         input: 'float',
                                                         help: {
@@ -26016,7 +26016,7 @@ export const SPR = [
                                                         tag: 'controlled',
                                                         label: 'controlled',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                         input: 'boolean',
                                                         help: {
@@ -26036,7 +26036,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -26104,7 +26104,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                         input: 'string',
                                                         help: {
@@ -26115,7 +26115,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                         input: 'string',
                                                         help: {
@@ -26140,7 +26140,7 @@ export const SPR = [
                                                 tag: 'parameter',
                                                 label: 'parameter',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/parameter',
                                                 input: 'options',
                                                 choices: [
@@ -26177,7 +26177,7 @@ export const SPR = [
                                                 tag: 'technique',
                                                 label: 'technique',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/technique',
                                                 input: 'string',
                                                 help: {
@@ -26202,7 +26202,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -26295,7 +26295,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -26315,7 +26315,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -26383,7 +26383,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -26394,7 +26394,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -26412,7 +26412,7 @@ export const SPR = [
                                                 tag: 'report',
                                                 label: 'report',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
                                                 input: 'ignore',
                                                 help: {
@@ -26435,7 +26435,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                 input: 'string',
                                                 help: {
@@ -26446,7 +26446,7 @@ export const SPR = [
                                                 tag: 'description',
                                                 label: 'description',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                 input: 'string',
                                                 help: {
@@ -26482,7 +26482,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -26493,7 +26493,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -26550,7 +26550,7 @@ export const SPR = [
                                                 tag: 'fluid',
                                                 label: 'fluid',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/fluid',
                                                 input: 'options',
                                                 choices: [
@@ -26599,7 +26599,7 @@ export const SPR = [
                                                 tag: 'health_status',
                                                 label: 'health_status',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/health_status',
                                                 input: 'string',
                                                 help: {
@@ -26635,7 +26635,7 @@ export const SPR = [
                                                 tag: 'organism',
                                                 label: 'organism',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
@@ -26649,14 +26649,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -26667,7 +26667,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -26697,7 +26697,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -26790,7 +26790,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -26810,7 +26810,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -26878,7 +26878,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -26889,7 +26889,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -26927,7 +26927,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                                 input: 'string',
                                                 help: {
@@ -26938,7 +26938,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                                 input: 'variant-discriminator',
                                                 choices: [
@@ -26988,7 +26988,7 @@ export const SPR = [
                                                 tag: 'fraction',
                                                 label: 'fraction',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/fraction',
                                                 input: 'options',
                                                 choices: [
@@ -27090,7 +27090,7 @@ export const SPR = [
                                                 tag: 'health_status',
                                                 label: 'health_status',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/health_status',
                                                 input: 'string',
                                                 help: {
@@ -27126,7 +27126,7 @@ export const SPR = [
                                                 tag: 'organism',
                                                 label: 'organism',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
@@ -27140,14 +27140,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -27158,7 +27158,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -27188,7 +27188,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -27281,7 +27281,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -27301,7 +27301,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -27369,7 +27369,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -27380,7 +27380,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -27418,7 +27418,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                                 input: 'string',
                                                 help: {
@@ -27429,7 +27429,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                                 input: 'options',
                                                 choices: [
@@ -27479,7 +27479,7 @@ export const SPR = [
                                                 tag: 'Genetic_material',
                                                 label: 'Genetic_material',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/Genetic_material',
                                                 input: 'options',
                                                 choices: [
@@ -27508,7 +27508,7 @@ export const SPR = [
                                                 tag: 'capsid_type',
                                                 label: 'capsid_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/capsid_type',
                                                 input: 'options',
                                                 choices: [
@@ -27541,7 +27541,7 @@ export const SPR = [
                                                 tag: 'envelope_type',
                                                 label: 'envelope_type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/envelope_type',
                                                 input: 'options',
                                                 choices: [
@@ -27624,7 +27624,7 @@ export const SPR = [
                                                 tag: 'organism',
                                                 label: 'organism',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
@@ -27638,14 +27638,14 @@ export const SPR = [
                                                 tag: 'preparation_protocol',
                                                 label: 'preparation_protocol',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                                 input: [
                                                     {
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -27656,7 +27656,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -27686,7 +27686,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                                 input: 'float',
                                                                 help: {
@@ -27779,7 +27779,7 @@ export const SPR = [
                                                                 tag: 'controlled',
                                                                 label: 'controlled',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                                 input: 'boolean',
                                                                 help: {
@@ -27799,7 +27799,7 @@ export const SPR = [
                                                                 tag: 'value',
                                                                 label: 'value',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                                 input: 'float',
                                                                 minimum: 0.0,
@@ -27867,7 +27867,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -27878,7 +27878,7 @@ export const SPR = [
                                                                 tag: 'description',
                                                                 label: 'description',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                                 input: 'string',
                                                                 help: {
@@ -27916,7 +27916,7 @@ export const SPR = [
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                                 input: 'string',
                                                 help: {
@@ -27927,7 +27927,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                                 input: 'options',
                                                 choices: [
@@ -27983,7 +27983,7 @@ export const SPR = [
                                         tag: 'source',
                                         label: 'source',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source',
                                         input: 'options',
                                         choices: [
@@ -28024,14 +28024,14 @@ export const SPR = [
                                         tag: 'preparation_protocol',
                                         label: 'preparation_protocol',
                                         isArray: true,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                         input: [
                                             {
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                 input: 'string',
                                                 help: {
@@ -28042,7 +28042,7 @@ export const SPR = [
                                                 tag: 'description',
                                                 label: 'description',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                 input: 'string',
                                                 help: {
@@ -28065,7 +28065,7 @@ export const SPR = [
                                                 tag: 'S-N(latitude)',
                                                 label: 'S-N(latitude)',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/S-N(latitude)',
                                                 input: 'float',
                                                 minimum: -90.0,
@@ -28078,7 +28078,7 @@ export const SPR = [
                                                 tag: 'W-E(longitude)',
                                                 label: 'W-E(longitude)',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/W-E(longitude)',
                                                 input: 'float',
                                                 minimum: -180.0,
@@ -28107,7 +28107,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                         input: 'float',
                                                         help: {
@@ -28200,7 +28200,7 @@ export const SPR = [
                                                         tag: 'controlled',
                                                         label: 'controlled',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                         input: 'boolean',
                                                         help: {
@@ -28220,7 +28220,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -28288,7 +28288,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                         input: 'string',
                                                         help: {
@@ -28299,7 +28299,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                         input: 'string',
                                                         help: {
@@ -28337,7 +28337,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -28348,7 +28348,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -28398,7 +28398,7 @@ export const SPR = [
                                         tag: 'class',
                                         label: 'class',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/class',
                                         input: 'options',
                                         choices: [
@@ -28422,7 +28422,7 @@ export const SPR = [
                                                 tag: 'type',
                                                 label: 'type',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/type',
                                                 input: 'options',
                                                 choices: [
@@ -28455,7 +28455,7 @@ export const SPR = [
                                                 tag: 'number_of_mono_layers',
                                                 label: 'number_of_mono_layers',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/number_of_mono_layers',
                                                 input: 'int',
                                                 minimum: -1,
@@ -28474,7 +28474,7 @@ export const SPR = [
                                                         tag: 'type',
                                                         label: 'type',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/size/type',
                                                         input: 'options',
                                                         choices: [
@@ -28503,7 +28503,7 @@ export const SPR = [
                                                         tag: 'mean',
                                                         label: 'mean',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/size/mean',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -28596,7 +28596,7 @@ export const SPR = [
                                                 tag: 'components',
                                                 label: 'components',
                                                 isArray: true,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]',
                                                 input: {
                                                     Polymer: {
@@ -28610,7 +28610,7 @@ export const SPR = [
                                                                 tag: 'polymer_type',
                                                                 label: 'polymer_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/polymer_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -28673,7 +28673,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -28782,7 +28782,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/synthesis[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -28800,7 +28800,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/synthesis[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28811,7 +28811,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/synthesis[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28850,7 +28850,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -28868,7 +28868,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28879,7 +28879,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/biological_postprocessing[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28918,7 +28918,7 @@ export const SPR = [
                                                                                 tag: 'modification',
                                                                                 label: 'modification',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/chemical[]/modification',
                                                                                 input: 'string',
                                                                                 help: {
@@ -28936,7 +28936,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/chemical[]/protocol[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28947,7 +28947,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/chemical[]/protocol[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -28970,7 +28970,7 @@ export const SPR = [
                                                                 tag: 'expression_source_type',
                                                                 label: 'expression_source_type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/expression_source_type',
                                                                 input: 'options',
                                                                 choices: [
@@ -29016,7 +29016,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -29065,7 +29065,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/temperature/value',
                                                                                 input: 'float',
                                                                                 help: {
@@ -29158,7 +29158,7 @@ export const SPR = [
                                                                                 tag: 'controlled',
                                                                                 label: 'controlled',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/temperature/controlled',
                                                                                 input: 'boolean',
                                                                                 help: {
@@ -29178,7 +29178,7 @@ export const SPR = [
                                                                                 tag: 'value',
                                                                                 label: 'value',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/duration/value',
                                                                                 input: 'float',
                                                                                 minimum: 0.0,
@@ -29246,7 +29246,7 @@ export const SPR = [
                                                                                 tag: 'name',
                                                                                 label: 'name',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/storage_preparation[]/name',
                                                                                 input: 'string',
                                                                                 help: {
@@ -29257,7 +29257,7 @@ export const SPR = [
                                                                                 tag: 'description',
                                                                                 label: 'description',
                                                                                 isArray: false,
-                                                                                isRequired: false,
+                                                                                isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/storage_preparation[]/description',
                                                                                 input: 'string',
                                                                                 help: {
@@ -29282,7 +29282,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -29319,7 +29319,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -29344,7 +29344,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -29437,7 +29437,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -29457,7 +29457,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -29525,7 +29525,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -29536,7 +29536,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -29554,7 +29554,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -29581,7 +29581,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -29592,7 +29592,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -29613,7 +29613,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -29634,7 +29634,7 @@ export const SPR = [
                                                                 tag: 'inchikey',
                                                                 label: 'inchikey',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/inchikey',
                                                                 input: 'string',
                                                                 help: {
@@ -29674,7 +29674,7 @@ export const SPR = [
                                                                         tag: 'value',
                                                                         label: 'value',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/molecular_weight/value',
                                                                         input: 'float',
                                                                         help: {
@@ -29729,7 +29729,7 @@ export const SPR = [
                                                                         tag: 'name',
                                                                         label: 'name',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/supplier/name',
                                                                         input: 'string',
                                                                         help: {
@@ -29771,7 +29771,7 @@ export const SPR = [
                                                                         tag: 'parameter',
                                                                         label: 'parameter',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/parameter',
                                                                         input: 'options',
                                                                         choices: [
@@ -29808,7 +29808,7 @@ export const SPR = [
                                                                         tag: 'technique',
                                                                         label: 'technique',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/technique',
                                                                         input: 'string',
                                                                         help: {
@@ -29833,7 +29833,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                         input: 'float',
                                                                                         help: {
@@ -29926,7 +29926,7 @@ export const SPR = [
                                                                                         tag: 'controlled',
                                                                                         label: 'controlled',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                                         input: 'boolean',
                                                                                         help: {
@@ -29946,7 +29946,7 @@ export const SPR = [
                                                                                         tag: 'value',
                                                                                         label: 'value',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                                         input: 'float',
                                                                                         minimum: 0.0,
@@ -30014,7 +30014,7 @@ export const SPR = [
                                                                                         tag: 'name',
                                                                                         label: 'name',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                                         input: 'string',
                                                                                         help: {
@@ -30025,7 +30025,7 @@ export const SPR = [
                                                                                         tag: 'description',
                                                                                         label: 'description',
                                                                                         isArray: false,
-                                                                                        isRequired: false,
+                                                                                        isRequired: true,
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                                         input: 'string',
                                                                                         help: {
@@ -30043,7 +30043,7 @@ export const SPR = [
                                                                         tag: 'report',
                                                                         label: 'report',
                                                                         isArray: false,
-                                                                        isRequired: false,
+                                                                        isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
                                                                         input: 'ignore',
                                                                         help: {
@@ -30070,7 +30070,7 @@ export const SPR = [
                                                                 tag: 'name',
                                                                 label: 'name',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/name',
                                                                 input: 'string',
                                                                 help: {
@@ -30081,7 +30081,7 @@ export const SPR = [
                                                                 tag: 'type',
                                                                 label: 'type',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/type',
                                                                 input: 'variant-discriminator',
                                                                 choices: [
@@ -30102,7 +30102,7 @@ export const SPR = [
                                                                 tag: 'copy_number',
                                                                 label: 'copy_number',
                                                                 isArray: false,
-                                                                isRequired: false,
+                                                                isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/copy_number',
                                                                 input: 'float',
                                                                 minimum: -1.0,
@@ -30129,7 +30129,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/additional_specifications[]/name',
                                                         input: 'string',
                                                         help: {
@@ -30140,7 +30140,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/additional_specifications[]/description',
                                                         input: 'string',
                                                         help: {
@@ -30158,14 +30158,14 @@ export const SPR = [
                                         tag: 'preparation_protocol',
                                         label: 'preparation_protocol',
                                         isArray: true,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                         input: [
                                             {
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                 input: 'string',
                                                 help: {
@@ -30176,7 +30176,7 @@ export const SPR = [
                                                 tag: 'description',
                                                 label: 'description',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                 input: 'string',
                                                 help: {
@@ -30206,7 +30206,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                         input: 'float',
                                                         help: {
@@ -30299,7 +30299,7 @@ export const SPR = [
                                                         tag: 'controlled',
                                                         label: 'controlled',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                         input: 'boolean',
                                                         help: {
@@ -30319,7 +30319,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -30387,7 +30387,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                         input: 'string',
                                                         help: {
@@ -30398,7 +30398,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                         input: 'string',
                                                         help: {
@@ -30436,7 +30436,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -30447,7 +30447,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -30497,7 +30497,7 @@ export const SPR = [
                                         tag: 'product',
                                         label: 'product',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/product',
                                         input: 'options',
                                         choices: [
@@ -30526,14 +30526,14 @@ export const SPR = [
                                         tag: 'preparation_protocol',
                                         label: 'preparation_protocol',
                                         isArray: true,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]',
                                         input: [
                                             {
                                                 tag: 'name',
                                                 label: 'name',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/name',
                                                 input: 'string',
                                                 help: {
@@ -30544,7 +30544,7 @@ export const SPR = [
                                                 tag: 'description',
                                                 label: 'description',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/preparation_protocol[]/description',
                                                 input: 'string',
                                                 help: {
@@ -30574,7 +30574,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                         input: 'float',
                                                         help: {
@@ -30667,7 +30667,7 @@ export const SPR = [
                                                         tag: 'controlled',
                                                         label: 'controlled',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/controlled',
                                                         input: 'boolean',
                                                         help: {
@@ -30687,7 +30687,7 @@ export const SPR = [
                                                         tag: 'value',
                                                         label: 'value',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value',
                                                         input: 'float',
                                                         minimum: 0.0,
@@ -30755,7 +30755,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/name',
                                                         input: 'string',
                                                         help: {
@@ -30766,7 +30766,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/storage_preparation[]/description',
                                                         input: 'string',
                                                         help: {
@@ -30804,7 +30804,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/name',
                                         input: 'string',
                                         help: {
@@ -30815,7 +30815,7 @@ export const SPR = [
                                         tag: 'type',
                                         label: 'type',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/type',
                                         input: 'variant-discriminator',
                                         choices: [
@@ -30873,7 +30873,7 @@ export const SPR = [
                         tag: 'id',
                         label: 'id',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/id',
                         input: 'referenceable-id',
                         referenceAs: 'derived-parameter',
@@ -30882,7 +30882,7 @@ export const SPR = [
                         tag: 'name',
                         label: 'name',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/name',
                         input: 'string',
                         help: {
@@ -30893,7 +30893,7 @@ export const SPR = [
                         tag: 'type',
                         label: 'type',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/type',
                         input: 'options',
                         choices: [
@@ -30954,7 +30954,7 @@ export const SPR = [
                                 tag: 'entity',
                                 label: 'entity',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/derived_parameters[]/entities_involved[]/entity',
                                 input: 'related-to',
                                 relatesTo: 'entity',
@@ -30967,7 +30967,7 @@ export const SPR = [
                                 tag: 'copy_number',
                                 label: 'copy_number',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'general_parameters/derived_parameters[]/entities_involved[]/copy_number',
                                 input: 'float',
                                 minimum: -1.0,
@@ -30984,7 +30984,7 @@ export const SPR = [
                         tag: 'value',
                         label: 'value',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/value',
                         input: 'float',
                         help: {
@@ -31004,7 +31004,7 @@ export const SPR = [
                         tag: 'unit',
                         label: 'unit',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'general_parameters/derived_parameters[]/unit',
                         input: 'string',
                         help: {
@@ -31029,7 +31029,7 @@ export const SPR = [
                 tag: 'schema_version',
                 label: 'schema_version',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/schema_version',
                 input: 'options',
                 choices: [
@@ -31046,7 +31046,7 @@ export const SPR = [
                 tag: 'experiment_type',
                 label: 'experiment_type',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'method_specific_parameters/experiment_type',
                 input: 'options',
                 choices: [
@@ -31107,7 +31107,7 @@ export const SPR = [
                                 tag: 'name',
                                 label: 'name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/sensor/supplier/name',
                                 input: 'string',
                                 help: {
@@ -31184,7 +31184,7 @@ export const SPR = [
                         tag: 'id',
                         label: 'id',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_positions[]/id',
                         input: 'referenceable-id',
                         referenceAs: 'spr-measurement-position',
@@ -31193,7 +31193,7 @@ export const SPR = [
                         tag: 'name',
                         label: 'name',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_positions[]/name',
                         input: 'string',
                         help: {
@@ -31204,7 +31204,7 @@ export const SPR = [
                         tag: 'flow_cell',
                         label: 'flow_cell',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_positions[]/flow_cell',
                         input: 'string',
                         help: {
@@ -31264,7 +31264,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_protocol[]/name',
                                         input: 'string',
                                         help: {
@@ -31275,7 +31275,7 @@ export const SPR = [
                                         tag: 'description',
                                         label: 'description',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurement_positions[]/ligand_information/ligand_immobilization_protocol[]/description',
                                         input: 'string',
                                         help: {
@@ -31306,7 +31306,7 @@ export const SPR = [
                         tag: 'id',
                         label: 'id',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_protocol[]/id',
                         input: 'referenceable-id',
                         referenceAs: 'spr-measurement-step',
@@ -31315,7 +31315,7 @@ export const SPR = [
                         tag: 'name',
                         label: 'name',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_protocol[]/name',
                         input: 'string',
                         help: {
@@ -31326,7 +31326,7 @@ export const SPR = [
                         tag: 'type',
                         label: 'type',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurement_protocol[]/type',
                         input: 'options',
                         choices: [
@@ -31378,7 +31378,7 @@ export const SPR = [
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurement_protocol[]/start_time/value',
                                 input: 'float',
                                 minimum: 0.0,
@@ -31446,7 +31446,7 @@ export const SPR = [
                                 tag: 'value',
                                 label: 'value',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurement_protocol[]/time_length/value',
                                 input: 'float',
                                 minimum: 0.0,
@@ -31514,7 +31514,7 @@ export const SPR = [
                                 tag: 'rate',
                                 label: 'rate',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/rate',
                                 input: 'float',
                                 minimum: 0.0,
@@ -31565,7 +31565,7 @@ export const SPR = [
                                 tag: 'path',
                                 label: 'path',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurement_protocol[]/flow/path[]',
                                 input: 'ignore',
                                 help: {
@@ -31591,7 +31591,7 @@ export const SPR = [
                         tag: 'measurement_position',
                         label: 'measurement_position',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurements[]/measurement_position',
                         input: 'related-to',
                         relatesTo: 'spr-measurement-position',
@@ -31617,14 +31617,14 @@ export const SPR = [
                         tag: 'samples',
                         label: 'samples',
                         isArray: true,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]',
                         input: [
                             {
                                 tag: 'measurement_step',
                                 label: 'measurement_step',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/samples[]/measurement_step',
                                 input: 'related-to',
                                 relatesTo: 'spr-measurement-step',
@@ -31648,7 +31648,7 @@ export const SPR = [
                                 tag: 'chemical_environment',
                                 label: 'chemical_environment',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/samples[]/chemical_environment',
                                 input: 'related-to',
                                 relatesTo: 'chemical-environment',
@@ -31661,14 +31661,14 @@ export const SPR = [
                                 tag: 'analytes',
                                 label: 'analytes',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]',
                                 input: [
                                     {
                                         tag: 'entity',
                                         label: 'entity',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/entity',
                                         input: 'related-to',
                                         relatesTo: 'entity',
@@ -31688,7 +31688,7 @@ export const SPR = [
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/value',
                                                 input: 'float',
                                                 minimum: -1.0,
@@ -31828,7 +31828,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -31839,7 +31839,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -31869,7 +31869,7 @@ export const SPR = [
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/value',
                                         input: 'float',
                                         help: {
@@ -31962,7 +31962,7 @@ export const SPR = [
                                         tag: 'controlled',
                                         label: 'controlled',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/controlled',
                                         input: 'boolean',
                                         help: {
@@ -31982,7 +31982,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/name',
                                         input: 'string',
                                         help: {
@@ -31993,7 +31993,7 @@ export const SPR = [
                                         tag: 'description',
                                         label: 'description',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/description',
                                         input: 'string',
                                         help: {
@@ -32021,7 +32021,7 @@ export const SPR = [
                                 tag: 'measurement_step',
                                 label: 'measurement_step',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/measurement_step',
                                 input: 'related-to',
                                 relatesTo: 'spr-measurement-step',
@@ -32045,7 +32045,7 @@ export const SPR = [
                                 tag: 'chemical_environment',
                                 label: 'chemical_environment',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/chemical_environment',
                                 input: 'related-to',
                                 relatesTo: 'chemical-environment',
@@ -32058,14 +32058,14 @@ export const SPR = [
                                 tag: 'analytes',
                                 label: 'analytes',
                                 isArray: true,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]',
                                 input: [
                                     {
                                         tag: 'entity',
                                         label: 'entity',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/entity',
                                         input: 'related-to',
                                         relatesTo: 'entity',
@@ -32085,7 +32085,7 @@ export const SPR = [
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
-                                                isRequired: false,
+                                                isRequired: true,
                                                 mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/value',
                                                 input: 'float',
                                                 minimum: -1.0,
@@ -32225,7 +32225,7 @@ export const SPR = [
                                                         tag: 'name',
                                                         label: 'name',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/name',
                                                         input: 'string',
                                                         help: {
@@ -32236,7 +32236,7 @@ export const SPR = [
                                                         tag: 'description',
                                                         label: 'description',
                                                         isArray: false,
-                                                        isRequired: false,
+                                                        isRequired: true,
                                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/description',
                                                         input: 'string',
                                                         help: {
@@ -32266,7 +32266,7 @@ export const SPR = [
                                         tag: 'value',
                                         label: 'value',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/value',
                                         input: 'float',
                                         help: {
@@ -32359,7 +32359,7 @@ export const SPR = [
                                         tag: 'controlled',
                                         label: 'controlled',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/controlled',
                                         input: 'boolean',
                                         help: {
@@ -32379,7 +32379,7 @@ export const SPR = [
                                         tag: 'name',
                                         label: 'name',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/name',
                                         input: 'string',
                                         help: {
@@ -32390,7 +32390,7 @@ export const SPR = [
                                         tag: 'description',
                                         label: 'description',
                                         isArray: false,
-                                        isRequired: false,
+                                        isRequired: true,
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/description',
                                         input: 'string',
                                         help: {
@@ -32424,7 +32424,7 @@ export const SPR = [
                         tag: 'derived_parameter',
                         label: 'derived_parameter',
                         isArray: false,
-                        isRequired: false,
+                        isRequired: true,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
                         input: 'related-to',
                         relatesTo: 'derived-parameter',
@@ -32444,7 +32444,7 @@ export const SPR = [
                                 tag: 'name',
                                 label: 'name',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/name',
                                 input: 'string',
                                 help: {
@@ -32455,7 +32455,7 @@ export const SPR = [
                                 tag: 'description',
                                 label: 'description',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/description',
                                 input: 'string',
                                 help: {
@@ -32522,7 +32522,7 @@ export const SPR = [
                                 tag: 'model',
                                 label: 'model',
                                 isArray: false,
-                                isRequired: false,
+                                isRequired: true,
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/model',
                                 input: 'string',
                                 help: {

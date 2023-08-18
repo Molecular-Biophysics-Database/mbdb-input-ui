@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Checkbox as SCheckbox,
 } from 'semantic-ui-react';
-import { CustomComponent } from '../';
+import { CustomComponent, DataError } from '../';
 import { PathId } from '../../path-id';
 import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
@@ -103,13 +103,13 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         return out;
     },
 
-    toMbdb(data: DataTree, path: Path, errors: string[]) {
+    toMbdb(data: DataTree, path: Path, errors: DataError[]) {
         let bad = false;
 
         for (const name of ['lower_error', 'upper_error', 'error_level', 'errors_are_relative'] as (keyof ValueErrorData)[]) {
             let vPath = Data.Path.path(name, path)
             if (!checkValue(data, vPath)) {
-                errors.push(Data.Path.toString(vPath));
+                errors.push(DataError(vPath, 'Item has an invalid value. Check that the input is numeric and sensible.'));
                 bad = false;
             }
         }
