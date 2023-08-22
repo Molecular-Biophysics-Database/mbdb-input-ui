@@ -19,8 +19,8 @@ function checkValue(data: DataTree, path: Path) {
     return v.isValid;
 }
 
-function validator(v: string) {
-    return v === '' || CommonValidators.isFloat(v);
+function validatorRequired(v: string) {
+    return CommonValidators.isFloat(v);
 }
 
 function setMbdbValueData(mbdbValue: Record<string, string | boolean>, data: DataTree, name: keyof ValueErrorData, parentPath: Path) {
@@ -83,9 +83,9 @@ export const ValueError: CustomComponent<ValueErrorData> = {
 
     emptyData(): Partial<ValueErrorData> {
         return {
-            lower_error: Value.empty(true),
-            upper_error: Value.empty(true),
-            error_level: Value.empty(true),
+            lower_error: Value.empty(false),
+            upper_error: Value.empty(false),
+            error_level: Value.empty(false),
             errors_are_relative: Value.boolean(false),
         };
     },
@@ -126,11 +126,11 @@ export const ValueError: CustomComponent<ValueErrorData> = {
     },
 
     validateData(data: Partial<ValueErrorData>) {
-        if (data.lower_error) data.lower_error.isValid = validator(Value.toTextual(data.lower_error));
+        if (data.lower_error) data.lower_error.isValid = validatorRequired(Value.toTextual(data.lower_error));
 
-        if (data.upper_error) data.upper_error.isValid = validator(Value.toTextual(data.upper_error));
+        if (data.upper_error) data.upper_error.isValid = validatorRequired(Value.toTextual(data.upper_error));
 
-        if (data.error_level) data.error_level.isValid = validator(Value.toTextual(data.error_level));
+        if (data.error_level) data.error_level.isValid = validatorRequired(Value.toTextual(data.error_level));
     },
 
     Component({ path, reactKey }) {
@@ -147,8 +147,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             label='Min'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('lower_error', path)}
-                            validator={validator}
-                            isRequired={false}
+                            validator={validatorRequired}
+                            isRequired={true}
                         />
                     </div>
                     <div style={Cell}>
@@ -156,8 +156,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             label='Max'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('upper_error', path)}
-                            validator={validator}
-                            isRequired={false}
+                            validator={validatorRequired}
+                            isRequired={true}
                         />
                     </div>
                     <div style={Cell}>
@@ -165,8 +165,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             label='Error level'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('error_level', path)}
-                            validator={validator}
-                            isRequired={false}
+                            validator={validatorRequired}
+                            isRequired={true}
                         />
                     </div>
                     <ItemLabel id={idIsRel} markAsRequired={false} label='Errors are relative' />
