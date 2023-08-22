@@ -1,8 +1,14 @@
 import { replaceAll } from '../../util';
-import { TopLevelItem } from '../../schema';
+import { Item, TopLevelItem } from '../../schema';
 import { Data, DataTree, Path } from '../../schema/data';
+import { Value } from '../../schema/value';
 import { Traverse } from '../../schema/traverse';
 import { objKeys } from '../../util';
+
+function hasArrayCorrectLength(item: DataTree[] | Value[], schemaItem: Item) {
+    const minItems = schemaItem.minItems ?? (schemaItem.isRequired ? 1 : 0);
+    return item.length >= minItems;
+}
 
 export function niceLabel(label: string, noop = false) {
     if (label.length === 0 || noop) return label;
@@ -30,10 +36,7 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
         }
     } else if (Data.isDataTreeArray(item)) {
         const schemaItem = Traverse.itemFromSchema(Traverse.objPathFromDataPath(path), schema);
-        if (schemaItem.isRequired) {
-            const minItems = schemaItem.minItems ?? 0;
-            if (item.length < minItems) return true;
-        }
+        if (!hasArrayCorrectLength(item, schemaItem)) return true;
 
         for (let idx = 0; idx < item.length; idx++) {
             const hasError = subtreeHasErrors(data, Data.Path.index(idx, path), schema);
@@ -44,10 +47,7 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
     } else {
         if (Array.isArray(item)) {
             const schemaItem = Traverse.itemFromSchema(Traverse.objPathFromDataPath(path), schema);
-            if (schemaItem.isRequired) {
-                const minItems = schemaItem.minItems ?? 0;
-                if (item.length < minItems) return true;
-            }
+            if (!hasArrayCorrectLength(item, schemaItem)) return true;
 
             for (const v of item) {
                 if (!v.isValid) return true;
