@@ -43,6 +43,12 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
         return false;
     } else {
         if (Array.isArray(item)) {
+            const schemaItem = Traverse.itemFromSchema(Traverse.objPathFromDataPath(path), schema);
+            if (schemaItem.isRequired) {
+                const minItems = schemaItem.minItems ?? 0;
+                if (item.length < minItems) return true;
+            }
+
             for (const v of item) {
                 if (!v.isValid) return true;
             }
