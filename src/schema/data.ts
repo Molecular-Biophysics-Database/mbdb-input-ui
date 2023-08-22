@@ -10,13 +10,13 @@ function get(data: DataTree, path: Path, defaultValue?: Value) {
             if (isDataTree(v)) {
                 v = v[elem.value];
             } else {
-                assert(false, `Path element ${elem} attempted to get a child object but the item does not have any.`);
+                assert(false, `Path element "${elem.value}" attempted to get a child object but the item does not have any.`);
             }
         } else {
             if (Array.isArray(v)) {
                 v = v[elem.value];
             } else {
-                assert(false, `Path element ${elem} attempted to get an array element but the item is not an array.`);
+                assert(false, `Path element "${elem.value}" attempted to get an array element but the item is not an array.`);
             }
         }
 

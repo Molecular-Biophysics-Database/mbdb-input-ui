@@ -20,7 +20,7 @@ function gatherAnchors(anchors: Set<string>, item: AnyItem) {
     }
 }
 
-function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, schema: TopLevelItem, objs: { refId: string, data: DataTree }[]) {
+function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, schema: TopLevelItem, objs: { refId: string, data: DataTree }[], onlyAlive: boolean) {
     const dataItem = Data.getItem(data, path);
     if (Data.isDataTree(dataItem)) {
         for (const k in dataItem) {
@@ -37,13 +37,44 @@ function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, sche
             } else if (Schema.hasReferenceableIdInput(item) && item.referenceAs === anchor) {
                 const v = Data.getValue(data, Data.Path.path(Schema.ReferenceableId, path));
                 objs.push({ refId: v.payload as string, data: Data.getTree(data, path) });
+            } else if (Schema.hasVariantInput(item) && !item.isArray) {
+                if (onlyAlive) {
+                    const innerData = Data.getTree(data, innerPath);
+
+                    // Descend only into the selected variant to avoid creating dead references
+                    gatherRefObjsForAnchor(anchor, data, Data.Path.path(innerData.__mbdb_variant_choice!!, innerPath), schema, objs, onlyAlive);
+                } else {
+                    gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs, onlyAlive);
+                }
             } else {
-                gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs);
+                gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs, onlyAlive);
             }
         }
     } else if (Data.isDataTreeArray(dataItem)) {
-        for (let idx = 0; idx < dataItem.length; idx++) {
-            gatherRefObjsForAnchor(anchor, data, Data.Path.index(idx, path), schema, objs);
+        if (onlyAlive) {
+            const objPath = Traverse.objPathFromDataPath(path);
+            const item = Traverse.itemFromSchema(objPath, schema);
+            if (Schema.hasVariantInput(item)) {
+                assert(item.isArray, `Item "${item.tag}" is not an array but we expected that it would be.`);
+
+                for (let idx = 0; idx < dataItem.length; idx++) {
+                    const innerPath = Data.Path.index(idx, path);
+                    const innerData = Data.getTree(data, innerPath);
+
+                    // Descend only into the selected variant to avoid creating dead references
+                    gatherRefObjsForAnchor(anchor, data,  Data.Path.path(innerData.__mbdb_variant_choice!!, innerPath), schema, objs, onlyAlive);
+                }
+            } else {
+                // No special handling is required for data that do not belong to Variants
+                for (let idx = 0; idx < dataItem.length; idx++) {
+                    gatherRefObjsForAnchor(anchor, data, Data.Path.index(idx, path), schema, objs, onlyAlive);
+                }
+            }
+        } else {
+            // Let's make it simple
+            for (let idx = 0; idx < dataItem.length; idx++) {
+                gatherRefObjsForAnchor(anchor, data, Data.Path.index(idx, path), schema, objs, onlyAlive);
+            }
         }
     }
 }
@@ -208,9 +239,9 @@ export const References = {
             return Array.from(anchors);
         },
 
-        refObjsForAnchor(anchor: string, data: DataTree, schema: TopLevelItem) {
+        refObjsForAnchor(anchor: string, data: DataTree, schema: TopLevelItem, onlyAlive = true) {
             const objs = new Array<{ refId: string, data: DataTree }>();
-            gatherRefObjsForAnchor(anchor, data, [], schema, objs);
+            gatherRefObjsForAnchor(anchor, data, [], schema, objs, onlyAlive);
 
             return objs;
         },

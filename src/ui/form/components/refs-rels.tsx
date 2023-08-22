@@ -30,7 +30,7 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
             //
             // We are doing something similar but more heavy-handed for "related-to" items.
             if (handler.refs.hasAnchor(referenceAs) && handler.refs.has(referenceAs, refId)) {
-                handler.refs.remove(referenceAs, refId)
+                handler.refs.remove(referenceAs, refId);
             } else {
                 // We will probably want to remove this warning later
                 console.warn(`Attempted to remove non-existing reference "${refId}" for referenceable "${referenceAs}"`);
@@ -86,7 +86,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
             ) {
                 References.unref(handler.refs.get(), relatesTo, refId, refingId);
             }
-        }
+        };
     }, []);
 
     // EXCERISE CAUTION:
