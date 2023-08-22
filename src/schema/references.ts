@@ -2,7 +2,7 @@ import { AnyItem, Schema, TopLevelItem } from './';
 import { Data, DataTree, Path } from './data';
 import { Traverse } from './traverse';
 import { Value } from './value';
-import { assert, warning } from '../assert';
+import { assert } from '../assert';
 import { objKeys } from '../util';
 
 function gatherAnchors(anchors: Set<string>, item: AnyItem) {
@@ -147,6 +147,16 @@ export const References = {
         return r.referencedBy.length > 0;
     },
 
+    isReferencedBy(refs: ReferenceAnchors, anchor: string, refId: string, refingId: string) {
+        const rr = refs[anchor];
+        assert(rr !== undefined, `Attempted to check if referenceable "${anchor}/${refId}" is referenced but the anchor does not exist.`);
+
+        const r = getReferenceable(rr, refId);
+        assert(r !== undefined, `Attempted to check if referenceable "${anchor}/${refId}" is referenced but referenceable with the given ID does not exist.`);
+
+        return !!r.referencedBy.find((r) => r.refingId === refingId);
+    },
+
     list(refs: ReferenceAnchors, anchor: string) {
         const rr = refs[anchor];
         if (rr === undefined) {
@@ -184,10 +194,7 @@ export const References = {
         assert(r !== undefined, `Attempted to remove a reference for referenceable "${anchor}/${refId}" but referenceable with the given ID does not exist.`);
 
         const idx = r.referencedBy.findIndex((rf) => rf.refingId === refingId);
-        // TODO: We should change this back to real assertion but to do that we'd have to solve the corner
-        // case when the entire form context gets replaced and the React unmount handlers then try to
-        // remove data from an empty context.
-        warning(idx >= 0, `Attempted to remove a reference for referenceable "${anchor}/${refId}" but the referenceable does not reference the referencing item "${refingId}" that was to be removed.`);
+        assert(idx >= 0, `Attempted to remove a reference for referenceable "${anchor}/${refId}" but the referenceable does not reference the referencing item "${refingId}" that was to be removed.`);
         r.referencedBy.splice(idx,  1);
 
         // console.log(`Removed a reference "${refingId}" from referenceable "${anchor}/${refId}"`);

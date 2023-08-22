@@ -22,12 +22,14 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
         }
 
         return () => {
-            // We are only checking for the anchor. If the anchor is gone, it most likely means that
-            // the data model has been replaced. This will still get us an assertion of the anchor
-            // exists but does not have the specific "refId".
-            // We need to handle cases where the entire data model is replaced to allow schema changes
-            // in runtime.
-            if (handler.refs.hasAnchor(referenceAs)) {
+            // We are explicitly checking if the reference anchor exists and if we exist in the list of
+            // referenceables for that anchor.
+            // We need to handle cases where the entire form context is replaced to allow schema changes
+            // in runtime. Since React re-renders the form only after the context has been replaced,
+            // we might be trying to remove stale data created by the previous context.
+            //
+            // We are doing something similar but more heavy-handed for "related-to" items.
+            if (handler.refs.hasAnchor(referenceAs) && handler.refs.has(referenceAs, refId)) {
                 handler.refs.remove(referenceAs, refId)
             } else {
                 // We will probably want to remove this warning later
@@ -66,13 +68,22 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
         return () => {
             assert(Value.isValue(data['id']), '"id" field is not a Value');
             const refId = Value.toRelToId(data['id']);
-            // We are only checking for the anchor. If the anchor is gone, it most likely means that
-            // the data model has been replaced. This will still get us an assertion of the anchor
-            // exists but does not have the specific "refId".
-            // We need to handle cases where the entire data model is replaced to allow schema changes
-            // in runtime.
-            // We are doing the same thing when ReferenceableIdInput unmounts.
-            if (handler.refs.hasAnchor(relatesTo) && refId) {
+            const refs = handler.refs.get();
+            // We are explicitly checking if the anchor we are referencing is present and if we are
+            // actually referenced by that anchor.
+            // An attempt to remove a "related-to" item that is not referenced by anything is an invariant
+            // violation and triggers an assertion failure.
+            // We need to handle cases where the entire form context is replaced to allow schema changes
+            // in runtime. Since React re-renders the form only after the context has been replaced,
+            // we might be trying to remove stale data created by the previous context.
+            //
+            // We are doing something similar when ReferenceableIdInput unmounts.
+            if (
+                References.hasAnchor(refs, relatesTo) && // Does the anchor exist?
+                refId && // Is the ID of the item we are referencing non-null?
+                References.has(refs, relatesTo, refId) && // Does the item we are referencing exist?
+                References.isReferencedBy(refs, relatesTo, refId, refingId) // Does the item reference us?
+            ) {
                 References.unref(handler.refs.get(), relatesTo, refId, refingId);
             }
         }
