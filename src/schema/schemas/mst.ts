@@ -963,7 +963,7 @@ export const MST = [
                                 isArray: false,
                                 isRequired: true,
                                 mbdbPath: 'general_parameters/instrument/performance_test/report',
-                                input: 'ignore',
+                                input: 'url',
                                 help: {
                                     en: 'The file containing the report of the performance test, preferably in pdf',
                                 },
@@ -2075,7 +2075,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -2748,7 +2748,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -3982,7 +3982,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },
@@ -4471,7 +4471,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },
@@ -5218,7 +5218,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -9195,7 +9195,7 @@ export const MST = [
                                                                                 isArray: false,
                                                                                 isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
-                                                                                input: 'ignore',
+                                                                                input: 'url',
                                                                                 help: {
                                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                                 },
@@ -9684,7 +9684,7 @@ export const MST = [
                                                                                 isArray: false,
                                                                                 isRequired: true,
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
-                                                                                input: 'ignore',
+                                                                                input: 'url',
                                                                                 help: {
                                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                                 },
@@ -11609,7 +11609,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -12310,7 +12310,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -13507,7 +13507,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -14180,7 +14180,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -15414,7 +15414,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },
@@ -15903,7 +15903,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },
@@ -16650,7 +16650,7 @@ export const MST = [
                                                         isArray: false,
                                                         isRequired: true,
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                        input: 'ignore',
+                                                        input: 'url',
                                                         help: {
                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                         },
@@ -20627,7 +20627,7 @@ export const MST = [
                                                                                 isArray: false,
                                                                                 isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
-                                                                                input: 'ignore',
+                                                                                input: 'url',
                                                                                 help: {
                                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                                 },
@@ -21116,7 +21116,7 @@ export const MST = [
                                                                                 isArray: false,
                                                                                 isRequired: true,
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
-                                                                                input: 'ignore',
+                                                                                input: 'url',
                                                                                 help: {
                                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                                 },
@@ -23605,7 +23605,7 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                                input: 'ignore',
+                                                input: 'url',
                                                 help: {
                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                 },
@@ -24111,7 +24111,7 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                                input: 'ignore',
+                                                input: 'url',
                                                 help: {
                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                 },
@@ -25178,7 +25178,7 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
-                                                                input: 'ignore',
+                                                                input: 'url',
                                                                 help: {
                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                 },
@@ -25667,7 +25667,7 @@ export const MST = [
                                                                 isArray: false,
                                                                 isRequired: true,
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
-                                                                input: 'ignore',
+                                                                input: 'url',
                                                                 help: {
                                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                                 },
@@ -26414,7 +26414,7 @@ export const MST = [
                                                 isArray: false,
                                                 isRequired: true,
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                                input: 'ignore',
+                                                input: 'url',
                                                 help: {
                                                     en: 'Report with the results of the quality control, as a pdf file',
                                                 },
@@ -29556,7 +29556,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },
@@ -30045,7 +30045,7 @@ export const MST = [
                                                                         isArray: false,
                                                                         isRequired: true,
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
-                                                                        input: 'ignore',
+                                                                        input: 'url',
                                                                         help: {
                                                                             en: 'Report with the results of the quality control, as a pdf file',
                                                                         },

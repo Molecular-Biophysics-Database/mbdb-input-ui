@@ -3,7 +3,7 @@ import { niceLabel } from './util';
 import { ArrayContainer } from './components/array-container';
 import { CalendarDateInput } from './components/date';
 import { GroupContainer } from './components/group-container';
-import { FloatInput, IntInput, StringInput } from "./components/num-text";
+import { FloatInput, IntInput, StringInput, UrlInput } from "./components/num-text";
 import { OptionsInput, OptionsWithOtherInput } from './components/options';
 import { RelatedToInput, ReferenceableIdInput } from './components/refs-rels';
 import { VariantInput } from './components/variant';
@@ -73,6 +73,17 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                 />
             );
         }
+    } else if (Schema.hasUrlInput(item)) {
+        return (
+            <UrlInput
+                label={label}
+                help={item.help}
+                isRequired={isRequired}
+                path={path}
+                noRightOffset={noRightOffset}
+                key={key}
+            />
+        );
     } else if (Schema.hasOptionsInput(item)) {
         if (Schema.hasOptionsWithOtherInput(item)) {
             return (

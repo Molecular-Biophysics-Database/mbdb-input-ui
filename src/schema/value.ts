@@ -69,6 +69,8 @@ export const Value = {
             return this.empty(!isRequired);
         } else if (Schema.hasOptionsInput(item)) {
             return Schema.initialOptionsValue(isRequired);
+        } else if (Schema.hasUrlInput(item)) {
+            return Value.empty(!isRequired);
         } else if (Schema.hasVocabularyInput(item)) {
             return this.emptyVocabularyEntry(!isRequired);
         }

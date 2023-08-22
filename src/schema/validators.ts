@@ -3,7 +3,7 @@ import { Uuid } from './uuid';
 import { CalendarDate, Option, Value, VocabularyEntry } from './value';
 import { assert } from '../assert';
 import { Vocabulary } from '../mbdb/vocabulary';
-import { daysInMonth } from '../util';
+import { daysInMonth, isUrl } from '../util';
 
 const Zero = '0'.charCodeAt(0);
 const Nine = '9'.charCodeAt(0);
@@ -157,6 +157,10 @@ export const CommonValidators = {
     isSet(v: string) {
         return v !== '';
     },
+
+    isUrl(v: string) {
+        return isUrl(v);
+    },
 };
 
 export type Validator<T extends Value['payload']> = (v: T) => boolean;
@@ -180,11 +184,11 @@ export const Validators = {
                 if (item.input === 'int') {
                     return isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateInt(v, item.minimum, item.maximum); }
-                        : (v: string) => { return validateInt(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
+                        : (v: string) => { return validateInt(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); };
                 } else if (item.input === 'float') {
                     return isRequired
                         ? (v: string) => { return CommonValidators.isSet(v) && validateFloat(v, item.minimum, item.maximum); }
-                        : (v: string) => { return validateFloat(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); }
+                        : (v: string) => { return validateFloat(v, item.minimum, item.maximum) || CommonValidators.isEmpty(v); };
                 } else {
                     assert(false, `Unknown textual-like input "${item.input}"`);
                 }
@@ -195,6 +199,10 @@ export const Validators = {
             return (v: Option) => validateOptions(v, item.choices, isRequired);
         } else if (Schema.hasVocabularyInput(item)) {
             return (v: VocabularyEntry) => validateVocabulary(v, item.vocabularyType, item.isRequired);
+        } else if (Schema.hasUrlInput(item)) {
+            return isRequired
+                ? isUrl
+                : (v: string) => { return CommonValidators.isEmpty(v) || CommonValidators.isUrl(v) };
         }
 
         throw new Error(`No common validator is defined for item ${item.tag} of input type ${item.input}`);

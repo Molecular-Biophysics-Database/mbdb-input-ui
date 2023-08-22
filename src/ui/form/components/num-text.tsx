@@ -10,7 +10,7 @@ import { PathId } from '../path-id';
 import { FormContextInstance } from '../../../context';
 import { Help } from '../../../schema';
 import { Path } from '../../../schema/data';
-import { Validator } from '../../../schema/validators';
+import { CommonValidators, Validator } from '../../../schema/validators';
 import { Value } from '../../../schema/value';
 
 const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, onChange, noRightOffset }: {
@@ -67,13 +67,17 @@ export function TextualInput({ label, isRequired, help, path, validator, noRight
 }
 
 export function FloatInput(props: Props) {
-    return <TextualInput {...props }/>;
+    return <TextualInput {...props } />;
 }
 
 export function IntInput(props: Props) {
-    return <TextualInput {...props }/>;
+    return <TextualInput {...props } />;
 }
 
 export function StringInput(props: Props) {
     return <TextualInput {...props} />;
+}
+
+export function UrlInput(props: Omit<Props, 'validator'>) {
+    return <TextualInput {...props} validator={CommonValidators.isUrl} />;
 }

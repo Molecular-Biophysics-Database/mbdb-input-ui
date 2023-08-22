@@ -11,7 +11,8 @@ export type Input = ComplexInput | TextualInput | VariantInput |
     'boolean' | 'calendar-date' | 'custom' |
     'options' | 'options-with-other' |
     'referenceable-id' | 'related-to' |
-    'ignore' | 'uuid' |
+    'ignore' |
+    'url' | 'uuid' |
     'variant-discriminator' |
     'vocabulary' |
     'unknown';
@@ -117,6 +118,10 @@ export const Schema = {
         return this.isUnknownInput(item.input);
     },
 
+    hasUrlInput(item: Item): item is TItem<'url'> {
+        return this.isUrlInput(item.input);
+    },
+
     hasUuidInput(item: Item): item is TItem<'uuid'> {
         return this.isUuidInput(item.input);
     },
@@ -195,6 +200,10 @@ export const Schema = {
 
     isUnknownInput(input: Input): input is 'unknown' {
         return input === 'unknown';
+    },
+
+    isUrlInput(input: Input): input is 'url' {
+        return input === 'url';
     },
 
     isUuidInput(input: Input): input is 'uuid' {

@@ -209,8 +209,6 @@ def item_defn(item, defs, name, mbdbPath):
 
             defn['input'] = variants
             defn['discriminator'] = discriminator
-        elif t == 'uuid':
-            defn['input'] = 'uuid'
         elif t == 'relation':
             if 'model' not in item:
                 raise UIGSchemaError(f'Field "{item.tag}" is a relation but does not say which item it relates to ("model" key is missing)')
@@ -220,6 +218,10 @@ def item_defn(item, defs, name, mbdbPath):
             defn['input'] = 'related-to'
             defn['relatesTo'] = mbdb_relates_to(item['model'])
             defn['relatedKeys'] = mbdb_related_keys(item['keys']);
+        elif t == 'url':
+            defn['input'] = 'url'
+        elif t == 'uuid':
+            defn['input'] = 'uuid'
         elif t == 'vocabulary':
             if 'vocabulary-type' not in item:
                 raise UIGSchemaError(f'Field "{item.tag}" is a vocabulary but it does not specify vocabulary-type')
