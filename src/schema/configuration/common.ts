@@ -101,9 +101,7 @@ export const Common = {
         },
         'general_parameters/record_information/resource_type_general': {
             dontDisplay: true,
-        },
-        'general_parameters/record_information/resource_type': {
-            dontDisplay: true,
+            forceChoice: true,
         },
         'general_parameters/record_information/subject_category': {
             dontDisplay: true,
@@ -111,9 +109,11 @@ export const Common = {
         },
     'general_parameters/schema_version': {
         dontDisplay: true,
+        forceChoice: true,
     },
 
     'method_specific_parameters/schema_version': {
         dontDisplay: true,
+        forceChoice: true,
     },
 };

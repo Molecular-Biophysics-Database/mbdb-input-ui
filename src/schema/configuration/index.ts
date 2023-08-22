@@ -6,6 +6,7 @@ export type ConfigurationItem = {
     dontDisplay: boolean,
     dontTransformContent: boolean,
     dontTransformLabels: boolean,
+    forceChoice: boolean,
     label: string,
     order: { tag: string, index: number }[],
 };
@@ -52,6 +53,18 @@ function configureItem(item: Item, cfg: Partial<ConfigurationItem>) {
             }
         } else {
             console.warn(`Attempted to set default value for item "${item.tag}" but that item cannot have default value.`);
+        }
+    }
+    if (cfg.forceChoice) {
+        if (Schema.hasOptionsInput(item)) {
+            const choice = item.choices[0];
+            if (choice === undefined) {
+                console.warn(`Attempted to for a choice for item "${item.tag}" but that item does not have any choices.`);
+            } else {
+                item.defaultValue = choice.tag;
+            }
+        } else {
+            console.warn(`Attempted to force a value for item "${item.tag}" but this flag is valid only for items with Options input.`);
         }
     }
 }
