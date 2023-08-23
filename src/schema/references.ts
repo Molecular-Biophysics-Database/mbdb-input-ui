@@ -42,7 +42,7 @@ function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, sche
                     const innerData = Data.getTree(data, innerPath);
 
                     // Descend only into the selected variant to avoid creating dead references
-                    gatherRefObjsForAnchor(anchor, data, Data.Path.path(innerData.__mbdb_variant_choice!!, innerPath), schema, objs, onlyAlive);
+                    gatherRefObjsForAnchor(anchor, data, Data.Path.path(innerData.__mbdb_variant_choice!, innerPath), schema, objs, onlyAlive);
                 } else {
                     gatherRefObjsForAnchor(anchor, data, innerPath, schema, objs, onlyAlive);
                 }
@@ -62,7 +62,7 @@ function gatherRefObjsForAnchor(anchor: string, data: DataTree, path: Path, sche
                     const innerData = Data.getTree(data, innerPath);
 
                     // Descend only into the selected variant to avoid creating dead references
-                    gatherRefObjsForAnchor(anchor, data,  Data.Path.path(innerData.__mbdb_variant_choice!!, innerPath), schema, objs, onlyAlive);
+                    gatherRefObjsForAnchor(anchor, data,  Data.Path.path(innerData.__mbdb_variant_choice!, innerPath), schema, objs, onlyAlive);
                 }
             } else {
                 // No special handling is required for data that do not belong to Variants
