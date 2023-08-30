@@ -203,7 +203,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a string.`);
                 }
                 if (!Uuid.check(mbdbScalar)) {
-                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a valud UUIDv4.`);
+                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a Uuid item "${item.tag}" with UUIDv4 value is not a valid UUIDv4.`);
                 }
 
                 Data.set(data, itemPath, Value.uuid(mbdbScalar));
