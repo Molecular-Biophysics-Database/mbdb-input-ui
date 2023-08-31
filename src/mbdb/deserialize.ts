@@ -207,6 +207,12 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                 }
 
                 Data.set(data, itemPath, Value.uuid(mbdbScalar));
+            } else if (Schema.hasNumericInput(item)) {
+                if (typeof mbdbScalar !== 'number') {
+                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an item "${item.tag}" with textual value is not a string.`);
+                }
+
+                Data.set(data, itemPath, Value.textual(mbdbScalar.toString(), true));
             } else {
                 if (typeof mbdbScalar !== 'string') {
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an item "${item.tag}" with textual value is not a string.`);

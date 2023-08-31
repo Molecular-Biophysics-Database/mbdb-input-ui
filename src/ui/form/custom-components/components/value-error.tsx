@@ -35,11 +35,11 @@ function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'erro
     if (err === undefined) {
         data[name] = Value.empty();
     } else {
-        if (typeof err !== 'string') {
-            throw new Error(`Value of "${name}" field in ValueError custom component was expected to be a string.`);
+        if (typeof err !== 'number') {
+            throw new Error(`Value of "${name}" field in ValueError custom component was expected to be a number.`);
         }
 
-        data[name] = Value.textual(err, false);
+        data[name] = Value.textual(err.toString(), false);
     }
 }
 
