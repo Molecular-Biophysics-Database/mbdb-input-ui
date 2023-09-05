@@ -179,6 +179,9 @@ export const Validators = {
             return Uuid.check;
         } else if (Schema.hasRelatedToInput(item)) {
             return CommonValidators.alwaysValid;
+        } else if (Schema.hasInternalIdInput(item)) {
+            // Treat this a a string
+            return isRequired ? CommonValidators.isSet : CommonValidators.alwaysValid;
         } else if (Schema.hasTextualInput(item)) {
             if (Schema.hasNumericInput(item)) {
                 if (item.input === 'int') {

@@ -169,7 +169,7 @@ function buildReferences(data: DataTree, schema: TopLevelItem) {
     return references;
 }
 
-function checkItemDataSchema(data: Value, item: Item) {
+function checkItemDataSchema(data: Value, item: Item): boolean {
     if (Schema.hasRelatedToInput(item)) {
         return (typeof data !== 'object' || Object.keys(data).length === 0);
     }
@@ -194,6 +194,8 @@ function checkItemDataSchema(data: Value, item: Item) {
             return Value.isUuid(data);
         } else if (Schema.hasReferenceableIdInput(item)) {
             return Value.isRefId(data);
+        } else if (Schema.hasInternalIdInput(item)) {
+            return Value.isTextual(data) || (data.payload as string).length > 0;
         }
     } else if (Schema.hasBooleanInput(item)) {
         return item.isRequired ? Value.isBoolean(data) : Value.isTristate(data);
@@ -208,6 +210,9 @@ function checkItemDataSchema(data: Value, item: Item) {
     } else {
         return Value.isTextual(data);
     }
+
+    // TS needs a little nudge here because the decision tree above is supposed to be exhaustive
+    assert(false, `No data check for item "${(item as Item).tag}" with input type "${(item as Item).input}.`);
 }
 
 function checkAndFixupReferences(data: DataTree, path: Path, references: ReferenceAnchors, schema: TopLevelItem) {

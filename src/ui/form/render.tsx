@@ -128,6 +128,8 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
         return null;
     } else if (Schema.hasVocabularyInput(item)) {
         return <VocabularyInput label={label} help={item.help} path={path} isRequired={isRequired} vocabularyType={item.vocabularyType} key={key} />;
+    } else if (Schema.hasInternalIdInput(item)) {
+        return null; // TODO: is this really what we want?
     } else if (Schema.hasCustomInput(item)) {
         const Maker = Register.get(item.component).Component;
         assert(!!Maker, `No custom component "${item.component}"`);

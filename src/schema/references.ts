@@ -188,6 +188,10 @@ export const References = {
         return !!r.referencedBy.find((r) => r.refingId === refingId);
     },
 
+    isValidRefId(s: string) {
+        return s.length > 0;
+    },
+
     list(refs: ReferenceAnchors, anchor: string) {
         const rr = refs[anchor];
         if (rr === undefined) {

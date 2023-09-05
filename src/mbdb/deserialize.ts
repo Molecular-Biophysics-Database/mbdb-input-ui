@@ -4,7 +4,7 @@ import { ComplexItem, Item, Schema, TopLevelItem, VariantItem } from '../schema'
 import { FormContext } from '../context';
 import { Data, DataTree, Path } from '../schema/data';
 import { CalendarDate, Value } from '../schema/value';
-import { ReferenceAnchors } from '../schema/references';
+import { ReferenceAnchors, References } from '../schema/references';
 import { Uuid } from '../schema/uuid';
 import { CommonValidators } from '../schema/validators';
 import { Register as CustomComponentsRegister } from '../ui/form/custom-components/register';
@@ -179,8 +179,8 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                 if (typeof mbdbScalar !== 'string') {
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a ReferenceableId item "${item.tag}" is not a string.`);
                 }
-                if (!Uuid.check(mbdbScalar)) {
-                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a ReferenceableId item "${item.tag}" is not a valid UUIDv4.`);
+                if (!References.isValidRefId(mbdbScalar)) {
+                    throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a ReferenceableId item "${item.tag}" is not a valid referenceable ID.`);
                 }
 
                 Data.set(data, itemPath, Value.refId(mbdbScalar));
