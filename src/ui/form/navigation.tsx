@@ -186,11 +186,24 @@ export type NavigationProps = {
 };
 export class Navigation extends React.Component<NavigationProps> {
     static contextType = FormContextInstance;
-    _refreshFunc: (() => void) | null = null;
+    _refreshFunc = () => {
+        const input = this.props.inputRef?.current;
+        if (input) {
+            input.removeEventListener('scroll', this._refreshFunc!);
+            this.scrollHandlerRegistered = false;
+
+            this.forceUpdate();
+        }
+    };
+    resizeHandlerRegistered = false;
+    scrollHandlerRegistered = false;
 
     componentDidMount() {
-        // Force a re-render after we get mounted because the inputRef might not be available yet
-        this.forceUpdate();
+        const input = this.props.inputRef?.current;
+        if (!input) {
+            // Force a re-render because we need for input to be valid to render anything useful
+            this.forceUpdate();
+        }
     }
 
     componentDidUpdate() {
@@ -201,11 +214,13 @@ export class Navigation extends React.Component<NavigationProps> {
             // so let's just keep hammering ourselves until the ref becomes valid
             this.forceUpdate();
         } else {
-            if (this._refreshFunc === null) {
-                this._refreshFunc = () => { this.forceUpdate() };
-
-                input.addEventListener('scroll', this._refreshFunc, false);
+            if (!this.resizeHandlerRegistered) {
                 window.addEventListener('resize', this._refreshFunc);
+                this.resizeHandlerRegistered = true;
+            }
+            if (!this.scrollHandlerRegistered) {
+                input.addEventListener('scroll', this._refreshFunc);
+                this.scrollHandlerRegistered= true;
             }
         }
     }
@@ -213,7 +228,7 @@ export class Navigation extends React.Component<NavigationProps> {
     componentWillUnmount() {
         const input = this.props.inputRef?.current;
         if (input) {
-            input.removeEventListener('scroll', this._refreshFunc!, false);
+            input.removeEventListener('scroll', this._refreshFunc!);
         }
         window.removeEventListener('resize', this._refreshFunc!);
     }

@@ -6,7 +6,7 @@ import { Traverse } from '../../schema/traverse';
 import { objKeys } from '../../util';
 
 function hasArrayCorrectLength(item: DataTree[] | Value[], schemaItem: Item) {
-    const minItems = schemaItem.minItems ?? (schemaItem.isRequired ? 1 : 0);
+    const minItems = schemaItem.isRequired ? (schemaItem.minItems ?? 1) : 0;
     return item.length >= minItems;
 }
 
