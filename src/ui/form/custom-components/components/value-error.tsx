@@ -119,6 +119,9 @@ export const ValueError: CustomComponent<ValueErrorData> = {
     toMbdb(data: DataTree, path: Path, errors: DataError[]) {
         let bad = false;
 
+        const _data = Data.getTree(data, path);
+        if (!!_data.__mbdb_group_marked_empty) return void 0;
+
         for (const name of ['lower_error', 'upper_error', 'error_level', 'errors_are_relative'] as (keyof ValueErrorData)[]) {
             let vPath = Data.Path.path(name, path)
             if (!checkValue(data, vPath)) {
@@ -127,7 +130,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
             }
         }
 
-        if (bad) return {};
+        if (bad) return void 0;
 
         const mbdbValue = {};
         setMbdbValueData(mbdbValue, data, 'lower_error', path);

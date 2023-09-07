@@ -30,7 +30,9 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
     } else if (Schema.hasCustomInput(item)) {
         const cc = Register.get(item.component);
         const customData = cc.toMbdb(internalData, internalParentPath, errors);
-        MbdbData.set(mbdbData, customData, MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices));
+        if (customData !== undefined) {
+            MbdbData.set(mbdbData, customData, MbdbData.Path.toPath(item.mbdbPath, mbdbArrayIndices));
+        }
     } else {
         const v = Data.getValue(internalData, internalParentPath);
 
