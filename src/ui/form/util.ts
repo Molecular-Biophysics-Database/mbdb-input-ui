@@ -46,6 +46,8 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
 
                 if (cc.hasErrors(item)) return true;
             } else if (Schema.hasComplexInput(schemaItem)) {
+                if (!!item.__mbdb_group_marked_empty) return false;
+
                 for (const innerSchemaItem of schemaItem.input) {
                     if (Schema.hasIgnoredInput(innerSchemaItem)) continue;
 
