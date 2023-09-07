@@ -3,7 +3,7 @@ import React from 'react';
 import { Dropdown as SDropdown } from 'semantic-ui-react';
 import { PathId } from '../path-id';
 import { component } from '../render';
-import { subtreeHasErrors, useDarkBlock } from '../util';
+import { sectionBgCls, subtreeHasErrors, useDarkBlock } from '../util';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
@@ -46,7 +46,7 @@ const VariantAnchor = React.memo(function _VariantAnchor({ path }: { path: Path 
     return Data.Path.arePathsEqual(prevProps.path, nextProps.path);
 });
 
-const _VariantInput = React.memo(function _VariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, handler }: Props & {
+const _VariantInput = React.memo(function _VariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, isDisabled, handler }: Props & {
     handler: _FormContextHandler,
     hasErrors: boolean,
     variantChoice: string,
@@ -62,7 +62,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
     const [cannotChangeError, setCannotChangeError] = React.useState(false);
     const darkBlk = useDarkBlock(nestLevel);
 
-    const varComponent = component(input[variantChoice], nestLevel + 1, path, void 0, true);
+    const varComponent = component(input[variantChoice], nestLevel + 1, isDisabled, path, void 0, true);
     return (
         <>
             <CannotChangeVariantErrorDialog
@@ -72,7 +72,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
 
             <div className={clsx(
                 'mbdb-section', hasErrors && 'mbdb-section-has-errors',
-                'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light')}>
+                'mbdb-block', sectionBgCls(darkBlk, isDisabled))}>
                 <VariantAnchor path={Data.Path.path(variantChoice, path)} />
                 <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
                     <div className='mbdb-section-label-text'>Type</div>
@@ -87,6 +87,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
                         }}
                         options={opts}
                         className='mbdb-section-label-text'
+                        disabled={isDisabled}
                         selection
                         fluid
                     />
@@ -102,6 +103,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
         Object.is(prevProps.nestLevel, nextProps.nestLevel) &&
         Data.Path.arePathsEqual(prevProps.path, nextProps.path) &&
         Object.is(prevProps.variantChoice, nextProps.variantChoice) &&
+        Object.is(prevProps.isDisabled, nextProps.isDisabled) &&
         Object.is(prevProps.hasErrors, nextProps.hasErrors)
     );
 });
@@ -110,12 +112,13 @@ export type Props = {
     input: VariantInput,
     label: string,
     nestLevel: number,
+    isDisabled: boolean,
     path: Path,
 };
 export function VariantInput(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const variantChoice = handler.getVariantChoice(props.path);
-    const hasErrors = subtreeHasErrors(handler.data(), props.path, handler.schema());
+    const hasErrors = props.isDisabled ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
 
     return <_VariantInput {...props} variantChoice={variantChoice} hasErrors={hasErrors} handler={handler} />;
 }

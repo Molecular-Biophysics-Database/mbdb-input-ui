@@ -8,6 +8,7 @@ import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
 import { FormContextInstance } from '../../../../context';
 import { MbdbData } from '../../../../mbdb/data';
+import { Schema } from '../../../../schema';
 import { Data, DataTree, Path } from '../../../../schema/data';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
@@ -30,7 +31,7 @@ function setMbdbValueData(mbdbValue: Record<string, string | boolean>, data: Dat
     }
 }
 
-function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'errors_are_relative'>, data: DataTree) {
+function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'errors_are_relative' | '__mbdb_group_marked_empty'>, data: DataTree) {
     const err = mbdbData[name];
     if (err === undefined) {
         data[name] = Value.empty();
@@ -44,6 +45,7 @@ function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'erro
 }
 
 export type ValueErrorData = {
+    __mbdb_group_marked_empty: boolean,
     lower_error: Value,
     upper_error: Value,
     error_level: Value,
@@ -83,11 +85,22 @@ export const ValueError: CustomComponent<ValueErrorData> = {
 
     emptyData(): Partial<ValueErrorData> {
         return {
+            [Schema.GroupMarkedEmpty]: false,
             lower_error: Value.empty(false),
             upper_error: Value.empty(false),
             error_level: Value.empty(false),
             errors_are_relative: Value.boolean(false),
         };
+    },
+
+    hasErrors(data: DataTree) {
+        if (!!data.__mbdb_group_marked_empty) return false;
+
+        if (!Value.isValue(data.lower_error) || !data.lower_error.isValid) return true;
+        if (!Value.isValue(data.upper_error) || !data.upper_error.isValid) return true;
+        if (!Value.isValue(data.error_level) || !data.error_level.isValid) return true;
+
+        return false;
     },
 
     fromMbdb(mbdbData: MbdbData) {
@@ -133,22 +146,34 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         if (data.error_level) data.error_level.isValid = validatorRequired(Value.toTextual(data.error_level));
     },
 
-    Component({ path, reactKey }) {
+    Component({ path, isDisabled, reactKey }) {
         const id = React.useMemo(() => PathId.toId(path), [path]);
         const idIsRel = React.useMemo(() => id + '_isRel', [path]);
         const { handler } = React.useContext(FormContextInstance);
+        const isMarkedEmpty = handler.isGroupMarkedEmpty(path);
 
         return (
             <React.Fragment key={reactKey}>
                 <ItemLabel label='Value error' markAsRequired={false} id={id} />
-                <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto 1fr', gap: 'var(--mbdb-hgap)', width: '100%'}}>
+                <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: 'auto 1fr 1fr 1fr auto 1fr', gap: 'var(--mbdb-hgap)', width: '100%'}}>
+                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-hgap)' }}>
+                        <SCheckbox
+                            checked={isMarkedEmpty}
+                            onChange={(_ev, data) => {
+                                handler.markGroupEmpty(!!data.checked, path);
+                                handler.update();
+                            }}
+                        />
+                        <div>(Do not provide this data)</div>
+                    </div>
                     <div style={Cell}>
                         <FloatInput
                             label='Min'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('lower_error', path)}
-                            validator={validatorRequired}
+                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
+                            isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
                     <div style={Cell}>
@@ -156,8 +181,9 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             label='Max'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('upper_error', path)}
-                            validator={validatorRequired}
+                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
+                            isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
                     <div style={Cell}>
@@ -165,8 +191,9 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             label='Error level'
                             help={{ en: 'TODO' }}
                             path={Data.Path.path('error_level', path)}
-                            validator={validatorRequired}
+                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
+                            isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
                     <ItemLabel id={idIsRel} markAsRequired={false} label='Errors are relative' />
@@ -177,6 +204,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             const checked = !!data.checked;
                             handler.set(Data.Path.path('errors_are_relative', path), Value.boolean(checked));
                         }}
+                        disabled={isMarkedEmpty || isDisabled}
                     />
                 </div>
             </React.Fragment>

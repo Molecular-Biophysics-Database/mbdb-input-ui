@@ -12,11 +12,12 @@ import { clamp, daysInMonth, isLeapYear } from '../../../util';
 export type Props = {
     label: string,
     isRequired: boolean,
+    isDisabled: boolean,
     help?: Help,
     path: Path,
 }
 
-export function CalendarDateInput({ label, isRequired, help, path }: Props) {
+export function CalendarDateInput({ label, isRequired, isDisabled, help, path }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const value = handler.getValue(path);
@@ -26,7 +27,9 @@ export function CalendarDateInput({ label, isRequired, help, path }: Props) {
     return (
         <>
             <ItemLabel id={id} label={label} markAsRequired={isRequired} help={help} />
-            <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: '1em' }}>
+            <div
+                style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: '1em' }}
+            >
                 <div>Year</div>
                 <SInput
                     style={{ width: '6em' }}
@@ -51,7 +54,8 @@ export function CalendarDateInput({ label, isRequired, help, path }: Props) {
                         }
                         setDateInput((i) => ({ ...i, y: yN.toString(), d: _d.toString() }));
                     }}
-                    error={!value.isValid}
+                    disabled={isDisabled}
+                    error={!value.isValid && !isDisabled}
                 />
                 <div>Month</div>
                 <SInput
@@ -75,7 +79,8 @@ export function CalendarDateInput({ label, isRequired, help, path }: Props) {
                         }
                         setDateInput((i) => ({ ...i, m: mN.toString(), d: _d.toString() }));
                     }}
-                    error={!value.isValid}
+                    disabled={isDisabled}
+                    error={!value.isValid && !isDisabled}
                 />
                 <div>Day</div>
                 <SInput
@@ -97,7 +102,8 @@ export function CalendarDateInput({ label, isRequired, help, path }: Props) {
                         }
                         setDateInput((i) => ({ ...i, d: dN.toString() }));
                     }}
-                    error={!value.isValid}
+                    disabled={isDisabled}
+                    error={!value.isValid && !isDisabled}
                 />
             </div>
         </>

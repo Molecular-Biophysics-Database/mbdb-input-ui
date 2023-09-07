@@ -239,6 +239,7 @@ export const Schema = {
         return item.choices.map((c) => c.tag);
     },
 
+    GroupMarkedEmpty: '__mbdb_group_marked_empty',
     EmptyChoice: '__mbdb_empty_choice',
     OtherChoice: '__mbdb_other_choice',
     ReferenceableId: '__mbdb_referenceable_id',

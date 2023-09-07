@@ -24,6 +24,8 @@
     --mbdb-clr-based1: #88cdfe;
     --mbdb-clr-based2: #4097d5;
     --mbdb-clr-based3: #0b72ba;
+    --mbdb-clr-disabled-light: #e7e7e7;
+    --mbdb-clr-disabled-dark: #bababa;
 
     --mbdb-border-radius: 5px;
 }
@@ -151,6 +153,13 @@
     gap: var(--mbdb-2hgap);
 }
 
+.mbdb-group-container-header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-hgap);
+}
+
 .mbdb-help-popup-trigger {
     color: var(--mbdb-clr-based2);
 }
@@ -208,6 +217,14 @@ ul.mbdb-deposition-error-report {
     grid-column: span 2;
     margin-top: var(--mbdb-form-pad2);
     padding: var(--mbdb-form-pad) 0 var(--mbdb-form-pad) var(--mbdb-form-pad);
+}
+
+.mbdb-section-disabled-light {
+    background-color: var(--mbdb-clr-disabled-light);
+}
+
+.mbdb-section-disabled-dark {
+    background-color: var(--mbdb-clr-disabled-dark);
 }
 
 .mbdb-section-has-errors {

@@ -86,7 +86,10 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
 
 function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: Item, options: Options) {
     if (Schema.hasComplexInput(item)) {
-        toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
+        const v = Data.getTree(internalData, internalParentPath);
+        if (!v.__mbdb_group_marked_empty) {
+            toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
+        }
     } else if (Schema.hasVariantInput(item)) {
         toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
     } else {
@@ -103,7 +106,9 @@ function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbd
     assert(varItem !== undefined, `Variant choice "${choice}" is invalid for input item "${Data.Path.toString(internalParentPath)}}"`);
 
     if (Schema.hasComplexInput(varItem)) {
-        toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
+        if (!v.__mbdb_group_marked_empty) {
+            toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
+        }
     } else if (Schema.hasVariantInput(varItem)) {
         toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
     } else {

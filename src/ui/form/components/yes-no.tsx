@@ -15,10 +15,11 @@ import { Path } from '../../../schema/data';
 import { Tristate } from '../../../schema/tristate';
 import { Value } from '../../../schema/value';
 
-const Checkbox = React.memo(function _Checkbox({ id, checked, onChange, noRightOffset }: {
+const Checkbox = React.memo(function _Checkbox({ id, checked, onChange, isDisabled, noRightOffset }: {
     id: string,
     checked: boolean,
     onChange: SOnChange<SCheckboxProps>,
+    isDisabled: boolean,
     noRightOffset?: boolean,
 }) {
     return (
@@ -27,12 +28,14 @@ const Checkbox = React.memo(function _Checkbox({ id, checked, onChange, noRightO
             id={id}
             checked={checked}
             onChange={onChange}
+            disabled={isDisabled}
         />
     );
 }, (prevProps, nextProps) => {
     return (
         Object.is(prevProps.id, nextProps.id) &&
-        Object.is(prevProps.checked, nextProps.checked)
+        Object.is(prevProps.checked, nextProps.checked) &&
+        Object.is(prevProps.isDisabled, nextProps.isDisabled)
     );
 });
 
@@ -40,11 +43,12 @@ const Checkbox = React.memo(function _Checkbox({ id, checked, onChange, noRightO
 export type Props = {
     label: string,
     path: Path,
+    isDisabled: boolean,
     help?: Help,
     noRightOffset?: boolean,
 }
 
-export function BooleanInput({ label, help, path }: Props) {
+export function BooleanInput({ label, help, isDisabled, path }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SCheckboxProps> = (_ev, data) => {
@@ -55,7 +59,7 @@ export function BooleanInput({ label, help, path }: Props) {
     return (
         <>
             <ItemLabel label={label} help={help} markAsRequired={true} id={id} />
-            <Checkbox id={id} checked={checked} onChange={onChange} />
+            <Checkbox id={id} checked={checked} onChange={onChange} isDisabled={isDisabled} />
         </>
     );
 }
@@ -65,10 +69,11 @@ const TristateOptions = [
     { value: 'false' as Tristate, text: 'No' },
     { value: 'not-set' as Tristate, text: '(Not set)' },
 ];
-const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange, noRightOffset }: {
+const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange, isDisabled, noRightOffset }: {
     id: string,
     value: Tristate,
     onChange: SOnChange<SDropdownProps>,
+    isDisabled: boolean,
     noRightOffset?: boolean,
 }) {
     return (
@@ -78,12 +83,13 @@ const YesNoUnset = React.memo(function _YesNoUnset({ id, value, onChange, noRigh
             value={value}
             options={TristateOptions}
             onChange={onChange}
+            disabled={isDisabled}
             selection
         />
     );
 });
 
-export function TristateInput({ label, help, path }: Props) {
+export function TristateInput({ label, help, isDisabled, path }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SDropdownProps> = React.useMemo(() => (_ev, data) => {
@@ -94,7 +100,7 @@ export function TristateInput({ label, help, path }: Props) {
     return (
         <>
             <ItemLabel label={label} help={help} markAsRequired={false} id={id} />
-            <YesNoUnset id={id} value={v} onChange={onChange} />
+            <YesNoUnset id={id} value={v} onChange={onChange} isDisabled={isDisabled} />
         </>
     );
 }

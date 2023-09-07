@@ -13,10 +13,11 @@ import { Path } from '../../../schema/data';
 import { CommonValidators, Validator } from '../../../schema/validators';
 import { Value } from '../../../schema/value';
 
-const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, onChange, noRightOffset }: {
+const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, isDisabled, onChange, noRightOffset }: {
     id: string,
     value: string,
     isValid: boolean,
+    isDisabled: boolean,
     onChange: SOnChange<SInputProps>,
     noRightOffset?: boolean,
 }) {
@@ -28,6 +29,7 @@ const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, on
             value={value}
             error={!isValid}
             onChange={onChange}
+            disabled={isDisabled}
             fluid
         />
     );
@@ -36,6 +38,7 @@ const _TextualInput = React.memo(function MTextualInput({ id, value, isValid, on
         Object.is(prevProps.id, nextProps.id) &&
         Object.is(prevProps.value, nextProps.value) &&
         Object.is(prevProps.isValid, nextProps.isValid) &&
+        Object.is(prevProps.isDisabled, nextProps.isDisabled) &&
         Object.is(prevProps.noRightOffset, nextProps.noRightOffset) &&
         Object.is(prevProps.onChange, nextProps.onChange)
     );
@@ -45,11 +48,12 @@ type Props = {
     help?: Help,
     label: string,
     isRequired: boolean,
+    isDisabled: boolean,
     path: Path,
     validator: Validator<string>,
     noRightOffset?: boolean,
 };
-export function TextualInput({ label, isRequired, help, path, validator, noRightOffset }: Props) {
+export function TextualInput({ label, isRequired, isDisabled, help, path, validator, noRightOffset }: Props) {
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
     const onChange: SOnChange<SInputProps> = React.useMemo(() => (_ev, data) => {
@@ -61,7 +65,7 @@ export function TextualInput({ label, isRequired, help, path, validator, noRight
     return (
         <>
             <ItemLabel label={label} markAsRequired={isRequired} help={help} id={id} />
-            <_TextualInput id={id} value={Value.toTextual(value)} isValid={value.isValid} noRightOffset={noRightOffset} onChange={onChange} />
+            <_TextualInput id={id} value={Value.toTextual(value)} isValid={value.isValid} isDisabled={isDisabled} noRightOffset={noRightOffset} onChange={onChange} />
         </>
     );
 }

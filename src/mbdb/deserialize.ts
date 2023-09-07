@@ -26,6 +26,12 @@ function getDefaultTrivialData(item: Item, references: ReferenceAnchors) {
     return fakeRoot[item.tag];
 }
 
+function makeComplexData(data: DataTree, path: Path, markGroupEmpty: boolean) {
+    // This creates an empty data tree just with the empty/not-empty tag.
+    // This is okay because the rest will be filled out elsewhere as required.
+    Data.set(data, path, { __mbdb_group_marked_empty: markGroupEmpty } as DataTree);
+}
+
 function toCalendarDate(s: string): CalendarDate {
     const [year, month, day] = s.split('-');
     if (!year || !month || !day) {
@@ -64,8 +70,19 @@ async function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbDa
 }
 
 async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+    const indices = gatherArrayIndices(itemPath);
+    const loadPath = MbdbData.Path.toPath(item.mbdbPath, indices);
+
     if (Schema.hasComplexInput(item)) {
-        await toInternalData(item, mbdbData, itemPath, data, references, options);
+        const mbdbDataExists = !!MbdbData.getObject(mbdbData, loadPath);
+        if (!mbdbDataExists && item.isRequired) {
+            throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
+        }
+
+        makeComplexData(data, itemPath, !mbdbDataExists);
+        if (mbdbDataExists) {
+            await toInternalData(item, mbdbData, itemPath, data, references, options);
+        }
     } else if (Schema.hasVariantInput(item)) {
         await toInternalDataVariant(item, mbdbData, itemPath, data, references, options);
     } else if (Schema.hasCustomInput(item)) {
@@ -82,9 +99,6 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {
         return;
     } else {
-        const indices = gatherArrayIndices(itemPath);
-        const loadPath = MbdbData.Path.toPath(item.mbdbPath, indices);
-
         if (Schema.hasRelatedToInput(item)) {
             const related = MbdbData.getObject(mbdbData, MbdbData.Path.toPath(item.mbdbPath, indices));
 

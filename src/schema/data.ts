@@ -3,6 +3,8 @@ import { Value, TValue } from './value';
 import { assert } from '../assert';
 
 function get(data: DataTree, path: Path, defaultValue?: Value) {
+    if (isRootPath(path)) return data;
+
     let v = data as DataTreeItem;
 
     for (const elem of path) {
@@ -43,6 +45,10 @@ function isDataTreeArray(item: DataTreeItem): item is DataTree[] {
 
 function isDescendable(item: DataTreeItem) {
     return Array.isArray(item) || (typeof item === 'object' && !Value.isValue(item));
+}
+
+function isRootPath(path: Path) {
+    return path.length === 1 && path[0].kind === 'obj' && path[0].value === '';
 }
 
 function isValueArray(item: DataTreeItem): item is Value[] {
@@ -88,6 +94,7 @@ function walk(subtree: DataTreeItem, parentPath: Path, callback: (item: DataTree
 
 export type DataTreeItem = DataTree | DataTree[] | Value | Value[];
 export type MbdbInternal = {
+    __mbdb_group_marked_empty?: boolean,
     __mbdb_other_choice?: string,
     __mbdb_variant_choice?: string,
     __mbdb_referenceable_id?: TValue<string>,

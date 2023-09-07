@@ -8,8 +8,9 @@ export type CustomComponent<CustomData> = {
     applyInitialData: (inData: DataTree) => Partial<CustomData>,
     emptyData: () => Partial<CustomData>,
     fromMbdb: (mbdbData: MbdbData) => DataTree,
+    hasErrors: (data: DataTree) => boolean,
     toMbdb: (data: DataTree, path: Path, errors: DataError[]) => MbdbData,
     validateData: (data: Partial<CustomData>) => void,
 
-    Component: (props: { path: Path, reactKey?: string | number }) => React.ReactElement,
+    Component: (props: { isDisabled: boolean, path: Path, reactKey?: string | number }) => React.ReactElement,
 };

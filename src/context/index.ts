@@ -9,23 +9,31 @@ import { Traverse } from '../schema/traverse';
 import { Validators } from '../schema/validators';
 import { Value } from '../schema/value';
 
+function applyInitialCustomData(inData: DataTree, path: Path, item: CustomItem, data: DataTree) {
+    const cc = Register.get(item.component);
+    assert(!!cc, `Unknown custom component "${item.component}"`);
+
+    const itemRootData = Data.getTree(inData, path);
+    try {
+        const itemData = cc.applyInitialData(itemRootData);
+        cc.validateData(itemData);
+        Data.set(data, path, itemData);
+    } catch (e) {
+        throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema (${(e as Error).message})`);
+    }
+}
+
 function applyInitialDataItem(inData: DataTree, path: Path, item: Item, data: DataTree, references: ReferenceAnchors) {
     if (Schema.hasComplexInput(item)) {
+        const isMarkedEmpty = Data.getTree(inData, path).__mbdb_group_marked_empty;
+        assert(typeof isMarkedEmpty === 'boolean', `__mbdb_group_marked_empty is not a boolean or it is undefined. This happened on path "${Data.Path.toString(path)}"`);
+
+        setMarkGroupEmpty(data, path, isMarkedEmpty);
         applyInitialData(inData, path, item.input, data, references);
     } else if (Schema.hasVariantInput(item)) {
         applyInitialVariantData(inData, path, item, data, references);
     } else if (Schema.hasCustomInput(item)) {
-        const cc = Register.get(item.component);
-        assert(!!cc, `Unknown custom component "${item.component}"`);
-
-        const itemRootData = Data.getTree(inData, path);
-        try {
-            const itemData = cc.applyInitialData(itemRootData);
-            cc.validateData(itemData);
-            Data.set(data, path, itemData);
-        } catch (e) {
-            throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema (${(e as Error).message})`);
-        }
+        applyInitialCustomData(inData, path, item, data);
     } else if (Schema.hasRelatedToInput(item)) {
         // We need special handling here because "related-to" item contains an object.
         const itemData = Data.getTree(inData, path);
@@ -120,26 +128,38 @@ function applyInitialData(inData: DataTree, path: Path, schema: Item[], data: Da
             if (item.isArray) {
                 Data.set(data, innerPath, []); // Make sure we have an empty array to push onto
 
-                if (Schema.hasComplexInput(item) || Schema.hasVariantInput(item)) {
+                if (Schema.hasComplexInput(item)) {
                     const itemData = Data.getTreeArray(inData, innerPath);
-
-                    const pusher = Schema.hasComplexInput(item)
-                        ? (arrayInnerPath: Path) => {
-                            const empty = {};
-                            FormContext.makeData(item.input, empty, references);
-                            applyInitialData(inData, arrayInnerPath, item.input, data, references);
-                        }
-                        : (arrayInnerPath: Path) => {
-                            const empty = {};
-                            FormContext.makeVariantData(item, empty, references);
-                            applyInitialVariantData(inData, arrayInnerPath, item, data, references);
-                        };
-
                     for (let idx = 0; idx < itemData.length; idx++) {
                         const arrayInnerPath = Data.Path.index(idx, innerPath);
-                        pusher(arrayInnerPath);
-                    }
+                        const initial = {};
+                        FormContext.makeData(item.input, initial, references);
+                        Data.set(data, arrayInnerPath, initial);
 
+                        applyInitialData(inData, arrayInnerPath, item.input, data, references);
+                    }
+                } else if (Schema.hasVariantInput(item)) {
+                    const itemData = Data.getTreeArray(inData, innerPath);
+                    for (let idx = 0; idx < itemData.length; idx++) {
+                        const arrayInnerPath = Data.Path.index(idx, innerPath);
+                        const initial = {};
+                        FormContext.makeVariantData(item, initial, references);
+                        Data.set(data, arrayInnerPath, initial);
+
+                        applyInitialVariantData(inData, arrayInnerPath, item, data, references);
+                    }
+                } else if (Schema.hasCustomInput(item)) {
+                    // BEWARE: This if branch has not been actually tested so far
+
+                    const itemData = Data.getTreeArray(inData, innerPath);
+                    for (let idx = 0; idx < itemData.length; idx++) {
+                        const arrayInnerPath = Data.Path.index(idx, innerPath);
+                        const initial = {};
+                        FormContext.makeCustomData(item, initial, references);
+                        Data.set(data, arrayInnerPath, initial);
+
+                        applyInitialCustomData(inData, arrayInnerPath, item, data);
+                    }
                 } else {
                     const itemData = Data.getValueArray(inData, innerPath);
                     for (let idx = 0; idx < itemData.length; idx++) {
@@ -283,6 +303,11 @@ function handleAutogeneratedInput(item: AutogeneratedItem, data: DataTree, refer
     }
 }
 
+function setMarkGroupEmpty(data: DataTree, path: Path, isMarkedEmpty: boolean) {
+    const d = Data.getTree(data, path);
+    d.__mbdb_group_marked_empty = isMarkedEmpty;
+}
+
 function setVariantChoice(data: DataTree, path: Path, choice: string) {
     const d = Data.getTree(data, path);
     d.__mbdb_variant_choice = choice;
@@ -342,6 +367,11 @@ export const FormContext = {
         ctx.references = references;
     },
 
+    makeComplexData(input: ComplexInput, data: DataTree, references: ReferenceAnchors) {
+        data.__mbdb_group_marked_empty = false;
+        this.makeData(input, data, references);
+    },
+
     makeCustomData(item: CustomItem, data: DataTree, references: ReferenceAnchors) {
         const cc = Register.get(item.component);
         data[item.tag] = cc.emptyData();
@@ -356,7 +386,7 @@ export const FormContext = {
 
                 if (Schema.hasComplexInput(item)) {
                     data[item.tag] = {};
-                    this.makeData(item.input, data[item.tag] as DataTree, references);
+                    this.makeComplexData(item.input, data[item.tag] as DataTree, references);
                 } else if (Schema.hasVariantInput(item)) {
                     data[item.tag] = {};
                     this.makeVariantData(item, data[item.tag] as DataTree, references);

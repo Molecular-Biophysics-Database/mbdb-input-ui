@@ -9,7 +9,7 @@ import { niceLabel, subtreeHasErrors } from './util';
 import { assert } from '../../assert';
 import { FormContextInstance } from '../../context';
 import { _FormContextHandler } from '../../context/handler';
-import { Input, Item, Schema, TopLevelItem } from '../../schema';
+import { Item, Schema, TopLevelItem } from '../../schema';
 import { Data } from '../../schema/data';
 
 const TopCorrection = 5;
@@ -34,6 +34,15 @@ function isNavigationAnchor(item: Item) {
     );
 }
 
+function isItemMarkedEmpty(item: Item, htmlId: string, ctxHandler: _FormContextHandler) {
+    if (!item.isArray && Schema.hasComplexInput(item)) {
+        const path = PathId.toPath(htmlId);
+        return ctxHandler.isGroupMarkedEmpty(path);
+    } else {
+        return false;
+    }
+}
+
 function isNavItemVisible(bRect: Rect | null, htmlId: string) {
     if (!bRect) return false;
     const topOffset = elementTopOffset(htmlId);
@@ -45,40 +54,43 @@ function isVisible(bRect: Rect, topOffset: number) {
     return topOffset >= bRect.top - TopCorrection && topOffset < bRect.bottom;
 }
 
-function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, tainerRect: Rect | null) {
+function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, tainerRect: Rect | null) {
     if (level === MaximumNesting) return null;
 
     let ctr = 0;
     let listItems = [];
 
-    if (Schema.isVariantInput(schema)) {
+    if (Schema.hasVariantInput(item)) {
         const path = PathId.toPath(parentHtmlId);
         const choice = ctxHandler.getVariantChoice(path);
         const choicePath = Data.Path.path(choice, path);
 
         if (Data.has(ctxHandler.data(), choicePath)) {
             const htmlId = PathId.extendId(choice, parentHtmlId);
-            const innerList = navigationList(schema[choice].input, ctxHandler, htmlId, level + 1, tainerRect);
+            const innerList = navigationList(item.input[choice], ctxHandler, htmlId, level + 1, isParentMarkedEmpty, tainerRect);
             listItems.push(
-                <NavigationListItem label={niceLabel(choice, !!schema[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} isVariant>
+                <NavigationListItem label={niceLabel(choice, !!item.input[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={isParentMarkedEmpty} key={ctr} isVariant>
                     {innerList}
                 </NavigationListItem>
             );
         }
-    } else if (Schema.isComplexInput(schema)) {
-        for (const item of schema) {
-            if (isNavigationAnchor(item)) {
-                const htmlId = PathId.extendId(item.tag, parentHtmlId);
+    } else if (Schema.hasComplexInput(item)) {
+        const isMarkedEmpty = isParentMarkedEmpty || isItemMarkedEmpty(item, parentHtmlId, ctxHandler);
+
+        for (const innerItem of item.input) {
+            if (isNavigationAnchor(innerItem)) {
+                const htmlId = PathId.extendId(innerItem.tag, parentHtmlId);
                 const path = PathId.toPath(htmlId);
-                const label = niceLabel(item.label, !!item.dontTransformLabels);
+                const label = niceLabel(innerItem.label, !!innerItem.dontTransformLabels);
+                const innerIsMarkedEmpty = isMarkedEmpty || isItemMarkedEmpty(innerItem, htmlId, ctxHandler);
 
                 if (Data.has(ctxHandler.data(), path)) {
-                    if (item.isArray) {
+                    if (innerItem.isArray) {
                         const data = Data.getArray(ctxHandler.data(), path);
 
                         if (data.length === 0) {
                             listItems.push(
-                                <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr} />
+                                <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr} />
                             );
                             ctr++;
                         } else {
@@ -87,9 +99,9 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                                 const isCollapsed = ctxHandler.navigation.isCollapsed(ctxHandler.getItem(Data.Path.index(idx, path)));
 
                                 const itemHtmlId = PathId.extendId(idx, htmlId, true);
-                                const innerList = isCollapsed ? null : navigationList(item.input, ctxHandler, itemHtmlId, level + 1, tainerRect);
+                                const innerList = isCollapsed ? null : navigationList(innerItem, ctxHandler, itemHtmlId, level + 1, innerIsMarkedEmpty, tainerRect);
                                 listItems.push(
-                                    <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} key={ctr}>
+                                    <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr}>
                                         {innerList}
                                     </NavigationListItem>
                                 );
@@ -97,9 +109,9 @@ function navigationList(schema: Input, ctxHandler: _FormContextHandler, parentHt
                             }
                         }
                     } else {
-                        const innerList = navigationList(item.input, ctxHandler, htmlId, level + 1, tainerRect);
+                        const innerList = navigationList(innerItem, ctxHandler, htmlId, level + 1, innerIsMarkedEmpty, tainerRect);
                         listItems.push(
-                            <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} key={ctr}>
+                            <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr}>
                                 {innerList}
                             </NavigationListItem>
                         );
@@ -125,6 +137,7 @@ type NavigationListItemProps = {
     targetId: string,
     tainerRect: Rect | null,
     level: number,
+    isMarkedEmpty: boolean,
     isVariant?: boolean,
     children?: JSX.Element | JSX.Element[] | null
 };
@@ -147,7 +160,7 @@ function NavigationListItem(props: NavigationListItemProps) {
         }
     });
 
-    const hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
+    const hasErrors = props.isMarkedEmpty ? false : subtreeHasErrors(handler.data(), path, handler.schema());
 
     return (
         <div className='mbdb-form-nav-list-item'>
@@ -237,6 +250,6 @@ export class Navigation extends React.Component<NavigationProps> {
         const { handler } = this.context as { handler: _FormContextHandler }; // What the hell is up with this?
         const input = this.props.inputRef?.current;
 
-        return navigationList(this.props.schema.input, handler, '', 0, input ? input.getBoundingClientRect() : null);
+        return navigationList(this.props.schema as Item, handler, '', 0, false, input ? input.getBoundingClientRect() : null);
     }
 }

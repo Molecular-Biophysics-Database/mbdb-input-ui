@@ -37,11 +37,12 @@ function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean) {
     return opts;
 };
 
-const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset, error }: {
+const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset, isDisabled, error }: {
     id: string,
     onChange: SOnChange<SDropdownProps>,
     options: Option[]
     value: string,
+    isDisabled: boolean,
     noRightOffset?: boolean,
     error?: boolean,
 }) {
@@ -52,15 +53,17 @@ const Selection = React.memo(function _Selection({ id, onChange, options, value,
             value={value}
             onChange={onChange}
             options={options}
-            selection
             error={error}
+            disabled={isDisabled}
+            selection
         />
     );
 }, (prevProps, nextProps) => {
     return (
         Object.is(prevProps.id, nextProps.id) &&
         Object.is(prevProps.options, nextProps.options) &&
-        Object.is(prevProps.value, nextProps.value)
+        Object.is(prevProps.value, nextProps.value) &&
+        Object.is(prevProps.isDisabled, nextProps.isDisabled)
     );
 });
 
@@ -69,6 +72,7 @@ export type Props = {
     label: string,
     help?: Help,
     path: Path,
+    isDisabled: boolean,
     dontTransformContent?: boolean,
     noRightOffset?: boolean,
     isRequired: boolean,
@@ -97,6 +101,7 @@ export function OptionsInput(props: Props) {
                 options={opts}
                 value={Value.toOption(v)}
                 onChange={onChange}
+                isDisabled={props.isDisabled}
                 noRightOffset={props.noRightOffset}
                 error={Value.isEmptyOption(v) && props.isRequired}
             />
@@ -134,6 +139,7 @@ export function OptionsWithOtherInput(props: Props) {
                 options={opts}
                 value={value.payload.tag}
                 onChange={onChangeOptions}
+                isDisabled={props.isDisabled}
                 noRightOffset={props.noRightOffset}
                 error={Value.isEmptyOption(value) && props.isRequired}
             />

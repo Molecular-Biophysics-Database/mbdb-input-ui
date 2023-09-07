@@ -5,28 +5,37 @@ import { Data, DataTree, DataTreeItem, Path } from '../schema/data';
 import { References } from '../schema/references';
 import { Value } from '../schema/value';
 
+function gatherReferenceables(ctx: FormContext, onlyReferenced: boolean, path: Path) {
+        // Before we delete an item from the data tree, we need to check if deleting
+        // an item would break a depencendy. A dependency means that an item in the data tree
+        // may reference another item in the data tree. If the referenced item went away, we would
+        // have invalid data.
+        // Here we check if the item that is being deleted is "referenceable" (= something that can be referenced)
+        // and if it is. Depending on the situation, we might also want to check if the referenceable is referenced
+        // by something.
+        // Mind that an item can be a complex object that may contain multiple "referenceables" as its children.
+        // We must make sure that none of those are referenced.
+        const rrIds = References.List.referenceableIdsInData(ctx.data, path);
+        const rrs = References.List.activeReferenceables(ctx.references, rrIds, onlyReferenced);
+
+        // TODO: Here we get a list of all referenceables in the data subtree that belong to the
+        // item that is about to be deleted. A proper error message should list the items that are
+        // referencing the active referenceables. This would involve walking through the list of
+        // referenceables and looking up the corresponding data in the data tree.
+
+        return rrs.length === 0;
+}
+
 function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormContextHandler) => void) {
     const handler = {
         __ctx: ctxGetter(), // TODO: This is unnecessary, we have it here only for easy debugging purposes
 
         canDelete(path: Path) {
-            // Before we delete an item from the data tree, we need to check if deleting
-            // an item would break a depencendy. A dependency means that an item in the data tree
-            // may reference another item in the data tree. If the referenced item went away, we would
-            // have invalid data.
-            // Here we check if the item that is being deleted is "referenceable" (= something that can be referenced)
-            // and if it is, we check that it is not referenced by anything.
-            // Mind that an item can be a complex object that may contain multiple "referenceables" as its children.
-            // We must make sure that none of those are referenced.
-            const rrIds = References.List.referenceableIdsInData(ctxGetter().data, path);
-            const activeRr = References.List.activeReferenceables(ctxGetter().references, rrIds, true);
+            return gatherReferenceables(ctxGetter(), true, path);
+        },
 
-            // TODO: Here we get a list of all referenceables in the data subtree that belong to the
-            // item that is about to be deleted. A proper error message should list the items that are
-            // referencing the active referenceables. This would involve walking through the list of
-            // referenceables and looking up the corresponding data in the data tree.
-
-            return activeRr.length === 0;
+        canMarkEmpty(path: Path) {
+            return gatherReferenceables(ctxGetter(), false, path);
         },
 
         data() {
@@ -96,6 +105,16 @@ function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormConte
 
         hasItem(path: Path) {
             return Data.has(ctxGetter().data, path);
+        },
+
+        isGroupMarkedEmpty(path: Path) {
+            const _data = Data.getTree(ctxGetter().data, path);
+            return !!_data.__mbdb_group_marked_empty;
+        },
+
+        markGroupEmpty(markEmpty: boolean, path: Path) {
+            const _data = Data.getTree(ctxGetter().data, path);
+            _data.__mbdb_group_marked_empty = markEmpty;
         },
 
         navigation: {

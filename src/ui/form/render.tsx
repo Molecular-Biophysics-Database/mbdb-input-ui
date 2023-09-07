@@ -15,23 +15,23 @@ import { Item, Schema } from '../../schema';
 import { Data, Path } from '../../schema/data';
 import { Validators } from '../../schema/validators';
 
-export function component(item: Item, nestLevel: number, path: Path, key?: string | number, noLabel = false) {
+export function component(item: Item, nestLevel: number, isDisabled: boolean, path: Path, key?: string | number, noLabel = false) {
     if (item.isArray) {
-        return <ArrayContainer item={item} nestLevel={nestLevel} path={Data.Path.path(item.tag, path)} key={key} />
+        return <ArrayContainer item={item} nestLevel={nestLevel} isDisabled={isDisabled} path={Data.Path.path(item.tag, path)} key={key} />
     } else {
-        return scalarComponent(item, !!item.isRequired, nestLevel, Data.Path.path(item.tag, path), key, noLabel);
+        return scalarComponent(item, !!item.isRequired, nestLevel, isDisabled, Data.Path.path(item.tag, path), key, noLabel);
     }
 }
 
-export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, path: Path, key: string | number | undefined, noLabel = false, noRightOffset = false) {
+export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, isDisabled: boolean, path: Path, key: string | number | undefined, noLabel = false, noRightOffset = false) {
     const label = noLabel ? '' : niceLabel(item.label, !!item.dontTransformLabels);
 
     if (item.dontDisplay) return null;
 
     if (Schema.hasComplexInput(item)) {
-        return <GroupContainer input={item.input} label={label} help={item.help} isRequired={isRequired} nestLevel={nestLevel} path={path} key={key} />
+        return <GroupContainer input={item.input} label={label} help={item.help} isRequired={isRequired} nestLevel={nestLevel} isDisabled={isDisabled} path={path} key={key} />
     } else if (Schema.hasVariantInput(item)) {
-        return <VariantInput input={item.input} label={label} nestLevel={nestLevel} path={path} key={key} />;
+        return <VariantInput input={item.input} label={label} nestLevel={nestLevel} isDisabled={isDisabled} path={path} key={key} />;
     } else if (Schema.hasTextualInput(item)) {
         if (Schema.hasNumericInput(item)) {
             if (item.input === 'int') {
@@ -40,6 +40,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                         label={label}
                         help={item.help}
                         isRequired={isRequired}
+                        isDisabled={isDisabled}
                         path={path}
                         validator={Validators.commonForItem(item)}
                         noRightOffset={noRightOffset}
@@ -52,6 +53,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                         label={label}
                         help={item.help}
                         isRequired={isRequired}
+                        isDisabled={isDisabled}
                         path={path}
                         validator={Validators.commonForItem(item)}
                         noRightOffset={noRightOffset}
@@ -66,6 +68,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                     label={label}
                     help={item.help}
                     isRequired={isRequired}
+                    isDisabled={isDisabled}
                     path={path}
                     validator={Validators.commonForItem(item, isRequired)}
                     noRightOffset={noRightOffset}
@@ -79,6 +82,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                 label={label}
                 help={item.help}
                 isRequired={isRequired}
+                isDisabled={isDisabled}
                 path={path}
                 noRightOffset={noRightOffset}
                 key={key}
@@ -93,6 +97,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                     help={item.help}
                     path={path}
                     isRequired={isRequired}
+                    isDisabled={isDisabled}
                     dontTransformContent={!!item.dontTransformContent}
                     key={key}
                     noRightOffset={noRightOffset}
@@ -106,6 +111,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                     help={item.help}
                     path={path}
                     isRequired={isRequired}
+                    isDisabled={isDisabled}
                     dontTransformContent={!!item.dontTransformContent}
                     noRightOffset={noRightOffset}
                     key={key}
@@ -115,11 +121,11 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
     } else if (Schema.hasBooleanInput(item)) {
         return (
             isRequired
-                ? <BooleanInput label={label} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
-                : <TristateInput label={label} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
+                ? <BooleanInput label={label} isDisabled={isDisabled} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
+                : <TristateInput label={label} isDisabled={isDisabled} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
         );
     } else if (Schema.hasCalendarDateInput(item)) {
-        return <CalendarDateInput label={label} isRequired={isRequired} path={path} help={item.help} key={key} />;
+        return <CalendarDateInput label={label} isRequired={isRequired} isDisabled={isDisabled} path={path} help={item.help} key={key} />;
     } else if (Schema.hasRelatedToInput(item)) {
         return <RelatedToInput label={label} relatesTo={item.relatesTo} relatedKeys={item.relatedKeys} help={item.help} isRequired={isRequired} path={path} key={key} />;
     } else if (Schema.hasReferenceableIdInput(item)) {
@@ -134,7 +140,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
         const Maker = Register.get(item.component).Component;
         assert(!!Maker, `No custom component "${item.component}"`);
 
-        return React.createElement(Maker, { path, key });
+        return React.createElement(Maker, { path, isDisabled, key });
     }
 
     throw new Error(`Unknown input type "${item.input}"`);

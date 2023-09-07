@@ -8,7 +8,7 @@ import { SectionLabel } from './label';
 import { VariantInput } from './variant';
 import { PathId } from '../path-id';
 import { scalarComponent } from '../render';
-import { niceLabel, subtreeHasErrors, useDarkBlock } from '../util';
+import { niceLabel, sectionBgCls, subtreeHasErrors, useDarkBlock } from '../util';
 import { Collapsible } from '../../collapsible';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContext, FormContextInstance } from '../../../context';
@@ -56,6 +56,7 @@ function _CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
 type AddItemButtonProps = {
     title: string,
     onClick: () => void,
+    isDisabled: boolean,
 };
 function AddItemButton(props: AddItemButtonProps) {
     return (
@@ -68,6 +69,7 @@ function AddItemButton(props: AddItemButtonProps) {
                 className='mbdb-array-add-item-button'
                 key='b+'
                 onClick={props.onClick}
+                disabled={props.isDisabled}
             >
                 <div className='mbdb-array-add-item-button-inner'>
                     <span className='mbdb-array-add-item-button-plus'>+</span>
@@ -91,6 +93,7 @@ type CollapsibleElementProps = {
     idx: number,
     path: Path,
     title: string,
+    isDisabled: boolean,
     setDeletionError: (err: string) => void,
     handler: _FormContextHandler,
 };
@@ -101,7 +104,7 @@ function CollapsibleElement(props: CollapsibleElementProps) {
 
     return (
         <Collapsible
-            header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} setDeletionError={(err) => props.setDeletionError(err)} />}
+            header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} isDisabled={props.isDisabled} setDeletionError={(err) => props.setDeletionError(err)} />}
             content={props.content}
             onCollapsedExpanded={(isCollapsed) => {
                 handler.navigation.setCollapsed(dataItem, isCollapsed);
@@ -116,6 +119,7 @@ type ComplexArrayHeaderProps = {
     idx: number,
     path: Path,
     setDeletionError: (err: string) => void,
+    isDisabled: boolean,
 }
 function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
     const { handler } = React.useContext(FormContextInstance);
@@ -136,7 +140,9 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
 
                         handler.delete(delPath);
                     }
-                }}>-</SButton>
+                }}
+                disabled={props.isDisabled}
+            >-</SButton>
         </div>
     );
 }
@@ -144,20 +150,23 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
 export type Props = {
     item: Item,
     nestLevel: number,
+    isDisabled: boolean,
     path: Path,
 };
-export function ArrayContainer({ item, nestLevel, path }: Props) {
+export function ArrayContainer({ item, nestLevel, isDisabled, path }: Props) {
     const _niceLabel = React.useMemo(() => niceLabel(item.label, !!item.dontTransformLabels), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
     const darkBlk = useDarkBlock(nestLevel);
-    const hasErrors = subtreeHasErrors(handler.data(), path, handler.schema());
+    const hasErrors = isDisabled ? false : subtreeHasErrors(handler.data(), path, handler.schema());
     const tainerCls = clsx(
         'mbdb-section', hasErrors && 'mbdb-section-has-errors',
         'mbdb-array-tainer',
-        'mbdb-block', darkBlk ? 'mbdb-block-dark' : 'mbdb-block-light');
+        'mbdb-block',
+        sectionBgCls(darkBlk, isDisabled)
+    );
 
     const components = [];
     let arrayIsSimple = false;
@@ -177,10 +186,13 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                                 label=''
                                 isRequired={item.isRequired}
                                 nestLevel={nestLevel + 1}
+                                isDisabled={isDisabled}
                                 help={item.help}
                                 path={Data.Path.index(idx, path)}
+                                headerless
                             />
                         }
+                        isDisabled={isDisabled}
                         setDeletionError={setDeletionError}
                         handler={handler}
                     />
@@ -198,6 +210,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
 
                     handler.set(innerPath, value);
                 }}
+                isDisabled={isDisabled}
                 key='b+'
             />
         );
@@ -210,7 +223,8 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                         title={_niceLabel}
                         idx={idx}
                         path={path}
-                        content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} path={Data.Path.index(idx, path)} />}
+                        content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} isDisabled={isDisabled} path={Data.Path.index(idx, path)} />}
+                        isDisabled={isDisabled}
                         setDeletionError={setDeletionError}
                         handler={handler}
                     />
@@ -226,6 +240,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                     FormContext.makeVariantData(item, variantData, handler.refs.get());
                     handler.set(Data.Path.index(array.length, path), variantData);
                 }}
+                isDisabled={isDisabled}
                 key='b+'
             />
         );
@@ -235,7 +250,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <React.Fragment key={idx}>
-                    {scalarComponent(item, true, nestLevel, Data.Path.index(idx, path), undefined, true, true)}
+                    {scalarComponent(item, true, nestLevel, isDisabled, Data.Path.index(idx, path), void 0, true, true)}
                     <SButton
                         style={{ marginLeft: '1rem' }}
                         color='red'
@@ -246,7 +261,9 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                             } else {
                                 handler.delete(delPath);
                             }
-                        }}>-</SButton>
+                        }}
+                        disabled={isDisabled}
+                    >-</SButton>
                 </React.Fragment>
             );
         }
@@ -257,6 +274,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                 onClick={() => {
                     handler.set(Data.Path.index(array.length, path), Value.defaultForItem(item, true));
                 }}
+                isDisabled={isDisabled}
                 key='b+'
             />
         );
@@ -278,7 +296,7 @@ export function ArrayContainer({ item, nestLevel, path }: Props) {
                 ? (
                     <div className={tainerCls} id={tainerId}>
                         <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
-                        <div className='mbdb-right-offset' style={{ ...GridInArrayStyle }}>
+                        <div className='mbdb-right-offset' style={ GridInArrayStyle }>
                             {components}
                         </div>
                     </div>
