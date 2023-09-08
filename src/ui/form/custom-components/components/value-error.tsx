@@ -56,6 +56,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
     applyInitialData(inData: DataTree) {
         const data: Partial<ValueErrorData> = {};
 
+        data.__mbdb_group_marked_empty = !!inData.__mbdb_group_marked_empty;
+
         if (Value.isValue(inData['lower_error']) && Value.isTextual(inData['lower_error'])) {
             data.lower_error = inData.lower_error;
         } else {
