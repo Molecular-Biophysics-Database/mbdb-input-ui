@@ -31,7 +31,7 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
     const item = Data.getItem(data, path);
 
     if (Data.isDataTree(item)) {
-        if (item.__mbdb_variant_choice !== undefined) /* A cheapo way how to check for VariantItem :) */ {
+        if (item.__mbdb_variant_choice !== undefined) /* A cheapo way how to check for VariantItem. We do it like this to avoid to cost of having to get the schemaItem */ {
             // Ignore variant choices that are not displayed in the form
             // to prevent false error indications. This is necessary
             // because we keep the data for all variant choices all the time
