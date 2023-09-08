@@ -1229,6 +1229,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -1629,6 +1643,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -1743,6 +1771,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -1910,6 +1952,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -2024,6 +2080,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -2209,6 +2279,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -2428,6 +2512,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -2589,6 +2687,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -2703,6 +2815,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -2888,6 +3014,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -3156,6 +3296,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -3556,6 +3710,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/temperature/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'operational_value',
@@ -3670,6 +3838,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/duration/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -3837,6 +4019,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -3951,6 +4147,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -4170,6 +4380,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -4331,6 +4555,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -4445,6 +4683,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -4629,6 +4881,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -4804,6 +5070,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -4918,6 +5198,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -5085,6 +5379,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -5199,6 +5507,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -5419,6 +5741,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -5752,6 +6088,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -5866,6 +6216,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -6035,6 +6399,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -6414,6 +6792,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -6528,6 +6920,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -6697,6 +7103,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -7083,6 +7503,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -7197,6 +7631,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -7366,6 +7814,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -7675,6 +8137,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -7789,6 +8265,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -7958,6 +8448,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -8412,6 +8916,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/molecular_weight/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -8812,6 +9330,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -8926,6 +9458,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -9093,6 +9639,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'operational_value',
@@ -9207,6 +9767,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'unit',
@@ -9426,6 +10000,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/molecular_weight/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -9587,6 +10175,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'operational_value',
@@ -9701,6 +10303,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'unit',
@@ -9964,6 +10580,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -10078,6 +10708,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -10247,6 +10891,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -10503,6 +11161,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -10617,6 +11289,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -10786,6 +11472,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -10992,6 +11692,20 @@ export const MST = [
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value_error',
                                 input: 'custom',
                                 component: 'value-error',
+                                help: {
+                                    upper_error: {
+                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                    },
+                                    lower_error: {
+                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                    },
+                                    errors_are_relative: {
+                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                    },
+                                    error_level: {
+                                        en: 'How many standard deviations the error corresponds to',
+                                    },
+                                },
                             },
                             {
                                 tag: 'operational_value',
@@ -11105,6 +11819,20 @@ export const MST = [
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value_error',
                                 input: 'custom',
                                 component: 'value-error',
+                                help: {
+                                    upper_error: {
+                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                    },
+                                    lower_error: {
+                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                    },
+                                    errors_are_relative: {
+                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                    },
+                                    error_level: {
+                                        en: 'How many standard deviations the error corresponds to',
+                                    },
+                                },
                             },
                             {
                                 tag: 'unit',
@@ -11221,6 +11949,20 @@ export const MST = [
                                 mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value_error',
                                 input: 'custom',
                                 component: 'value-error',
+                                help: {
+                                    upper_error: {
+                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                    },
+                                    lower_error: {
+                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                    },
+                                    errors_are_relative: {
+                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                    },
+                                    error_level: {
+                                        en: 'How many standard deviations the error corresponds to',
+                                    },
+                                },
                             },
                             {
                                 tag: 'unit',
@@ -11365,6 +12107,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -11526,6 +12282,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -11640,6 +12410,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -11801,6 +12585,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -12073,6 +12871,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -12234,6 +13046,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -12348,6 +13174,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -12509,6 +13349,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -12764,6 +13618,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -13164,6 +14032,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -13278,6 +14160,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -13445,6 +14341,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -13559,6 +14469,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -13744,6 +14668,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -13963,6 +14901,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -14124,6 +15076,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -14238,6 +15204,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -14423,6 +15403,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -14691,6 +15685,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -15091,6 +16099,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/temperature/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'operational_value',
@@ -15205,6 +16227,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/duration/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -15372,6 +16408,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -15486,6 +16536,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -15705,6 +16769,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -15866,6 +16944,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -15980,6 +17072,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -16164,6 +17270,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/molecular_weight/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -16339,6 +17459,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -16453,6 +17587,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -16620,6 +17768,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -16734,6 +17896,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -16954,6 +18130,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -17287,6 +18477,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -17401,6 +18605,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -17570,6 +18788,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -17949,6 +19181,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -18063,6 +19309,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -18232,6 +19492,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -18618,6 +19892,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -18732,6 +20020,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -18901,6 +20203,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -19210,6 +20526,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -19324,6 +20654,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -19493,6 +20837,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -19947,6 +21305,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/molecular_weight/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -20347,6 +21719,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -20461,6 +21847,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -20628,6 +22028,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'operational_value',
@@ -20742,6 +22156,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'unit',
@@ -20961,6 +22389,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/molecular_weight/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -21122,6 +22564,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'operational_value',
@@ -21236,6 +22692,20 @@ export const MST = [
                                                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                                 input: 'custom',
                                                                                                 component: 'value-error',
+                                                                                                help: {
+                                                                                                    upper_error: {
+                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                    },
+                                                                                                    lower_error: {
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                    },
+                                                                                                    errors_are_relative: {
+                                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                                    },
+                                                                                                    error_level: {
+                                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                             {
                                                                                                 tag: 'unit',
@@ -21499,6 +22969,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -21613,6 +23097,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -21782,6 +23280,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -22038,6 +23550,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -22152,6 +23678,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -22321,6 +23861,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/concentration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -22505,6 +24059,20 @@ export const MST = [
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH/value_error',
                                         input: 'custom',
                                         component: 'value-error',
+                                        help: {
+                                            upper_error: {
+                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                            },
+                                            lower_error: {
+                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                            },
+                                            errors_are_relative: {
+                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                            },
+                                            error_level: {
+                                                en: 'How many standard deviations the error corresponds to',
+                                            },
+                                        },
                                     },
                                     {
                                         tag: 'obtained_by',
@@ -22668,6 +24236,20 @@ export const MST = [
                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/dynamic_viscosity/value_error',
                                         input: 'custom',
                                         component: 'value-error',
+                                        help: {
+                                            upper_error: {
+                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                            },
+                                            lower_error: {
+                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                            },
+                                            errors_are_relative: {
+                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                            },
+                                            error_level: {
+                                                en: 'How many standard deviations the error corresponds to',
+                                            },
+                                        },
                                     },
                                     {
                                         tag: 'unit',
@@ -22952,6 +24534,20 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
+                                                help: {
+                                                    upper_error: {
+                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                    },
+                                                    lower_error: {
+                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                    },
+                                                    errors_are_relative: {
+                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                    },
+                                                    error_level: {
+                                                        en: 'How many standard deviations the error corresponds to',
+                                                    },
+                                                },
                                             },
                                             {
                                                 tag: 'unit',
@@ -23352,6 +24948,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'operational_value',
@@ -23466,6 +25076,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -23633,6 +25257,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -23747,6 +25385,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -23983,6 +25635,20 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
+                                                help: {
+                                                    upper_error: {
+                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                    },
+                                                    lower_error: {
+                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                    },
+                                                    errors_are_relative: {
+                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                    },
+                                                    error_level: {
+                                                        en: 'How many standard deviations the error corresponds to',
+                                                    },
+                                                },
                                             },
                                             {
                                                 tag: 'unit',
@@ -24144,6 +25810,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -24258,6 +25938,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -24543,6 +26237,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/molecular_weight/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -24943,6 +26651,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/temperature/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'operational_value',
@@ -25057,6 +26779,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/duration/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -25224,6 +26960,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'operational_value',
@@ -25338,6 +27088,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -25557,6 +27321,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/molecular_weight/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -25718,6 +27496,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'operational_value',
@@ -25832,6 +27624,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -26016,6 +27822,20 @@ export const MST = [
                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/molecular_weight/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
+                                                help: {
+                                                    upper_error: {
+                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                    },
+                                                    lower_error: {
+                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                    },
+                                                    errors_are_relative: {
+                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                    },
+                                                    error_level: {
+                                                        en: 'How many standard deviations the error corresponds to',
+                                                    },
+                                                },
                                             },
                                             {
                                                 tag: 'unit',
@@ -26191,6 +28011,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'operational_value',
@@ -26305,6 +28139,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -26472,6 +28320,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -26586,6 +28448,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -26971,6 +28847,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -27085,6 +28975,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -27465,6 +29369,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -27579,6 +29497,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -27966,6 +29898,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'operational_value',
@@ -28080,6 +30026,20 @@ export const MST = [
                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                                 input: 'custom',
                                                                 component: 'value-error',
+                                                                help: {
+                                                                    upper_error: {
+                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                    },
+                                                                    lower_error: {
+                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                    },
+                                                                    errors_are_relative: {
+                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                    },
+                                                                    error_level: {
+                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                    },
+                                                                },
                                                             },
                                                             {
                                                                 tag: 'unit',
@@ -28390,6 +30350,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'operational_value',
@@ -28504,6 +30478,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -28959,6 +30947,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -29359,6 +31361,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/temperature/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'operational_value',
@@ -29473,6 +31489,20 @@ export const MST = [
                                                                                 mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/duration/value_error',
                                                                                 input: 'custom',
                                                                                 component: 'value-error',
+                                                                                help: {
+                                                                                    upper_error: {
+                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                    },
+                                                                                    lower_error: {
+                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                    },
+                                                                                    errors_are_relative: {
+                                                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                    },
+                                                                                    error_level: {
+                                                                                        en: 'How many standard deviations the error corresponds to',
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             {
                                                                                 tag: 'unit',
@@ -29640,6 +31670,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -29754,6 +31798,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -29973,6 +32031,20 @@ export const MST = [
                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/molecular_weight/value_error',
                                                                         input: 'custom',
                                                                         component: 'value-error',
+                                                                        help: {
+                                                                            upper_error: {
+                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                            },
+                                                                            lower_error: {
+                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                            },
+                                                                            errors_are_relative: {
+                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                            },
+                                                                            error_level: {
+                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                            },
+                                                                        },
                                                                     },
                                                                     {
                                                                         tag: 'unit',
@@ -30134,6 +32206,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'operational_value',
@@ -30248,6 +32334,20 @@ export const MST = [
                                                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                                         input: 'custom',
                                                                                         component: 'value-error',
+                                                                                        help: {
+                                                                                            upper_error: {
+                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                            },
+                                                                                            lower_error: {
+                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                            },
+                                                                                            errors_are_relative: {
+                                                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                                                            },
+                                                                                            error_level: {
+                                                                                                en: 'How many standard deviations the error corresponds to',
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     {
                                                                                         tag: 'unit',
@@ -30511,6 +32611,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'operational_value',
@@ -30625,6 +32739,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -30882,6 +33010,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'operational_value',
@@ -30996,6 +33138,20 @@ export const MST = [
                                                         mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/duration/value_error',
                                                         input: 'custom',
                                                         component: 'value-error',
+                                                        help: {
+                                                            upper_error: {
+                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                            },
+                                                            lower_error: {
+                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                            },
+                                                            errors_are_relative: {
+                                                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                            },
+                                                            error_level: {
+                                                                en: 'How many standard deviations the error corresponds to',
+                                                            },
+                                                        },
                                                     },
                                                     {
                                                         tag: 'unit',
@@ -31295,6 +33451,20 @@ export const MST = [
                         mbdbPath: 'general_parameters/derived_parameters[]/value_error',
                         input: 'custom',
                         component: 'value-error',
+                        help: {
+                            upper_error: {
+                                en: 'The upper error, i.e. the number added to the parameter value',
+                            },
+                            lower_error: {
+                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                            },
+                            errors_are_relative: {
+                                en: 'Whether the errors should be interpreted as relative errors in percent',
+                            },
+                            error_level: {
+                                en: 'How many standard deviations the error corresponds to',
+                            },
+                        },
                     },
                     {
                         tag: 'unit',
@@ -31544,6 +33714,20 @@ export const MST = [
                                                 mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
+                                                help: {
+                                                    upper_error: {
+                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                    },
+                                                    lower_error: {
+                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                    },
+                                                    errors_are_relative: {
+                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                    },
+                                                    error_level: {
+                                                        en: 'How many standard deviations the error corresponds to',
+                                                    },
+                                                },
                                             },
                                             {
                                                 tag: 'unit',
@@ -31747,6 +33931,20 @@ export const MST = [
                                                 mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/value_error',
                                                 input: 'custom',
                                                 component: 'value-error',
+                                                help: {
+                                                    upper_error: {
+                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                    },
+                                                    lower_error: {
+                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                    },
+                                                    errors_are_relative: {
+                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
+                                                    },
+                                                    error_level: {
+                                                        en: 'How many standard deviations the error corresponds to',
+                                                    },
+                                                },
                                             },
                                             {
                                                 tag: 'unit',

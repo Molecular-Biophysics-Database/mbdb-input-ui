@@ -140,7 +140,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
         const Maker = Register.get(item.component).Component;
         assert(!!Maker, `No custom component "${item.component}"`);
 
-        return React.createElement(Maker, { path, isDisabled, key });
+        return React.createElement(Maker, { path, isDisabled, help: item.help, key });
     }
 
     throw new Error(`Unknown input type "${item.input}"`);

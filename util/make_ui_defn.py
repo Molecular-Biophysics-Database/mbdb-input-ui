@@ -93,6 +93,31 @@ def closing_string_index(s: str):
     raise UIGSchemaError(f'Unterminated string in string "{s}"')
 
 
+def gather_helps_for_custom_component(item, defs):
+    # THis is pretty much a very simplfied version of the recursive walk used in item_defn()
+    # We only care about help texts that we gather into a stuctured key-value store
+
+    helps = {}
+
+    if 'properties' in item:
+        defn = item['properties']
+        for inner_name, inner_item in defn.items():
+            helps[inner_name] = gather_helps_for_custom_component(inner_item, defs)
+    elif 'use' in item:
+        # BEWARE: There were no components that would exercise this branch so it may not work :)
+        inner_item, _ = get_item_from_defs(item['use'], defs)
+        for inner_name, inner_item in inner_item.items():
+            helps[inner_name] = gather_helps_for_custom_component(inner_item, defs)
+
+    help_fields = get_help_fields(item)
+    if help_fields:
+        for hf in help_fields:
+            lang = hf.split('.')[1]
+            helps[lang] = item[hf]
+
+    return helps
+
+
 def get_custom_component(path):
     c = CUSTOM_COMPONENTS
 
@@ -109,9 +134,7 @@ def get_item_from_defs(id, defs):
     idx = id.rfind('/');
     item_path = id[idx + 1:].split('/');
 
-    custom = get_custom_component(item_path)
-    if custom:
-        return (custom, True)
+    custom_item = get_custom_component(item_path)
 
     item = defs
     while item_path:
@@ -120,7 +143,7 @@ def get_item_from_defs(id, defs):
             raise UIGParamsError(f'Requested definition on path "{id}" but no such definition exists')
         item = item[p]
 
-    return (item, False)
+    return (item, custom_item)
 
 
 def get_help_fields(item):
@@ -144,10 +167,13 @@ def item_defn(item, defs, name, mbdbPath):
     if 'properties' in item:
         defn['input'] = ui_defn(item['properties'], defs, mbdbPath)
     elif 'use' in item:
-        inner_item, is_custom = get_item_from_defs(item['use'], defs)
-        if is_custom:
+        inner_item, custom_item = get_item_from_defs(item['use'], defs)
+        if custom_item:
             defn['input'] = 'custom'
-            defn['component'] = inner_item
+            defn['component'] = custom_item
+            defn['help'] = gather_helps_for_custom_component(inner_item, defs)
+
+            help_fields = [] # To avoid using the generic help fields filler and the end of this function
         else:
             if isinstance(inner_item, str):
                 defn['input'] = inner_item

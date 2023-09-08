@@ -8,7 +8,7 @@ import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
 import { FormContextInstance } from '../../../../context';
 import { MbdbData } from '../../../../mbdb/data';
-import { Schema } from '../../../../schema';
+import { Help, Schema } from '../../../../schema';
 import { Data, DataTree, Path } from '../../../../schema/data';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
@@ -18,6 +18,13 @@ const Cell = { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbd
 function checkValue(data: DataTree, path: Path) {
     const v = Data.getValue(data, path);
     return v.isValid;
+}
+
+function getHelp(help: Help | undefined, key: string): Help | undefined {
+    // We must know what the help structure in the UI schema definition looks like so we can afford these shortcuts
+    if (!help) return void 0;
+
+    return help?.[key] as Record<string, string>;
 }
 
 function validatorRequired(v: string) {
@@ -151,7 +158,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         if (data.error_level) data.error_level.isValid = validatorRequired(Value.toTextual(data.error_level));
     },
 
-    Component({ path, isDisabled, reactKey }) {
+    Component({ path, isDisabled, help, reactKey }) {
         const id = React.useMemo(() => PathId.toId(path), [path]);
         const idIsRel = React.useMemo(() => id + '_isRel', [path]);
         const { handler } = React.useContext(FormContextInstance);
@@ -174,7 +181,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                     <div style={Cell}>
                         <FloatInput
                             label='Min'
-                            help={{ en: 'TODO' }}
+                            help={getHelp(help, 'lower_error')}
                             path={Data.Path.path('lower_error', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
@@ -184,7 +191,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                     <div style={Cell}>
                         <FloatInput
                             label='Max'
-                            help={{ en: 'TODO' }}
+                            help={getHelp(help, 'upper_error')}
                             path={Data.Path.path('upper_error', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
@@ -194,7 +201,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                     <div style={Cell}>
                         <FloatInput
                             label='Error level'
-                            help={{ en: 'TODO' }}
+                            help={getHelp(help, 'error_level')}
                             path={Data.Path.path('error_level', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
                             isRequired={true}
@@ -209,6 +216,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             const checked = !!data.checked;
                             handler.set(Data.Path.path('errors_are_relative', path), Value.boolean(checked));
                         }}
+                        help={getHelp(help, 'errors_are_relative')}
                         disabled={isMarkedEmpty || isDisabled}
                     />
                 </div>

@@ -22,7 +22,7 @@ export type Choice = {
     tag: string,
     title: string,
 };
-export type Help = Record<string, string>;
+export type Help = Record<string, string | Record<string, string>>;
 
 type BaseItem = {
     tag: string,
