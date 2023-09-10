@@ -151,16 +151,18 @@ export type Props = {
     item: Item,
     nestLevel: number,
     isDisabled: boolean,
+    checkForErrors: boolean,
+    canParentMarkEmpty: boolean,
     path: Path,
 };
-export function ArrayContainer({ item, nestLevel, isDisabled, path }: Props) {
+export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, path }: Props) {
     const _niceLabel = React.useMemo(() => niceLabel(item.label, !!item.dontTransformLabels), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
     const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
     const darkBlk = useDarkBlock(nestLevel);
-    const hasErrors = isDisabled ? false : subtreeHasErrors(handler.data(), path, handler.schema());
+    const hasErrors = (!checkForErrors|| isDisabled) ? false : subtreeHasErrors(handler.data(), path, handler.schema());
     const tainerCls = clsx(
         'mbdb-section', hasErrors && 'mbdb-section-has-errors',
         'mbdb-array-tainer',
@@ -187,6 +189,8 @@ export function ArrayContainer({ item, nestLevel, isDisabled, path }: Props) {
                                 isRequired={item.isRequired}
                                 nestLevel={nestLevel + 1}
                                 isDisabled={isDisabled}
+                                checkForErrors={checkForErrors}
+                                canParentMarkEmpty={canParentMarkEmpty}
                                 help={item.help}
                                 path={Data.Path.index(idx, path)}
                                 headerless
@@ -223,7 +227,7 @@ export function ArrayContainer({ item, nestLevel, isDisabled, path }: Props) {
                         title={_niceLabel}
                         idx={idx}
                         path={path}
-                        content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} isDisabled={isDisabled} path={Data.Path.index(idx, path)} />}
+                        content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} isDisabled={isDisabled} checkForErrors={checkForErrors} canParentMarkEmpty={canParentMarkEmpty} path={Data.Path.index(idx, path)} />}
                         isDisabled={isDisabled}
                         setDeletionError={setDeletionError}
                         handler={handler}
@@ -250,7 +254,7 @@ export function ArrayContainer({ item, nestLevel, isDisabled, path }: Props) {
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <React.Fragment key={idx}>
-                    {scalarComponent(item, true, nestLevel, isDisabled, Data.Path.index(idx, path), void 0, true, true)}
+                    {scalarComponent(item, true, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, Data.Path.index(idx, path), void 0, true, true)}
                     <SButton
                         style={{ marginLeft: '1rem' }}
                         color='red'

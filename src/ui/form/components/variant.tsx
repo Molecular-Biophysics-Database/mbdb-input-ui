@@ -46,7 +46,7 @@ const VariantAnchor = React.memo(function _VariantAnchor({ path }: { path: Path 
     return Data.Path.arePathsEqual(prevProps.path, nextProps.path);
 });
 
-const _VariantInput = React.memo(function _VariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, isDisabled, handler }: Props & {
+const _VariantInput = React.memo(function _VariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, isDisabled, canParentMarkEmpty, handler }: Props & {
     handler: _FormContextHandler,
     hasErrors: boolean,
     variantChoice: string,
@@ -62,7 +62,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
     const [cannotChangeError, setCannotChangeError] = React.useState(false);
     const darkBlk = useDarkBlock(nestLevel);
 
-    const varComponent = component(input[variantChoice], nestLevel + 1, isDisabled, path, void 0, true);
+    const varComponent = component(input[variantChoice], nestLevel + 1, isDisabled, hasErrors, canParentMarkEmpty, path, void 0, true);
     return (
         <>
             <CannotChangeVariantErrorDialog
@@ -113,12 +113,14 @@ export type Props = {
     label: string,
     nestLevel: number,
     isDisabled: boolean,
+    checkForErrors: boolean,
+    canParentMarkEmpty: boolean,
     path: Path,
 };
 export function VariantInput(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const variantChoice = handler.getVariantChoice(props.path);
-    const hasErrors = props.isDisabled ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
+    const hasErrors = (!props.checkForErrors|| props.isDisabled) ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
 
     return <_VariantInput {...props} variantChoice={variantChoice} hasErrors={hasErrors} handler={handler} />;
 }

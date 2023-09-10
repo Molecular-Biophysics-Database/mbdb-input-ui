@@ -68,7 +68,7 @@ const _GroupContainerContent = React.memo(function MGroupContainer(props: Props 
 }) {
     return (
         <div className='mbdb-item-grid'>
-            {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.isMarkedEmpty || props.isDisabled, props.path, idx))}
+            {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.isMarkedEmpty || props.isDisabled, props.hasErrors, props.canParentMarkEmpty, props.path, idx))}
         </div>
     );
 }, arePropsEqual);
@@ -79,6 +79,8 @@ export type Props = {
     isRequired: boolean,
     nestLevel: number,
     isDisabled: boolean,
+    checkForErrors: boolean,
+    canParentMarkEmpty: boolean,
     headerless?: boolean,
     help?: Help,
     path: Path,
@@ -87,10 +89,10 @@ export function GroupContainer(props: Props) {
     const { handler } = React.useContext(FormContextInstance);
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const isMarkedEmpty = handler.isGroupMarkedEmpty(props.path);
-    const hasErrors = props.isDisabled ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
+    const hasErrors = (!props.checkForErrors|| props.isDisabled) ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
 
     const darkBlk = useDarkBlock(props.nestLevel);
-    const canMarkEmpty = handler.canMarkEmpty(props.path);
+    const canMarkEmpty = props.canParentMarkEmpty ? true : handler.canMarkEmpty(props.path);
 
     return (
         <div className={clsx(
@@ -112,7 +114,7 @@ export function GroupContainer(props: Props) {
                 />
                 : null
             }
-            <_GroupContainerContent {...props} handler={handler} darkBlk={darkBlk} hasErrors={hasErrors} isMarkedEmpty={isMarkedEmpty} />
+            <_GroupContainerContent {...props} handler={handler} darkBlk={darkBlk} hasErrors={hasErrors} isMarkedEmpty={isMarkedEmpty} canParentMarkEmpty={canMarkEmpty} />
         </div>
     );
 }
