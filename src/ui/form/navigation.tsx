@@ -54,8 +54,11 @@ function isVisible(bRect: Rect, topOffset: number) {
     return topOffset >= bRect.top - TopCorrection && topOffset < bRect.bottom;
 }
 
-function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, tainerRect: Rect | null) {
+function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, checkForErrors: boolean, tainerRect: Rect | null) {
     if (level === MaximumNesting) return null;
+
+    const data = ctxHandler.data();
+    const schema = ctxHandler.schema();
 
     let ctr = 0;
     let listItems = [];
@@ -67,9 +70,11 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
 
         if (Data.has(ctxHandler.data(), choicePath)) {
             const htmlId = PathId.extendId(choice, parentHtmlId);
-            const innerList = navigationList(item.input[choice], ctxHandler, htmlId, level + 1, isParentMarkedEmpty, tainerRect);
+            const hasErrors = (!checkForErrors || isParentMarkedEmpty) ? false : subtreeHasErrors(data, path, schema);
+            const innerList = navigationList(item.input[choice], ctxHandler, htmlId, level + 1, isParentMarkedEmpty, hasErrors, tainerRect);
+
             listItems.push(
-                <NavigationListItem label={niceLabel(choice, !!item.input[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={isParentMarkedEmpty} key={ctr} isVariant>
+                <NavigationListItem label={niceLabel(choice, !!item.input[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr} isVariant>
                     {innerList}
                 </NavigationListItem>
             );
@@ -83,6 +88,7 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
                 const path = PathId.toPath(htmlId);
                 const label = niceLabel(innerItem.label, !!innerItem.dontTransformLabels);
                 const innerIsMarkedEmpty = isMarkedEmpty || isItemMarkedEmpty(innerItem, htmlId, ctxHandler);
+                const hasErrors = (!checkForErrors || innerIsMarkedEmpty) ? false : subtreeHasErrors(data, path, schema);
 
                 if (Data.has(ctxHandler.data(), path)) {
                     if (innerItem.isArray) {
@@ -90,7 +96,7 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
 
                         if (data.length === 0) {
                             listItems.push(
-                                <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr} />
+                                <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr} />
                             );
                             ctr++;
                         } else {
@@ -99,9 +105,9 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
                                 const isCollapsed = ctxHandler.navigation.isCollapsed(ctxHandler.getItem(Data.Path.index(idx, path)));
 
                                 const itemHtmlId = PathId.extendId(idx, htmlId, true);
-                                const innerList = isCollapsed ? null : navigationList(innerItem, ctxHandler, itemHtmlId, level + 1, innerIsMarkedEmpty, tainerRect);
+                                const innerList = isCollapsed ? null : navigationList(innerItem, ctxHandler, itemHtmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect);
                                 listItems.push(
-                                    <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr}>
+                                    <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr}>
                                         {innerList}
                                     </NavigationListItem>
                                 );
@@ -109,9 +115,9 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
                             }
                         }
                     } else {
-                        const innerList = navigationList(innerItem, ctxHandler, htmlId, level + 1, innerIsMarkedEmpty, tainerRect);
+                        const innerList = navigationList(innerItem, ctxHandler, htmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect);
                         listItems.push(
-                            <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} isMarkedEmpty={innerIsMarkedEmpty} key={ctr}>
+                            <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr}>
                                 {innerList}
                             </NavigationListItem>
                         );
@@ -137,13 +143,11 @@ type NavigationListItemProps = {
     targetId: string,
     tainerRect: Rect | null,
     level: number,
-    isMarkedEmpty: boolean,
+    hasErrors: boolean,
     isVariant?: boolean,
     children?: JSX.Element | JSX.Element[] | null
 };
 function NavigationListItem(props: NavigationListItemProps) {
-    const { handler } = React.useContext(FormContextInstance);
-    const path = PathId.toPath(props.targetId);
     const actualTargetId = props.isVariant ? PathId.tagAsVariant(props.targetId) : props.targetId;
     const [highlighted, setHighlighted] = React.useState(isNavItemVisible(props.tainerRect, props.targetId));
 
@@ -160,15 +164,13 @@ function NavigationListItem(props: NavigationListItemProps) {
         }
     });
 
-    const hasErrors = props.isMarkedEmpty ? false : subtreeHasErrors(handler.data(), path, handler.schema());
-
     return (
         <div className='mbdb-form-nav-list-item'>
             <div className={clsx('mbdb-form-nav-list-item-title', highlighted && 'mbdb-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdb-2hgap))` }}>
                 <SIcon
                     onClick={() => scrollIntoView(actualTargetId)}
-                    name={hasErrors ? 'warning sign' : 'chevron right'}
-                    color={hasErrors ? 'red' : 'black'}
+                    name={props.hasErrors ? 'warning sign' : 'chevron right'}
+                    color={props.hasErrors ? 'red' : 'black'}
                 />
                 <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
             </div>
@@ -250,6 +252,6 @@ export class Navigation extends React.Component<NavigationProps> {
         const { handler } = this.context as { handler: _FormContextHandler }; // What the hell is up with this?
         const input = this.props.inputRef?.current;
 
-        return navigationList(this.props.schema as Item, handler, '', 0, false, input ? input.getBoundingClientRect() : null);
+        return navigationList(this.props.schema as Item, handler, '', 0, false, true, input ? input.getBoundingClientRect() : null);
     }
 }

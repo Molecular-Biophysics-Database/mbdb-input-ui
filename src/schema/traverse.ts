@@ -4,6 +4,8 @@ import { assert } from '../assert';
 
 export const Traverse = {
     itemFromSchema(objPath: string, schema: AnyItem): Item {
+        assert(objPath !== '', 'Top-level schema item shall not be retrieved from this function.');
+
         const toks = objPath.split('/');
 
         let item: Item | undefined = schema as Item;
