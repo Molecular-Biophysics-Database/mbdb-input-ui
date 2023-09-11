@@ -35,7 +35,7 @@ function CannotChangeVariantErrorDialog(props: CannotChangeVariantErrorDialogPro
     );
 }
 
-const VariantAnchor = React.memo(function _VariantAnchor({ path }: { path: Path }) {
+const _VariantAnchor = React.memo(function MVariantAnchor({ path }: { path: Path }) {
     const htmlId = PathId.toVariantId(path);
     return (
         <>
@@ -46,7 +46,7 @@ const VariantAnchor = React.memo(function _VariantAnchor({ path }: { path: Path 
     return Data.Path.arePathsEqual(prevProps.path, nextProps.path);
 });
 
-const _VariantInput = React.memo(function _VariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, isDisabled, canParentMarkEmpty, handler }: Props & {
+const _VariantInput = React.memo(function MVariantInput({ input, label, nestLevel, path, variantChoice, hasErrors, isDisabled, canParentMarkEmpty, handler }: Props & {
     handler: _FormContextHandler,
     hasErrors: boolean,
     variantChoice: string,
@@ -73,7 +73,7 @@ const _VariantInput = React.memo(function _VariantInput({ input, label, nestLeve
             <div className={clsx(
                 'mbdb-section', hasErrors && 'mbdb-section-has-errors',
                 'mbdb-block', sectionBgCls(darkBlk, isDisabled))}>
-                <VariantAnchor path={Data.Path.path(variantChoice, path)} />
+                <_VariantAnchor path={Data.Path.path(variantChoice, path)} />
                 <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
                     <div className='mbdb-section-label-text'>Type</div>
                     <SDropdown

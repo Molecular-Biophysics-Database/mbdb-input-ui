@@ -37,7 +37,7 @@ function mkOptions(choices: OptionsItem['choices'], dontTransform: boolean) {
     return opts;
 };
 
-const Selection = React.memo(function _Selection({ id, onChange, options, value, noRightOffset, isDisabled, error }: {
+const _Selection = React.memo(function MSelection({ id, onChange, options, value, noRightOffset, isDisabled, error }: {
     id: string,
     onChange: SOnChange<SDropdownProps>,
     options: Option[]
@@ -96,7 +96,7 @@ export function OptionsInput(props: Props) {
     return (
         <>
             <ItemLabel label={props.label} help={props.help} markAsRequired={props.isRequired} id={id} />
-            <Selection
+            <_Selection
                 id={id}
                 options={opts}
                 value={Value.toOption(v)}
@@ -134,7 +134,7 @@ export function OptionsWithOtherInput(props: Props) {
     return (
         <>
             <ItemLabel label={props.label} help={props.help} markAsRequired={props.isRequired} id={id} />
-            <Selection
+            <_Selection
                 id={id}
                 options={opts}
                 value={value.payload.tag}
