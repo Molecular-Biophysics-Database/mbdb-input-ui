@@ -160,6 +160,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
                     setReferenceId(newRefId);
                 }}
                 options={opts}
+                error={referenceId === '' && isRequired}
                 selection
             />
         </>

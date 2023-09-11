@@ -61,14 +61,10 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                 MbdbData.set(mbdbData, out, storePath);
             }
         } else if (Schema.hasBooleanInput(item)) {
-            if (item.isRequired) {
-                MbdbData.set(mbdbData, Value.toBoolean(v), storePath);
-            } else {
-                const tv = Value.toTristate(v);
-                if (tv === 'true') MbdbData.set(mbdbData, true, storePath);
-                else if (tv === 'false') MbdbData.set(mbdbData, false, storePath);
-                // Do not set anything if Tristate is none
-            }
+            const tv = Value.toTristate(v);
+            if (tv === 'true') MbdbData.set(mbdbData, true, storePath);
+            else if (tv === 'false') MbdbData.set(mbdbData, false, storePath);
+            // Do not set anything if Tristate is none
         } else if (Schema.hasCalendarDateInput(item)) {
             const { year, month, day } = Value.toCalendarDate(v);
             const out = `${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
