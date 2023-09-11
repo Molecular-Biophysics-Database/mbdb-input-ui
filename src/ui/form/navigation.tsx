@@ -26,6 +26,10 @@ function elementTopOffset(id: string) {
     return -1;
 }
 
+function isBoundingRectEmpty(bRect: DOMRect) {
+    return bRect.width === 0 && bRect.height === 0;
+}
+
 function isNavigationAnchor(item: Item) {
     return (
         Schema.hasComplexInput(item) ||
@@ -42,8 +46,7 @@ function isItemMarkedEmpty(item: Item, htmlId: string, ctxHandler: _FormContextH
     }
 }
 
-function isNavItemVisible(bRect: Rect | null, htmlId: string) {
-    if (!bRect) return false;
+function isNavItemVisible(bRect: DOMRect, htmlId: string) {
     const topOffset = elementTopOffset(htmlId);
 
     return isVisible(bRect, topOffset);
@@ -248,6 +251,11 @@ export class Navigation extends React.Component<NavigationProps> {
             if (!this.scrollHandlerRegistered) {
                 input.addEventListener('scroll', this._refreshFunc);
                 this.scrollHandlerRegistered= true;
+            }
+
+            if (isBoundingRectEmpty(this.boundingRect)) {
+                this.boundingRect = input.getBoundingClientRect();
+                this.forceUpdate();
             }
         }
     }
