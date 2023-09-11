@@ -351,6 +351,19 @@ export async function initApp(elemId: string) {
         await Config.load();
         const root = RDC.createRoot(appRoot);
 
+        // If you are looking at this bit of code, it is possible that
+        // you have just came back from some blog post or a React developer
+        // docs that talk about rendering in StrictMode. Yes, the guy who wrote
+        // this knew what StrictMode was. Yes, the guy knew that it is supposed
+        // to be good. No, we cannot use it here.
+        //
+        // StrictMode will do an additional pass on rendering and effects to catch bugs.
+        // This problem is that this breaks the way we handle references. This may trigger
+        // unmounts of components with "referenceable" that are referenced by something.
+        // When these components unmount, they unregister themselves from the list of referenceables.
+        // Since they are referenced by something, this will trigger an assertion fail.
+        // This scenario cannot realisically happen because the UI checks for this and
+        // does not allow removals of referenceables that are referenced.
         root.render(<App />);
     } catch (e) {
         console.log(`Failed to load application configuration: ${e}`);
