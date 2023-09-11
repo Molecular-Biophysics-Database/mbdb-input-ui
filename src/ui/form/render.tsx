@@ -8,7 +8,7 @@ import { OptionsInput, OptionsWithOtherInput } from './components/options';
 import { RelatedToInput, ReferenceableIdInput } from './components/refs-rels';
 import { VariantInput } from './components/variant';
 import { VocabularyInput } from './components/vocabulary';
-import { BooleanInput, TristateInput } from './components/yes-no';
+import { TristateInput } from './components/yes-no';
 import { Register } from './custom-components/register';
 import { assert } from '../../assert';
 import { Item, Schema } from '../../schema';
@@ -145,9 +145,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
         }
     } else if (Schema.hasBooleanInput(item)) {
         return (
-            isRequired
-                ? <BooleanInput label={label} isDisabled={isDisabled} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
-                : <TristateInput label={label} isDisabled={isDisabled} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
+            <TristateInput label={label} isDisabled={isDisabled} isRequired={isRequired} path={path} help={item.help} noRightOffset={noRightOffset} key={key} />
         );
     } else if (Schema.hasCalendarDateInput(item)) {
         return <CalendarDateInput label={label} isRequired={isRequired} isDisabled={isDisabled} path={path} help={item.help} key={key} />;

@@ -173,7 +173,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a boolean item "${item.tag}" is not a boolean.`);
                 }
 
-                const value = item.isRequired ? Value.boolean(mbdbScalar) : Value.tristate(mbdbScalar ? 'true' : 'false');
+                const value = Value.tristate(mbdbScalar ? 'true' : 'false', true);
                 Data.set(data, itemPath, value);
             } else if (Schema.hasOptionsInput(item)) {
                 if (typeof mbdbScalar !== 'string') {

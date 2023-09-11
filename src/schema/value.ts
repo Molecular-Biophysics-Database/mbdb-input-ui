@@ -64,7 +64,7 @@ export const Value = {
         const isRequired = isRequiredOverride !== undefined ? isRequiredOverride : item.isRequired;
 
         if (Schema.hasBooleanInput(item)) {
-            return item.isRequired ? this.boolean(false) : this.tristate('not-set');
+            return this.tristate('not-set', !item.isRequired);
         } else if (Schema.hasCalendarDateInput(item)) {
             const now = new Date();
             return this.calendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
@@ -296,10 +296,10 @@ export const Value = {
         return mkValue<string>(text, isValid);
     },
 
-    tristate(tfn: Tristate) {
+    tristate(tfn: Tristate, isValid: boolean) {
         assert(isTristate(tfn), `Value ${tfn} is not a valid tristate value`);
 
-        return mkValue(tfn, true);
+        return mkValue(tfn, isValid);
     },
 
     uuid(v?: string): TValue<string> {
