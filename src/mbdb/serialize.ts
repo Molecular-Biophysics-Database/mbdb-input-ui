@@ -26,6 +26,13 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                     MbdbData.set(mbdbData, v.payload, storePath);
                 }
             }
+        } else {
+            if (item.isRequired) {
+                errors.push(DataError(
+                    internalParentPath,
+                    'Item must have a value but it is empty'
+                ));
+            }
         }
     } else if (Schema.hasCustomInput(item)) {
         const cc = Register.get(item.component);

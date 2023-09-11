@@ -55,10 +55,8 @@ export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelIte
                     if (hasError) return true;
                 }
             } else if (Schema.hasRelatedToInput(schemaItem)) {
-                // All items that should be ignored in this check should go here
-                return false;
-            } else {
-                assert(false, `Item "${schemaItem.tag}" is not handled but it should be.`);
+                const id = Data.getValue(data, Data.Path.path('id', path));
+                if (!id.isValid) return true;
             }
 
             return false;
