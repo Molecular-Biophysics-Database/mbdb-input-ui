@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import React from 'react';
 import {
     Icon as SIcon,
@@ -54,7 +53,7 @@ function isVisible(bRect: Rect, topOffset: number) {
     return topOffset >= bRect.top - TopCorrection && topOffset < bRect.bottom;
 }
 
-function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, checkForErrors: boolean, tainerRect: Rect | null) {
+function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, checkForErrors: boolean, tainerRect: DOMRect) {
     if (level === MaximumNesting) return null;
 
     const data = ctxHandler.data();
@@ -138,10 +137,32 @@ function scrollIntoView(elemId: string) {
     elem.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
 }
 
+const _NavigationListItem = React.memo(function MNavigationListItem(props: NavigationListItemProps & {
+    actualTargetId: string,
+    isHighlighted: boolean,
+    onClick: () => void,
+}) {
+    return (
+        <div className='mbdb-form-nav-list-item'>
+            <div className={clsx('mbdb-form-nav-list-item-title', props.isHighlighted && 'mbdb-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdb-2hgap))` }}>
+                <SIcon
+                    onClick={() => scrollIntoView(props.actualTargetId)}
+                    name={props.hasErrors ? 'warning sign' : 'chevron right'}
+                    color={props.hasErrors ? 'red' : 'black'}
+                />
+                <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
+            </div>
+            <div>
+                {props.children ?? null}
+            </div>
+        </div>
+    );
+});
+
 type NavigationListItemProps = {
     label: string,
     targetId: string,
-    tainerRect: Rect | null,
+    tainerRect: DOMRect,
     level: number,
     hasErrors: boolean,
     isVariant?: boolean,
@@ -149,6 +170,9 @@ type NavigationListItemProps = {
 };
 function NavigationListItem(props: NavigationListItemProps) {
     const actualTargetId = props.isVariant ? PathId.tagAsVariant(props.targetId) : props.targetId;
+    const onClick = React.useMemo(() => {
+        return () => scrollIntoView(actualTargetId);
+    }, [actualTargetId]);
     const [highlighted, setHighlighted] = React.useState(isNavItemVisible(props.tainerRect, props.targetId));
 
     // All right, fellas, what are we doing here?
@@ -165,29 +189,14 @@ function NavigationListItem(props: NavigationListItemProps) {
     });
 
     return (
-        <div className='mbdb-form-nav-list-item'>
-            <div className={clsx('mbdb-form-nav-list-item-title', highlighted && 'mbdb-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdb-2hgap))` }}>
-                <SIcon
-                    onClick={() => scrollIntoView(actualTargetId)}
-                    name={props.hasErrors ? 'warning sign' : 'chevron right'}
-                    color={props.hasErrors ? 'red' : 'black'}
-                />
-                <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(actualTargetId)}>{props.label}</a>
-            </div>
-            <div>
-                {props.children ?? null}
-            </div>
-        </div>
+        <_NavigationListItem
+            {...props}
+            actualTargetId={actualTargetId}
+            isHighlighted={highlighted}
+            onClick={onClick}
+        />
     );
 }
-NavigationListItem.propTypes = {
-    children: PropTypes.node,
-    isVariant: PropTypes.bool,
-    label: PropTypes.string.isRequired,
-    level: PropTypes.number.isRequired,
-    tainerRect: PropTypes.object,
-    targetId: PropTypes.string.isRequired,
-};
 
 // We need to force a re-render whenever the input form is scrolled
 // or the window is resized in order to correctly mark which parts
@@ -207,11 +216,14 @@ export class Navigation extends React.Component<NavigationProps> {
             input.removeEventListener('scroll', this._refreshFunc!);
             this.scrollHandlerRegistered = false;
 
+            this.boundingRect = input.getBoundingClientRect();
+
             this.forceUpdate();
         }
     };
     resizeHandlerRegistered = false;
     scrollHandlerRegistered = false;
+    boundingRect: DOMRect = new DOMRect();
 
     componentDidMount() {
         const input = this.props.inputRef?.current;
@@ -250,8 +262,7 @@ export class Navigation extends React.Component<NavigationProps> {
 
     render() {
         const { handler } = this.context as { handler: _FormContextHandler }; // What the hell is up with this?
-        const input = this.props.inputRef?.current;
 
-        return navigationList(this.props.schema as Item, handler, '', 0, false, true, input ? input.getBoundingClientRect() : null);
+        return navigationList(this.props.schema as Item, handler, '', 0, false, true, this.boundingRect);
     }
 }
