@@ -20,14 +20,12 @@ function initialState(handler: _FormContextHandler, path: Path) {
     return { text: Value.toTextual(value), isValid: value.isValid };
 }
 
-const _TextualInput = React.memo(function MTextualInput({ label, isDisabled, isRequired, validator, path, handler, help, noRightOffset, alwaysUpdate }: {
-    label: string,
+const _TextualInput = React.memo(function MTextualInput({ id, isDisabled, validator, path, handler, noRightOffset, alwaysUpdate }: {
+    id: string,
     isDisabled: boolean,
-    isRequired: boolean,
     validator: Validator<string>,
     path: Path,
     handler: _FormContextHandler,
-    help?: Help,
     noRightOffset?: boolean,
     alwaysUpdate?: boolean
 }) {
@@ -46,7 +44,6 @@ const _TextualInput = React.memo(function MTextualInput({ label, isDisabled, isR
         handler.set(path, newValue, newValue.isValid === localValue.isValid && !alwaysUpdate);
         setLocalValue({ text: data.value, isValid: newValue.isValid });
     };
-    const id = React.useMemo(() => PathId.toId(path), [path]);
     React.useEffect(() => {
         const value = handler.getValue(path);
         const text = Value.toTextual(value);
@@ -57,7 +54,6 @@ const _TextualInput = React.memo(function MTextualInput({ label, isDisabled, isR
 
     return (
         <>
-            <ItemLabel label={label} markAsRequired={isRequired} help={help} id={id} />
             <SInput
                 className={clsx(!noRightOffset && 'mbdb-right-offset')}
                 id={id}
@@ -72,12 +68,11 @@ const _TextualInput = React.memo(function MTextualInput({ label, isDisabled, isR
     );
 }, (prevProps, nextProps) => {
     return (
-        Object.is(prevProps.label, nextProps.label) &&
+        Object.is(prevProps.id, nextProps.id) &&
         Object.is(prevProps.isDisabled, nextProps.isDisabled) &&
-        Object.is(prevProps.isRequired, nextProps.isRequired) &&
-        Object.is(prevProps.noRightOffset, nextProps.noRightOffset) &&
         Object.is(prevProps.validator, nextProps.validator) &&
-        Object.is(prevProps.path, nextProps.path) // We cannot safely check just for path equality here because that would break re-rendering if we were inside an array
+        Object.is(prevProps.path, nextProps.path) && // We cannot safely check just for path equality here because that would break re-rendering if we were inside an array
+        Object.is(prevProps.noRightOffset, nextProps.noRightOffset)
     );
 });
 
@@ -92,19 +87,19 @@ type Props = {
     alwaysUpdate?: boolean,
 };
 export function TextualInput(props: Props) {
+    const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
     const { handler } = React.useContext(FormContextInstance);
 
     return (
         <>
+            <ItemLabel label={props.label} markAsRequired={props.isRequired} help={props.help} id={id} />
             <_TextualInput
-                label={props.label}
+                id={id}
                 isDisabled={props.isDisabled}
-                isRequired={props.isRequired}
                 noRightOffset={props.noRightOffset}
                 validator={props.validator}
                 path={props.path}
                 handler={handler}
-                help={props.help}
                 alwaysUpdate={props.alwaysUpdate}
             />
         </>
