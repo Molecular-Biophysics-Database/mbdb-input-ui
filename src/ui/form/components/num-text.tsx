@@ -51,7 +51,6 @@ const _TextualInput = React.memo(function MTextualInput({ label, isDisabled, isR
         const value = handler.getValue(path);
         const text = Value.toTextual(value);
         if (text !== localValue.text || value.isValid !== localValue.isValid) {
-            console.log(value);
             setLocalValue({ text, isValid: value.isValid });
         }
     }, [path]);
