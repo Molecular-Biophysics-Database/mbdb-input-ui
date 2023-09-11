@@ -254,7 +254,7 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
         for (let idx = 0; idx < array.length; idx++) {
             components.push(
                 <React.Fragment key={idx}>
-                    {scalarComponent(item, true, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, Data.Path.index(idx, path), void 0, true, true)}
+                    {scalarComponent(item, true, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, Data.Path.index(idx, path), false, void 0, true)}
                     <SButton
                         style={{ marginLeft: '1rem' }}
                         color='red'

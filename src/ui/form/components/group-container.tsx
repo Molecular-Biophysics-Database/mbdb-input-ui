@@ -9,7 +9,7 @@ import { component } from '../render';
 import { sectionBgCls, subtreeHasErrors, useDarkBlock } from '../util';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
-import { Help, Item } from '../../../schema';
+import { Help, Item, Schema } from '../../../schema';
 import { Data, Path } from '../../../schema/data';
 import { objKeys } from '../../../util';
 
@@ -27,7 +27,7 @@ function arePropsEqual<P extends Record<string, any>>(prevProps: P, nextProps: P
     return true;
 }
 
-const _GroupContainerHeader = React.memo(function MGroupContainerHeader({ handler, label, help, canMarkEmpty, isDisabled, isMarkedEmpty, isRequired, path} : {
+const _GroupContainerHeader = React.memo(function MGroupContainerHeader({ handler, label, help, canMarkEmpty, isDisabled, isMarkedEmpty, isRequired, path } : {
     handler: _FormContextHandler,
     canMarkEmpty: boolean,
     label: string,
@@ -66,9 +66,11 @@ const _GroupContainerContent = React.memo(function MGroupContainer(props: Props 
     hasErrors: boolean,
     isMarkedEmpty: boolean,
 }) {
+    const isReferenceable = Schema.groupIsReferenceable(props.input);
+
     return (
         <div className='mbdb-item-grid'>
-            {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.isMarkedEmpty || props.isDisabled, props.hasErrors, props.canParentMarkEmpty, props.path, idx))}
+            {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.isMarkedEmpty || props.isDisabled, props.hasErrors, props.canParentMarkEmpty, props.path, isReferenceable, idx))}
         </div>
     );
 }, arePropsEqual);

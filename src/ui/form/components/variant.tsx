@@ -7,7 +7,7 @@ import { sectionBgCls, subtreeHasErrors, useDarkBlock } from '../util';
 import { ErrorDialog } from '../../error-dialog';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
-import { VariantInput } from '../../../schema';
+import { Schema, VariantInput } from '../../../schema';
 import { Data, Path } from '../../../schema/data';
 
 function canChangeVariantChoice(handler: _FormContextHandler, path: Path) {
@@ -62,7 +62,8 @@ const _VariantInput = React.memo(function MVariantInput({ input, label, nestLeve
     const [cannotChangeError, setCannotChangeError] = React.useState(false);
     const darkBlk = useDarkBlock(nestLevel);
 
-    const varComponent = component(input[variantChoice], nestLevel + 1, isDisabled, hasErrors, canParentMarkEmpty, path, void 0, true);
+    const varInput = input[variantChoice];
+    const varComponent = component(varInput, nestLevel + 1, isDisabled, hasErrors, canParentMarkEmpty, path, Schema.itemHasReferenceable(varInput), void 0, true);
     return (
         <>
             <CannotChangeVariantErrorDialog

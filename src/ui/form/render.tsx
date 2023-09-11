@@ -15,15 +15,15 @@ import { Item, Schema } from '../../schema';
 import { Data, Path } from '../../schema/data';
 import { Validators } from '../../schema/validators';
 
-export function component(item: Item, nestLevel: number, isDisabled: boolean, checkForErrors: boolean, canParentMarkEmpty: boolean, path: Path, key?: string | number, noLabel = false) {
+export function component(item: Item, nestLevel: number, isDisabled: boolean, checkForErrors: boolean, canParentMarkEmpty: boolean, path: Path, inReferenceableContext: boolean, key?: string | number, noLabel = false) {
     if (item.isArray) {
         return <ArrayContainer item={item} nestLevel={nestLevel} isDisabled={isDisabled} checkForErrors={checkForErrors} canParentMarkEmpty={canParentMarkEmpty} path={Data.Path.path(item.tag, path)} key={key} />
     } else {
-        return scalarComponent(item, !!item.isRequired, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, Data.Path.path(item.tag, path), key, noLabel);
+        return scalarComponent(item, !!item.isRequired, nestLevel, isDisabled, checkForErrors, canParentMarkEmpty, Data.Path.path(item.tag, path), inReferenceableContext, key, noLabel);
     }
 }
 
-export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, isDisabled: boolean, checkForErrors: boolean, canParentMarkEmpty: boolean, path: Path, key: string | number | undefined, noLabel = false, noRightOffset = false) {
+export function scalarComponent(item: Item, isRequired: boolean, nestLevel: number, isDisabled: boolean, checkForErrors: boolean, canParentMarkEmpty: boolean, path: Path, inReferenceableContext: boolean, key: string | number | undefined, noLabel = false, noRightOffset = false) {
     const label = noLabel ? '' : niceLabel(item.label, !!item.dontTransformLabels);
 
     if (item.dontDisplay) return null;
@@ -97,6 +97,7 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
                     validator={Validators.commonForItem(item, isRequired)}
                     noRightOffset={noRightOffset}
                     key={key}
+                    alwaysUpdate={item.tag === 'name' && inReferenceableContext} // This needs a more robust solution. Right now we assume that a text input tagged "name" is the only field that identifies a referenceable. This may not hold up.
                 />
             );
         }
