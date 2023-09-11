@@ -218,7 +218,7 @@ function checkItemDataSchema(data: Value, item: Item): boolean {
             return Value.isTextual(data) || (data.payload as string).length > 0;
         }
     } else if (Schema.hasBooleanInput(item)) {
-        return item.isRequired ? Value.isBoolean(data) : Value.isTristate(data);
+        return Value.isTristate(data);
     } else if (Schema.hasCalendarDateInput(item)) {
         return Value.isCalendarDate(data);
     } else if (Schema.hasUuidInput(item)) {
