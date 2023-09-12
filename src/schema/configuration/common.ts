@@ -99,6 +99,9 @@ export const Common = {
         'general_parameters/record_information/deposition_date': {
             dontDisplay: true,
         },
+        'general_parameters/record_information/publisher': {
+            defaultValue: 'MBDB',
+        },
         'general_parameters/record_information/resource_type_general': {
             dontDisplay: true,
             forceChoice: true,
