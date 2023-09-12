@@ -14,6 +14,11 @@ import { Path } from '../../../schema/data';
 import { Tristate } from '../../../schema/tristate';
 import { Value } from '../../../schema/value';
 
+// BEWARE, BEWARE:
+// This code uses a "pseudocontrolled" component to display and accept user input.
+// This is done for performance reasons.
+// See "num-text.ts" for details about why this works and why it is necessary.
+
 export type Props = {
     label: string,
     path: Path,

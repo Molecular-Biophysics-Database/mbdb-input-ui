@@ -38,6 +38,11 @@ const _TextualInput = React.memo(function MTextualInput({ id, isDisabled, valida
     // the re-render is very slow. Re-rendering of the entire form whenever a value of a single text box
     // changes is unnecessary unless the validity of the input changes. If the validity does change,
     // we trigger a model update.
+    // We are effectivelly using a "pseudocontrolled" component that manages its own value but always
+    // synchronizes is with the model.
+    //
+    // WARNING: The text above is referenced in other parts of code. Keep that in mind if you
+    //          modify it.
     const [localValue, setLocalValue] = React.useState(initialState(handler, path));
     const onChange: SOnChange<SInputProps> = (_ev, data) => {
         const newValue = Value.textual(data.value, validator ? validator(data.value) : true);
