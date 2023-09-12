@@ -93,7 +93,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
 
         const indices = gatherArrayIndices(itemPath);
         const mbdbCustomData = MbdbData.getObject(mbdbData, MbdbData.Path.toPath(item.mbdbPath, indices));
-        const customData = mbdbCustomData ? cc.fromMbdb(mbdbCustomData) : cc.emptyData();
+        const customData = mbdbCustomData ? cc.fromMbdb(mbdbCustomData, options) : cc.emptyData();
 
         Data.set(data, itemPath, customData);
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {

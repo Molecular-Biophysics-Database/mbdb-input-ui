@@ -97,7 +97,7 @@ const TristateOptions = [
     { value: 'false' as Tristate, text: 'No' },
     { value: 'not-set' as Tristate, text: '(Not set)' },
 ];
-const _YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRequired, path, handler, noRightOffset }: {
+export const YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRequired, path, handler, noRightOffset }: {
     id: string,
     isDisabled: boolean,
     isRequired: boolean,
@@ -135,7 +135,7 @@ export function TristateInput({ label, help, isDisabled, isRequired, path }: Pro
     return (
         <>
             <ItemLabel label={label} help={help} markAsRequired={isRequired} id={id} />
-            <_YesNoUnset
+            <YesNoUnset
                 id={id}
                 isDisabled={isDisabled}
                 isRequired={isRequired}

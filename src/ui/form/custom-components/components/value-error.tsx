@@ -6,14 +6,23 @@ import { CustomComponent, DataError } from '../';
 import { PathId } from '../../path-id';
 import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
+import { YesNoUnset } from '../../components/yes-no';
 import { FormContextInstance } from '../../../../context';
 import { MbdbData } from '../../../../mbdb/data';
+import { Options } from '../../../../mbdb/deserialize';
 import { Help, Schema } from '../../../../schema';
 import { Data, DataTree, Path } from '../../../../schema/data';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
 
 const Cell = { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' };
+
+const Required: { [key in keyof Omit<ValueErrorData, '__mbdb_group_marked_empty'>]: boolean } = {
+    lower_error: true,
+    upper_error: true,
+    error_level: true,
+    errors_are_relative: false
+};
 
 function checkValue(data: DataTree, path: Path) {
     const v = Data.getValue(data, path);
@@ -38,10 +47,13 @@ function setMbdbValueData(mbdbValue: Record<string, string | boolean>, data: Dat
     }
 }
 
-function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'errors_are_relative' | '__mbdb_group_marked_empty'>, data: DataTree) {
+function setErrorData(mbdbData: MbdbData, name: keyof Omit<ValueErrorData, 'errors_are_relative' | '__mbdb_group_marked_empty'>, data: DataTree, options: Options) {
     const err = mbdbData[name];
     if (err === undefined) {
-        data[name] = Value.empty();
+        if (options?.allowPartials || !Required[name])
+            data[name] = Value.empty();
+        else
+            throw new Error(`Value of "${name}" field in ValueError custom component cannot be empty.`);
     } else {
         if (typeof err !== 'number') {
             throw new Error(`Value of "${name}" field in ValueError custom component was expected to be a number.`);
@@ -83,7 +95,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
             throw new Error('"error_level" value is invalid');
         }
 
-        if (Value.isValue(inData['errors_are_relative']) && Value.isBoolean(inData['errors_are_relative'])) {
+        if (Value.isValue(inData['errors_are_relative']) && Value.isTristate(inData['errors_are_relative'])) {
             data.errors_are_relative = inData.errors_are_relative;
         } else {
             throw new Error('"errors_are_relative" value is invalid');
@@ -95,10 +107,10 @@ export const ValueError: CustomComponent<ValueErrorData> = {
     emptyData(): Partial<ValueErrorData> {
         return {
             [Schema.GroupMarkedEmpty]: false,
-            lower_error: Value.empty(false),
-            upper_error: Value.empty(false),
-            error_level: Value.empty(false),
-            errors_are_relative: Value.boolean(false),
+            lower_error: Value.empty(!Required.lower_error),
+            upper_error: Value.empty(!Required.upper_error),
+            error_level: Value.empty(!Required.error_level),
+            errors_are_relative: Value.tristate('not-set', !Required.errors_are_relative),
         };
     },
 
@@ -112,15 +124,22 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         return false;
     },
 
-    fromMbdb(mbdbData: MbdbData) {
+    fromMbdb(mbdbData: MbdbData, options: Options) {
         const out = {} as DataTree;
 
-        setErrorData(mbdbData, 'lower_error', out);
-        setErrorData(mbdbData, 'upper_error', out);
-        setErrorData(mbdbData, 'error_level', out);
+        setErrorData(mbdbData, 'lower_error', out, options);
+        setErrorData(mbdbData, 'upper_error', out, options);
+        setErrorData(mbdbData, 'error_level', out, options);
 
-        // Yeah, I know...
-        out['errors_are_relative'] = Value.boolean(!!mbdbData['errors_are_relative']);
+        const errRel = mbdbData['errors_are_relative'];
+        if (errRel === undefined) {
+            out['errors_are_relative'] = Value.tristate('not-set', true);
+        } else {
+            if (typeof errRel !== 'boolean') {
+                throw new Error(`Value of "errors_are_relative" field in ValueError custom component was expected to be a number.`);
+            }
+            out['errors_are_relative'] = Value.tristate(errRel ? 'true' : 'false', true);
+        }
 
         return out;
     },
@@ -184,7 +203,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={getHelp(help, 'lower_error')}
                             path={Data.Path.path('lower_error', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
-                            isRequired={true}
+                            isRequired={Required.lower_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
@@ -194,7 +213,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={getHelp(help, 'upper_error')}
                             path={Data.Path.path('upper_error', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
-                            isRequired={true}
+                            isRequired={Required.upper_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
@@ -204,20 +223,17 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                             help={getHelp(help, 'error_level')}
                             path={Data.Path.path('error_level', path)}
                             validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
-                            isRequired={true}
+                            isRequired={Required.upper_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
-                    <ItemLabel id={idIsRel} markAsRequired={false} label='Errors are relative' />
-                    <SCheckbox
+                    <ItemLabel id={idIsRel} markAsRequired={false} help={getHelp(help, 'errors_are_relative')} label='Errors are relative' />
+                    <YesNoUnset
                         id={idIsRel}
-                        checked={Value.toBoolean(handler.getValue(Data.Path.path('errors_are_relative', path)))}
-                        onChange={(_ev, data) => {
-                            const checked = !!data.checked;
-                            handler.set(Data.Path.path('errors_are_relative', path), Value.boolean(checked));
-                        }}
-                        help={getHelp(help, 'errors_are_relative')}
-                        disabled={isMarkedEmpty || isDisabled}
+                        isDisabled={isMarkedEmpty || isDisabled}
+                        isRequired={Required.errors_are_relative}
+                        path={Data.Path.path('errors_are_relative', path)}
+                        handler={handler}
                     />
                 </div>
             </React.Fragment>
