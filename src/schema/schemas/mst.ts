@@ -270,7 +270,7 @@ export const MST = [
                         isArray: false,
                         isRequired: true,
                         mbdbPath: 'general_parameters/record_information/internal_id',
-                        input: 'string',
+                        input: 'internal-id',
                         help: {
                             en: 'Unique and persistent internal identifier the record. This will automatically be generated upon deposition',
                         },

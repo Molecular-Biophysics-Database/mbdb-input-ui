@@ -3,6 +3,11 @@ import { Common } from './common';
 export const MST = {
     ...Common,
 
+    'general_parameters/record_information/resource_type': {
+        dontDisplay: true,
+        defaultValue: 'MST'
+    },
+
     'general_parameters/technique': {
         defaultValue: 'Microscale thermophoresis/Temperature related intensity change (MST/TRIC)',
         dontDisplay: true,

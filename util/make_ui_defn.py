@@ -15,6 +15,7 @@ JSVarNameRegex = re.compile('^([A-Za-z_]){1}([A-Za-z0-9_])*$')
 
 ITEMS_OF_INTERNAL_ID_TYPE = [
     'identifier',
+    'internal_id',
     'measurement_group_id',
 ]
 
