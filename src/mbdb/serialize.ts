@@ -51,7 +51,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             // Log error and ignore the value
             errors.push(DataError(
                 internalParentPath,
-                item.isRequired ? 'Item must have a value but it is empty.' : 'Item has an invalid value.'
+                Value.isEmpty(v) ? 'Item must have a value but it is empty.' : 'Item has an invalid value.'
             ));
             return;
         }

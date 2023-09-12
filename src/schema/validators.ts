@@ -1,4 +1,5 @@
 import { Choice, Item, Schema } from './';
+import { References } from './references';
 import { Uuid } from './uuid';
 import { CalendarDate, Option, Value, VocabularyEntry } from './value';
 import { assert } from '../assert';
@@ -176,7 +177,7 @@ export const Validators = {
         } else if (Schema.hasUuidInput(item)) {
             return Uuid.check;
         } else if (Schema.hasReferenceableIdInput(item)) {
-            return Uuid.check;
+            return References.isValidRefId;
         } else if (Schema.hasRelatedToInput(item)) {
             return CommonValidators.alwaysValid;
         } else if (Schema.hasInternalIdInput(item)) {
