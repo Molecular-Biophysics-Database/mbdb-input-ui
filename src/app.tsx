@@ -13,6 +13,7 @@ import { FormContext, FormContextInstance } from './context';
 import { FormContextHandler, _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
 import { ErrorDialog } from './ui/error-dialog';
+import { HPadded } from './ui/padded';
 import { Form } from './ui/form';
 import { DataError, Mbdb } from './mbdb';
 import { Deserialize as MbdbDeserialize } from './mbdb/deserialize';
@@ -74,8 +75,13 @@ function SubmissionErrorDialog(props: {
             open={props.error!== null}
         >
             <SHeader icon>
-                <SIcon name='warning' />
-                Deposition failed
+                <HPadded padding='center'>
+                    <div style={{ display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-2hgap)' }}>
+                        <SIcon name='warning' />
+                        <SIcon name='database' />
+                    </div>
+                </HPadded>
+                Deposition failed due to an issue on the backend
             </SHeader>
             <SModal.Content>
                 <div className='mbdb-deposition-error-report'>Deposition failed because the database reported an error</div>
@@ -149,7 +155,7 @@ function App() {
         if (errors.length === 0 || noSanityChecks) {
             submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
                 if (resp.ok) {
-                    setSubmitError(null)
+                    setSubmitError(null);
                 } else {
                     resp.json().then((j) => {
                         setSubmitError({
@@ -184,6 +190,12 @@ function App() {
                 isOpen={inputFormErrors !== null}
                 title='Cannot deposit record'
                 onDismissed={() => setInputFormErrors(null)}
+                icons={
+                    <div style={{ display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-2hgap)' }}>
+                        <SIcon name='warning' />
+                        <SIcon name='clipboard list' />
+                    </div>
+                }
             >
                 <div className='mbdb-deposition-error-report'>Cannot deposit record because there are some invalid items in the form.</div>
                 <ul className='mbdb-deposition-error-report'>

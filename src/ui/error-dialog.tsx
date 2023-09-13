@@ -5,12 +5,14 @@ import {
     Icon as SIcon,
     Modal as SModal,
 } from 'semantic-ui-react';
+import { HPadded } from './padded';
 
 export type Props = {
     isOpen: boolean,
     onDismissed: () => void,
     title: string,
     children: JSX.Element | JSX.Element[],
+    icons?: JSX.Element | JSX.Element[],
 };
 export function ErrorDialog(props: Props) {
     return (
@@ -19,7 +21,9 @@ export function ErrorDialog(props: Props) {
             open={props.isOpen}
         >
             <SHeader icon>
-                <SIcon name='warning' />
+                <HPadded padding='center'>
+                    {props.icons ? props.icons : <SIcon name='warning' />}
+                </HPadded>
                 {props.title}
             </SHeader>
             <SModal.Content>
