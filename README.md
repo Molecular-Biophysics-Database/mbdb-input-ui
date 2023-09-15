@@ -3,7 +3,7 @@ Input form testing repositors
 
 *IMPORTANT NOTE:*
 ---
-***Code in this repository will be integrated into `mbdb-app`. It is currently being developed separately to simplify the development process.***
+***Code in this repository will be integrated into [mbdb-app](https://github.com/Molecular-Biophysics-Database/mbdb-app). It is currently being developed separately to simplify the development process.***
 
 Quick and dirty build instructions
 ---
