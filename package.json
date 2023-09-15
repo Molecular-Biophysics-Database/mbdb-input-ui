@@ -9,11 +9,9 @@
     "build": "npm run build-tsc && npm run build-webpack",
     "build-dev": "npm run build-tsc-dev && npm run build-webpack-dev",
     "serve-dev": "concurrently -c \"green,blue\" --names \"tsc\" --kill-others \"npm:watch-tsc-dev\" \"npm:build-webpack-serve-dev\"",
-
     "build-tsc": "tsc --build tsconfig.json",
     "build-tsc-dev": "tsc --build tsconfig.development.json",
     "watch-tsc-dev": "tsc --build tsconfig.development.json --watch --incremental",
-
     "build-webpack": "webpack --mode production --config ./webpack.config.js",
     "build-webpack-dev": "webpack --mode development --config ./webpack.config.js",
     "build-webpack-serve-dev": "webpack serve --mode development --config ./webpack.config.js"
@@ -27,7 +25,11 @@
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "concurrently": "^7.1.0",
+    "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
+    "less": "^3.1.13",
+    "less-loader": "^11.1.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "typescript": "^5.1.6",
     "webpack": "^5.86.0",
     "webpack-cli": "^5.1.4",
@@ -39,6 +41,7 @@
     "react-dom": "^18.2.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-icon": "^2.5.0",
+    "semantic-ui-less": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "tslib": "^2.6.1",
     "uuid": "^9.0.0"
