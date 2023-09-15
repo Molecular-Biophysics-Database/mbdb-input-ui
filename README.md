@@ -1,4 +1,4 @@
-Input form testing repositors
+Input form testing repository
 ===
 
 *IMPORTANT NOTE:*
