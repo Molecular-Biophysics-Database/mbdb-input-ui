@@ -1,5 +1,6 @@
 /* vim: set sw=4 ts=4 sts=4 expandtab : */
 
+const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
@@ -80,6 +81,12 @@ function sharedConfig(productionBuild) {
                 ],
             },
             plugins: [
+                new ExtraWatchWebpackPlugin({
+                    files: [
+                        './assets/*.css',
+                        './assets/*.html',
+                    ],
+                }),
                 new MiniCssExtractPlugin(),
             ],
         }

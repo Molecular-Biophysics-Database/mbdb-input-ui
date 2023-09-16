@@ -14,6 +14,14 @@ export function clamp(v: number, min: number, max: number) {
             : v;
 }
 
+export function clrToRgb(clr: number): [r: number, g: number, b: number] {
+    const r = clr >> 16 & 0xFF;
+    const g = clr >>  8 & 0xFF;
+    const b = clr       & 0xFF;
+
+    return [r, g, b];
+}
+
 const LongMonths = [1, 3, 5, 7, 8, 10, 12];
 export function daysInMonth(month: number, year: number) {
     if (LongMonths.includes(month)) return 31;
@@ -88,3 +96,24 @@ export function sequence(from: number, to: number) {
 
     return seq;
 }
+
+export function unique<T>(seq: T[], areEqual?: (a: T, b: T) => boolean) {
+    const uniqued = new Array<T>();
+
+    for (const item of seq) {
+        let has = false;
+        for (const uitem of uniqued) {
+            if ((areEqual && areEqual(uitem, item)) || (item === uitem)) {
+                has = true;
+                break;
+            }
+        }
+
+        if (!has) {
+            uniqued.push(item);
+        }
+    }
+
+    return uniqued;
+}
+

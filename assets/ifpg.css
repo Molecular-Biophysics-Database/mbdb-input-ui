@@ -14,6 +14,7 @@
     --mbdb-vgap: 0.5rem;
     --mbdb-2vgap: calc(2 * var(--mbdb-vgap));
     --mbdb-v2gap: calc(0.5 * var(--mbdb-vgap));
+    --mbdbi-x-gap: var(--mbdb-vgap);
 
     --mbdb-form-pad: var(--mbdb-2hgap);
     --mbdb-form-pad2: calc(0.5 * var(--mbdb-2hgap));
@@ -177,6 +178,61 @@ ul.mbdb-deposition-error-report {
     list-style: square;
 }
 
+.mbdbi-center-text {
+    text-align: center;
+}
+
+.mbdbi-dialog {
+    background-color: rgba(0,0,0,.12);
+    height: 100%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+.mbdbi-dialog-button-bar {
+    display: flex;
+    flex-direction: row;
+    padding: var(--mbdbi-x-gap);
+    width: 100%;
+}
+
+.mbdbi-dialog-content {
+    flex: 1;
+    margin: var(--mbdbi-x-gap);
+    overflow: scroll;
+}
+
+.mbdbi-dialog-inner {
+    background: white;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 80%;
+    max-width: 67%;
+    position: relative;
+}
+
+.mbdbi-dialog-title {
+    align-items: center;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: center;
+    padding: var(--mbdbi-x-gap);
+}
+
+.mbdbi-icon-list {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mbdb-hgap);
+}
+
 .mbdb-input-tainer {
 }
 
@@ -198,6 +254,10 @@ ul.mbdb-deposition-error-report {
 
 .mbdb-item-label-text {
     font-size: var(--mbdb-font-normal);
+}
+
+.mbdbi-line-spacer {
+    height: var(--mbdb-vgap);
 }
 
 .mbdb-navigation-tainer {
@@ -240,6 +300,10 @@ ul.mbdb-deposition-error-report {
 
 .mbdb-section-label-text {
     font-size: var(--mbdb-font-normal);
+    font-weight: bold;
+}
+
+.mbdbi-strong {
     font-weight: bold;
 }
 

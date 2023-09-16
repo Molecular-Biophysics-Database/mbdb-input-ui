@@ -1,41 +1,41 @@
 import React from 'react';
 import {
-    Button as SButton,
     Header as SHeader,
     Icon as SIcon,
-    Modal as SModal,
 } from 'semantic-ui-react';
+import { Button, StandardButtons, Dialog } from './dialog';
 import { HPadded } from './padded';
 
+const Noop = () => {};
+
 export type Props = {
-    isOpen: boolean,
-    onDismissed: () => void,
     title: string,
-    children: JSX.Element | JSX.Element[],
+    content: JSX.Element,
     icons?: JSX.Element | JSX.Element[],
+    extraButtons?: Button[],
+    onButton?: (id: number, flags: number) => void,
 };
-export function ErrorDialog(props: Props) {
-    return (
-        <SModal
-            basic
-            open={props.isOpen}
-        >
-            <SHeader icon>
-                <HPadded padding='center'>
-                    {props.icons ? props.icons : <SIcon name='warning' />}
-                </HPadded>
-                {props.title}
-            </SHeader>
-            <SModal.Content>
-                {props.children}
-            </SModal.Content>
-            <SModal.Actions>
-                <SButton
-                    color='blue'
-                    inverted
-                    onClick={props.onDismissed}
-                >OK</SButton>
-            </SModal.Actions>
-        </SModal>
-    );
-}
+export const ErrorDialog = {
+    show(props: Props) {
+        Dialog.create({
+            title: (
+                <SHeader icon>
+                    <HPadded padding='center'>
+                    {props.icons
+                        ? (
+                            <div className='mbdbi-icon-list'>
+                                {props.icons}
+                            </div>
+                        )
+                        : <SIcon name='warning' />
+                    }
+                    </HPadded>
+                    {props.title}
+                </SHeader>
+            ),
+            buttons: [StandardButtons.Ok, ...props.extraButtons ?? []],
+            content: props.content,
+            onButton: props.onButton ?? Noop,
+        });
+    }
+};

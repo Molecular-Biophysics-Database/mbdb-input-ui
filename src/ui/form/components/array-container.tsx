@@ -19,6 +19,10 @@ import { Value } from '../../../schema/value';
 
 const GridInArrayStyle = { display: 'grid', rowGap: '0.5rem', gridTemplateColumns: '0 1fr auto' };
 
+function cannotDeleteItemErrorContent(path: Path) {
+    return (<div>{`Cannot delete item on path "${Data.Path.toString(path)}". The item is referenced by some other items.`}</div>);
+}
+
 function deepRemoveCollapsed(item: DataTreeItem, handler: _FormContextHandler) {
     Data.walkTree(item, (inItem) => {
         handler.navigation.removeItem(inItem);
@@ -34,24 +38,6 @@ const ArrayAnchor = React.memo(function _ArrayAnchor({ path, idx }: { path: Path
         </>
     );
 });
-
-
-type CannotDeleteItemErrorDialogProps = {
-    isOpen: boolean,
-    message: string | null,
-    onDismissed: () => void,
-}
-function _CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
-    return (
-        <ErrorDialog
-            isOpen={props.isOpen}
-            title='Cannot delete item'
-            onDismissed={props.onDismissed}
-        >
-            <div>{props.message ?? '(No specific error message was provided)'}</div>
-        </ErrorDialog>
-    );
-}
 
 type AddItemButtonProps = {
     title: string,
@@ -80,21 +66,12 @@ function AddItemButton(props: AddItemButtonProps) {
     );
 }
 
-function CannotDeleteItemErrorDialog(props: CannotDeleteItemErrorDialogProps) {
-    return (
-        props.isOpen
-            ? <_CannotDeleteItemErrorDialog {...props} />
-            : null
-    );
-}
-
 type CollapsibleElementProps = {
     content: JSX.Element | (JSX.Element | null)[],
     idx: number,
     path: Path,
     title: string,
     isDisabled: boolean,
-    setDeletionError: (err: string) => void,
     handler: _FormContextHandler,
 };
 function CollapsibleElement(props: CollapsibleElementProps) {
@@ -104,7 +81,7 @@ function CollapsibleElement(props: CollapsibleElementProps) {
 
     return (
         <Collapsible
-            header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} isDisabled={props.isDisabled} setDeletionError={(err) => props.setDeletionError(err)} />}
+            header={<ComplexArrayHeader title={props.title} idx={props.idx} path={props.path} isDisabled={props.isDisabled} />}
             content={props.content}
             onCollapsedExpanded={(isCollapsed) => {
                 handler.navigation.setCollapsed(dataItem, isCollapsed);
@@ -118,7 +95,6 @@ type ComplexArrayHeaderProps = {
     title: string,
     idx: number,
     path: Path,
-    setDeletionError: (err: string) => void,
     isDisabled: boolean,
 }
 function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
@@ -133,7 +109,10 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
                 onClick={() => {
                     const delPath = Data.Path.index(props.idx, props.path);
                     if (!handler.canDelete(delPath)) {
-                        props.setDeletionError(`Cannot delete item on path "${Data.Path.toString(delPath)}". The item is referenced by some other items."`);
+                        ErrorDialog.show({
+                            title: 'This action cannot be done right now',
+                            content: cannotDeleteItemErrorContent(delPath),
+                        });
                     } else {
                         const toDelete = handler.getItem(Data.Path.index(props.idx, props.path));
                         deepRemoveCollapsed(toDelete, handler);
@@ -159,7 +138,6 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
     const _niceLabel = React.useMemo(() => niceLabel(item.label, !!item.dontTransformLabels), [item]);
     const { handler } = React.useContext(FormContextInstance);
     const tainerId = React.useMemo(() => PathId.toId(path), [path]);
-    const [deletionError, setDeletionError] = React.useState<string | null>(null);
     const array = handler.getArray(path);
     const darkBlk = useDarkBlock(nestLevel);
     const hasErrors = (!checkForErrors|| isDisabled) ? false : subtreeHasErrors(handler.data(), path, handler.schema());
@@ -197,7 +175,6 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
                             />
                         }
                         isDisabled={isDisabled}
-                        setDeletionError={setDeletionError}
                         handler={handler}
                     />
                 </React.Fragment>
@@ -229,7 +206,6 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
                         path={path}
                         content={<VariantInput input={item.input} label={item.label} nestLevel={nestLevel + 1} isDisabled={isDisabled} checkForErrors={checkForErrors} canParentMarkEmpty={canParentMarkEmpty} path={Data.Path.index(idx, path)} />}
                         isDisabled={isDisabled}
-                        setDeletionError={setDeletionError}
                         handler={handler}
                     />
                 </div>
@@ -261,7 +237,10 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
                         onClick={() => {
                             const delPath = Data.Path.index(idx, path);
                             if (!handler.canDelete(delPath)) {
-                                setDeletionError(`Cannot delete item on path "${Data.Path.toString(delPath)}". The item is referenced by some other items."`);
+                                ErrorDialog.show({
+                                    title: 'This action cannot be done right now',
+                                    content: cannotDeleteItemErrorContent(delPath),
+                                });
                             } else {
                                 handler.delete(delPath);
                             }
@@ -289,29 +268,20 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
     }
 
     return (
-        <>
-            <CannotDeleteItemErrorDialog
-                isOpen={deletionError !== null}
-                message={deletionError}
-                onDismissed={() => setDeletionError(null)}
-            />
-
-            {arrayIsSimple
-                ? (
-                    <div className={tainerCls} id={tainerId}>
-                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
-                        <div className='mbdb-right-offset' style={ GridInArrayStyle }>
-                            {components}
-                        </div>
-                    </div>
-                )
-                : (
-                    <div className={tainerCls} id={tainerId}>
-                        <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
+        arrayIsSimple
+            ? (
+                <div className={tainerCls} id={tainerId}>
+                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
+                    <div className='mbdb-right-offset' style={ GridInArrayStyle }>
                         {components}
                     </div>
-                )
-            }
-        </>
+                </div>
+            )
+            : (
+                <div className={tainerCls} id={tainerId}>
+                    <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
+                    {components}
+                </div>
+            )
     );
 }

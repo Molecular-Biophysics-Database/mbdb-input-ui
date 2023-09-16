@@ -14,27 +14,6 @@ function canChangeVariantChoice(handler: _FormContextHandler, path: Path) {
     return !handler.refs.isItemReferenced(path);
 }
 
-type CannotChangeVariantErrorDialogProps =  { isOpen: boolean, onDismissed: () => void };
-function _CannotChangeVariantErrorDialog({ isOpen, onDismissed }: CannotChangeVariantErrorDialogProps) {
-    return (
-        <ErrorDialog
-            isOpen={isOpen}
-            title='Cannot change variant type'
-            onDismissed={onDismissed}
-        >
-            <div>Cannot change this variant type to another type because the currently displayed item is referenced by some other item(s).</div>
-        </ErrorDialog>
-    );
-}
-
-function CannotChangeVariantErrorDialog(props: CannotChangeVariantErrorDialogProps) {
-    return (
-        props.isOpen
-            ? <_CannotChangeVariantErrorDialog {...props} />
-            : null
-    );
-}
-
 const _VariantAnchor = React.memo(function MVariantAnchor({ path }: { path: Path }) {
     const htmlId = PathId.toVariantId(path);
     return (
@@ -59,43 +38,38 @@ const _VariantInput = React.memo(function MVariantInput({ input, label, nestLeve
             value: k,
         })
     ), [input]);
-    const [cannotChangeError, setCannotChangeError] = React.useState(false);
     const darkBlk = useDarkBlock(nestLevel);
 
     const varInput = input[variantChoice];
     const varComponent = component(varInput, nestLevel + 1, isDisabled, hasErrors, canParentMarkEmpty, path, Schema.itemHasReferenceable(varInput), void 0, true);
     return (
-        <>
-            <CannotChangeVariantErrorDialog
-                isOpen={cannotChangeError}
-                onDismissed={() => setCannotChangeError(false)}
-            />
-
-            <div className={clsx(
-                'mbdb-section', hasErrors && 'mbdb-section-has-errors',
-                'mbdb-block', sectionBgCls(darkBlk, isDisabled))}>
-                <_VariantAnchor path={Data.Path.path(variantChoice, path)} />
-                <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
-                    <div className='mbdb-section-label-text'>Type</div>
-                    <SDropdown
-                        value={variantChoice}
-                        onChange={(_ev, data) => {
-                            if (canChangeVariantChoice(handler, path)) {
-                                handler.setVariantChoice(path, data.value as string);
-                            } else {
-                                setCannotChangeError(true);
-                            }
-                        }}
-                        options={opts}
-                        className='mbdb-section-label-text'
-                        disabled={isDisabled}
-                        selection
-                        fluid
-                    />
-                </div>
-                {varComponent}
+        <div className={clsx(
+            'mbdb-section', hasErrors && 'mbdb-section-has-errors',
+            'mbdb-block', sectionBgCls(darkBlk, isDisabled))}>
+            <_VariantAnchor path={Data.Path.path(variantChoice, path)} />
+            <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
+                <div className='mbdb-section-label-text'>Type</div>
+                <SDropdown
+                    value={variantChoice}
+                    onChange={(_ev, data) => {
+                        if (canChangeVariantChoice(handler, path)) {
+                            handler.setVariantChoice(path, data.value as string);
+                        } else {
+                            ErrorDialog.show({
+                                title: 'This action cannot be done right now',
+                                content: <div>'Cannot change this variant type to another type because the currently displayed item is referenced by some other item(s)'</div>
+                            });
+                        }
+                    }}
+                    options={opts}
+                    className='mbdb-section-label-text'
+                    disabled={isDisabled}
+                    selection
+                    fluid
+                />
             </div>
-        </>
+            {varComponent}
+        </div>
     );
 }, (prevProps, nextProps) => {
     return (
