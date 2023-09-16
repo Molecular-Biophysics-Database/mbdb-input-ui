@@ -9,8 +9,8 @@ export type CollapsibleProps = {
 };
 export function Collapsible(props: CollapsibleProps) {
     return (
-        <div className='mbdb-collapsible-tainer'>
-            <div className='mbdb-collapsible-header-tainer'>
+        <div className='mbdbi-collapsible-tainer'>
+            <div className='mbdbi-collapsible-header-tainer'>
                 <span
                     onClick={() => {
                         props.onCollapsedExpanded(!props.isCollapsed);

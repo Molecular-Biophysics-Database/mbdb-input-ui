@@ -146,14 +146,14 @@ const _NavigationListItem = React.memo(function MNavigationListItem(props: Navig
     onClick: () => void,
 }) {
     return (
-        <div className='mbdb-form-nav-list-item'>
-            <div className={clsx('mbdb-form-nav-list-item-title', props.isHighlighted && 'mbdb-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdb-2hgap))` }}>
+        <div className='mbdbi-form-nav-list-item'>
+            <div className={clsx('mbdbi-form-nav-list-item-title', props.isHighlighted && 'mbdbi-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdbi-2hgap))` }}>
                 <SIcon
                     onClick={() => scrollIntoView(props.actualTargetId)}
                     name={props.hasErrors ? 'warning sign' : 'chevron right'}
                     color={props.hasErrors ? 'red' : 'black'}
                 />
-                <a className={'mbdb-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
+                <a className={'mbdbi-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
             </div>
             <div>
                 {props.children ?? null}

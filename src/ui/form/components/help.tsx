@@ -11,7 +11,7 @@ export function HelpPopup({ help }: { help?: Help }) {
     return (
         <SPopup
             content={helpText}
-            trigger={<div className='mbdb-help-popup-trigger'>(?)</div>}
+            trigger={<div className='mbdbi-help-popup-trigger'>(?)</div>}
         />
     );
 }

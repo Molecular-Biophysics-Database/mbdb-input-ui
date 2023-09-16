@@ -6,7 +6,7 @@ export function Root({ schema }: { schema: TopLevelItem }) {
     const components = React.useMemo(() => schema.input.map((im, key) => component(im, 0, false, true, false, [], true, key)), [schema]);
 
     return (
-        <div className='mbdb-form-root'>
+        <div className='mbdbi-form-root'>
             {components}
         </div>
     );

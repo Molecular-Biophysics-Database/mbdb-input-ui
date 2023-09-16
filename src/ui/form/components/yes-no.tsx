@@ -58,7 +58,7 @@ const _Checkbox = React.memo(function MCheckbox({ id, isDisabled, path, handler,
 
     return (
         <SCheckbox
-            className={clsx(!noRightOffset && 'mbdb-right-offset')}
+            className={clsx(!noRightOffset && 'mbdbi-right-offset')}
             id={id}
             checked={localValue.checked}
             onChange={onChange}
@@ -121,7 +121,7 @@ export const YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRe
 
     return (
         <SDropdown
-            className={clsx(!noRightOffset && 'mbdb-right-offset')}
+            className={clsx(!noRightOffset && 'mbdbi-right-offset')}
             id={id}
             value={localValue.state}
             options={TristateOptions}

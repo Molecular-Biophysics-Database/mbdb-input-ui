@@ -4,7 +4,7 @@ import { TopLevelItem } from '../../schema';
 
 export function Input({ schema }: { schema: TopLevelItem }) {
     return (
-        <div className='mbdb-input-tainer'>
+        <div className='mbdbi-input-tainer'>
             <Root schema={schema} />
         </div>
     );

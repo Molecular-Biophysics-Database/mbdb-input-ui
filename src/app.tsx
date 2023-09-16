@@ -67,10 +67,10 @@ function makeSubmissionErrorContent(code: number, text: string, errors: string[]
         code !== 0
             ? (
                 <>
-                    <div className='mbdb-deposition-error-report mbdbi-center-text mbdbi-strong'>
+                    <div className='mbdbi-deposition-error-report mbdbi-center-text mbdbi-strong'>
                         Deposition failed because the database reported an error
                     </div>
-                    <div className='mbdb-deposition-error-report' style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-2hgap)' }}>
+                    <div className='mbdbi-deposition-error-report' style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdbi-2hgap)' }}>
                         <div>Status code</div><div>{code}</div>
                         <div>Message</div><div>{text}</div>
                         <div>Errors</div><div>{errors.map((err, idx) => <div key={idx}>{err}</div>)}</div>
@@ -78,10 +78,10 @@ function makeSubmissionErrorContent(code: number, text: string, errors: string[]
                 </>
             ) : (
                 <>
-                    <div className='mbdb-deposition-error-report mbdbi-center-text mbdbi-strong'>
+                    <div className='mbdbi-deposition-error-report mbdbi-center-text mbdbi-strong'>
                         Deposition failed because the remote server could not have been contacted
                     </div>
-                    <div className='mbdb-deposition-error-report mbdbi-center-text'>
+                    <div className='mbdbi-deposition-error-report mbdbi-center-text'>
                         {text}
                     </div>
                 </>
@@ -161,10 +161,10 @@ function App() {
                 icons: [<SIcon name='warning' />, <SIcon name='clipboard list' />],
                 content: (
                     <>
-                        <div className='mbdb-deposition-error-report mbdbi-center-text mbdbi-strong'>Cannot deposit record because there are some invalid items in the form.</div>
-                        <ul className='mbdb-deposition-error-report'>
+                        <div className='mbdbi-deposition-error-report mbdbi-center-text mbdbi-strong'>Cannot deposit record because there are some invalid items in the form.</div>
+                        <ul className='mbdbi-deposition-error-report'>
                             {errors.map((err, idx) => (
-                                <li className='mbdb-deposition-error-report' key={idx}>
+                                <li className='mbdbi-deposition-error-report' key={idx}>
                                     <div>{Data.Path.toString(err.path)}</div>
                                     <div>{err.message}</div>
                                 </li>
@@ -178,9 +178,9 @@ function App() {
 
     return (
         <>
-            <div className='mbdb-app-tainer'>
-                <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdb-hgap)' }}>
-                    <div style={{ display: 'grid', gap: 'var(--mbdb-hgap)', gridTemplateColumns: 'auto auto auto auto' }}>
+            <div className='mbdbi-app-tainer'>
+                <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdbi-hgap)' }}>
+                    <div style={{ display: 'grid', gap: 'var(--mbdbi-hgap)', gridTemplateColumns: 'auto auto auto auto' }}>
                         {/* First row */}
                         <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
                         <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
@@ -283,7 +283,7 @@ function App() {
                         />
                     </div>
 
-                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-hgap)' }}>
+                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)' }}>
                         <strong>Technique:</strong>
                         <SDropdown
                             options={availableSchemas}

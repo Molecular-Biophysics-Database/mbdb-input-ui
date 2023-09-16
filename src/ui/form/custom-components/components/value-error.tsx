@@ -15,7 +15,7 @@ import { Data, DataTree, Path } from '../../../../schema/data';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
 
-const Cell = { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdb-hgap)' };
+const Cell = { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdbi-hgap)' };
 
 const Required: { [key in keyof Omit<ValueErrorData, '__mbdb_group_marked_empty'>]: boolean } = {
     lower_error: true,
@@ -186,8 +186,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         return (
             <React.Fragment key={reactKey}>
                 <ItemLabel label='Value error' markAsRequired={false} id={id} />
-                <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: 'auto 1fr 1fr 1fr auto 1fr', gap: 'var(--mbdb-hgap)', width: '100%'}}>
-                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdb-hgap)' }}>
+                <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: 'auto 1fr 1fr 1fr auto 1fr', gap: 'var(--mbdbi-hgap)', width: '100%'}}>
+                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)' }}>
                         <SCheckbox
                             checked={isMarkedEmpty}
                             onChange={(_ev, data) => {

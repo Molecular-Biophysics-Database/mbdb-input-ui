@@ -75,7 +75,7 @@ const _Selection = React.memo(function MSelection({ id, choices, noRightOffset, 
 
     return (
         <SDropdown
-            className={clsx(!noRightOffset && 'mbdb-right-offset')}
+            className={clsx(!noRightOffset && 'mbdbi-right-offset')}
             id={id}
             value={localValue.tag}
             onChange={onChange}
@@ -158,7 +158,7 @@ export function OptionsWithOtherInput(props: Props) {
                 ? (
                     <div style={{ ...BorderStyle, ...PadStyle }}>
                         <SInput
-                            className={clsx(!props.noRightOffset && 'mbdb-right-offset')}
+                            className={clsx(!props.noRightOffset && 'mbdbi-right-offset')}
                             id={id}
                             type='text'
                             value={Value.toOtherOption(value)}

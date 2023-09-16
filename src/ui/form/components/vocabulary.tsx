@@ -60,16 +60,16 @@ function Result(props: any) {
         const v = ve.props[prop];
         if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') {
             details.push(
-                <div className='mbdb-voc-entry-detail-name' key={key++}>{niceLabel(prop)}</div>,
+                <div className='mbdbi-voc-entry-detail-name' key={key++}>{niceLabel(prop)}</div>,
                 <div key={key++}>{niceLabel(v.toString())}</div>
             );
         }
     }
     return (
         <div>
-            <div className='mbdb-voc-entry-title'>{ve.title.en}</div>
-            <div style={{ height: 'var(--mbdb-v2gap)' }} />
-            <div className='mbdb-voc-entry-details'>
+            <div className='mbdbi-voc-entry-title'>{ve.title.en}</div>
+            <div style={{ height: 'var(--mbdbi-v2gap)' }} />
+            <div className='mbdbi-voc-entry-details'>
                 {details}
             </div>
         </div>

@@ -20,11 +20,11 @@ export function niceLabel(label: string, noop = false) {
 export function sectionBgCls(isDark: boolean, isDisabled: boolean) {
     return isDark
         ? isDisabled
-            ? 'mbdb-section-disabled-dark'
-            : 'mbdb-block-dark'
+            ? 'mbdbi-section-disabled-dark'
+            : 'mbdbi-block-dark'
         : isDisabled
-            ? 'mbdb-section-disabled-light'
-            : 'mbdb-block-light';
+            ? 'mbdbi-section-disabled-light'
+            : 'mbdbi-block-light';
 }
 
 export function subtreeHasErrors(data: DataTree, path: Path, schema: TopLevelItem): boolean {

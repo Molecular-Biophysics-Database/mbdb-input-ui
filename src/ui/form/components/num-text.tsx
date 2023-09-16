@@ -60,7 +60,7 @@ const _TextualInput = React.memo(function MTextualInput({ id, isDisabled, valida
     return (
         <>
             <SInput
-                className={clsx(!noRightOffset && 'mbdb-right-offset')}
+                className={clsx(!noRightOffset && 'mbdbi-right-offset')}
                 id={id}
                 type='text'
                 value={localValue.text}

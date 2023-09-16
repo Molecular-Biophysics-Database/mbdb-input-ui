@@ -47,19 +47,19 @@ type AddItemButtonProps = {
 function AddItemButton(props: AddItemButtonProps) {
     return (
         <div
-            className='mbdb-array-add-item-button-tainer'
+            className='mbdbi-array-add-item-button-tainer'
             style={{ gridColumn: 'span 3' }}
         >
             <SButton
                 color='green'
-                className='mbdb-array-add-item-button'
+                className='mbdbi-array-add-item-button'
                 key='b+'
                 onClick={props.onClick}
                 disabled={props.isDisabled}
             >
-                <div className='mbdb-array-add-item-button-inner'>
-                    <span className='mbdb-array-add-item-button-plus'>+</span>
-                    <span className='mbdb-array-add-item-button-title'>{props.title}</span>
+                <div className='mbdbi-array-add-item-button-inner'>
+                    <span className='mbdbi-array-add-item-button-plus'>+</span>
+                    <span className='mbdbi-array-add-item-button-title'>{props.title}</span>
                 </div>
             </SButton>
         </div>
@@ -101,9 +101,9 @@ function ComplexArrayHeader(props: ComplexArrayHeaderProps) {
     const { handler } = React.useContext(FormContextInstance);
 
     return (
-        <div className='mbdb-array-complex-header mbdb-right-offset'>
-            <div className='mbdb-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
-            <div className='mbdb-array-complex-header-line' />
+        <div className='mbdbi-array-complex-header mbdbi-right-offset'>
+            <div className='mbdbi-array-complex-header-title'>{props.title}: {props.idx + 1}</div>
+            <div className='mbdbi-array-complex-header-line' />
             <SButton
                 color='red'
                 onClick={() => {
@@ -142,9 +142,9 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
     const darkBlk = useDarkBlock(nestLevel);
     const hasErrors = (!checkForErrors|| isDisabled) ? false : subtreeHasErrors(handler.data(), path, handler.schema());
     const tainerCls = clsx(
-        'mbdb-section', hasErrors && 'mbdb-section-has-errors',
-        'mbdb-array-tainer',
-        'mbdb-block',
+        'mbdbi-section', hasErrors && 'mbdbi-section-has-errors',
+        'mbdbi-array-tainer',
+        'mbdbi-block',
         sectionBgCls(darkBlk, isDisabled)
     );
 
@@ -272,7 +272,7 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
             ? (
                 <div className={tainerCls} id={tainerId}>
                     <SectionLabel label={niceLabel(item.label, !!item.dontTransformLabels)} markAsRequired={item.isRequired} help={item.help} />
-                    <div className='mbdb-right-offset' style={ GridInArrayStyle }>
+                    <div className='mbdbi-right-offset' style={ GridInArrayStyle }>
                         {components}
                     </div>
                 </div>

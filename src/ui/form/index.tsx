@@ -8,11 +8,11 @@ export function Form({ schema }: { schema: TopLevelItem }) {
 
     return (
         <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: '0', overflow: 'hidden' }}>
-            <div className='mbdb-navigation-tainer'>
+            <div className='mbdbi-navigation-tainer'>
                 <Navigation schema={schema} inputRef={inputRef} />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', columnGap: 'var(--mbdb-2hgap)', overflow: 'hidden' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', columnGap: 'var(--mbdbi-2hgap)', overflow: 'hidden' }}>
                 <div style={{ overflow: 'scroll' }} ref={inputRef}>
                     <Input schema={schema} />
                 </div>

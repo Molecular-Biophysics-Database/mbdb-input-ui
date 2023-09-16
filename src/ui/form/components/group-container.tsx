@@ -38,7 +38,7 @@ const _GroupContainerHeader = React.memo(function MGroupContainerHeader({ handle
     help?: Help,
 }) {
     return (
-        <div className='mbdb-group-container-header'>
+        <div className='mbdbi-group-container-header'>
             <SectionLabel label={label} markAsRequired={isRequired} help={help} />
             {!isRequired
                 ? (
@@ -69,7 +69,7 @@ const _GroupContainerContent = React.memo(function MGroupContainer(props: Props 
     const isReferenceable = Schema.groupIsReferenceable(props.input);
 
     return (
-        <div className='mbdb-item-grid'>
+        <div className='mbdbi-item-grid'>
             {props.input.map((im, idx) => component(im, props.nestLevel + 1, props.isMarkedEmpty || props.isDisabled, props.hasErrors, props.canParentMarkEmpty, props.path, isReferenceable, idx))}
         </div>
     );
@@ -98,9 +98,9 @@ export function GroupContainer(props: Props) {
 
     return (
         <div className={clsx(
-            'mbdb-section',
-            hasErrors && !isMarkedEmpty && 'mbdb-section-has-errors',
-            'mbdb-block',
+            'mbdbi-section',
+            hasErrors && !isMarkedEmpty && 'mbdbi-section-has-errors',
+            'mbdbi-block',
             sectionBgCls(darkBlk, props.isDisabled || isMarkedEmpty)
         )} id={id}>
             {!props.headerless

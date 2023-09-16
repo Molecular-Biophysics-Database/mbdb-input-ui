@@ -44,11 +44,11 @@ const _VariantInput = React.memo(function MVariantInput({ input, label, nestLeve
     const varComponent = component(varInput, nestLevel + 1, isDisabled, hasErrors, canParentMarkEmpty, path, Schema.itemHasReferenceable(varInput), void 0, true);
     return (
         <div className={clsx(
-            'mbdb-section', hasErrors && 'mbdb-section-has-errors',
-            'mbdb-block', sectionBgCls(darkBlk, isDisabled))}>
+            'mbdbi-section', hasErrors && 'mbdbi-section-has-errors',
+            'mbdbi-block', sectionBgCls(darkBlk, isDisabled))}>
             <_VariantAnchor path={Data.Path.path(variantChoice, path)} />
-            <div className='mbdb-variant-selection-tainer mbdb-right-offset'>
-                <div className='mbdb-section-label-text'>Type</div>
+            <div className='mbdbi-variant-selection-tainer mbdbi-right-offset'>
+                <div className='mbdbi-section-label-text'>Type</div>
                 <SDropdown
                     value={variantChoice}
                     onChange={(_ev, data) => {
@@ -62,7 +62,7 @@ const _VariantInput = React.memo(function MVariantInput({ input, label, nestLeve
                         }
                     }}
                     options={opts}
-                    className='mbdb-section-label-text'
+                    className='mbdbi-section-label-text'
                     disabled={isDisabled}
                     selection
                     fluid
