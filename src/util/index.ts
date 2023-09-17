@@ -33,14 +33,14 @@ export function isLeapYear(year: number) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
-export function isUrl(s: string) {
+export function isUrl(s: string, allowNoScheme = false) {
     // Scheme
     let idx = s.indexOf(':');
-    if (idx === 0) return false; // Empty scheme
+    if (idx === 0 || (idx < 0 && !allowNoScheme)) return false; // Empty or no scheme
     else if (idx > 0) {
         const scheme = s.substring(0, idx);
         if (!SchemeRegex.test(scheme)) return false;
-        s = s.substring(idx + 3);
+        s = s.substring(idx + 1);
     }
 
     // Authority
@@ -56,8 +56,8 @@ export function isUrl(s: string) {
 
         idx = s.indexOf('/');
         const hostname = s.substring(0, idx !== -1 ? idx : void 0);
-        if (!hostname) return false // Empty hostname
-        const valid = IpV4AddressRegex.test(hostname) || IpV6AddressRegex.test(hostname) || HostnameRegex.test(hostname);
+        if (!hostname && idx !== 0) return false; // Empty hostname and not absolute path
+        const valid = idx === 0 || IpV4AddressRegex.test(hostname) || IpV6AddressRegex.test(hostname) || HostnameRegex.test(hostname);
         if (!valid) return false;
 
         // This does not do anything right now but let's keep it here in case we'd like to process the path
