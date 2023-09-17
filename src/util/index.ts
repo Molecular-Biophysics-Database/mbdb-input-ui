@@ -1,4 +1,5 @@
 import { assert } from '../assert';
+import { clone as _justClone } from './just-clone';
 
 const SchemeRegex = new RegExp('^([A-Za-z]){1}([A-Za-z0-9+-.])*$');
 const IpV4AddressRegex = new RegExp('^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$');
@@ -27,6 +28,10 @@ export function daysInMonth(month: number, year: number) {
     if (LongMonths.includes(month)) return 31;
     else if (month === 2) return isLeapYear(year) ? 29 : 28;
     return 30;
+}
+
+export function deepCopy<T>(obj: T): T {
+    return _justClone(obj);
 }
 
 export function isLeapYear(year: number) {

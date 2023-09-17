@@ -12,10 +12,14 @@ export type ConfigurationItem = {
 };
 export type Configuration = Record<string, Partial<ConfigurationItem>>;
 
+function _throwBadConfiguration(message: string) {
+    throw new Error(`Schema configuration error: ${message}`);
+}
+
 function configureItem(item: Item, cfg: Partial<ConfigurationItem>) {
     if (cfg.order) {
         if (!Schema.hasComplexInput(item)) {
-            console.warn(`Attempted to reorder items in an item "${item.tag}" that does not have complex input. This is not allowed.`);
+            _throwBadConfiguration(`Attempted to reorder items in an item "${item.tag}" that does not have complex input. This is not allowed.`);
         } else {
             reorderChildren(item, cfg.order);
         }
@@ -33,38 +37,54 @@ function configureItem(item: Item, cfg: Partial<ConfigurationItem>) {
         item.dontTransformLabels = true;
     }
     if (cfg.defaultValue !== undefined) {
+        if (item.isArray) {
+            _throwBadConfiguration(`Setting default values for array items is not allowed but "${item.tag}" is an array.`);
+        }
+
         if (Schema.hasNumericInput(item)) {
             if (typeof cfg.defaultValue === 'number') {
-                item.defaultValue = cfg.defaultValue;
+                const min = item.minimum !== undefined ? item.minimum : -Number.MAX_VALUE;
+                const max = item.maximum !== undefined ? item.maximum : +Number.MAX_VALUE;
+                const val = cfg.defaultValue;
+
+                if (val < min || max < val) {
+                    _throwBadConfiguration(`Default value is outside the allowed range "${min} - ${max}".`);
+                }
+
+                item.defaultValue = val;
             } else {
-                console.warn(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
+                _throwBadConfiguration(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
             }
         } else if (Schema.hasTextualInput(item)) {
             if (typeof cfg.defaultValue === 'string') {
                 item.defaultValue = cfg.defaultValue;
             } else {
-                console.warn(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
+                _throwBadConfiguration(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
             }
         } else if (Schema.hasOptionsInput(item)) {
             if (typeof cfg.defaultValue === 'string' && !!item.choices.find((c) => c.tag === cfg.defaultValue)) {
                 item.defaultValue = cfg.defaultValue;
             } else {
-                console.warn(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
+                _throwBadConfiguration(`Invalid default value "${cfg.defaultValue}" for item "${item.tag}".`);
             }
         } else {
-            console.warn(`Attempted to set default value for item "${item.tag}" but that item cannot have default value.`);
+           _throwBadConfiguration(`Attempted to set default value for item "${item.tag}" but that item cannot have default value.`);
         }
     }
     if (cfg.forceChoice) {
         if (Schema.hasOptionsInput(item)) {
+            if (item.isArray) {
+                _throwBadConfiguration(`Forcing a choice for array items is not allowed but "${item.tag}" is an array.`);
+            }
+
             const choice = item.choices[0];
             if (choice === undefined) {
-                console.warn(`Attempted to for a choice for item "${item.tag}" but that item does not have any choices.`);
+                _throwBadConfiguration(`Attempted to force a choice for item "${item.tag}" but that item does not have any choices.`);
             } else {
                 item.defaultValue = choice.tag;
             }
         } else {
-            console.warn(`Attempted to force a value for item "${item.tag}" but this flag is valid only for items with Options input.`);
+            _throwBadConfiguration(`Attempted to force a value for item "${item.tag}" but this flag is valid only for items with Options input.`);
         }
     }
 }
@@ -172,6 +192,10 @@ export const Configuration = {
                     configurees = getAllConfigurees(configurees, tok);
                 }
 
+                if (configurees.length === 0) {
+                    _throwBadConfiguration(`No configurees for configuration item "${prop}".`)
+                }
+
                 for (const configuree of configurees) {
                     configureItem(configuree, cfg);
                 }
@@ -181,6 +205,8 @@ export const Configuration = {
                 const configuree = getSpecificConfiguree(schema.input, path);
                 if (configuree) {
                     configureItem(configuree, cfg);
+                } else {
+                    _throwBadConfiguration(`No configurees for configuration item "${prop}".`)
                 }
             }
         }
