@@ -15,7 +15,6 @@
         "strictFunctionTypes": true,
 
         "moduleResolution": "node",
-        "inlineSourceMap": true,
         "inlineSources": true,
         "sourceMap": true,
 
