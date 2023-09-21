@@ -111,5 +111,5 @@ function sharedConfig(productionBuild) {
         const productionBuild = argv.mode === 'production';
         console.log(`Build mode: ${productionBuild ? 'production' : 'development'}`);
 
-        return createApp('index', productionBuild);
+        return createApp('tester', productionBuild);
     };
