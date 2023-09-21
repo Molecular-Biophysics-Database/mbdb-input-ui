@@ -27,7 +27,6 @@ import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
 
-// HAKZ HAKZ HAKZ
 import { Register as SchemasRegister } from './schema/schemas/register';
 import { Register as ConfigRegister } from './schema/configuration/register';
 

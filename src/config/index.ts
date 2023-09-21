@@ -5,6 +5,7 @@ const ConfigObj = {
     isDevel: false as boolean,
     vocabulariesApiEndpoint: '',
 };
+export type AppConfig = typeof ConfigObj;
 
 function apply(cfg: { [key: string]: any }) {
     for (const k of objKeys(ConfigObj)) {
@@ -36,7 +37,7 @@ function cleanUrlSlashes(url: string) {
 }
 
 export const Config = {
-    get<K extends keyof typeof ConfigObj>(k: K): (typeof ConfigObj)[K]  {
+    get<K extends keyof AppConfig>(k: K): AppConfig[K]  {
         return ConfigObj[k];
     },
 
@@ -44,6 +45,10 @@ export const Config = {
         const req = await fetch('config.json');
         const cfg = await req.json();
 
+        apply(cfg);
+    },
+
+    set(cfg: Partial<AppConfig>) {
         apply(cfg);
     },
 }
