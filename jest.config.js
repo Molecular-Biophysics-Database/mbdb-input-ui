@@ -7,7 +7,7 @@ module.exports = {
     transform: {
         '^.+\\.tsx?$': [
             'ts-jest', {
-                'sourceMap': true
+                tsconfig: './tsconfig.development.json',
             }
         ]
     },

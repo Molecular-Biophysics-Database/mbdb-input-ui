@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "declarationMap": true,
+        "declarationMap": false,
         "incremental": true,
         "lib": [ "es6", "es2016", "dom" ],
         "module": "es2020",
@@ -18,7 +18,7 @@
         "moduleResolution": "node",
         "inlineSourceMap": false,
         "inlineSources": false,
-        "sourceMap": true,
+        "sourceMap": false,
 
         "noUnusedLocals": true,
         "esModuleInterop": true,
