@@ -222,6 +222,12 @@ export const References = {
         rr.splice(idx, 1);
     },
 
+    reset(refs: ReferenceAnchors) {
+        for (const prop in refs) {
+            refs[prop] = [];
+        }
+    },
+
     unref(refs: ReferenceAnchors, anchor: string, refId: string, refingId: string) {
         assert(refs[anchor] !== undefined, `Attempted to remove a reference for referenceable "${anchor}/${refId}" but the anchor does not exist.`);
 

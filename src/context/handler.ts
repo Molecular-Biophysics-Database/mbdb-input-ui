@@ -177,6 +177,10 @@ function makeHandler(ctxGetter: () => FormContext, updater: (handler: _FormConte
                 References.remove(ctxGetter().references, referenceAs, refId);
                 if (!passive) doUpdate();
             },
+
+            reset() {
+                References.reset(ctxGetter().references);
+            },
         },
 
         schema(): TopLevelItem {

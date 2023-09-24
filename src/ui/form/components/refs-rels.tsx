@@ -36,7 +36,7 @@ export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: strin
                 console.warn(`Attempted to remove non-existing reference "${refId}" for referenceable "${referenceAs}"`);
             }
         };
-    }, []);
+    }, [handler]);
 
     return null;
 }

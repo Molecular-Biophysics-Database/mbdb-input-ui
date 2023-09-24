@@ -7,19 +7,16 @@ import {
     Icon as SIcon,
 } from 'semantic-ui-react';
 import { Config } from './config';
-import { FormContext, FormContextInstance } from './context';
+import { FormContext } from './context';
 import { FormContextHandler, _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
 import { ErrorDialog } from './ui/error-dialog';
-import { Form } from './ui/form';
 import { Mbdb } from './mbdb';
 import { Deserialize as MbdbDeserialize } from './mbdb/deserialize';
 import { MbdbData } from './mbdb/data';
 import { MbdbModels } from './mbdb/models';
 import { Serialize as MbdbSerialize } from './mbdb/serialize';
 import { submitToMbdb } from './mbdb/submit';
-import { TopLevelItem } from './schema';
-import { Configuration } from './schema/configuration';
 import { Data } from './schema/data';
 import { Persistence } from './schema/persistence';
 import { Dialog } from './ui/dialog';
@@ -28,7 +25,7 @@ import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
 
 import { Register as SchemasRegister } from './schema/schemas/register';
-import { Register as ConfigRegister } from './schema/configuration/register';
+import { MinimalInputForm, initForm } from '.';
 
 function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext, mbdbObj: MbdbData) {
     let dbg = '';
@@ -109,6 +106,12 @@ function makeSubmissionErrorDialog(code: number, text: string, errors: string[],
 
 function App() {
     const keeper = getKeeper();
+    const { dataId, getData } = React.useMemo(() => {
+        const dataId = uuid_v4();
+        const getData = () => keeper.get(dataId).data;
+
+        return { dataId, getData };
+    }, []);
     const availableSchemas = React.useMemo(() => {
         const isDevel = Config.get('isDevel');
         const avail = [];
@@ -123,36 +126,38 @@ function App() {
     }, []);
     const [selectedSchema, setSelectedSchema] = React.useState<keyof typeof MbdbModels>('mst');
 
-    const dataId = React.useMemo(() => uuid_v4(), []);
-    const schema = React.useMemo(() => {
-        const schema = Configuration.configure(SchemasRegister[selectedSchema].schema, ConfigRegister[selectedSchema]);
-        const data = FormContext.create(schema);
-        keeper.set(dataId, data);
+    // NOTE: This is the part that you need to reimplement in your code if you want to use MinimalInputForm
+    const { ctxHandler } = React.useMemo(() => {
+        const keeper = getKeeper();
+        initForm(dataId, selectedSchema);
 
-        return schema;
-    }, [selectedSchema]);
+        const ctxGetter = () => keeper.get(dataId)!.data!;
+        const ctxUpdater = (handler: any) => setContextValue({ handler });
+        const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
 
-    const ctxGetter = () => keeper.get(dataId);
-    const ctxUpdater = (handler: any) => setContextValue({ handler });
-    const contextHandler = React.useMemo(() => {
-        return FormContextHandler.make(ctxGetter, ctxUpdater);
+        return { ctxHandler };
     }, []);
-    const [contextValue, setContextValue] = React.useState({ handler: contextHandler });
+    const [_contextValue, setContextValue] = React.useState({ handler: ctxHandler });
+    // End of the part that you need to reimplement if you want to use MinimalInputForm
+
+    React.useEffect(() => {
+        return () => getKeeper().remove(dataId);
+    }, []);
 
     const _submitToMbdb = (noSanityChecks = false) => {
-        const { toApi, errors } = Mbdb.toData(ctxGetter(), noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
+        const { toApi, errors } = Mbdb.toData(keeper.get(dataId).data, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
 
         if (errors.length === 0 || noSanityChecks) {
             submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
                 if (!resp.ok) {
                     resp.json().then((j) => {
-                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, j.message || resp.statusText, mbdbErrors(j.errors ?? []), toApi, ctxGetter()));
+                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, j.message || resp.statusText, mbdbErrors(j.errors ?? []), toApi, getData()));
                     }).catch(() => {
-                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, resp.statusText, [], toApi, ctxGetter()));
+                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, resp.statusText, [], toApi, getData()));
                     });
                 }
             }).catch((e) => {
-                ErrorDialog.show(makeSubmissionErrorDialog(0, e.message, [], toApi, ctxGetter()));
+                ErrorDialog.show(makeSubmissionErrorDialog(0, e.message, [], toApi, getData()));
             });
         } else {
             ErrorDialog.show({
@@ -176,140 +181,126 @@ function App() {
     };
 
     return (
-        <>
-            <div className='mbdbi-app-tainer'>
-                <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdbi-hgap)' }}>
-                    <div style={{ display: 'grid', gap: 'var(--mbdbi-hgap)', gridTemplateColumns: 'auto auto auto auto' }}>
-                        {/* First row */}
-                        <SButton color='red' inverted onClick={() => console.log(ctxGetter())}>Dump Full Object (don't touch)</SButton>
-                        <SButton color='red' inverted onClick={() => console.log(JSON.stringify(ctxGetter(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter()).toApi)}>Dump MBDB-schema object</SButton>
-                        <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(ctxGetter(), { dontPrune: true, ignoreErrors: true }).toApi)}>Dump MBDB-schema object (no nicening)</SButton>
+        <div>
+            <div style={{ alignItems: 'center', backgroundColor: '#eee', display: 'flex', flexDirection: 'column', gap: 'var(--mbdbi-hgap)' }}>
+                <div style={{ display: 'grid', gap: 'var(--mbdbi-hgap)', gridTemplateColumns: 'auto auto auto auto' }}>
+                    {/* First row */}
+                    <SButton color='red' inverted onClick={() => console.log(getData())}>Dump Full Object (don't touch)</SButton>
+                    <SButton color='red' inverted onClick={() => console.log(JSON.stringify(getData(), undefined, 2))}>Dump full JSON (don't touch)</SButton>
+                    <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(getData()).toApi)}>Dump MBDB-schema object</SButton>
+                    <SButton color='purple' inverted onClick={() => console.log(Mbdb.toData(getData(), { dontPrune: true, ignoreErrors: true }).toApi)}>Dump MBDB-schema object (no nicening)</SButton>
 
-                        {/* Second row */}
-                        <SButton
-                            style={{ flex: 1 }}
-                            color='teal'
-                            onClick={() => {
-                                const json = Persistence.toJson(ctxGetter().data, false);
-                                doDownload('mbdb_ui_input', json, FileTypes.json);
-                            }}
-                        >
-                            <SIcon name='download' />
-                            Save form to JSON
-                        </SButton>
-                        <LoadFileButton
-                            title='Load form from JSON'
-                            onLoaded={(file) => {
-                                Persistence.fromFile(file).then((json) => {
-                                    try {
-                                        FormContext.load(json, ctxGetter());
-                                        contextHandler.update();
-                                    } catch (e) {
-                                        ErrorDialog.show({ title: 'Cannot load form from Internal Input file', content: <div>{(e as Error).message}</div> });
-                                    }
-                                }).catch((e) => {
-                                    ErrorDialog.show({ title: 'Cannot load form from Internal Input file', content: <div>{(e as Error).message}</div> });
-                                })
-                            }}
-                            color='teal'
-                            fluid
-                        />
-                        <SButton
-                            color='blue'
-                            onClick={() => _submitToMbdb()}
-                        >
-                            <SIcon name='cloud upload' />
-                            Deposit record
-                        </SButton>
-                        <SButton
-                            color='blue'
-                            onClick={() => _submitToMbdb(true)}
-                        >
-                            <SIcon name='cloud upload' />
-                            Deposit record (without sanity checks)
-                        </SButton>
-
-                        {/* Third row */}
-                        <SButton
-                            style={{ flex: 1 }}
-                            color='olive'
-                            onClick={() => {
+                    {/* Second row */}
+                    <SButton
+                        style={{ flex: 1 }}
+                        color='teal'
+                        onClick={() => {
+                            const json = Persistence.toJson(getData().data, false);
+                            doDownload('mbdb_ui_input', json, FileTypes.json);
+                        }}
+                    >
+                        <SIcon name='download' />
+                        Save form to JSON
+                    </SButton>
+                    <LoadFileButton
+                        title='Load form from JSON'
+                        onLoaded={(file) => {
+                            Persistence.fromFile(file).then((json) => {
                                 try {
-                                    const json = MbdbSerialize.toJson(ctxGetter())
-                                    doDownload('mbdb_data', json, FileTypes.json);
-                                } catch (errors) {
-                                    console.log(errors);
+                                    FormContext.load(json, getData());
+                                    ctxHandler.update();
+                                } catch (e) {
+                                    ErrorDialog.show({ title: 'Cannot load form from Internal Input file', content: <div>{(e as Error).message}</div> });
                                 }
-                            }}
-                        >
-                            <SIcon name='download' />
-                            Save form as Mbdb data
-                        </SButton>
-                        <LoadFileButton
-                            title='Load form from Mbdb data'
-                            onLoaded={(file) => {
-                                MbdbDeserialize.fromFile(ctxGetter(), file).then((internalData) => {
-                                    try {
-                                        FormContext.load(internalData, ctxGetter());
-                                        contextHandler.update();
-                                    } catch (e) {
-                                        ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
-                                    }
-                                }).catch((e) => {
-                                    ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
-                                })
-                            }}
-                            color='olive'
-                            fluid
-                        />
-                        <LoadFileButton
-                            title='Load form from Mbdb data (allow partial input)'
-                            onLoaded={(file) => {
-                                MbdbDeserialize.fromFile(ctxGetter(), file, { allowPartials: true }).then((internalData) => {
-                                    try {
-                                        FormContext.load(internalData, ctxGetter());
-                                        contextHandler.update();
-                                    } catch (e) {
-                                        ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
-                                    }
-                                }).catch((e) => {
-                                    ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
-                                })
-                            }}
-                            color='olive'
-                            fluid
-                        />
-                    </div>
+                            }).catch((e) => {
+                                ErrorDialog.show({ title: 'Cannot load form from Internal Input file', content: <div>{(e as Error).message}</div> });
+                            })
+                        }}
+                        color='teal'
+                        fluid
+                    />
+                    <SButton
+                        color='blue'
+                        onClick={() => _submitToMbdb()}
+                    >
+                        <SIcon name='cloud upload' />
+                        Deposit record
+                    </SButton>
+                    <SButton
+                        color='blue'
+                        onClick={() => _submitToMbdb(true)}
+                    >
+                        <SIcon name='cloud upload' />
+                        Deposit record (without sanity checks)
+                    </SButton>
 
-                    <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)' }}>
-                        <strong>Technique:</strong>
-                        <SDropdown
-                            options={availableSchemas}
-                            value={selectedSchema}
-                            onChange={(_ev, data) => {
-                                setSelectedSchema(data.value as keyof typeof SchemasRegister);
-                            }}
-                            selection
-                            fluid
-                        />
-                    </div>
+                    {/* Third row */}
+                    <SButton
+                        style={{ flex: 1 }}
+                        color='olive'
+                        onClick={() => {
+                            try {
+                                const json = MbdbSerialize.toJson(getData())
+                                doDownload('mbdb_data', json, FileTypes.json);
+                            } catch (errors) {
+                                console.log(errors);
+                            }
+                        }}
+                    >
+                        <SIcon name='download' />
+                        Save form as Mbdb data
+                    </SButton>
+                    <LoadFileButton
+                        title='Load form from Mbdb data'
+                        onLoaded={(file) => {
+                            MbdbDeserialize.fromFile(getData(), file).then((internalData) => {
+                                try {
+                                    FormContext.load(internalData, getData());
+                                    ctxHandler.update();
+                                } catch (e) {
+                                    ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
+                                }
+                            }).catch((e) => {
+                                ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
+                            })
+                        }}
+                        color='olive'
+                        fluid
+                    />
+                    <LoadFileButton
+                        title='Load form from Mbdb data (allow partial input)'
+                        onLoaded={(file) => {
+                            MbdbDeserialize.fromFile(getData(), file, { allowPartials: true }).then((internalData) => {
+                                try {
+                                    FormContext.load(internalData, getData());
+                                    ctxHandler.update();
+                                } catch (e) {
+                                    ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
+                                }
+                            }).catch((e) => {
+                                ErrorDialog.show({ title: 'Cannot load form from MBDB data file', content: <div>{(e as Error).message}</div> });
+                            })
+                        }}
+                        color='olive'
+                        fluid
+                    />
                 </div>
-                <FormBlock schema={schema} contextValue={contextValue} />
+
+                <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)' }}>
+                    <strong>Technique:</strong>
+                    <SDropdown
+                        options={availableSchemas}
+                        value={selectedSchema}
+                        onChange={(_ev, data) => {
+                            setSelectedSchema(data.value as keyof typeof SchemasRegister);
+                        }}
+                        selection
+                        fluid
+                    />
+                </div>
             </div>
-        </>
-    );
-}
-
-export function FormBlock(props: { schema: TopLevelItem, contextValue: { handler: _FormContextHandler } }) {
-    React.useEffect(() => {
-        props.contextValue.handler.navigation.clear();
-    }, [props.schema]);
-
-    return (
-        <FormContextInstance.Provider value={props.contextValue}>
-            <Form schema={props.schema} />
-        </FormContextInstance.Provider>
+            <MinimalInputForm dataId={dataId} schemaName={selectedSchema} formContextHandler={ctxHandler} />
+        </div>
     );
 }
 
@@ -321,23 +312,24 @@ export async function initApp(elemId: string) {
 
     try {
         await Config.load();
-        const root = RDC.createRoot(appRoot);
-
-        // If you are looking at this bit of code, it is possible that
-        // you have just came back from some blog post or a React developer
-        // docs that talk about rendering in StrictMode. Yes, the guy who wrote
-        // this knew what StrictMode was. Yes, the guy knew that it is supposed
-        // to be good. No, we cannot use it here.
-        //
-        // StrictMode will do an additional pass on rendering and effects to catch bugs.
-        // This problem is that this breaks the way we handle references. This may trigger
-        // unmounts of components with "referenceable" that are referenced by something.
-        // When these components unmount, they unregister themselves from the list of referenceables.
-        // Since they are referenced by something, this will trigger an assertion fail.
-        // This scenario cannot realisically happen because the UI checks for this and
-        // does not allow removals of referenceables that are referenced.
-        root.render(<App />);
     } catch (e) {
-        console.log(`Failed to load application configuration: ${e}`);
+        console.warn(`Failed to load application configuration: ${e}`);
     }
+
+    const root = RDC.createRoot(appRoot);
+
+    // If you are looking at this bit of code, it is possible that
+    // you have just came back from some blog post or a React developer
+    // docs that talk about rendering in StrictMode. Yes, the guy who wrote
+    // this knew what StrictMode was. Yes, the guy knew that it is supposed
+    // to be good. No, we cannot use it here.
+    //
+    // StrictMode will do an additional pass on rendering and effects to catch bugs.
+    // This problem is that this breaks the way we handle references. This may trigger
+    // unmounts of components with "referenceable" that are referenced by something.
+    // When these components unmount, they unregister themselves from the list of referenceables.
+    // Since they are referenced by something, this will trigger an assertion fail.
+    // This scenario cannot realisically happen because the UI checks for this and
+    // does not allow removals of referenceables that are referenced.
+    root.render(<App />);
 }

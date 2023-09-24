@@ -1,5 +1,6 @@
 /* vim: set sw=4 ts=4 sts=4 expandtab : */
 
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -43,13 +44,10 @@ function sharedConfig(productionBuild) {
                 },
                 {
                     test: /\.css$/,
-                    use: [{
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            sourceMap: false,
-                        },
-                    }],
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader',
+                    ],
                 },
                 {
                     test: /\.woff2$/,
@@ -87,7 +85,8 @@ function sharedConfig(productionBuild) {
                         './assets/*.html',
                     ],
                 }),
-                new MiniCssExtractPlugin(),
+                new CssMinimizerPlugin(),
+                new MiniCssExtractPlugin({ filename: 'mbdb-input-form.css' }),
             ],
         }
     }
