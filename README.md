@@ -10,7 +10,7 @@ MBDB input form is built on top of [React](https://react.dev/) and [Semantic UI]
 
 To embed the input form in a custom code, you may use the following code snippet
 
-```
+```jsx
 import { ManagedInputForm } from '@mbdb/input-form/lib';
 import { getKeeper } from '@mbdb/input-form/lib/context/keeper';
 
@@ -45,7 +45,7 @@ and tell the form to re-render itself.
 The code below demonstrates how to create the `handler` and `MinimalInputForm` component to get a form over which you can have full
 control from "the outside".
 
-```
+```jsx
 import { MinimalInputForm, initForm } from '@mbdb/input-form/lib';
 import { FormContext } from '@mbdb/input-form/lib/context';
 import { FormContextHandler } from '@mbdb/input-form/lib/context/handler';
