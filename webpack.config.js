@@ -50,16 +50,6 @@ function sharedConfig(productionBuild) {
                     ],
                 },
                 {
-                    test: /\.woff2$/,
-                    use: [{
-                        loader: 'file-loader',
-                        options: {
-                            name: 'themes/default/assets/fonts/[name].[ext]',
-                            sourceMap: false,
-                        },
-                    }],
-                },
-                {
                     test: /\.less$/,
                     use: [
                         MiniCssExtractPlugin.loader,
