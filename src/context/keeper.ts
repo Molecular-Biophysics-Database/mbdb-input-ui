@@ -19,26 +19,58 @@ import { MbdbModels } from '../mbdb/models';
 // is managed by React. This is why we have this global Keeper. React code only gets the "id" of the data and
 // a function to call that picks the data up from the keeper.
 
-const _data = new Map<string, { schemaName: keyof typeof MbdbModels, data: FormContext }>();
+export type KeptData = { schemaName: keyof typeof MbdbModels, data: FormContext };
+const _data = new Map<string, KeptData>();
 
 const Keeper = {
+    /**
+     * Retrieves data based on its `id`.
+     *
+     * @param {string} id - `id` of the data to retrieve
+     * @return {KeptData | undefined} The data or `undefined` if data with the given `id` does not exist
+     */
     get(id: string) {
         return _data.get(id)!;
     },
 
+    /**
+     * Checks if the data with  the given `id` exists.
+     *
+     * @param {string} id - `id` of the data to check
+     * @return {boolean} True if the data exists, false otherwise
+     */
     has(id: string) {
         return _data.has(id);
     },
 
+    /**
+     * Removes data with the `id` from the storage.
+     *
+     * @param {string} id - `id` of the data to remove
+     * @return {void}
+     */
     remove(id: string) {
         _data.delete(id);
     },
 
-    set(id: string, content: { schemaName: keyof typeof MbdbModels, data: FormContext }) {
-        _data.set(id, content);
+    /**
+     * Stores new data under the given `id` in the storage.
+     * If there already is data stored under the given `id`, it is overwritten by by the new data.
+     *
+     * @param {string} id - `id` of the data to store
+     * @param {KeptData} newData - Data to store
+     * @return {void}
+     */
+    set(id: string, newData: KeptData) {
+        _data.set(id, newData);
     },
 };
 
+/**
+ * Retrieves the `Keeper` instance
+ *
+ * @return {Keeper} The `Keeper` instance
+ */
 export function getKeeper() {
     return Keeper;
 }
