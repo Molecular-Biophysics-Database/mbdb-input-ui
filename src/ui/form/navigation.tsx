@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Icon as SIcon,
 } from 'semantic-ui-react';
@@ -148,29 +148,28 @@ const _NavigationListItem = React.memo(function MNavigationListItem(props: Navig
     actualTargetId: string,
     isHighlighted: boolean,
     onClick: () => void,
-}) { 
+}) {
+    const [collapsed, setCollapsed] = React.useState(false);
 
-    const [collapsed, setCollapsed] = useState(false)
     return (
         <div className='mbdbi-form-nav-list-item'>
             <div className={clsx('mbdbi-form-nav-list-item-title', props.isHighlighted && 'mbdbi-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdbi-3hgap))` }}>
                 <SIcon
                     onClick={() => setCollapsed(!collapsed)}
-                    name={!props.children 
-                            ? 'circle outline' 
-                            : collapsed 
+                    name={!props.children
+                            ? 'circle outline'
+                            : collapsed
                                 ? 'chevron right' : 'chevron down'}
                 />
                 <div className='mbdbi-form-nav-link-block'>
                     <a className={'mbdbi-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
-                    {props.hasErrors 
+                    {props.hasErrors
                         ?
                             <SIcon
                                 name='exclamation triangle'
                                 color='red'
                             />
-                        :
-                        null
+                        : null
                     }
                 </div>
             </div>
@@ -235,10 +234,10 @@ export type NavigationProps = {
     inputRef: React.RefObject<HTMLDivElement>,
     schema: TopLevelItem,
 };
- 
+
 type NavigationState = {
-    nesting: number
-}
+    nesting: number,
+};
 
 export class Navigation extends React.Component<NavigationProps, NavigationState> {
     static contextType = FormContextInstance;
@@ -312,11 +311,11 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                 <div className='mbdbi-nested-title'>Number of levels</div>
                 <div className='mbdbi-nested-items'>
                     <Button icon size='mini' onClick={() => {
-                        if(this.state.nesting > MinimunNesting) {
-                        this.setState({ nesting: this.state.nesting - 1 })
-                        } 
+                        if (this.state.nesting > MinimunNesting) {
+                            this.setState({ nesting: this.state.nesting - 1 });
+                        }
                     }}>
-                        <SIcon 
+                        <SIcon
                             name='window minimize'
                             size='tiny'
                         />
@@ -325,11 +324,11 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                         {this.state.nesting}
                     </div>
                     <Button icon size='mini' onClick={() => {
-                        if(this.state.nesting < MaximumNesting) {
-                            this.setState({ nesting: this.state.nesting + 1 })
+                        if (this.state.nesting < MaximumNesting) {
+                            this.setState({ nesting: this.state.nesting + 1 });
                         }
                     }}>
-                        <SIcon 
+                        <SIcon
                             name='plus'
                             size='small'
                         />
