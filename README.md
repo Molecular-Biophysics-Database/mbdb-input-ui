@@ -28,7 +28,7 @@ function ComponentWithInputForm() {
                 console.log(data);
             }}>Dump form data</button>
 
-            <ManagedInputForm dataId={mbdbDataId}
+            <ManagedInputForm dataId={mbdbDataId} schemaName='mst' />
         </div>
     );
 }
