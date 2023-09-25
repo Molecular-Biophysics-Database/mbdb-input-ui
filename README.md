@@ -38,7 +38,7 @@ The code above will display a for and allow you to read its content by quering t
 
 ### Advanced case
 
-If you need more that read-only access to the form's data, a bit more sophistication is needed.
+If you need more than read-only access to the form's data, a bit more sophistication is needed.
 Apart from the form component you will also need to create a `handler`. You can use the `handler` to manipulate data in the form
 and tell the form to re-render itself.
 
