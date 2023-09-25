@@ -1,8 +1,9 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Icon as SIcon,
 } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react'
 import { PathId } from './path-id';
 import { niceLabel, subtreeHasErrors } from './util';
 import { assert } from '../../assert';
@@ -12,7 +13,10 @@ import { Item, Schema, TopLevelItem } from '../../schema';
 import { Data } from '../../schema/data';
 
 const TopCorrection = 5;
-const MaximumNesting = 10;
+const DefaultNesting = 3;
+const MinimunNesting = 1;
+const MaximumNesting = 8;
+
 
 type Rect = { top: number, bottom: number };
 
@@ -56,8 +60,8 @@ function isVisible(bRect: Rect, topOffset: number) {
     return topOffset >= bRect.top - TopCorrection && topOffset < bRect.bottom;
 }
 
-function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, checkForErrors: boolean, tainerRect: DOMRect) {
-    if (level === MaximumNesting) return null;
+function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlId: string, level: number, isParentMarkedEmpty: boolean, checkForErrors: boolean, tainerRect: DOMRect, nesting:number) {
+    if (level === nesting) return null;
 
     const data = ctxHandler.data();
     const schema = ctxHandler.schema();
@@ -73,7 +77,7 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
         if (Data.has(ctxHandler.data(), choicePath)) {
             const htmlId = PathId.extendId(choice, parentHtmlId);
             const hasErrors = (!checkForErrors || isParentMarkedEmpty) ? false : subtreeHasErrors(data, path, schema);
-            const innerList = navigationList(item.input[choice], ctxHandler, htmlId, level + 1, isParentMarkedEmpty, hasErrors, tainerRect);
+            const innerList = navigationList(item.input[choice], ctxHandler, htmlId, level + 1, isParentMarkedEmpty, hasErrors, tainerRect, nesting);
 
             listItems.push(
                 <NavigationListItem label={niceLabel(choice, !!item.input[choice].dontTransformLabels)} targetId={htmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr} isVariant>
@@ -107,7 +111,7 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
                                 const isCollapsed = ctxHandler.navigation.isCollapsed(ctxHandler.getItem(Data.Path.index(idx, path)));
 
                                 const itemHtmlId = PathId.extendId(idx, htmlId, true);
-                                const innerList = isCollapsed ? null : navigationList(innerItem, ctxHandler, itemHtmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect);
+                                const innerList = isCollapsed ? null : navigationList(innerItem, ctxHandler, itemHtmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect, nesting);
                                 listItems.push(
                                     <NavigationListItem label={`${label}: ${idx + 1}`} targetId={itemHtmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr}>
                                         {innerList}
@@ -117,7 +121,7 @@ function navigationList(item: Item, ctxHandler: _FormContextHandler, parentHtmlI
                             }
                         }
                     } else {
-                        const innerList = navigationList(innerItem, ctxHandler, htmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect);
+                        const innerList = navigationList(innerItem, ctxHandler, htmlId, level + 1, innerIsMarkedEmpty, hasErrors, tainerRect, nesting);
                         listItems.push(
                             <NavigationListItem label={label} targetId={htmlId} tainerRect={tainerRect} level={level} hasErrors={hasErrors} key={ctr}>
                                 {innerList}
@@ -144,20 +148,40 @@ const _NavigationListItem = React.memo(function MNavigationListItem(props: Navig
     actualTargetId: string,
     isHighlighted: boolean,
     onClick: () => void,
-}) {
+}) { 
+
+    const [collapsed, setCollapsed] = useState(false)
     return (
         <div className='mbdbi-form-nav-list-item'>
-            <div className={clsx('mbdbi-form-nav-list-item-title', props.isHighlighted && 'mbdbi-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdbi-2hgap))` }}>
+            <div className={clsx('mbdbi-form-nav-list-item-title', props.isHighlighted && 'mbdbi-form-nav-list-item-title-highlighted')} style={{ paddingLeft: `calc(${props.level} * var(--mbdbi-3hgap))` }}>
                 <SIcon
-                    onClick={() => scrollIntoView(props.actualTargetId)}
-                    name={props.hasErrors ? 'warning sign' : 'chevron right'}
-                    color={props.hasErrors ? 'red' : 'black'}
+                    onClick={() => setCollapsed(!collapsed)}
+                    name={!props.children 
+                            ? 'circle outline' 
+                            : collapsed 
+                                ? 'chevron right' : 'chevron down'}
                 />
-                <a className={'mbdbi-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
+                <div className='mbdbi-form-nav-link-block'>
+                    <a className={'mbdbi-form-nav-link'} onClick={() => scrollIntoView(props.actualTargetId)}>{props.label}</a>
+                    {props.hasErrors 
+                        ?
+                            <SIcon
+                                name='exclamation triangle'
+                                color='red'
+                            />
+                        :
+                        null
+                    }
+                </div>
             </div>
-            <div>
-                {props.children ?? null}
-            </div>
+            {collapsed 
+                ? 
+                    null 
+                : 
+                    (<div>
+                        {props.children ?? null}
+                    </div>)
+            }
         </div>
     );
 });
@@ -211,7 +235,12 @@ export type NavigationProps = {
     inputRef: React.RefObject<HTMLDivElement>,
     schema: TopLevelItem,
 };
-export class Navigation extends React.Component<NavigationProps> {
+ 
+type NavigationState = {
+    nesting: number
+}
+
+export class Navigation extends React.Component<NavigationProps, NavigationState> {
     static contextType = FormContextInstance;
     _refreshFunc = () => {
         const input = this.props.inputRef?.current;
@@ -227,6 +256,13 @@ export class Navigation extends React.Component<NavigationProps> {
     resizeHandlerRegistered = false;
     scrollHandlerRegistered = false;
     boundingRect: DOMRect = new DOMRect();
+
+    constructor(props:NavigationProps) {
+        super(props);
+        this.state = {
+          nesting: DefaultNesting,
+        };
+    }
 
     componentDidMount() {
         const input = this.props.inputRef?.current;
@@ -271,6 +307,37 @@ export class Navigation extends React.Component<NavigationProps> {
     render() {
         const { handler } = this.context as { handler: _FormContextHandler }; // What the hell is up with this?
 
-        return navigationList(this.props.schema as Item, handler, '', 0, false, true, this.boundingRect);
+        return (<>
+            <div className='mbdbi-nested-content'>
+                <div className='mbdbi-nested-title'>Number of levels</div>
+                <div className='mbdbi-nested-items'>
+                    <Button icon size='mini' onClick={() => {
+                        if(this.state.nesting > MinimunNesting) {
+                        this.setState({ nesting: this.state.nesting - 1 })
+                        } 
+                    }}>
+                        <SIcon 
+                            name='window minimize'
+                            size='tiny'
+                        />
+                    </Button>
+                    <div className='mbdbi-nested-item'>
+                        {this.state.nesting}
+                    </div>
+                    <Button icon size='mini' onClick={() => {
+                        if(this.state.nesting < MaximumNesting) {
+                            this.setState({ nesting: this.state.nesting + 1 })
+                        }
+                    }}>
+                        <SIcon 
+                            name='plus'
+                            size='small'
+                        />
+                    </Button>
+                </div>
+            </div>
+            {navigationList(this.props.schema as Item, handler, '', 0, false, true, this.boundingRect, this.state.nesting)}
+        </>
+        )
     }
 }
