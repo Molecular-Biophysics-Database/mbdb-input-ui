@@ -1,5 +1,5 @@
 import React from 'react';
-import * as RDC from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { v4 as uuid_v4 } from 'uuid';
 import {
     Button as SButton,
@@ -23,7 +23,6 @@ import { Dialog } from './ui/dialog';
 import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
-import { guessReactMajorVersion } from './util/hacks';
 
 import { Register as SchemasRegister } from './schema/schemas/register';
 import { MinimalInputForm, initForm } from '.';
@@ -331,12 +330,6 @@ export async function initApp(elemId: string) {
     // This scenario cannot realisically happen because the UI checks for this and
     // does not allow removals of referenceables that are referenced.
 
-    if (guessReactMajorVersion() >= 18) {
-        const root = RDC.createRoot(appRoot);
-        root.render(<App />);
-    } else {
-        // Let's hope this works...
-        const ReactDOM = require('react-dom');
-        ReactDOM.render(<App />, appRoot);
-    }
+    // Use the legacy API to retain support for React 16
+    ReactDOM.render(<App />, appRoot);
 }

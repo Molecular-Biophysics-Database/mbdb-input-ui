@@ -1,5 +1,5 @@
 import React from 'react';
-import * as RDC from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import {
     Button as SButton,
     SemanticCOLORS
@@ -164,11 +164,12 @@ export const Dialog = {
         document.body.appendChild(tainer);
         const _buttons = fixupButtons(props.buttons);
 
-        const reactRoot = RDC.createRoot(tainer!)
-        reactRoot.render(
+        // Use the legacy API to retain support for React 16
+        ReactDOM.render(
             <_Dialog {...props} buttons={_buttons} parentElement={tainer}>
                 {props.content}
-            </_Dialog>
+            </_Dialog>,
+            tainer!
         );
     },
 
