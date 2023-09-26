@@ -35,6 +35,28 @@ export function initForm(dataId: string, schemaName: SchemaNames) {
 }
 
 /**
+ * Custom hook that creates the FormContextHandler.
+ * @param { string } dataId: ID of the data within the `Keeper` data storage object
+ * @param { SchemaName } schemaName: Name of the schema to use
+ * @return { _FormContextHandler }
+ */
+export function useContextHandler(dataId: string, schemaName: SchemaNames) {
+    const ctxHandler = React.useMemo(() => {
+        const keeper = getKeeper();
+        initForm(dataId, schemaName);
+
+        const ctxGetter = () => keeper.get(dataId)!.data!;
+        const ctxUpdater = (handler: any) => setContextValue({ handler });
+        const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
+
+        return ctxHandler;
+    }, []);
+    const [_contextValue, setContextValue] = React.useState({ handler: ctxHandler });
+
+    return ctxHandler;
+}
+
+/**
  * `MinimalInputForm` is a component that creates an input form based of the provided `schemaName`.
  * Unlike `ManagedInputForm`, `MinimalInputForm` receives `FormContextHandler` instance as a property.
  * This gives the user full control over the data in the form and the option to trigger re-renders
@@ -46,7 +68,7 @@ export function initForm(dataId: string, schemaName: SchemaNames) {
  * @param props The properties object
  * @param props.dataId ID of the data within the `Keeper` data storage object. Shall be unique for each rendered form.
  * @param props.schemaName Name of the schema to render in the form
- * @param props.formContextHandler `FormContextHandler` instance
+ * @param props.formContextHandler `_FormContextHandler` instance
  */
 export function MinimalInputForm(props: { dataId: string, schemaName: SchemaNames, formContextHandler: _FormContextHandler }) {
     // BEWARE: No, we cannot use useEffect here because it runs too late.
@@ -81,19 +103,7 @@ export function MinimalInputForm(props: { dataId: string, schemaName: SchemaName
  * @param props.schemaName Name of the schema to render in the form
  */
 export function ManagedInputForm(props: { dataId: string, schemaName: SchemaNames }) {
-    // NOTE: This is the part that you need to reimplement in your code if you want to use MinimalInputForm
-    const { ctxHandler } = React.useMemo(() => {
-        const keeper = getKeeper();
-        initForm(props.dataId, props.schemaName);
-
-        const ctxGetter = () => keeper.get(props.dataId)!.data!;
-        const ctxUpdater = (handler: any) => setContextValue({ handler });
-        const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
-
-        return { ctxHandler };
-    }, []);
-    const [_contextValue, setContextValue] = React.useState({ handler: ctxHandler });
-    // End of the part that you need to reimplement if you want to use MinimalInputForm
+    const ctxHandler = useContextHandler(props.dataId, props.schemaName);
 
     return <MinimalInputForm dataId={props.dataId} schemaName={props.schemaName} formContextHandler={ctxHandler} />;
 }

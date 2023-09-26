@@ -46,7 +46,7 @@ The code below demonstrates how to create the `handler` and `MinimalInputForm` c
 control from "the outside".
 
 ```jsx
-import { MinimalInputForm, initForm } from '@mbdb/input-form/lib';
+import { MinimalInputForm, useContextHandler } from '@mbdb/input-form/lib';
 import { FormContext } from '@mbdb/input-form/lib/context';
 import { FormContextHandler } from '@mbdb/input-form/lib/context/handler';
 import { Deserialize } from '@mbdb/input-form/lib/mbdb/deserialize';
@@ -60,17 +60,7 @@ const mbdbDataId = 'mbdb-form-data-id';
 const mbdbSchemaName = 'mst';
 
 function ComponentWithInputForm() {
-    const { ctxHandler } = React.useMemo(() => {
-        const keeper = getKeeper();
-        initForm(mbdbDataId, mbdbSchemaName);
-
-        const ctxGetter = () => keeper.get(mbdbDataId).data;
-        const ctxUpdater = (handler) => setContextValue({ handler });
-        const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
-
-        return { ctxHandler };
-    }, []);
-    const [_contextValue, setContextValue] = React.useState({ handler: ctxHandler });
+    const ctxHandler = useContextHandler();
     const [inputFile, setInputFile] = React.useState(null);
 
     return (

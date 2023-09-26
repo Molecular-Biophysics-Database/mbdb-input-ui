@@ -6,9 +6,10 @@ import {
     Dropdown as SDropdown,
     Icon as SIcon,
 } from 'semantic-ui-react';
+import { MinimalInputForm, useContextHandler } from '.';
 import { Config } from './config';
 import { FormContext } from './context';
-import { FormContextHandler, _FormContextHandler } from './context/handler';
+import { _FormContextHandler } from './context/handler';
 import { getKeeper } from './context/keeper';
 import { ErrorDialog } from './ui/error-dialog';
 import { Mbdb } from './mbdb';
@@ -19,13 +20,11 @@ import { Serialize as MbdbSerialize } from './mbdb/serialize';
 import { submitToMbdb } from './mbdb/submit';
 import { Data } from './schema/data';
 import { Persistence } from './schema/persistence';
+import { Register as SchemasRegister } from './schema/schemas/register';
 import { Dialog } from './ui/dialog';
 import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
-
-import { Register as SchemasRegister } from './schema/schemas/register';
-import { MinimalInputForm, initForm } from '.';
 
 function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext, mbdbObj: MbdbData) {
     let dbg = '';
@@ -125,20 +124,7 @@ function App() {
         return avail;
     }, []);
     const [selectedSchema, setSelectedSchema] = React.useState<keyof typeof MbdbModels>('mst');
-
-    // NOTE: This is the part that you need to reimplement in your code if you want to use MinimalInputForm
-    const { ctxHandler } = React.useMemo(() => {
-        const keeper = getKeeper();
-        initForm(dataId, selectedSchema);
-
-        const ctxGetter = () => keeper.get(dataId)!.data!;
-        const ctxUpdater = (handler: any) => setContextValue({ handler });
-        const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
-
-        return { ctxHandler };
-    }, []);
-    const [_contextValue, setContextValue] = React.useState({ handler: ctxHandler });
-    // End of the part that you need to reimplement if you want to use MinimalInputForm
+    const ctxHandler = useContextHandler(dataId, selectedSchema);
 
     React.useEffect(() => {
         return () => getKeeper().remove(dataId);
