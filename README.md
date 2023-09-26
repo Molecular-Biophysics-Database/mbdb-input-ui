@@ -60,7 +60,7 @@ const mbdbDataId = 'mbdb-form-data-id';
 const mbdbSchemaName = 'mst';
 
 function ComponentWithInputForm() {
-    const ctxHandler = useContextHandler();
+    const ctxHandler = useContextHandler(mbdbDataId, mbdbSchemaName);
     const [inputFile, setInputFile] = React.useState(null);
 
     return (
