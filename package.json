@@ -1,6 +1,6 @@
 {
   "name": "@mbdb/input-form",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Input form UI for the mbdb-app",
   "files": [
     "assets/",
