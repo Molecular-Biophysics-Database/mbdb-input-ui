@@ -15,8 +15,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.8',
-                        title: '0.9.8',
+                        tag: '0.9.9',
+                        title: '0.9.9',
                     },
                 ],
                 help: {
@@ -27,7 +27,7 @@ export const MST = [
                 tag: 'record_information',
                 label: 'record_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/record_information',
                 input: [
                     {
@@ -331,7 +331,7 @@ export const MST = [
                 tag: 'depositors',
                 label: 'depositors',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/depositors',
                 input: [
                     {
@@ -889,7 +889,7 @@ export const MST = [
                 tag: 'instrument',
                 label: 'instrument',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/instrument',
                 input: [
                     {
@@ -12765,7 +12765,7 @@ export const MST = [
                 tag: 'chemical_information',
                 label: 'chemical_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/chemical_information',
                 input: [
                     {
@@ -33488,7 +33488,7 @@ export const MST = [
         tag: 'method_specific_parameters',
         label: 'method_specific_parameters',
         isArray: false,
-        isRequired: false,
+        isRequired: true,
         mbdbPath: 'method_specific_parameters',
         input: [
             {
@@ -33500,8 +33500,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.3',
-                        title: '0.9.3',
+                        tag: '0.9.5',
+                        title: '0.9.5',
                     },
                 ],
                 help: {
@@ -33637,6 +33637,15 @@ export const MST = [
                 mbdbPath: 'method_specific_parameters/measurements[]',
                 minItems: 1,
                 input: [
+                    {
+                        tag: 'id',
+                        label: 'id',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/measurements[]/id',
+                        input: 'referenceable-id',
+                        referenceAs: 'mst-measurement',
+                    },
                     {
                         tag: 'name',
                         label: 'name',
@@ -34329,7 +34338,7 @@ export const MST = [
                 tag: 'data_analysis',
                 label: 'data_analysis',
                 isArray: true,
-                isRequired: true,
+                isRequired: false,
                 mbdbPath: 'method_specific_parameters/data_analysis[]',
                 minItems: 1,
                 input: [
@@ -34337,7 +34346,7 @@ export const MST = [
                         tag: 'derived_parameter',
                         label: 'derived_parameter',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
                         input: 'related-to',
                         relatesTo: 'derived-parameter',
@@ -34345,6 +34354,23 @@ export const MST = [
                             'id',
                             'name',
                         ],
+                    },
+                    {
+                        tag: 'measurements',
+                        label: 'measurements',
+                        isArray: true,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/measurements[]',
+                        minItems: 1,
+                        input: 'related-to',
+                        relatesTo: 'mst-measurement',
+                        relatedKeys: [
+                            'id',
+                            'name',
+                        ],
+                        help: {
+                            en: 'List of measurement links that was analyzed together',
+                        },
                     },
                     {
                         tag: 'f_cold_and_hot',
@@ -34524,7 +34550,7 @@ export const MST = [
                         tag: 'data_fitting',
                         label: 'data_fitting',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting',
                         input: [
                             {

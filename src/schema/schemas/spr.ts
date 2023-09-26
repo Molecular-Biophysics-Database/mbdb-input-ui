@@ -15,8 +15,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.8',
-                        title: '0.9.8',
+                        tag: '0.9.9',
+                        title: '0.9.9',
                     },
                 ],
                 help: {
@@ -27,7 +27,7 @@ export const SPR = [
                 tag: 'record_information',
                 label: 'record_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/record_information',
                 input: [
                     {
@@ -331,7 +331,7 @@ export const SPR = [
                 tag: 'depositors',
                 label: 'depositors',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/depositors',
                 input: [
                     {
@@ -889,7 +889,7 @@ export const SPR = [
                 tag: 'instrument',
                 label: 'instrument',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/instrument',
                 input: [
                     {
@@ -12765,7 +12765,7 @@ export const SPR = [
                 tag: 'chemical_information',
                 label: 'chemical_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/chemical_information',
                 input: [
                     {
@@ -33488,7 +33488,7 @@ export const SPR = [
         tag: 'method_specific_parameters',
         label: 'method_specific_parameters',
         isArray: false,
-        isRequired: false,
+        isRequired: true,
         mbdbPath: 'method_specific_parameters',
         input: [
             {
@@ -33500,8 +33500,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.0',
-                        title: '0.9.0',
+                        tag: '0.9.2',
+                        title: '0.9.2',
                     },
                 ],
                 help: {
@@ -34084,6 +34084,26 @@ export const SPR = [
                 mbdbPath: 'method_specific_parameters/measurements[]',
                 minItems: 1,
                 input: [
+                    {
+                        tag: 'id',
+                        label: 'id',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/measurements[]/id',
+                        input: 'referenceable-id',
+                        referenceAs: 'spr-measurement',
+                    },
+                    {
+                        tag: 'name',
+                        label: 'name',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/measurements[]/name',
+                        input: 'string',
+                        help: {
+                            en: 'Name (id) of the measurement which must be unique within a record (i.e. triplicates must be named individually in the raw data file). The name must allow location of the measurement data within the raw data file as well as processed data files if these are present',
+                        },
+                    },
                     {
                         tag: 'measurement_position',
                         label: 'measurement_position',
@@ -34977,7 +34997,7 @@ export const SPR = [
                 tag: 'data_analysis',
                 label: 'data_analysis',
                 isArray: true,
-                isRequired: true,
+                isRequired: false,
                 mbdbPath: 'method_specific_parameters/data_analysis[]',
                 minItems: 1,
                 input: [
@@ -34985,7 +35005,7 @@ export const SPR = [
                         tag: 'derived_parameter',
                         label: 'derived_parameter',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
                         input: 'related-to',
                         relatesTo: 'derived-parameter',
@@ -34993,6 +35013,23 @@ export const SPR = [
                             'id',
                             'name',
                         ],
+                    },
+                    {
+                        tag: 'measurements',
+                        label: 'measurements',
+                        isArray: true,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/measurements[]',
+                        minItems: 1,
+                        input: 'related-to',
+                        relatesTo: 'spr-measurement',
+                        relatedKeys: [
+                            'id',
+                            'name',
+                        ],
+                        help: {
+                            en: 'List of measurement links that was analyzed together',
+                        },
                     },
                     {
                         tag: 'data_processing_steps',
@@ -35077,7 +35114,7 @@ export const SPR = [
                         tag: 'data_fitting',
                         label: 'data_fitting',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting',
                         input: [
                             {

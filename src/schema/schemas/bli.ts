@@ -15,8 +15,8 @@ export const BLI = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.8',
-                        title: '0.9.8',
+                        tag: '0.9.9',
+                        title: '0.9.9',
                     },
                 ],
                 help: {
@@ -27,7 +27,7 @@ export const BLI = [
                 tag: 'record_information',
                 label: 'record_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/record_information',
                 input: [
                     {
@@ -331,7 +331,7 @@ export const BLI = [
                 tag: 'depositors',
                 label: 'depositors',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/depositors',
                 input: [
                     {
@@ -889,7 +889,7 @@ export const BLI = [
                 tag: 'instrument',
                 label: 'instrument',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/instrument',
                 input: [
                     {
@@ -12765,7 +12765,7 @@ export const BLI = [
                 tag: 'chemical_information',
                 label: 'chemical_information',
                 isArray: false,
-                isRequired: false,
+                isRequired: true,
                 mbdbPath: 'general_parameters/chemical_information',
                 input: [
                     {
@@ -33488,7 +33488,7 @@ export const BLI = [
         tag: 'method_specific_parameters',
         label: 'method_specific_parameters',
         isArray: false,
-        isRequired: false,
+        isRequired: true,
         mbdbPath: 'method_specific_parameters',
         input: [
             {
@@ -33500,8 +33500,8 @@ export const BLI = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.1',
-                        title: '0.9.1',
+                        tag: '0.9.3',
+                        title: '0.9.3',
                     },
                 ],
                 help: {
@@ -34274,6 +34274,26 @@ export const BLI = [
                 minItems: 1,
                 input: [
                     {
+                        tag: 'id',
+                        label: 'id',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/measurements[]/id',
+                        input: 'referenceable-id',
+                        referenceAs: 'bli-measurement',
+                    },
+                    {
+                        tag: 'name',
+                        label: 'name',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/measurements[]/name',
+                        input: 'string',
+                        help: {
+                            en: 'Name (id) of the measurement which must be unique within a record (i.e. triplicates must be named individually in the raw data file). The name must allow location of the measurement data within the raw data file as well as processed data files if these are present',
+                        },
+                    },
+                    {
                         tag: 'sensor',
                         label: 'sensor',
                         isArray: false,
@@ -34850,7 +34870,7 @@ export const BLI = [
                 tag: 'data_analysis',
                 label: 'data_analysis',
                 isArray: true,
-                isRequired: true,
+                isRequired: false,
                 mbdbPath: 'method_specific_parameters/data_analysis[]',
                 minItems: 1,
                 input: [
@@ -34858,7 +34878,7 @@ export const BLI = [
                         tag: 'derived_parameter',
                         label: 'derived_parameter',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
                         input: 'related-to',
                         relatesTo: 'derived-parameter',
@@ -34866,6 +34886,23 @@ export const BLI = [
                             'id',
                             'name',
                         ],
+                    },
+                    {
+                        tag: 'measurements',
+                        label: 'measurements',
+                        isArray: true,
+                        isRequired: false,
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/measurements[]',
+                        minItems: 1,
+                        input: 'related-to',
+                        relatesTo: 'bli-measurement',
+                        relatedKeys: [
+                            'id',
+                            'name',
+                        ],
+                        help: {
+                            en: 'List of measurement links that was analyzed together',
+                        },
                     },
                     {
                         tag: 'data_processing_steps',
@@ -34950,7 +34987,7 @@ export const BLI = [
                         tag: 'data_fitting',
                         label: 'data_fitting',
                         isArray: false,
-                        isRequired: true,
+                        isRequired: false,
                         mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting',
                         input: [
                             {
