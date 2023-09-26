@@ -23,6 +23,7 @@ import { Dialog } from './ui/dialog';
 import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
+import { guessReactMajorVersion } from './util/hacks';
 
 import { Register as SchemasRegister } from './schema/schemas/register';
 import { MinimalInputForm, initForm } from '.';
@@ -316,8 +317,6 @@ export async function initApp(elemId: string) {
         console.warn(`Failed to load application configuration: ${e}`);
     }
 
-    const root = RDC.createRoot(appRoot);
-
     // If you are looking at this bit of code, it is possible that
     // you have just came back from some blog post or a React developer
     // docs that talk about rendering in StrictMode. Yes, the guy who wrote
@@ -331,5 +330,13 @@ export async function initApp(elemId: string) {
     // Since they are referenced by something, this will trigger an assertion fail.
     // This scenario cannot realisically happen because the UI checks for this and
     // does not allow removals of referenceables that are referenced.
-    root.render(<App />);
+
+    if (guessReactMajorVersion() >= 18) {
+        const root = RDC.createRoot(appRoot);
+        root.render(<App />);
+    } else {
+        // Let's hope this works...
+        const ReactDOM = require('react-dom');
+        ReactDOM.render(<App />, appRoot);
+    }
 }

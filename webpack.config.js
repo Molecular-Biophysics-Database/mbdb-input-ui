@@ -53,7 +53,20 @@ function sharedConfig(productionBuild) {
                     test: /\.less$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        'css-loader',
+                        {
+                            // Workaround for Semantic UI being broken adapted from here: https://github.com/Semantic-Org/Semantic-UI-CSS/issues/75
+                            loader: 'css-loader',
+                            options: {
+                                url: {
+                                    filter: (url) => {
+                                        // Semantic-UI-CSS has an extra semi colon in one of the URL due to which CSS loader along
+                                        // with webpack 5 fails to generate a build.
+                                        // Below if condition is a hack. After Semantic-UI-CSS fixes this, one can replace use clause with just
+                                        return !url.includes('charset=utf-8;;');
+                                    }
+                                }
+                            },
+                        },
                         'less-loader'
                     ],
                 },

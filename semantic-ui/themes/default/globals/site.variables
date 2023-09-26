@@ -404,9 +404,9 @@
 @relativeTiny    : unit( round(@tinySize * @emSize) / @emSize, em);
 @relativeSmall   : unit( round(@smallSize * @emSize) / @emSize, em);
 @relativeMedium  : unit( round(@mediumSize * @emSize) / @emSize, em);
-@relativeLarge   : unit( (round(@largeSize * @emSize) / @emSize), em);
-@relativeBig     : unit( (round(@bigSize * @emSize) / @emSize), em);
-@relativeHuge    : unit( round(@hugeSize * @emSize / @emSize), em);
+@relativeLarge   : unit( round(@largeSize * @emSize) / @emSize, em);
+@relativeBig     : unit( round(@bigSize * @emSize) / @emSize, em);
+@relativeHuge    : unit( round(@hugeSize * @emSize) / @emSize, em);
 @relativeMassive : unit( round(@massiveSize * @emSize) / @emSize, em);
 
 /* rem */
