@@ -21,8 +21,9 @@ export type SchemaNames = keyof typeof MbdbModels;
  * Configures the schema object and creates or updates the
  * `FormContext` object in the `Keeper` data storage object.
  *
- * @param dataId: ID of the data within the `Keeper` data storage object.
- * @param schemaName: Name of the schema to use
+ * @param { string } dataId - ID of the data within the `Keeper` data storage object.
+ * @param { SchemaNames } schemaName - Name of the schema to use
+ * @return { void }
  */
 export function initForm(dataId: string, schemaName: SchemaNames) {
     const schema = Configuration.configure(
@@ -36,8 +37,8 @@ export function initForm(dataId: string, schemaName: SchemaNames) {
 
 /**
  * Custom hook that creates the FormContextHandler.
- * @param { string } dataId: ID of the data within the `Keeper` data storage object
- * @param { SchemaName } schemaName: Name of the schema to use
+ * @param { string } dataId - ID of the data within the `Keeper` data storage object
+ * @param { SchemaName } schemaName - Name of the schema to use
  * @return { _FormContextHandler }
  */
 export function useContextHandler(dataId: string, schemaName: SchemaNames) {
@@ -65,10 +66,10 @@ export function useContextHandler(dataId: string, schemaName: SchemaNames) {
  * to do that prior to rendering the component. *
  * See the code of `ManagedInputForm` for guidance how to create a `FormContextHandler` instance.
  *
- * @param props The properties object
- * @param props.dataId ID of the data within the `Keeper` data storage object. Shall be unique for each rendered form.
- * @param props.schemaName Name of the schema to render in the form
- * @param props.formContextHandler `_FormContextHandler` instance
+ * @param props - The properties object
+ * @param { string } props.dataId - ID of the data within the `Keeper` data storage object. Shall be unique for each rendered form.
+ * @param { SchemaNames } props.schemaName - Name of the schema to render in the form
+ * @param { _FormContextHandler } props.formContextHandler - `_FormContextHandler` instance
  */
 export function MinimalInputForm(props: { dataId: string, schemaName: SchemaNames, formContextHandler: _FormContextHandler }) {
     // BEWARE: No, we cannot use useEffect here because it runs too late.
@@ -98,9 +99,9 @@ export function MinimalInputForm(props: { dataId: string, schemaName: SchemaName
  * `ManagedInputForm` does not initialize the configuration object. It is the user's responsibility
  * to do that prior to rendering the component.
  *
- * @param props The properties object
- * @param props.dataId ID of the data within the `Keeper` data storage object. Shall be unique for each rendered form.
- * @param props.schemaName Name of the schema to render in the form
+ * @param props - The properties object
+ * @param { string } props.dataId - ID of the data within the `Keeper` data storage object. Shall be unique for each rendered form.
+ * @param { SchemaNames } props.schemaName - Name of the schema to render in the form
  */
 export function ManagedInputForm(props: { dataId: string, schemaName: SchemaNames }) {
     const ctxHandler = useContextHandler(props.dataId, props.schemaName);
@@ -119,9 +120,9 @@ ManagedInputForm.propTypes = {
  * At the moment the component does not provide any functionality to retrieve the data directly
  * and should be only used for testing.
  *
- * @param props The properties object
- * @param props.schemaName Name of the schema to render in the form
- * @param props.appConfiguration Optional configuration options
+ * @param props - The properties object
+ * @param { SchemaNames } props.schemaName - Name of the schema to render in the form
+ * @param props.appConfiguration - Optional configuration options
  */
 export function StandaloneInputForm(props: { schemaName: SchemaNames, appConfiguration: Partial<AppConfig> }) {
     const dataId = React.useMemo(() => Uuid.get(), []);
