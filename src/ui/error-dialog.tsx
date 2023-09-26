@@ -24,7 +24,7 @@ export const ErrorDialog = {
                     {props.icons
                         ? (
                             <div className='mbdbi-icon-list'>
-                                {props.icons}
+                                {Array.isArray(props.icons) ? props.icons.map((ic, idx) => <React.Fragment key={idx}>{ic}</React.Fragment>) : props.icons}
                             </div>
                         )
                         : <SIcon name='warning' />
