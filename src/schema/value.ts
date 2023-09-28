@@ -19,6 +19,19 @@ export type CalendarDate = {
     day: number,
 };
 
+export type StoredFile = {
+    __mbdb_stored_file: '__mbdb_stored_file',
+    file: File | null,
+    metadata: string,
+};
+function StoredFile(file: File | null, metadata: string): StoredFile {
+    return {
+        __mbdb_stored_file: '__mbdb_stored_file',
+        file,
+        metadata,
+    };
+}
+
 export type Option = {
     tag: string,
     other?: string,
@@ -31,7 +44,7 @@ export type VocabularyEntry = {
 };
 
 export type Value = BaseValue & {
-    payload: boolean | string | CalendarDate | Option | Tristate | VocabularyEntry,
+    payload: boolean | string | CalendarDate | Option | Tristate | StoredFile | VocabularyEntry
     isValid: boolean,
 };
 export type TValue<T extends Value['payload']> = BaseValue & {
@@ -76,6 +89,8 @@ export const Value = {
             return Value.empty(!isRequired);
         } else if (Schema.hasVocabularyInput(item)) {
             return this.emptyVocabularyEntry(!isRequired);
+        } else if (Schema.hasFileInput(item)) {
+            return this.emptyFile(!isRequired);
         }
 
         assert(false, `Attempted to get default value for item "${item.tag}" with input "${item.input}" but no default value is available`);
@@ -83,6 +98,13 @@ export const Value = {
 
     empty(isValid = false) {
         const v = mkValue('');
+        v.isValid = isValid;
+
+        return v;
+    },
+
+    emptyFile(isValid = false) {
+        const v = mkValue(StoredFile(null, ''));
         v.isValid = isValid;
 
         return v;
@@ -97,6 +119,13 @@ export const Value = {
 
     emptyVocabularyEntry(isValid: boolean) {
         return this.vocabularyEntry('', '', null, isValid);
+    },
+
+    file(file: File | null, metadata: string, isValid: boolean): TValue<StoredFile> {
+        const v = mkValue(StoredFile(file, metadata));
+        v.isValid = isValid;
+
+        return v;
     },
 
     isBoolean(value: Value): value is TValue<boolean> {
@@ -119,9 +148,17 @@ export const Value = {
     isEmpty(value: Value) {
         if (typeof value.payload === 'string') {
             return value.payload === '';
+        } else if (this.isOption(value)) {
+            return this.isEmptyOption(value);
+        } else if (this.isFile(value)) {
+            return this.isEmptyFile(value);
         } else {
             return false;
         }
+    },
+
+    isEmptyFile(value: TValue<StoredFile>) {
+        return value.payload.file === null;
     },
 
     isEmptyOption(value: Value) {
@@ -161,6 +198,11 @@ export const Value = {
         } else {
             return value.payload === '' || References.isValidRefId(value.payload);
         }
+    },
+
+    isFile(value: Value): value is TValue<StoredFile> {
+        const p = value.payload as any;
+        return p['__mbdb_stored_file'] === '__mbdb_stored_file';
     },
 
     isTextual(value: Value): value is TValue<string> {
@@ -228,6 +270,14 @@ export const Value = {
     toCalendarDate(value: Value) {
         if (!this.isCalendarDate(value)) {
             throw new Error(`Value with payload ${value.payload} is not a calendar date.`);
+        }
+
+        return value.payload;
+    },
+
+    toFile(value: Value) {
+        if (!this.isFile(value)) {
+            throw new Error(`Value with paylado ${value.payload} is not a File.`);
         }
 
         return value.payload;

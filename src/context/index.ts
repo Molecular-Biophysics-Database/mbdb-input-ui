@@ -350,7 +350,11 @@ export const FormContext = {
     },
 
     empty(): FormContext {
-        return { data: {}, references: {}, schema: TopLevelItem([]) };
+        return {
+            data: {},
+            references: {},
+            schema: TopLevelItem([]),
+        };
     },
 
     load(inData: any, ctx: FormContext) {

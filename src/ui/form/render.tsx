@@ -2,6 +2,7 @@ import React from 'react';
 import { niceLabel } from './util';
 import { ArrayContainer } from './components/array-container';
 import { CalendarDateInput } from './components/date';
+import { FileInput } from './components/file';
 import { GroupContainer } from './components/group-container';
 import { FloatInput, IntInput, StringInput, UrlInput } from "./components/num-text";
 import { OptionsInput, OptionsWithOtherInput } from './components/options';
@@ -160,6 +161,8 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
         return null;
     } else if (Schema.hasVocabularyInput(item)) {
         return <VocabularyInput label={label} help={item.help} path={path} isRequired={isRequired} vocabularyType={item.vocabularyType} key={key} />;
+    } else if (Schema.hasFileInput(item)) {
+        return <FileInput label={label} help={item.help} path={path} isRequired={isRequired} isDisabled={isDisabled} />;
     } else if (Schema.hasCustomInput(item)) {
         const Maker = Register.get(item.component).Component;
         assert(!!Maker, `No custom component "${item.component}"`);

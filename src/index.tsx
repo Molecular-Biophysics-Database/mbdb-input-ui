@@ -43,10 +43,9 @@ export function initForm(dataId: string, schemaName: SchemaNames) {
  */
 export function useContextHandler(dataId: string, schemaName: SchemaNames) {
     const ctxHandler = React.useMemo(() => {
-        const keeper = getKeeper();
         initForm(dataId, schemaName);
 
-        const ctxGetter = () => keeper.get(dataId)!.data!;
+        const ctxGetter = () => getKeeper().get(dataId)!.data!;
         const ctxUpdater = (handler: any) => setContextValue({ handler });
         const ctxHandler = FormContextHandler.make(ctxGetter, ctxUpdater);
 
