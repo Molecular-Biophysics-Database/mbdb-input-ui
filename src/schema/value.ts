@@ -152,6 +152,8 @@ export const Value = {
             return this.isEmptyOption(value);
         } else if (this.isFile(value)) {
             return this.isEmptyFile(value);
+        } else if (this.isVocabularyEntry(value)) {
+            return this.isEmptyVocabularyEntry(value);
         } else {
             return false;
         }
@@ -161,12 +163,8 @@ export const Value = {
         return value.payload.file === null;
     },
 
-    isEmptyOption(value: Value) {
-        if (this.isOption(value)) {
-            return value.payload.tag === Schema.EmptyChoice;
-        } else {
-            return false;
-        }
+    isEmptyOption(value: TValue<Option>) {
+        return value.payload.tag === Schema.EmptyChoice;
     },
 
     isEmptyVocabularyEntry(value: TValue<VocabularyEntry>) {
