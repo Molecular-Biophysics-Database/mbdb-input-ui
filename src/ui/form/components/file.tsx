@@ -32,6 +32,7 @@ type Props = {
 }
 export function FileInput(props: Props) {
     const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
+    const fiId = React.useMemo(() => id + "_fileinput", [id]);
     const { handler } = React.useContext(FormContextInstance);
     const labelRef = React.useRef<HTMLLabelElement>(null);
 
@@ -45,7 +46,7 @@ export function FileInput(props: Props) {
                 {/* File selection section */}
                 <input
                     style={{ display: 'none' }}
-                    id={id}
+                    id={fiId}
                     type='file'
                     multiple={false}
                     onChange={(ev) => {
@@ -59,12 +60,8 @@ export function FileInput(props: Props) {
                         }
                     }}
                 />
+
                 <FileName fileName={isEmpty ? '' : Value.toFile(v).file!.name} isValid={v.isValid} />
-                <label
-                    style={{ display: 'none' }}
-                    htmlFor={id}
-                    ref={labelRef}
-                />
                 <SButton
                     onClick={() => {
                         const c = labelRef.current;
@@ -88,7 +85,11 @@ export function FileInput(props: Props) {
                     <SIcon name='cancel' />
                     Clear
                 </SButton>
-                <div />
+                <label
+                    id={id}
+                    htmlFor={fiId}
+                    ref={labelRef}
+                />
 
                 {/* File description section*/}
                 <div className='mbdbi-file-input-controls-wide'>File description:</div>
