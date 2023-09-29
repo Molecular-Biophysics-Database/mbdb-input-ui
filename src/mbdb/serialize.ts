@@ -83,8 +83,10 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             }
         } else if (Schema.hasFileInput(item)) {
             assert(Value.isFile(v), 'Value is not a File');
-            assert(v.payload.file !== null, 'Value of a file must not be null');
 
+            if (options?.ignoreErrors && v.payload.file === null) return;
+
+            assert(v.payload.file !== null, 'Value of a file must not be null');
             if (files.find((x) => x.file!.name === v.payload.file?.name)) {
                 errors.push(DataError(internalParentPath, `File named "${v.payload.file!.name}" is present more than once in the data.`));
             } else {
