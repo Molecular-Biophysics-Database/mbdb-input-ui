@@ -25,11 +25,12 @@ import { Dialog } from './ui/dialog';
 import { LoadFileButton } from './ui/load-file-button';
 import { objKeys } from './util';
 import { doDownload, FileTypes } from './util/download';
+import { Result } from './util/result';
 
-function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext, mbdbObj: MbdbData) {
+function collectDebugInfo(errorCode: number, ctx: FormContext, mbdbObj: MbdbData) {
     let dbg = '';
 
-    dbg += `Error ${errorCode}: ${errorText}\n\n`;
+    dbg += `Error ${errorCode}\n\n`;
 
     dbg += '### Internal data representation ###\n';
     dbg += JSON.stringify(ctx.data, null, 2);
@@ -42,22 +43,7 @@ function collectDebugInfo(errorCode: number, errorText: string, ctx: FormContext
     navigator.clipboard.writeText(dbg);
 }
 
-function mbdbErrors(errors: { field: string, messages: string[] }[]) {
-    const out = [];
-
-    for (const err of errors) {
-        const field = err.field;
-        const msgs = err.messages;
-
-        if (field && msgs && Array.isArray(msgs)) {
-            out.push(`${field}: ${msgs.join(', ')}`);
-        }
-    }
-
-    return out;
-}
-
-function makeSubmissionErrorContent(code: number, text: string, errors: string[], payload: MbdbData) {
+function makeSubmissionErrorContent(code: number, errors: string[], payload: MbdbData) {
     return (
         code !== 0
             ? (
@@ -67,7 +53,6 @@ function makeSubmissionErrorContent(code: number, text: string, errors: string[]
                     </div>
                     <div className='mbdbi-deposition-error-report' style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdbi-2hgap)' }}>
                         <div>Status code</div><div>{code}</div>
-                        <div>Message</div><div>{text}</div>
                         <div>Errors</div><div>{errors.map((err, idx) => <div key={idx}>{err}</div>)}</div>
                     </div>
                 </>
@@ -76,28 +61,27 @@ function makeSubmissionErrorContent(code: number, text: string, errors: string[]
                     <div className='mbdbi-deposition-error-report mbdbi-center-text mbdbi-strong'>
                         Deposition failed because the remote server could not have been contacted
                     </div>
-                    <div className='mbdbi-deposition-error-report mbdbi-center-text'>
-                        {text}
+                    <div className='mbdbi-deposition-error-report' style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'var(--mbdbi-2hgap)' }}>
+                        <div>Errors</div><div>{errors.map((err, idx) => <div key={idx}>{err}</div>)}</div>
                     </div>
                 </>
             )
     );
 }
 
-function makeSubmissionErrorDialog(code: number, text: string, errors: string[], payload: MbdbData, ctx: FormContext) {
+function makeSubmissionErrorDialog(code: number, errors: string[], payload: MbdbData, ctx: FormContext) {
     return {
         title: 'Cannot deposit record because there was an issue on the backend',
         icons: [<SIcon name='warning' />, <SIcon name='database' />],
         content: makeSubmissionErrorContent(
             code,
-            text,
             errors,
             payload, // The metadata object, we probably won't need this in production
         ),
         extraButtons: [{ label: 'Collect debugging info', id: 0, flags: 0, color: 0x4af0ff }],
         onButton: (id: number, flags: number) => {
             if (Dialog.isUserButton(flags) && id === 0) {
-                collectDebugInfo(code, text, ctx, payload)
+                collectDebugInfo(code, ctx, payload)
             }
         },
     };
@@ -131,19 +115,15 @@ function App() {
     }, []);
 
     const _submitToMbdb = (noSanityChecks = false) => {
-        const { toApi, errors } = Mbdb.toData(keeper.get(dataId).data, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
+        const { toApi, errors, files } = Mbdb.toData(keeper.get(dataId).data, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
 
         if (errors.length === 0 || noSanityChecks) {
-            submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, toApi).then((resp) => {
-                if (!resp.ok) {
-                    resp.json().then((j) => {
-                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, j.message || resp.statusText, mbdbErrors(j.errors ?? []), toApi, getData()));
-                    }).catch(() => {
-                        ErrorDialog.show(makeSubmissionErrorDialog(resp.status, resp.statusText, [], toApi, getData()));
-                    });
+            submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, { metadata: toApi, files }, { asDraft: true }).then((res) => {
+                if (Result.isError(res)) {
+                    ErrorDialog.show(makeSubmissionErrorDialog(res.error.code, res.error.errors, toApi, getData()));
                 }
             }).catch((e) => {
-                ErrorDialog.show(makeSubmissionErrorDialog(0, e.message, [], toApi, getData()));
+                ErrorDialog.show(makeSubmissionErrorDialog(0, [e.message], toApi, getData()));
             });
         } else {
             ErrorDialog.show({

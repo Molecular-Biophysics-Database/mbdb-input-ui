@@ -1,4 +1,4 @@
-import { Item, Schema } from './';
+import { DepositedFile, Item, Schema } from './';
 import { References } from './references';
 import { Tristate, isTristate } from './tristate';
 import { Uuid } from './uuid';
@@ -19,12 +19,10 @@ export type CalendarDate = {
     day: number,
 };
 
-export type StoredFile = {
+export type DepositedFilePayload = {
     __mbdb_stored_file: '__mbdb_stored_file',
-    file: File | null,
-    metadata: string,
-};
-function StoredFile(file: File | null, metadata: string): StoredFile {
+} & DepositedFile;
+function DepositedFilePayload(file: File | null, metadata: string): DepositedFilePayload {
     return {
         __mbdb_stored_file: '__mbdb_stored_file',
         file,
@@ -44,7 +42,7 @@ export type VocabularyEntry = {
 };
 
 export type Value = BaseValue & {
-    payload: boolean | string | CalendarDate | Option | Tristate | StoredFile | VocabularyEntry
+    payload: boolean | string | CalendarDate | Option | Tristate | DepositedFilePayload | VocabularyEntry
     isValid: boolean,
 };
 export type TValue<T extends Value['payload']> = BaseValue & {
@@ -104,7 +102,7 @@ export const Value = {
     },
 
     emptyFile(isValid = false) {
-        const v = mkValue(StoredFile(null, ''));
+        const v = mkValue(DepositedFilePayload(null, ''));
         v.isValid = isValid;
 
         return v;
@@ -121,8 +119,8 @@ export const Value = {
         return this.vocabularyEntry('', '', null, isValid);
     },
 
-    file(file: File | null, metadata: string, isValid: boolean): TValue<StoredFile> {
-        const v = mkValue(StoredFile(file, metadata));
+    file(file: File | null, metadata: string, isValid: boolean): TValue<DepositedFilePayload> {
+        const v = mkValue(DepositedFilePayload(file, metadata));
         v.isValid = isValid;
 
         return v;
@@ -159,7 +157,7 @@ export const Value = {
         }
     },
 
-    isEmptyFile(value: TValue<StoredFile>) {
+    isEmptyFile(value: TValue<DepositedFilePayload>) {
         return value.payload.file === null;
     },
 
@@ -198,7 +196,7 @@ export const Value = {
         }
     },
 
-    isFile(value: Value): value is TValue<StoredFile> {
+    isFile(value: Value): value is TValue<DepositedFilePayload> {
         const p = value.payload as any;
         return p['__mbdb_stored_file'] === '__mbdb_stored_file';
     },

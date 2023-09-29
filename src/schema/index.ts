@@ -67,6 +67,14 @@ export function TopLevelItem(input: ComplexInput): TopLevelItem {
     return { tag: '__MBDB_Top_Level_Item', input };
 }
 
+export type DepositedFile = {
+    file: File | null,
+    metadata: string,
+};
+export function DepositedFile(file: File | null, metadata: string): DepositedFile {
+    return { file, metadata };
+}
+
 export const Schema = {
     groupHasReferenceable(item: ComplexItem) {
         return this.groupIsReferenceable(item.input);
