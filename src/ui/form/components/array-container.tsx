@@ -51,7 +51,6 @@ function AddItemButton(props: AddItemButtonProps) {
             style={{ gridColumn: 'span 3' }}
         >
             <SButton
-                color='green'
                 className='mbdbi-array-add-item-button'
                 key='b+'
                 onClick={props.onClick}
