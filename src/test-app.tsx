@@ -272,7 +272,7 @@ function App() {
                     />
                 </div>
 
-                <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)' }}>
+                <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', gap: 'var(--mbdbi-hgap)', zIndex: 100 }}>
                     <strong>Technique:</strong>
                     <SDropdown
                         options={availableSchemas}

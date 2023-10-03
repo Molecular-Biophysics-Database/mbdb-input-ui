@@ -310,7 +310,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
             <div className='mbdbi-nested-content'>
                 <div className='mbdbi-nested-title'>Number of levels</div>
                 <div className='mbdbi-nested-items'>
-                    <Button icon size='mini' onClick={() => {
+                    <Button icon size='mini' className='levels-button' onClick={() => {
                         if (this.state.nesting > MinimunNesting) {
                             this.setState({ nesting: this.state.nesting - 1 });
                         }
@@ -323,7 +323,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                     <div className='mbdbi-nested-item'>
                         {this.state.nesting}
                     </div>
-                    <Button icon size='mini' onClick={() => {
+                    <Button icon size='mini' className='levels-button' onClick={() => {
                         if (this.state.nesting < MaximumNesting) {
                             this.setState({ nesting: this.state.nesting + 1 });
                         }
