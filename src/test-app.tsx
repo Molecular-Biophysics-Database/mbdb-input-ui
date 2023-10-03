@@ -6,7 +6,7 @@ import {
     Dropdown as SDropdown,
     Icon as SIcon,
 } from 'semantic-ui-react';
-import { MinimalInputForm, useContextHandler } from '.';
+import { MinimalInputForm, useContextHandler } from './index-with-semantic-ui';
 import { Config } from './config';
 import { FormContext } from './context';
 import { _FormContextHandler } from './context/handler';
