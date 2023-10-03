@@ -24,3 +24,6 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Install and Build
+        run: npm run build
