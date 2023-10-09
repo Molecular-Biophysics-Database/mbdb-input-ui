@@ -15,8 +15,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.10',
-                        title: '0.9.10',
+                        tag: '0.9.12',
+                        title: '0.9.12',
                     },
                 ],
                 help: {
@@ -1139,11 +1139,11 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -3230,11 +3230,11 @@ export const SPR = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/organism',
+                                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
@@ -5914,11 +5914,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -6626,11 +6626,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -7345,11 +7345,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -8922,11 +8922,11 @@ export const SPR = [
                                                                         },
                                                                     },
                                                                     {
-                                                                        tag: 'organism',
-                                                                        label: 'organism',
+                                                                        tag: 'source_organism',
+                                                                        label: 'source_organism',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/organism',
+                                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/source_organism',
                                                                         input: 'vocabulary',
                                                                         vocabularyType: 'organisms',
                                                                         vocabularyKeys: [
@@ -13837,11 +13837,11 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -15928,11 +15928,11 @@ export const SPR = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/organism',
+                                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
@@ -18612,11 +18612,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -19324,11 +19324,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -20043,11 +20043,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -21620,11 +21620,11 @@ export const SPR = [
                                                                         },
                                                                     },
                                                                     {
-                                                                        tag: 'organism',
-                                                                        label: 'organism',
+                                                                        tag: 'source_organism',
+                                                                        label: 'source_organism',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/organism',
+                                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/source_organism',
                                                                         input: 'vocabulary',
                                                                         vocabularyType: 'organisms',
                                                                         vocabularyKeys: [
@@ -24889,11 +24889,11 @@ export const SPR = [
                                         },
                                     },
                                     {
-                                        tag: 'organism',
-                                        label: 'organism',
+                                        tag: 'source_organism',
+                                        label: 'source_organism',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                         input: 'vocabulary',
                                         vocabularyType: 'organisms',
                                         vocabularyKeys: [
@@ -26616,11 +26616,11 @@ export const SPR = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -29118,11 +29118,11 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -29648,11 +29648,11 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -30185,11 +30185,11 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -31398,11 +31398,11 @@ export const SPR = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/organism',
+                                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
