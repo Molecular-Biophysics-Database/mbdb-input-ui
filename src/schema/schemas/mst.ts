@@ -15,8 +15,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.9',
-                        title: '0.9.9',
+                        tag: '0.9.12',
+                        title: '0.9.12',
                     },
                 ],
                 help: {
@@ -976,163 +976,6 @@ export const MST = [
                         mbdbPath: 'general_parameters/instrument/performance_test',
                         input: [
                             {
-                                tag: 'report',
-                                label: 'report',
-                                isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'general_parameters/instrument/performance_test/report',
-                                input: 'url',
-                                help: {
-                                    en: 'The file containing the report of the performance test, preferably in pdf',
-                                },
-                            },
-                            {
-                                tag: 'published_test_protocol',
-                                label: 'published_test_protocol',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol',
-                                input: [
-                                    {
-                                        tag: 'pid',
-                                        label: 'pid',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/pid',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN)',
-                                        },
-                                    },
-                                    {
-                                        tag: 'title',
-                                        label: 'title',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/title',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The title of the publication',
-                                        },
-                                    },
-                                    {
-                                        tag: 'publication_year',
-                                        label: 'publication_year',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publication_year',
-                                        input: 'int',
-                                        minimum: 1800,
-                                        help: {
-                                            en: 'The publication year',
-                                        },
-                                    },
-                                    {
-                                        tag: 'authors',
-                                        label: 'authors',
-                                        isArray: true,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]',
-                                        minItems: 1,
-                                        input: [
-                                            {
-                                                tag: 'given_name',
-                                                label: 'given_name',
-                                                isArray: false,
-                                                isRequired: true,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/given_name',
-                                                input: 'string',
-                                                help: {
-                                                    en: 'The given name(s), including middlename(s), of the person',
-                                                },
-                                            },
-                                            {
-                                                tag: 'family_name',
-                                                label: 'family_name',
-                                                isArray: false,
-                                                isRequired: true,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/family_name',
-                                                input: 'string',
-                                                help: {
-                                                    en: 'The family name(s) the person',
-                                                },
-                                            },
-                                            {
-                                                tag: 'identifiers',
-                                                label: 'identifiers',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/identifiers[]',
-                                                minItems: 1,
-                                                input: 'string',
-                                                help: {
-                                                    en: 'Persistent identifier associated with the person, currently only ORCIDs are allowed',
-                                                },
-                                            },
-                                            {
-                                                tag: 'affiliations',
-                                                label: 'affiliations',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/affiliations[]',
-                                                minItems: 1,
-                                                input: 'vocabulary',
-                                                vocabularyType: 'affiliations',
-                                                vocabularyKeys: [
-                                                    'id',
-                                                    'title',
-                                                    'props.city',
-                                                    'props.state',
-                                                    'props.country',
-                                                ],
-                                                help: {
-                                                    en: 'The affiliation of the person',
-                                                },
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'The authors of the publication',
-                                        },
-                                    },
-                                    {
-                                        tag: 'resource_type',
-                                        label: 'resource_type',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/resource_type',
-                                        input: 'options',
-                                        choices: [
-                                            {
-                                                tag: 'Article',
-                                                title: 'Article',
-                                            },
-                                            {
-                                                tag: 'Book',
-                                                title: 'Book',
-                                            },
-                                            {
-                                                tag: 'Thesis',
-                                                title: 'Thesis',
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'The type of publication',
-                                        },
-                                    },
-                                    {
-                                        tag: 'publisher',
-                                        label: 'publisher',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publisher',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The name of the publisher or journal name in case of article',
-                                        },
-                                    },
-                                ],
-                            },
-                            {
                                 tag: 'sample_composition',
                                 label: 'sample_composition',
                                 isArray: true,
@@ -1296,11 +1139,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -1822,6 +1665,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -2130,6 +1981,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -2866,6 +2725,14 @@ export const MST = [
                                                                                 tag: 'days',
                                                                                 title: 'days',
                                                                             },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
+                                                                            },
                                                                         ],
                                                                     },
                                                                 ],
@@ -3363,11 +3230,11 @@ export const MST = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/organism',
+                                                                mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
@@ -3889,6 +3756,14 @@ export const MST = [
                                                                                         tag: 'days',
                                                                                         title: 'days',
                                                                                     },
+                                                                                    {
+                                                                                        tag: 'months',
+                                                                                        title: 'months',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'years',
+                                                                                        title: 'years',
+                                                                                    },
                                                                                 ],
                                                                             },
                                                                         ],
@@ -4197,6 +4072,14 @@ export const MST = [
                                                                                             {
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
                                                                                             },
                                                                                         ],
                                                                                     },
@@ -4734,6 +4617,14 @@ export const MST = [
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
                                                                                             },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
+                                                                                            },
                                                                                         ],
                                                                                     },
                                                                                 ],
@@ -5249,6 +5140,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -5557,6 +5456,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -6007,11 +5914,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -6266,6 +6173,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -6711,11 +6626,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -6970,6 +6885,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -7422,11 +7345,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/organism',
+                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -7681,6 +7604,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -8315,6 +8246,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -8983,11 +8922,11 @@ export const MST = [
                                                                         },
                                                                     },
                                                                     {
-                                                                        tag: 'organism',
-                                                                        label: 'organism',
+                                                                        tag: 'source_organism',
+                                                                        label: 'source_organism',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/organism',
+                                                                        mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/source_organism',
                                                                         input: 'vocabulary',
                                                                         vocabularyType: 'organisms',
                                                                         vocabularyKeys: [
@@ -9509,6 +9448,14 @@ export const MST = [
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
                                                                                             },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
+                                                                                            },
                                                                                         ],
                                                                                     },
                                                                                 ],
@@ -9817,6 +9764,14 @@ export const MST = [
                                                                                                     {
                                                                                                         tag: 'days',
                                                                                                         title: 'days',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'months',
+                                                                                                        title: 'months',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'years',
+                                                                                                        title: 'years',
                                                                                                     },
                                                                                                 ],
                                                                                             },
@@ -10354,6 +10309,14 @@ export const MST = [
                                                                                                         tag: 'days',
                                                                                                         title: 'days',
                                                                                                     },
+                                                                                                    {
+                                                                                                        tag: 'months',
+                                                                                                        title: 'months',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'years',
+                                                                                                        title: 'years',
+                                                                                                    },
                                                                                                 ],
                                                                                             },
                                                                                         ],
@@ -10758,6 +10721,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -11340,6 +11311,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -11642,6 +11621,163 @@ export const MST = [
                                 discriminator: 'type',
                                 help: {
                                     en: 'The composition of the sample the performance test was carried out on',
+                                },
+                            },
+                            {
+                                tag: 'published_test_protocol',
+                                label: 'published_test_protocol',
+                                isArray: false,
+                                isRequired: false,
+                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol',
+                                input: [
+                                    {
+                                        tag: 'pid',
+                                        label: 'pid',
+                                        isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/pid',
+                                        input: 'string',
+                                        help: {
+                                            en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN)',
+                                        },
+                                    },
+                                    {
+                                        tag: 'title',
+                                        label: 'title',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/title',
+                                        input: 'string',
+                                        help: {
+                                            en: 'The title of the publication',
+                                        },
+                                    },
+                                    {
+                                        tag: 'publication_year',
+                                        label: 'publication_year',
+                                        isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publication_year',
+                                        input: 'int',
+                                        minimum: 1800,
+                                        help: {
+                                            en: 'The publication year',
+                                        },
+                                    },
+                                    {
+                                        tag: 'authors',
+                                        label: 'authors',
+                                        isArray: true,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]',
+                                        minItems: 1,
+                                        input: [
+                                            {
+                                                tag: 'given_name',
+                                                label: 'given_name',
+                                                isArray: false,
+                                                isRequired: true,
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/given_name',
+                                                input: 'string',
+                                                help: {
+                                                    en: 'The given name(s), including middlename(s), of the person',
+                                                },
+                                            },
+                                            {
+                                                tag: 'family_name',
+                                                label: 'family_name',
+                                                isArray: false,
+                                                isRequired: true,
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/family_name',
+                                                input: 'string',
+                                                help: {
+                                                    en: 'The family name(s) the person',
+                                                },
+                                            },
+                                            {
+                                                tag: 'identifiers',
+                                                label: 'identifiers',
+                                                isArray: true,
+                                                isRequired: false,
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/identifiers[]',
+                                                minItems: 1,
+                                                input: 'string',
+                                                help: {
+                                                    en: 'Persistent identifier associated with the person, currently only ORCIDs are allowed',
+                                                },
+                                            },
+                                            {
+                                                tag: 'affiliations',
+                                                label: 'affiliations',
+                                                isArray: true,
+                                                isRequired: false,
+                                                mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/authors[]/affiliations[]',
+                                                minItems: 1,
+                                                input: 'vocabulary',
+                                                vocabularyType: 'affiliations',
+                                                vocabularyKeys: [
+                                                    'id',
+                                                    'title',
+                                                    'props.city',
+                                                    'props.state',
+                                                    'props.country',
+                                                ],
+                                                help: {
+                                                    en: 'The affiliation of the person',
+                                                },
+                                            },
+                                        ],
+                                        help: {
+                                            en: 'The authors of the publication',
+                                        },
+                                    },
+                                    {
+                                        tag: 'resource_type',
+                                        label: 'resource_type',
+                                        isArray: false,
+                                        isRequired: true,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/resource_type',
+                                        input: 'options',
+                                        choices: [
+                                            {
+                                                tag: 'Article',
+                                                title: 'Article',
+                                            },
+                                            {
+                                                tag: 'Book',
+                                                title: 'Book',
+                                            },
+                                            {
+                                                tag: 'Thesis',
+                                                title: 'Thesis',
+                                            },
+                                        ],
+                                        help: {
+                                            en: 'The type of publication',
+                                        },
+                                    },
+                                    {
+                                        tag: 'publisher',
+                                        label: 'publisher',
+                                        isArray: false,
+                                        isRequired: false,
+                                        mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publisher',
+                                        input: 'string',
+                                        help: {
+                                            en: 'The name of the publisher or journal name in case of article',
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                tag: 'report',
+                                label: 'report',
+                                isArray: false,
+                                isRequired: true,
+                                mbdbPath: 'general_parameters/instrument/performance_test/report',
+                                input: 'url',
+                                help: {
+                                    en: 'The file containing the report of the performance test, preferably in pdf',
                                 },
                             },
                             {
@@ -12461,6 +12597,14 @@ export const MST = [
                                                                                 tag: 'days',
                                                                                 title: 'days',
                                                                             },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
+                                                                            },
                                                                         ],
                                                                     },
                                                                 ],
@@ -13225,6 +13369,14 @@ export const MST = [
                                                                                 tag: 'days',
                                                                                 title: 'days',
                                                                             },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
+                                                                            },
                                                                         ],
                                                                     },
                                                                 ],
@@ -13685,11 +13837,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: false,
-                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -14211,6 +14363,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -14519,6 +14679,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -15255,6 +15423,14 @@ export const MST = [
                                                                                 tag: 'days',
                                                                                 title: 'days',
                                                                             },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
+                                                                            },
                                                                         ],
                                                                     },
                                                                 ],
@@ -15752,11 +15928,11 @@ export const MST = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/organism',
+                                                                mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
@@ -16278,6 +16454,14 @@ export const MST = [
                                                                                         tag: 'days',
                                                                                         title: 'days',
                                                                                     },
+                                                                                    {
+                                                                                        tag: 'months',
+                                                                                        title: 'months',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'years',
+                                                                                        title: 'years',
+                                                                                    },
                                                                                 ],
                                                                             },
                                                                         ],
@@ -16586,6 +16770,14 @@ export const MST = [
                                                                                             {
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
                                                                                             },
                                                                                         ],
                                                                                     },
@@ -17123,6 +17315,14 @@ export const MST = [
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
                                                                                             },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
+                                                                                            },
                                                                                         ],
                                                                                     },
                                                                                 ],
@@ -17638,6 +17838,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -17946,6 +18154,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -18396,11 +18612,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -18655,6 +18871,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -19100,11 +19324,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -19359,6 +19583,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -19811,11 +20043,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: true,
-                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -20070,6 +20302,14 @@ export const MST = [
                                                                             {
                                                                                 tag: 'days',
                                                                                 title: 'days',
+                                                                            },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
                                                                             },
                                                                         ],
                                                                     },
@@ -20704,6 +20944,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -21372,11 +21620,11 @@ export const MST = [
                                                                         },
                                                                     },
                                                                     {
-                                                                        tag: 'organism',
-                                                                        label: 'organism',
+                                                                        tag: 'source_organism',
+                                                                        label: 'source_organism',
                                                                         isArray: false,
                                                                         isRequired: false,
-                                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/organism',
+                                                                        mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/source_organism',
                                                                         input: 'vocabulary',
                                                                         vocabularyType: 'organisms',
                                                                         vocabularyKeys: [
@@ -21898,6 +22146,14 @@ export const MST = [
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
                                                                                             },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
+                                                                                            },
                                                                                         ],
                                                                                     },
                                                                                 ],
@@ -22206,6 +22462,14 @@ export const MST = [
                                                                                                     {
                                                                                                         tag: 'days',
                                                                                                         title: 'days',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'months',
+                                                                                                        title: 'months',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'years',
+                                                                                                        title: 'years',
                                                                                                     },
                                                                                                 ],
                                                                                             },
@@ -22743,6 +23007,14 @@ export const MST = [
                                                                                                         tag: 'days',
                                                                                                         title: 'days',
                                                                                                     },
+                                                                                                    {
+                                                                                                        tag: 'months',
+                                                                                                        title: 'months',
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag: 'years',
+                                                                                                        title: 'years',
+                                                                                                    },
                                                                                                 ],
                                                                                             },
                                                                                         ],
@@ -23147,6 +23419,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -23728,6 +24008,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -24601,11 +24889,11 @@ export const MST = [
                                         },
                                     },
                                     {
-                                        tag: 'organism',
-                                        label: 'organism',
+                                        tag: 'source_organism',
+                                        label: 'source_organism',
                                         isArray: false,
                                         isRequired: false,
-                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                         input: 'vocabulary',
                                         vocabularyType: 'organisms',
                                         vocabularyKeys: [
@@ -25127,6 +25415,14 @@ export const MST = [
                                                                 tag: 'days',
                                                                 title: 'days',
                                                             },
+                                                            {
+                                                                tag: 'months',
+                                                                title: 'months',
+                                                            },
+                                                            {
+                                                                tag: 'years',
+                                                                title: 'years',
+                                                            },
                                                         ],
                                                     },
                                                 ],
@@ -25435,6 +25731,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -25989,6 +26293,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -26304,11 +26616,11 @@ export const MST = [
                                                         },
                                                     },
                                                     {
-                                                        tag: 'organism',
-                                                        label: 'organism',
+                                                        tag: 'source_organism',
+                                                        label: 'source_organism',
                                                         isArray: false,
                                                         isRequired: false,
-                                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/organism',
+                                                        mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/source_organism',
                                                         input: 'vocabulary',
                                                         vocabularyType: 'organisms',
                                                         vocabularyKeys: [
@@ -26830,6 +27142,14 @@ export const MST = [
                                                                                 tag: 'days',
                                                                                 title: 'days',
                                                                             },
+                                                                            {
+                                                                                tag: 'months',
+                                                                                title: 'months',
+                                                                            },
+                                                                            {
+                                                                                tag: 'years',
+                                                                                title: 'years',
+                                                                            },
                                                                         ],
                                                                     },
                                                                 ],
@@ -27138,6 +27458,14 @@ export const MST = [
                                                                                     {
                                                                                         tag: 'days',
                                                                                         title: 'days',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'months',
+                                                                                        title: 'months',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'years',
+                                                                                        title: 'years',
                                                                                     },
                                                                                 ],
                                                                             },
@@ -27675,6 +28003,14 @@ export const MST = [
                                                                                         tag: 'days',
                                                                                         title: 'days',
                                                                                     },
+                                                                                    {
+                                                                                        tag: 'months',
+                                                                                        title: 'months',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'years',
+                                                                                        title: 'years',
+                                                                                    },
                                                                                 ],
                                                                             },
                                                                         ],
@@ -28190,6 +28526,14 @@ export const MST = [
                                                                 tag: 'days',
                                                                 title: 'days',
                                                             },
+                                                            {
+                                                                tag: 'months',
+                                                                title: 'months',
+                                                            },
+                                                            {
+                                                                tag: 'years',
+                                                                title: 'years',
+                                                            },
                                                         ],
                                                     },
                                                 ],
@@ -28499,6 +28843,14 @@ export const MST = [
                                                                         tag: 'days',
                                                                         title: 'days',
                                                                     },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
+                                                                    },
                                                                 ],
                                                             },
                                                         ],
@@ -28766,11 +29118,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -29025,6 +29377,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -29288,11 +29648,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -29547,6 +29907,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -29817,11 +30185,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'organism',
-                                                label: 'organism',
+                                                tag: 'source_organism',
+                                                label: 'source_organism',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/organism',
+                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/source_organism',
                                                 input: 'vocabulary',
                                                 vocabularyType: 'organisms',
                                                 vocabularyKeys: [
@@ -30076,6 +30444,14 @@ export const MST = [
                                                                     {
                                                                         tag: 'days',
                                                                         title: 'days',
+                                                                    },
+                                                                    {
+                                                                        tag: 'months',
+                                                                        title: 'months',
+                                                                    },
+                                                                    {
+                                                                        tag: 'years',
+                                                                        title: 'years',
                                                                     },
                                                                 ],
                                                             },
@@ -30528,6 +30904,14 @@ export const MST = [
                                                             {
                                                                 tag: 'days',
                                                                 title: 'days',
+                                                            },
+                                                            {
+                                                                tag: 'months',
+                                                                title: 'months',
+                                                            },
+                                                            {
+                                                                tag: 'years',
+                                                                title: 'years',
                                                             },
                                                         ],
                                                     },
@@ -31014,11 +31398,11 @@ export const MST = [
                                                                 },
                                                             },
                                                             {
-                                                                tag: 'organism',
-                                                                label: 'organism',
+                                                                tag: 'source_organism',
+                                                                label: 'source_organism',
                                                                 isArray: false,
                                                                 isRequired: false,
-                                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/organism',
+                                                                mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/source_organism',
                                                                 input: 'vocabulary',
                                                                 vocabularyType: 'organisms',
                                                                 vocabularyKeys: [
@@ -31540,6 +31924,14 @@ export const MST = [
                                                                                         tag: 'days',
                                                                                         title: 'days',
                                                                                     },
+                                                                                    {
+                                                                                        tag: 'months',
+                                                                                        title: 'months',
+                                                                                    },
+                                                                                    {
+                                                                                        tag: 'years',
+                                                                                        title: 'years',
+                                                                                    },
                                                                                 ],
                                                                             },
                                                                         ],
@@ -31848,6 +32240,14 @@ export const MST = [
                                                                                             {
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
                                                                                             },
                                                                                         ],
                                                                                     },
@@ -32385,6 +32785,14 @@ export const MST = [
                                                                                                 tag: 'days',
                                                                                                 title: 'days',
                                                                                             },
+                                                                                            {
+                                                                                                tag: 'months',
+                                                                                                title: 'months',
+                                                                                            },
+                                                                                            {
+                                                                                                tag: 'years',
+                                                                                                title: 'years',
+                                                                                            },
                                                                                         ],
                                                                                     },
                                                                                 ],
@@ -32790,6 +33198,14 @@ export const MST = [
                                                                 tag: 'days',
                                                                 title: 'days',
                                                             },
+                                                            {
+                                                                tag: 'months',
+                                                                title: 'months',
+                                                            },
+                                                            {
+                                                                tag: 'years',
+                                                                title: 'years',
+                                                            },
                                                         ],
                                                     },
                                                 ],
@@ -33189,6 +33605,14 @@ export const MST = [
                                                                 tag: 'days',
                                                                 title: 'days',
                                                             },
+                                                            {
+                                                                tag: 'months',
+                                                                title: 'months',
+                                                            },
+                                                            {
+                                                                tag: 'years',
+                                                                title: 'years',
+                                                            },
                                                         ],
                                                     },
                                                 ],
@@ -33480,6 +33904,18 @@ export const MST = [
                 ],
                 help: {
                     en: 'List of the parameters (results) that were derived from analyzing measured raw data, and which steps were taken to obtain them',
+                },
+            },
+            {
+                tag: 'raw_measurements',
+                label: 'raw_measurements',
+                isArray: true,
+                isRequired: true,
+                mbdbPath: 'general_parameters/raw_measurements[]',
+                minItems: 1,
+                input: 'url',
+                help: {
+                    en: 'List of file(s) containing the raw measurements',
                 },
             },
         ],
@@ -34415,6 +34851,14 @@ export const MST = [
                                         tag: 'days',
                                         title: 'days',
                                     },
+                                    {
+                                        tag: 'months',
+                                        title: 'months',
+                                    },
+                                    {
+                                        tag: 'years',
+                                        title: 'years',
+                                    },
                                 ],
                             },
                             {
@@ -34536,14 +34980,14 @@ export const MST = [
                                 isArray: false,
                                 isRequired: false,
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/link_to_source_code',
-                                input: 'string',
+                                input: 'url',
                                 help: {
                                     en: 'If processing was performed with software where the source code is legally available a link can be specified here (e.g. self-written python script in a GitHub repository',
                                 },
                             },
                         ],
                         help: {
-                            en: 'Describe the steps in the data analysis prior to fitting (removing outliers in the raw data, applying data filter, placing data at same start time etc. )',
+                            en: 'Describe the steps in the data analysis prior to fitting (removing outliers in the raw data, applying smoothing filters, etc.)',
                         },
                     },
                     {
