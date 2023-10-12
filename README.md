@@ -11,7 +11,7 @@ MBDB input form is built on top of [React](https://react.dev/) and [Semantic UI]
 To embed the input form in a custom code, you may use the following code snippet
 
 ```jsx
-import { ManagedInputForm } from '@mbdb/input-form/lib';
+import { ManagedInputForm } from '@mbdb/input-form/lib/index';
 import { getKeeper } from '@mbdb/input-form/lib/context/keeper';
 
 // Data identifier in the input form's internal data storage
@@ -46,7 +46,7 @@ The code below demonstrates how to create the `handler` and `MinimalInputForm` c
 control from "the outside".
 
 ```jsx
-import { MinimalInputForm, useContextHandler } from '@mbdb/input-form/lib';
+import { MinimalInputForm, useContextHandler } from '@mbdb/input-form/lib/index';
 import { FormContext } from '@mbdb/input-form/lib/context';
 import { FormContextHandler } from '@mbdb/input-form/lib/context/handler';
 import { Deserialize } from '@mbdb/input-form/lib/mbdb/deserialize';
@@ -112,3 +112,19 @@ receive styling directly from your application as long as the code that embeds t
 
 If your application does not use Semantic UI, you may use the `mbdb-input-form.css` and `*.woff` files provided in the `dist` directory to get proper styling
 of the Semantic UI components.
+
+### Customizing the  styling
+If your application does not use Semantic UI and you would like to customize the appearance of the form's Semantic UI components, you may do so.
+To do that, import
+
+```jsx
+    import { MinimalInputForm, useContextHandler } from '@mbdb/input-form/lib/index-with-semantic-ui';
+```
+
+instead of
+
+```jsx
+    import { MinimalInputForm, useContextHandler } from '@mbdb/input-form/lib/index';
+```
+
+Note that you may need to configure your bundler to get the `.less` files of Semantic UI to compile correctly.

@@ -2,13 +2,13 @@ import { DataError } from './';
 import { MbdbData, MbdbScalar } from './data';
 import { assert } from '../assert';
 import { FormContext } from '../context';
-import { Item, Schema, TopLevelItem, VariantItem } from '../schema';
+import { DepositedFile, Item, Schema, TopLevelItem, VariantItem } from '../schema';
 import { Data, DataTree, Path } from '../schema/data';
 import { Traverse } from '../schema/traverse';
 import { Value } from '../schema/value';
 import { Register } from '../ui/form/custom-components/register';
 
-function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: Item, options: Options) {
+function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], files: DepositedFile[], item: Item, options: Options) {
     if (Schema.hasRelatedToInput(item)) {
         const id = Data.getValue(internalData, Data.Path.path('id', internalParentPath));
         if (!Value.isEmpty(id)) {
@@ -81,6 +81,17 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             if (out.data !== null) {
                 MbdbData.set(mbdbData, { id: out.id }, storePath);
             }
+        } else if (Schema.hasFileInput(item)) {
+            assert(Value.isFile(v), 'Value is not a File');
+
+            if (options?.ignoreErrors && v.payload.file === null) return;
+
+            assert(v.payload.file !== null, 'Value of a file must not be null');
+            if (files.find((x) => x.file!.name === v.payload.file?.name)) {
+                errors.push(DataError(internalParentPath, `File named "${v.payload.file!.name}" is present more than once in the data.`));
+            } else {
+                files.push(DepositedFile(v.payload.file, v.payload.metadata));
+            }
         } else {
             // NOTE: TS cannot figure out that we cannot get a VocabularyEntry type because that is
             //       covered by the hasVocabularyInput() check, hence the cast to MbdbScalar.
@@ -89,20 +100,20 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
     }
 }
 
-function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: Item, options: Options) {
+function toMbdbDataItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], files: DepositedFile[], item: Item, options: Options) {
     if (Schema.hasComplexInput(item)) {
         const v = Data.getTree(internalData, internalParentPath);
         if (!v.__mbdb_group_marked_empty) {
-            toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
+            toMbdbDataTree(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, files, item, options);
         }
     } else if (Schema.hasVariantInput(item)) {
-        toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
+        toMbdbDataVariant(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, files, item, options);
     } else {
-        toMbdbDataSimpleItem(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, item, options);
+        toMbdbDataSimpleItem(internalData, internalParentPath, mbdbData, mbdbArrayIndices, errors, files, item, options);
     }
 }
 
-function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: VariantItem, options: Options) {
+function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], files: DepositedFile[], item: VariantItem, options: Options) {
     assert(item.discriminator !== undefined, `Item with variant input does not specify a type discriminator.`);
 
     const v = Data.getTree(internalData, internalParentPath);
@@ -112,18 +123,18 @@ function toMbdbDataVariant(internalData: DataTree, internalParentPath: Path, mbd
 
     if (Schema.hasComplexInput(varItem)) {
         if (!v.__mbdb_group_marked_empty) {
-            toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
+            toMbdbDataTree(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, files, varItem, options);
         }
     } else if (Schema.hasVariantInput(varItem)) {
-        toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
+        toMbdbDataVariant(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, files, varItem, options);
     } else {
-        toMbdbDataSimpleItem(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, varItem, options);
+        toMbdbDataSimpleItem(internalData, Data.Path.path(choice, internalParentPath), mbdbData, mbdbArrayIndices, errors, files, varItem, options);
     }
 
     MbdbData.set(mbdbData, choice, MbdbData.Path.toPath(MbdbData.Path.extend(item.discriminator, item.mbdbPath), mbdbArrayIndices));
 }
 
-function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], item: TopLevelItem, options: Options) {
+function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], files: DepositedFile[], item: TopLevelItem, options: Options) {
     const tree = Data.getTree(internalData, internalParentPath);
     for (const k in tree) {
         if (Schema.isReservedKey(k)) continue;
@@ -144,11 +155,11 @@ function toMbdbDataTree(internalData: DataTree, internalParentPath: Path, mbdbDa
                 // reason to ever write empty arrays to the Mbdb data object. Empty array is expressed as the array object
                 // not being present at all in the parent object.
                 for (let idx = 0; idx < v.length; idx++) {
-                    toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, innerItem, options);
+                    toMbdbDataItem(internalData, Data.Path.index(idx, path), mbdbData, [...mbdbArrayIndices, idx], errors, files, innerItem, options);
                 }
             }
         } else {
-            toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, innerItem, options);
+            toMbdbDataItem(internalData, Data.Path.path(k, internalParentPath), mbdbData, mbdbArrayIndices, errors, files, innerItem, options);
         }
     }
 }
@@ -159,13 +170,14 @@ export type Options = {
 };
 
 export const Serialize = {
-    serialize(ctx: FormContext, options?: Options): { data: MbdbData, errors: DataError[] } {
+    serialize(ctx: FormContext, options?: Options): { data: MbdbData, errors: DataError[], files: DepositedFile[] } {
         const data = {};
         const errors = new Array<DataError>();
+        const files = new Array<DepositedFile>();
 
-        toMbdbDataTree(ctx.data, [], data, [], errors, ctx.schema, options ?? {});
+        toMbdbDataTree(ctx.data, [], data, [], errors, files, ctx.schema, options ?? {});
 
-        return { data, errors };
+        return { data, errors, files };
     },
 
     toJson(ctx: FormContext) {

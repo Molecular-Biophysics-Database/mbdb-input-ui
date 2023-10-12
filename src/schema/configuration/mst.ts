@@ -8,6 +8,11 @@ export const MST = {
         defaultValue: 'MST'
     },
 
+    'general_parameters/record_information/publisher': {
+        dontDisplay: true,
+        defaultValue: 'MBDB'
+    },
+
     'general_parameters/technique': {
         defaultValue: 'Microscale thermophoresis/Temperature related intensity change (MST/TRIC)',
         dontDisplay: true,

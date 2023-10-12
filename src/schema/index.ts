@@ -16,6 +16,7 @@ export type Input = ComplexInput | TextualInput | VariantInput |
     'internal-id' | 'uuid' |
     'variant-discriminator' |
     'vocabulary' |
+    'file' |
     'unknown';
 
 export type Choice = {
@@ -66,6 +67,14 @@ export function TopLevelItem(input: ComplexInput): TopLevelItem {
     return { tag: '__MBDB_Top_Level_Item', input };
 }
 
+export type DepositedFile = {
+    file: File | null,
+    metadata: string,
+};
+export function DepositedFile(file: File | null, metadata: string): DepositedFile {
+    return { file, metadata };
+}
+
 export const Schema = {
     groupHasReferenceable(item: ComplexItem) {
         return this.groupIsReferenceable(item.input);
@@ -97,6 +106,10 @@ export const Schema = {
 
     hasCustomInput(item: Item): item is CustomItem {
         return this.isCustomInput(item.input);
+    },
+
+    hasFileInput(item: Item): item is TItem<'file'> {
+        return this.isFileInput(item.input);
     },
 
     hasIgnoredInput(item: Item): item is TItem<'ignore'> {
@@ -173,6 +186,10 @@ export const Schema = {
 
     isCustomInput(input: Input): input is 'custom' {
         return input === 'custom';
+    },
+
+    isFileInput(input: Input): input is 'file' {
+        return input === 'file';
     },
 
     isIgnoredInput(input: Input): input is 'ignore' {

@@ -30,7 +30,7 @@ function pruneEmpty(data: Record<string, any>) {
 
 export const Mbdb = {
     toData(ctx: FormContext, options?: Options) {
-        const { data, errors } = Serialize.serialize(ctx, options);
+        const { data, errors, files } = Serialize.serialize(ctx, options);
 
         if (!options?.dontPrune) {
             pruneEmpty(data);
@@ -41,6 +41,7 @@ export const Mbdb = {
                 metadata: data
             },
             errors,
+            files,
         };
     },
 }
