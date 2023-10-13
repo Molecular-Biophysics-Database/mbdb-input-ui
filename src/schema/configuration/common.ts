@@ -111,7 +111,7 @@ export const Common = {
             defaultValue: 'Biophysics',
         },
 
-        'general_parameters/record_information/subject_category/project/id': {
+        'general_parameters/record_information/project/id': {
             dontDisplay: true,
         },
 
