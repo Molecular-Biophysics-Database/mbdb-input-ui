@@ -33913,7 +33913,7 @@ export const BLI = [
                 isRequired: true,
                 mbdbPath: 'general_parameters/raw_measurements[]',
                 minItems: 1,
-                input: 'url',
+                input: 'string',
                 help: {
                     en: 'List of file(s) containing the raw measurements',
                 },
