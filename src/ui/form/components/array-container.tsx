@@ -223,7 +223,7 @@ export function ArrayContainer({ item, nestLevel, isDisabled, checkForErrors, ca
                 key='b+'
             />
         );
-    } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item) || Schema.hasVocabularyInput(item) || Schema.hasFileInput(item)) {
+    } else if (Schema.hasTextualInput(item) || Schema.hasBooleanInput(item) || Schema.hasOptionsInput(item) || Schema.hasVocabularyInput(item) || Schema.hasFileInput(item) || Schema.hasUrlInput(item)) {
         arrayIsSimple = true;
 
         for (let idx = 0; idx < array.length; idx++) {
