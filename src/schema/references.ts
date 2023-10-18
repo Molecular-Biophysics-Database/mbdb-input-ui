@@ -115,7 +115,7 @@ function getReferenceable(rr: Reference[], refId: string) {
 export type Reference = {
     refId: string,
     data: DataTree,
-    referencedBy: { refingId: string, data: DataTree }[],
+    referencedBy: { refingId: string, data: Value }[],
 };
 export type ReferenceAnchors = Record<string, Reference[]>;
 
@@ -201,7 +201,7 @@ export const References = {
         return rr;
     },
 
-    ref(refs: ReferenceAnchors, anchor: string, refId: string, refingId: string, data: DataTree) {
+    ref(refs: ReferenceAnchors, anchor: string, refId: string, refingId: string, data: Value) {
         assert(refs[anchor] !== undefined, `Attempted to add a reference for referenceable "${anchor}/${refId}" but the anchor does not exist.`);
 
         const r = refs[anchor].find((r) => r.refId === refId);
