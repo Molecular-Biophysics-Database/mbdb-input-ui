@@ -94,6 +94,8 @@ export const Value = {
             return this.emptyVocabularyEntry(!isRequired);
         } else if (Schema.hasFileInput(item)) {
             return this.emptyFile(!isRequired);
+        } else if (Schema.hasRelatedToInput(item)) {
+            return this.emptyRelTo(isRequired);
         }
 
         assert(false, `Attempted to get default value for item "${item.tag}" with input "${item.input}" but no default value is available`);
@@ -118,6 +120,16 @@ export const Value = {
         v.isValid = isValid;
 
         return v;
+    },
+
+    emptyRelTo(isValid = false): TValue<RelatedTo> {
+        return mkValue(
+            {
+                id: '',
+                data: null,
+            },
+            isValid
+        );
     },
 
     emptyVocabularyEntry(isValid: boolean) {

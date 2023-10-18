@@ -102,7 +102,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
         if (Schema.hasRelatedToInput(item)) {
             const related = MbdbData.getObject(mbdbData, MbdbData.Path.toPath(item.mbdbPath, indices));
 
-            const relTo = Value.relTo('', null, !item.isRequired);
+            const relTo = Value.emptyRelTo(!item.isRequired);
             if (related) {
                 const data: RelatedTo['data'] = {};
                 for (const relKey of item.relatedKeys) {

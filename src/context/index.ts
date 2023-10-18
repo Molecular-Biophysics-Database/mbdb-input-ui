@@ -464,7 +464,7 @@ export const FormContext = {
             } else if (Schema.hasRelatedToInput(item)) {
                 // We assume that the tag "id" is the id through which we refer to the referenceable
                 assert(item.relatedKeys.includes('id'), `related-to item "${item.tag}" does not mention "id" in its related keys but we require that. Its keys are "${item.relatedKeys.join(', ')}.`);
-                data[item.tag] = Value.relTo('', null, !item.isRequired);
+                data[item.tag] = Value.emptyRelTo(!item.isRequired);
             } else {
                 data[item.tag] = Value.defaultForItem(item);
             }

@@ -116,7 +116,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
             <ItemLabel label={label} markAsRequired={isRequired} id={htmlId} />
             <SDropdown
                 className='mbdbi-right-offset'
-                placeholder={`Select ${label}, if applicable`}
+                placeholder={`Select ${label !== '' ? label : relatesTo}, if applicable`}
                 id={htmlId}
                 value={referenceId}
                 onChange={(_ev, data) => {
@@ -150,7 +150,7 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
                         References.ref(handler.refs.get(), relatesTo, newRelToId, refingId, newValue);
                     } else {
                         // relToId is empty, set empty value
-                        handler.set(path, Value.relTo('', null, !isRequired));
+                        handler.set(path, Value.emptyRelTo(!isRequired));
 
                         if (referenceId) {
                             References.unref(handler.refs.get(), relatesTo, referenceId, refingId);
