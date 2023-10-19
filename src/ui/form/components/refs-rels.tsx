@@ -8,7 +8,7 @@ import { Help } from '../../../schema';
 import { Data, Path } from '../../../schema/data';
 import { References } from '../../../schema/references';
 import { Uuid } from '../../../schema/uuid';
-import { Value } from '../../../schema/value';
+import { RelatedTo, Value } from '../../../schema/value';
 
 export function ReferenceableIdInput({ referenceAs, path }: { referenceAs: string, path: Path }) {
     const { handler } = React.useContext(FormContextInstance);
@@ -52,22 +52,18 @@ export type RelatedToProps = {
 export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path }: RelatedToProps) {
     const htmlId = React.useMemo(() =>  PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
-    const data = handler.getTree(path);
     const referenceables = References.list(handler.refs.get(), relatesTo);
     const refingId = React.useMemo(() => Uuid.get(), []);
-    const id = data['id'];
-
-    assert(id !== undefined, `Data for RelatedTo input on path "${Data.Path.toString(path)}" does not have an "id" field, which is required.`);
-    assert(Value.isValue(id) && Value.isRelToId(id), '"id" field is not a Value');
+    const value = handler.getValue(path);
+    const relToValue = Value.toRelTo(value);
 
     React.useEffect(() => {
-        if (!Value.isEmpty(id)) {
-            References.ref(handler.refs.get(), relatesTo, id.payload, refingId, data);
+        if (relToValue.id !== '') {
+            References.ref(handler.refs.get(), relatesTo, relToValue.id, refingId, value);
         }
 
         return () => {
-            assert(Value.isValue(data['id']), '"id" field is not a Value');
-            const refId = Value.toRelToId(data['id']);
+            const relToId = relToValue.id;
             const refs = handler.refs.get();
             // We are explicitly checking if the anchor we are referencing is present and if we are
             // actually referenced by that anchor.
@@ -80,11 +76,11 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
             // We are doing something similar when ReferenceableIdInput unmounts.
             if (
                 References.hasAnchor(refs, relatesTo) && // Does the anchor exist?
-                refId && // Is the ID of the item we are referencing non-null?
-                References.has(refs, relatesTo, refId) && // Does the item we are referencing exist?
-                References.isReferencedBy(refs, relatesTo, refId, refingId) // Does the item reference us?
+                relToId && // Is the ID of the item we are referencing non-null?
+                References.has(refs, relatesTo, relToId) && // Does the item we are referencing exist?
+                References.isReferencedBy(refs, relatesTo, relToId, refingId) // Does the item reference us?
             ) {
-                References.unref(handler.refs.get(), relatesTo, refId, refingId);
+                References.unref(handler.refs.get(), relatesTo, relToId, refingId);
             }
         };
     }, []);
@@ -113,51 +109,56 @@ export function RelatedToInput({ label, relatesTo, relatedKeys, isRequired, path
             };
         })
     ];
-    const [referenceId, setReferenceId] = React.useState(Value.toRelToId(id));
+    const [referenceId, setReferenceId] = React.useState(relToValue.id);
 
     return (
         <>
             <ItemLabel label={label} markAsRequired={isRequired} id={htmlId} />
             <SDropdown
                 className='mbdbi-right-offset'
-                placeholder={`Select ${label}, if applicable`}
+                placeholder={`Select ${label !== '' ? label : relatesTo}, if applicable`}
                 id={htmlId}
                 value={referenceId}
                 onChange={(_ev, data) => {
-                    const newRefId = data.value as string;
+                    const newRelToId = data.value as string;
 
-                    if (newRefId) {
-                        const referenceable = referenceables.find((r) => r.refId === newRefId);
-                        assert(referenceable !== undefined, `Item related to "${relatesTo}" attempted to get a referenceable with ID "${newRefId}" but referenceable with such ID does not exist.`);
+                    if (newRelToId) {
+                        // relToId has changed, create a new RelatedTo value
+                        const referenceable = referenceables.find((r) => r.refId === newRelToId);
+                        assert(referenceable !== undefined, `Item related to "${relatesTo}" attempted to get a referenceable with ID "${newRelToId}" but referenceable with such ID does not exist.`);
+
+                        const data: RelatedTo['data'] = {};
 
                         for (const relKey of relatedKeys) {
-                            const innerPath = Data.Path.path(relKey, path);
-                            const relatedValue = referenceable.data[relKey];
-                            assert(relatedValue !== undefined, `Item related to "${relatesTo}" attempted to get related value "${relKey}" but the value does not exist.`);
-                            assert(Value.isValue(relatedValue), '"relatedValue" is not a Value');
+                            if (relKey !== 'id') {
+                                const referencedValue = referenceable.data[relKey];
+                                assert(referencedValue !== undefined, `Item related to "${relatesTo}" attempted to get referenced value "${relKey}" but the value does not exist.`);
+                                assert(Value.isValue(referencedValue), '"referencedValue" is not a Value');
+                                assert(Value.isTextual(referencedValue) || Value.isBoolean(referencedValue) || Value.isTristate(referencedValue), '"referencedValue has a wrong type.');
 
-                            handler.set(innerPath, relatedValue, true);
-                        }
-                    } else {
-                        for (const relKey of relatedKeys) {
-                            const innerPath = Data.Path.path(relKey, path);
-                            if (relKey === 'id') {
-                                handler.set(innerPath, Value.empty(!isRequired));
-                            } else {
-                                handler.unset(innerPath, true);
+                                data[relKey] = referencedValue;
                             }
                         }
-                    }
 
-                    if (referenceId) {
-                        References.unref(handler.refs.get(), relatesTo, referenceId, refingId);
-                    }
-                    if (newRefId) {
-                        References.ref(handler.refs.get(), relatesTo, newRefId, refingId, data);
+                        const newValue = Value.relTo(newRelToId, data, true);
+                        handler.set(path, newValue, true);
+
+                        if (referenceId) {
+                            References.unref(handler.refs.get(), relatesTo, referenceId, refingId);
+                        }
+
+                        References.ref(handler.refs.get(), relatesTo, newRelToId, refingId, newValue);
+                    } else {
+                        // relToId is empty, set empty value
+                        handler.set(path, Value.emptyRelTo(!isRequired));
+
+                        if (referenceId) {
+                            References.unref(handler.refs.get(), relatesTo, referenceId, refingId);
+                        }
                     }
 
                     handler.update();
-                    setReferenceId(newRefId);
+                    setReferenceId(newRelToId);
                 }}
                 options={opts}
                 error={referenceId === '' && isRequired}

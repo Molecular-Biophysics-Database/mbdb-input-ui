@@ -35,18 +35,6 @@ function applyInitialDataItem(inData: DataTree, path: Path, item: Item, data: Da
         applyInitialVariantData(inData, path, item, data, references);
     } else if (Schema.hasCustomInput(item)) {
         applyInitialCustomData(inData, path, item, data);
-    } else if (Schema.hasRelatedToInput(item)) {
-        // We need special handling here because "related-to" item contains an object.
-        const itemData = Data.getTree(inData, path);
-        if (!Value.isValue(itemData['id']) || !Value.isRelToId(itemData['id'])) {
-            throw new Error(`Data for item on path "${Data.Path.toString(path)}" does not conform to the expected schema ("related-to" item does not have "id")`);
-        }
-
-        // "related-to" item can have other items in its data object. These items are read and checked
-        // later when the entire data tree is read.
-
-        Data.set(data, path, itemData);
-        validateData(data, path, item);
     } else {
         const itemData = Data.getValue(inData, path);
         if (!checkItemDataSchema(itemData, item)) {
@@ -191,15 +179,16 @@ function buildReferences(data: DataTree, schema: TopLevelItem) {
 }
 
 function checkItemDataSchema(data: Value, item: Item): boolean {
-    if (Schema.hasRelatedToInput(item)) {
-        return (typeof data !== 'object' || Object.keys(data).length === 0);
-    }
-
     if (data.payload === undefined || data.isValid === undefined) {
         return false;
     }
 
-    if (Schema.hasOptionsInput(item)) {
+    if (Schema.hasRelatedToInput(item)) {
+        // Content of the RelatedTo value is set later after we are done reading the entire input data.
+        // The respective code also does additional sanity checks
+
+        return Value.isRelTo(data);
+    } else if (Schema.hasOptionsInput(item)) {
         if (!Value.isOption(data)) return false;
 
         if ((item.choices.find((c) => c.tag === data.payload.tag) === undefined) && (!item.isRequired && data.payload.tag !== Schema.EmptyChoice)) {
@@ -249,11 +238,11 @@ function checkAndFixupReferences(data: DataTree, path: Path, references: Referen
             if (Schema.hasCustomInput(item)) {
                 continue;
             } else if (Schema.hasRelatedToInput(item)) {
-                const v = Data.getValue(data, Data.Path.path('id', innerPath));
+                const v = Data.getValue(data, innerPath);
 
                 if (!Value.isEmpty(v)) {
-                    const refId = Value.toRelToId(v);
-                    if (!References.has(references, item.relatesTo, refId)) {
+                    const relTo = Value.toRelTo(v);
+                    if (!References.has(references, item.relatesTo, relTo.id)) {
                         throw new Error(`Item on path "${Data.Path.toString(innerPath)}" references a referenceable that does not exist.`);
                     }
 
@@ -268,15 +257,18 @@ function checkAndFixupReferences(data: DataTree, path: Path, references: Referen
                     // This is the correct way how to ensure consistency. Referenceable is considered
                     // to be the "source of truth".
 
-                    const ref = References.get(references, item.relatesTo, refId);
-                    for (const rk of item.relatedKeys) {
-                        if (rk === 'id') continue;
-                        const rv = ref.data[rk];
-                        if (!Value.isValue(rv) || !Value.isTextual(rv)) {
-                            throw new Error(`Item on path "${Data.Path.toString(innerPath)}" expected its referenceable to have a key "${rk}" but the referenceable does not have it.`);
-                        }
+                    const ref = References.get(references, item.relatesTo, relTo.id);
+                    relTo.data = {};
+                    for (const relKey of item.relatedKeys) {
+                        if (relKey !== 'id') {
+                            const rv = ref.data[relKey];
+                            if (!Value.isValue(rv) || !(Value.isTextual(rv) || Value.isBoolean(rv) || Value.isTristate(rv))) {
+                                throw new Error(`Item on path "${Data.Path.toString(innerPath)}" expected its referenceable to have a key "${relKey}" but the referenceable does not have it.`);
+                            }
 
-                        Data.set(data, Data.Path.path(rk, innerPath), rv);
+                            // Note that we edit the content in-place to avoid having to unref and re-ref the new value for the corresponding referenceable
+                            relTo.data[relKey] = rv;
+                        }
                     }
                 }
             } else {
@@ -322,7 +314,7 @@ function validateData(data: DataTree, path: Path, item: Item) {
 
         return;
     } else if (Schema.hasRelatedToInput(item)) {
-        const value = Data.getValue(data, Data.Path.path('id', path));
+        const value = Data.getValue(data, path);
         value.isValid = Value.isEmpty(value) ? !item.isRequired : true; // We assume that we cannot get a broken relation at this stage of validation
     } else {
         const value = Data.getValue(data, path);
@@ -470,11 +462,9 @@ export const FormContext = {
             } else if (Schema.hasUnknownInput(item)) {
                 console.warn(`Item "${item.tag}" has unknown input. Review the schema. Ignoring the item.`);
             } else if (Schema.hasRelatedToInput(item)) {
-                // HAKZ HAKZ HAKZ
                 // We assume that the tag "id" is the id through which we refer to the referenceable
                 assert(item.relatedKeys.includes('id'), `related-to item "${item.tag}" does not mention "id" in its related keys but we require that. Its keys are "${item.relatedKeys.join(', ')}.`);
-                data[item.tag] = {};
-                (data[item.tag] as DataTree)['id'] = Value.empty(!item.isRequired);
+                data[item.tag] = Value.emptyRelTo(!item.isRequired);
             } else {
                 data[item.tag] = Value.defaultForItem(item);
             }

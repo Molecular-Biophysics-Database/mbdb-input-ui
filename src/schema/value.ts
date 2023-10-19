@@ -35,6 +35,11 @@ export type Option = {
     other?: string,
 };
 
+export type RelatedTo = {
+    id: string,
+    data: Record<string, TValue<string> | TValue<boolean> | TValue<Tristate>> | null,
+};
+
 export type VocabularyEntry = {
     id: string,
     title: string,
@@ -42,7 +47,7 @@ export type VocabularyEntry = {
 };
 
 export type Value = BaseValue & {
-    payload: boolean | string | CalendarDate | Option | Tristate | DepositedFilePayload | VocabularyEntry
+    payload: boolean | string | CalendarDate | Option | Tristate | DepositedFilePayload | VocabularyEntry | RelatedTo
     isValid: boolean,
 };
 export type TValue<T extends Value['payload']> = BaseValue & {
@@ -89,6 +94,8 @@ export const Value = {
             return this.emptyVocabularyEntry(!isRequired);
         } else if (Schema.hasFileInput(item)) {
             return this.emptyFile(!isRequired);
+        } else if (Schema.hasRelatedToInput(item)) {
+            return this.emptyRelTo(isRequired);
         }
 
         assert(false, `Attempted to get default value for item "${item.tag}" with input "${item.input}" but no default value is available`);
@@ -113,6 +120,16 @@ export const Value = {
         v.isValid = isValid;
 
         return v;
+    },
+
+    emptyRelTo(isValid = false): TValue<RelatedTo> {
+        return mkValue(
+            {
+                id: '',
+                data: null,
+            },
+            isValid
+        );
     },
 
     emptyVocabularyEntry(isValid: boolean) {
@@ -152,6 +169,8 @@ export const Value = {
             return this.isEmptyFile(value);
         } else if (this.isVocabularyEntry(value)) {
             return this.isEmptyVocabularyEntry(value);
+        } else if (this.isRelTo(value)) {
+            return value.payload.id === '';
         } else {
             return false;
         }
@@ -188,12 +207,31 @@ export const Value = {
         }
     },
 
-    isRelToId(value: Value): value is TValue<string> {
-        if (typeof value.payload !== 'string') {
+    isRelTo(value: Value): value is TValue<RelatedTo> {
+        if (typeof value.payload !== 'object') {
             return false;
-        } else {
-            return value.payload === '' || References.isValidRefId(value.payload);
         }
+
+        const p = value.payload as any;
+        if (typeof p['id'] !== 'string') {
+            return false;
+        }
+        if (typeof p['data'] !== 'object') {
+            return false;
+        }
+
+        for (const prop in p['data']) {
+            const v = p['data'][prop];
+            if (!Value.isValue(v)) {
+                return false;
+            }
+
+            if (!(Value.isTextual(v) || Value.isBoolean(v) || Value.isTristate(v))) {
+                return false;
+            }
+        }
+
+        return true;
     },
 
     isFile(value: Value): value is TValue<DepositedFilePayload> {
@@ -249,10 +287,28 @@ export const Value = {
             return mkValue(Uuid.get(), true);
         } else {
             if (!References.isValidRefId(v)) {
-                throw new Error(`Attempted to set referenceable ID to a value "${v}" that is not a valid UUIDv4.`);
+                throw new Error(`Attempted to set referenceable ID to a value "${v}" which is not a valid referenceable ID value.`);
             }
             return mkValue(v, true);
         }
+    },
+
+    relTo(id: string, data: RelatedTo['data'], isValid = false): TValue<RelatedTo> {
+        if (!(id === '' || References.isValidRefId(id))) {
+            throw new Error(`Attempted to set RelatedTo ID to a value "${id}" which is not a valid refereanceable ID value.`);
+        }
+
+        if (id === '' && data !== null) {
+            throw new Error(`Attempted to set RelatedTo with empty ID but non-empty data.`);
+        }
+
+        return mkValue(
+            {
+                id,
+                data: data ? { ...data } : null,
+            },
+            isValid
+        );
     },
 
     toBoolean(value: Value) {
@@ -306,8 +362,8 @@ export const Value = {
         return value.payload;
     },
 
-    toRelToId(value: Value) {
-        if (!this.isRelToId(value)) {
+    toRelTo(value: Value) {
+        if (!this.isRelTo(value)) {
             throw new Error(`Value with payload ${value.payload} is not a related-to ID`);
         }
 

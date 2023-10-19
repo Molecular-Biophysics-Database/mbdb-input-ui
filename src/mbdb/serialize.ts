@@ -10,20 +10,23 @@ import { Register } from '../ui/form/custom-components/register';
 
 function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, mbdbData: MbdbData, mbdbArrayIndices: number[], errors: DataError[], files: DepositedFile[], item: Item, options: Options) {
     if (Schema.hasRelatedToInput(item)) {
-        const id = Data.getValue(internalData, Data.Path.path('id', internalParentPath));
-        if (!Value.isEmpty(id)) {
-            const tree = Data.getTree(internalData, internalParentPath);
-            for (const k in tree) {
-                const vPath = Data.Path.path(k, internalParentPath);
-                const v = Data.getValue(internalData, vPath);
-                if (!Value.isValid(v)) {
-                    errors.push(DataError(vPath, 'Item has an invalid'));
-                } else {
-                    const storePath = MbdbData.Path.toPath(`${item.mbdbPath}/${k}`, mbdbArrayIndices);
+        const v = Data.getValue(internalData, internalParentPath);
+        if (!Value.isEmpty(v)) {
+            const relTo = Value.toRelTo(v);
 
-                    // REVIEW: Here we assume that the related data are primitive values. Can we get something else here?
-                    assert(Value.isTextual(v) || Value.isBoolean(v) || Value.isTristate(v), `Unexpected value type on path "${Data.Path.toString(vPath)}."`);
-                    MbdbData.set(mbdbData, v.payload, storePath);
+            const storePath = MbdbData.Path.toPath(`${item.mbdbPath}/id`, mbdbArrayIndices);
+            MbdbData.set(mbdbData, relTo.id, storePath);
+
+            for (const relKey in relTo.data) {
+                const referencedValuePath = Data.Path.path(relKey, internalParentPath);
+                const referencedValue = relTo.data[relKey];
+                if (!Value.isValid(referencedValue)) {
+                    errors.push(DataError(referencedValuePath, 'Item has an invalid'));
+                } else {
+                    const storePath = MbdbData.Path.toPath(`${item.mbdbPath}/${relKey}`, mbdbArrayIndices);
+
+                    assert(Value.isTextual(referencedValue) || Value.isBoolean(referencedValue) || Value.isTristate(referencedValue), `Unexpected value type on path "${Data.Path.toString(referencedValuePath)}."`);
+                    MbdbData.set(mbdbData, referencedValue.payload, storePath);
                 }
             }
         } else {

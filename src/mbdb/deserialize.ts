@@ -3,7 +3,7 @@ import { Vocabulary } from './vocabulary';
 import { ComplexItem, Item, Schema, TopLevelItem, VariantItem } from '../schema';
 import { FormContext } from '../context';
 import { Data, DataTree, Path } from '../schema/data';
-import { CalendarDate, Value } from '../schema/value';
+import { CalendarDate, RelatedTo, Value } from '../schema/value';
 import { ReferenceAnchors, References } from '../schema/references';
 import { Uuid } from '../schema/uuid';
 import { CommonValidators } from '../schema/validators';
@@ -102,25 +102,47 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
         if (Schema.hasRelatedToInput(item)) {
             const related = MbdbData.getObject(mbdbData, MbdbData.Path.toPath(item.mbdbPath, indices));
 
+            const relTo = Value.emptyRelTo(!item.isRequired);
             if (related) {
-                for (const key of item.relatedKeys) {
-                    const innerLoadPath = MbdbData.Path.extend(key, item.mbdbPath);
+                const data: RelatedTo['data'] = {};
+                for (const relKey of item.relatedKeys) {
+                    const innerLoadPath = MbdbData.Path.extend(relKey, item.mbdbPath);
                     const v = MbdbData.getScalar(mbdbData, MbdbData.Path.toPath(innerLoadPath, indices));
-                    if (v === undefined || typeof v !== 'string') {
-                        throw new Error(`Item "${key}" in a "related-to" item on MbdbPath "${item.mbdbPath}" either does not exist or it is not a string.`);
+
+                    if (relKey !== 'id') {
+                        if (v === undefined) {
+                            throw new Error(`Item "${relKey}" in a "related-to" item on MbdbPath "${item.mbdbPath}" either does not exist.`);
+                        }
+
+                        if (typeof v === 'string') {
+                            data[relKey] = Value.textual(v, true);
+                        } else if (typeof v === 'number') {
+                            data[relKey] = Value.textual(v.toString(), true);
+                        } else if (typeof v === 'boolean') {
+                            data[relKey] = Value.boolean(v);
+                        } else {
+                            throw new Error(`Item "${relKey}" in a "related-to" item on MbdbPath "${item.mbdbPath}" is neither textual or boolean value`);
+                        }
+                    } else {
+                        if (typeof v !== 'string') {
+                            throw new Error(`Item "id" in a "related-to" item on MbdbPath "${item.mbdbPath}" is not a string.`);
+                        }
+                        if (!(v === '' || References.isValidRefId(v))) {
+                            throw new Error(`Item "id" in a "related-to" item on MbdbPath "${item.mbdbPath}" is not a valid reference ID.`);
+                        }
+
+                        relTo.payload.id = v;
                     }
-
-                    const value = Value.textual(v, true); // Again the assumption that related values are simple textual values
-                    const storePath = Data.Path.path(key, itemPath);
-
-                    Data.set(data, storePath, value);
                 }
+
+                relTo.payload.data = data;
+                Data.set(data, itemPath, relTo);
             } else {
                 if (item.isRequired && !options.allowPartials) {
                     throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
                 }
 
-                Data.set(data, Data.Path.path('id', itemPath), Value.empty());
+                Data.set(data, itemPath, relTo);
             }
         } else if (Schema.hasVocabularyInput(item)) {
             const mbdbVoc = MbdbData.getObject(mbdbData, loadPath);
