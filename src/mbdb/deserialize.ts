@@ -3,7 +3,7 @@ import { Vocabulary } from './vocabulary';
 import { ComplexItem, Item, Schema, TopLevelItem, VariantItem } from '../schema';
 import { FormContext } from '../context';
 import { Data, DataTree, Path } from '../schema/data';
-import { CalendarDate, RelatedTo, Value } from '../schema/value';
+import { CalendarDate, Value } from '../schema/value';
 import { ReferenceAnchors, References } from '../schema/references';
 import { Uuid } from '../schema/uuid';
 import { CommonValidators } from '../schema/validators';
@@ -104,7 +104,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
 
             const relTo = Value.emptyRelTo(!item.isRequired);
             if (related) {
-                const data: RelatedTo['data'] = {};
+                relTo.payload.data = {};
                 for (const relKey of item.relatedKeys) {
                     const innerLoadPath = MbdbData.Path.extend(relKey, item.mbdbPath);
                     const v = MbdbData.getScalar(mbdbData, MbdbData.Path.toPath(innerLoadPath, indices));
@@ -115,11 +115,11 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                         }
 
                         if (typeof v === 'string') {
-                            data[relKey] = Value.textual(v, true);
+                            relTo.payload.data[relKey] = Value.textual(v, true);
                         } else if (typeof v === 'number') {
-                            data[relKey] = Value.textual(v.toString(), true);
+                            relTo.payload.data[relKey] = Value.textual(v.toString(), true);
                         } else if (typeof v === 'boolean') {
-                            data[relKey] = Value.boolean(v);
+                            relTo.payload.data[relKey] = Value.boolean(v);
                         } else {
                             throw new Error(`Item "${relKey}" in a "related-to" item on MbdbPath "${item.mbdbPath}" is neither textual or boolean value`);
                         }
@@ -135,7 +135,6 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     }
                 }
 
-                relTo.payload.data = data;
                 Data.set(data, itemPath, relTo);
             } else {
                 if (item.isRequired && !options.allowPartials) {
