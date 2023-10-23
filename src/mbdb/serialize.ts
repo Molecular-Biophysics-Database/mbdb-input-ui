@@ -95,6 +95,9 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             } else {
                 files.push(DepositedFile(v.payload.file, v.payload.metadata));
             }
+        } else if (Schema.hasNumericInput(item)) {
+            const nv = item.input === 'int' ? parseInt(v.payload as string) : parseFloat(v.payload as string);
+            MbdbData.set(mbdbData, nv, storePath);
         } else {
             // NOTE: TS cannot figure out that we cannot get a VocabularyEntry type because that is
             //       covered by the hasVocabularyInput() check, hence the cast to MbdbScalar.
