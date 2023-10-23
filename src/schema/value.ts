@@ -274,6 +274,7 @@ export const Value = {
         const p = value.payload as any;
         return (
             typeof p['id'] === 'string' &&
+            typeof p['title'] === 'string' &&
             (p['data'] === null || isVocabularyEntry(p['data']))
         );
     },
