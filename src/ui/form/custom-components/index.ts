@@ -8,7 +8,7 @@ export { DataError };
 
 export type CustomComponent<CustomData> = {
     applyInitialData: (inData: DataTree) => Partial<CustomData>,
-    emptyData: () => Partial<CustomData>,
+    emptyData: (markAsEmpty: boolean) => Partial<CustomData>,
     fromMbdb: (mbdbData: MbdbData, options: Options) => DataTree,
     hasErrors: (data: DataTree) => boolean,
     toMbdb: (data: DataTree, path: Path, errors: DataError[]) => MbdbData | undefined

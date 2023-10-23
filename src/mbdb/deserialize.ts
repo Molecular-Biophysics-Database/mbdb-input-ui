@@ -5,6 +5,7 @@ import { FormContext } from '../context';
 import { Data, DataTree, Path } from '../schema/data';
 import { CalendarDate, Value } from '../schema/value';
 import { ReferenceAnchors, References } from '../schema/references';
+import { Tristate } from '../schema/tristate';
 import { Uuid } from '../schema/uuid';
 import { CommonValidators } from '../schema/validators';
 import { Register as CustomComponentsRegister } from '../ui/form/custom-components/register';
@@ -93,7 +94,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
 
         const indices = gatherArrayIndices(itemPath);
         const mbdbCustomData = MbdbData.getObject(mbdbData, MbdbData.Path.toPath(item.mbdbPath, indices));
-        const customData = mbdbCustomData ? cc.fromMbdb(mbdbCustomData, options) : cc.emptyData();
+        const customData = mbdbCustomData ? cc.fromMbdb(mbdbCustomData, options) : cc.emptyData(true);
 
         Data.set(data, itemPath, customData);
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {
@@ -194,7 +195,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for a boolean item "${item.tag}" is not a boolean.`);
                 }
 
-                const value = Value.tristate(mbdbScalar ? 'true' : 'false', true);
+                const value = Value.tristate(mbdbScalar ? Tristate.True : Tristate.False, true);
                 Data.set(data, itemPath, value);
             } else if (Schema.hasOptionsInput(item)) {
                 if (typeof mbdbScalar !== 'string') {

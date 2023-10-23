@@ -5,6 +5,7 @@ import { FormContext } from '../context';
 import { DepositedFile, Item, Schema, TopLevelItem, VariantItem } from '../schema';
 import { Data, DataTree, Path } from '../schema/data';
 import { Traverse } from '../schema/traverse';
+import { Tristate } from '../schema/tristate';
 import { Value } from '../schema/value';
 import { Register } from '../ui/form/custom-components/register';
 
@@ -72,8 +73,8 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             }
         } else if (Schema.hasBooleanInput(item)) {
             const tv = Value.toTristate(v);
-            if (tv === 'true') MbdbData.set(mbdbData, true, storePath);
-            else if (tv === 'false') MbdbData.set(mbdbData, false, storePath);
+            if (tv === Tristate.True) MbdbData.set(mbdbData, true, storePath);
+            else if (tv === Tristate.False) MbdbData.set(mbdbData, false, storePath);
             // Do not set anything if Tristate is none
         } else if (Schema.hasCalendarDateInput(item)) {
             const { year, month, day } = Value.toCalendarDate(v);

@@ -98,9 +98,9 @@ function tristateInitialState(handler: _FormContextHandler, path: Path) {
 }
 
 const TristateOptions = [
-    { value: 'true' as Tristate, text: 'Yes' },
-    { value: 'false' as Tristate, text: 'No' },
-    { value: 'not-set' as Tristate, text: '(Not set)' },
+    { value: Tristate.True, text: 'Yes' },
+    { value: Tristate.False, text: 'No' },
+    { value: Tristate.NotSet, text: '(Not set)' },
 ];
 export const YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRequired, path, handler, noRightOffset }: {
     id: string,
@@ -113,7 +113,7 @@ export const YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRe
     const [localValue, setLocalValue] = React.useState(tristateInitialState(handler, path));
     const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
         const v = data.value as Tristate;
-        const newValue = Value.tristate(v, v === 'not-set' && isRequired ? false : true);
+        const newValue = Value.tristate(v, v === Tristate.NotSet && isRequired ? false : true);
 
         handler.set(path, newValue, newValue.isValid === localValue.isValid);
         setLocalValue({ state: v, isValid: newValue.isValid });

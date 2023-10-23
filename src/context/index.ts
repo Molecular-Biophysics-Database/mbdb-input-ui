@@ -383,7 +383,7 @@ export const FormContext = {
 
     makeCustomData(item: CustomItem, data: DataTree, references: ReferenceAnchors) {
         const cc = Register.get(item.component);
-        data[item.tag] = cc.emptyData();
+        data[item.tag] = cc.emptyData(false);
     },
 
     makeData(schema: ComplexInput, data: DataTree, references: ReferenceAnchors) {
