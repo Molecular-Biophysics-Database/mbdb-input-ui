@@ -139,7 +139,7 @@ function getTitles(htmlId: string, schema: AnyItem) {
 
         niceLabels.push(
             <React.Fragment key={objIdx}>
-                <div>{niceLabel(item.label)}{elemIndicator}</div><div className="inline">/</div>
+                <div>{niceLabel(item.label, !!item.dontTransformLabels)}{elemIndicator}</div><div className="inline">/</div>
             </React.Fragment>
         );
     }
