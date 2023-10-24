@@ -80,7 +80,7 @@ export const Value = {
         const isRequired = isRequiredOverride !== undefined ? isRequiredOverride : item.isRequired;
 
         if (Schema.hasBooleanInput(item)) {
-            return this.tristate('not-set', !item.isRequired);
+            return this.tristate(Tristate.NotSet, !item.isRequired);
         } else if (Schema.hasCalendarDateInput(item)) {
             const now = new Date();
             return this.calendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
@@ -274,6 +274,7 @@ export const Value = {
         const p = value.payload as any;
         return (
             typeof p['id'] === 'string' &&
+            typeof p['title'] === 'string' &&
             (p['data'] === null || isVocabularyEntry(p['data']))
         );
     },

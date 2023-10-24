@@ -12,6 +12,7 @@ import { MbdbData } from '../../../../mbdb/data';
 import { Options } from '../../../../mbdb/deserialize';
 import { Help, Schema } from '../../../../schema';
 import { Data, DataTree, Path } from '../../../../schema/data';
+import { Tristate } from '../../../../schema/tristate';
 import { Value } from '../../../../schema/value';
 import { CommonValidators } from '../../../../schema/validators';
 
@@ -40,10 +41,14 @@ function validatorRequired(v: string) {
     return CommonValidators.isFloat(v);
 }
 
-function setMbdbValueData(mbdbValue: Record<string, string | boolean>, data: DataTree, name: keyof ValueErrorData, parentPath: Path) {
+function setMbdbValueData(mbdbValue: Record<string, number | boolean>, data: DataTree, name: keyof ValueErrorData, parentPath: Path) {
     const v = Data.getValue(data, Data.Path.path(name, parentPath));
-    if ((Value.isTextual(v) && v.payload !== '') || Value.isBoolean(v)) {
-        mbdbValue[name] = v.payload;
+    if (Value.isTextual(v) && v.payload !== '') {
+        mbdbValue[name] = parseFloat(v.payload);
+    } else if (Value.isTristate(v)) {
+        const ts = Value.toTristate(v);
+        if (ts !== Tristate.NotSet)
+            mbdbValue[name] = ts === Tristate.True ? true : false;
     }
 }
 
@@ -104,13 +109,13 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         return data;
     },
 
-    emptyData(): Partial<ValueErrorData> {
+    emptyData(markAsEmpty: boolean): Partial<ValueErrorData> {
         return {
-            [Schema.GroupMarkedEmpty]: false,
+            [Schema.GroupMarkedEmpty]: markAsEmpty,
             lower_error: Value.empty(!Required.lower_error),
             upper_error: Value.empty(!Required.upper_error),
             error_level: Value.empty(!Required.error_level),
-            errors_are_relative: Value.tristate('not-set', !Required.errors_are_relative),
+            errors_are_relative: Value.tristate(Tristate.NotSet, !Required.errors_are_relative),
         };
     },
 
@@ -133,12 +138,12 @@ export const ValueError: CustomComponent<ValueErrorData> = {
 
         const errRel = mbdbData['errors_are_relative'];
         if (errRel === undefined) {
-            out['errors_are_relative'] = Value.tristate('not-set', true);
+            out['errors_are_relative'] = Value.tristate(Tristate.NotSet, true);
         } else {
             if (typeof errRel !== 'boolean') {
                 throw new Error(`Value of "errors_are_relative" field in ValueError custom component was expected to be a number.`);
             }
-            out['errors_are_relative'] = Value.tristate(errRel ? 'true' : 'false', true);
+            out['errors_are_relative'] = Value.tristate(errRel ? Tristate.True : Tristate.False, true);
         }
 
         return out;
@@ -154,7 +159,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
             let vPath = Data.Path.path(name, path)
             if (!checkValue(data, vPath)) {
                 errors.push(DataError(vPath, 'Item has an invalid value. Check that the input is numeric and sensible.'));
-                bad = false;
+                bad = true;
             }
         }
 
