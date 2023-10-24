@@ -1,12 +1,12 @@
-import React from "react"
-import { Traverse } from "../../schema/traverse";
-import { niceLabel } from "./util";
+import React from 'react'
+import { PathId } from './path-id';
+import { niceLabel } from './util';
 import { assert }  from '../../assert';
-import { FormContextInstance } from "../../context";
-import { AnyItem, Schema } from "../../schema";
-import { _FormContextHandler } from "../../context/handler";
-import { PathId } from "./path-id";
-import { Data } from "../../schema/data";
+import { FormContextInstance } from '../../context';
+import { _FormContextHandler } from '../../context/handler';
+import { AnyItem, Schema } from '../../schema';
+import { Data } from '../../schema/data';
+import { Traverse } from '../../schema/traverse';
 
 type BreadcrumbProps = {
     inputRef: React.RefObject<HTMLDivElement>,
