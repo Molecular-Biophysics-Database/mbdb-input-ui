@@ -1,11 +1,12 @@
 import React from "react"
+import { Traverse } from "../../schema/traverse";
+import { niceLabel } from "./util";
+import { assert }  from '../../assert';
 import { FormContextInstance } from "../../context";
 import { AnyItem, Schema } from "../../schema";
 import { _FormContextHandler } from "../../context/handler";
 import { PathId } from "./path-id";
 import { Data } from "../../schema/data";
-import { Traverse } from "../../schema/traverse";
-import { niceLabel } from "./util";
 
 type BreadcrumbProps = {
     inputRef: React.RefObject<HTMLDivElement>,
@@ -110,17 +111,38 @@ function getTitles(htmlId: string, schema: AnyItem) {
         return '';
     }
 
+    // If there is an array of items, we would like to show the number of that element
+    // in the breadcrumb. Do to that we need to combine information form bith "dataPath"
+    // and "objPath".
+    // "objPath" allows us to access information about the item, such as its displayed name.
+    // "dataPath" allows us to determine the index of an element an array.
+
     let tokenPath = '';
     const niceLabels = new Array<React.ReactNode>();
-    tokens.forEach((tok, idx) => {
+
+    let dataIdx = 0;
+    for (let objIdx = 0; objIdx < tokens.length; objIdx++, dataIdx++) {
+        const tok = tokens[objIdx];
         tokenPath = Traverse.objPath(tok, tokenPath);
+
         const item = Traverse.itemFromSchema(tokenPath, schema);
+        let elemIndicator;
+        if (item.isArray) {
+            // Index of an item in DataPath is a separate token, pre-increment the dataIdx before we retrieve it
+            const pathItem = dataPath[++dataIdx];
+            assert(pathItem.kind === 'index', `Expected that DataPath token would be of "index" type but got "obj" instead.`);
+
+            elemIndicator = <span>{`: ${pathItem.value + 1}`}</span>;
+        } else {
+            elemIndicator = null;
+        }
+
         niceLabels.push(
-            <React.Fragment key={idx}>
-                <div>{niceLabel(item.label)}</div><div className="inline">/</div>
+            <React.Fragment key={objIdx}>
+                <div>{niceLabel(item.label)}{elemIndicator}</div><div className="inline">/</div>
             </React.Fragment>
         );
-    });
+    }
 
     return niceLabels;
 }
