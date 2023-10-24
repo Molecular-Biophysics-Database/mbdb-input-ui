@@ -18,7 +18,7 @@ function pickCandidateItem (htmlIdOne:string, htmlIdTwo:string, containerRect:DO
     const elemTwoRect = elemTwo?.getBoundingClientRect();
     const elemOneOffset = elemOneRect ? elemOneRect.y - containerRect.y : -Number.MAX_SAFE_INTEGER; 
     const elemTwoOffset = elemTwoRect ? elemTwoRect.y - containerRect.y : -Number.MAX_SAFE_INTEGER;
-    
+
     if (elemTwoOffset < elemOneOffset) {
         return [htmlIdOne, elemOneOffset <= 10]
     } else {
@@ -27,9 +27,6 @@ function pickCandidateItem (htmlIdOne:string, htmlIdTwo:string, containerRect:DO
 }
 
 function findTopMostVisibleItem(item: AnyItem, ctxHandler: _FormContextHandler, parentHtmlId: string, currentRect:DOMRect, topMostHtmlId: string) {
-    //const schema = ctxHandler.schema();
-    //const data = ctxHandler.data();
-
     if (Schema.isTopLevelItem(item)) {
         for (const innerItem of item.input) {
             topMostHtmlId = findTopMostVisibleItem(innerItem, ctxHandler, '', currentRect, topMostHtmlId);
@@ -43,23 +40,23 @@ function findTopMostVisibleItem(item: AnyItem, ctxHandler: _FormContextHandler, 
                 const elemPath = Data.Path.index(i, path);
                 const htmlId = PathId.toId(elemPath);
                 const [winner, isAbove] = pickCandidateItem(htmlId, topMostHtmlId, currentRect);
-                
+
                 if (isAbove) {
                     topMostHtmlId = winner;
                 }
-                
+
                 for (const innerItem of item.input) {
                     topMostHtmlId = findTopMostVisibleItem(innerItem, ctxHandler, htmlId, currentRect, topMostHtmlId);
                 }
             }
         } else {
             const htmlId = PathId.extendId(item.tag, parentHtmlId);
-            const [winner, isAbove] = pickCandidateItem(htmlId, topMostHtmlId, currentRect); 
-    
+            const [winner, isAbove] = pickCandidateItem(htmlId, topMostHtmlId, currentRect);
+
             if (isAbove) {
                 topMostHtmlId = winner;
             }
-    
+
             for (const innerItem of item.input) {
                 topMostHtmlId = findTopMostVisibleItem(innerItem, ctxHandler, htmlId, currentRect, topMostHtmlId);
             }
@@ -67,19 +64,19 @@ function findTopMostVisibleItem(item: AnyItem, ctxHandler: _FormContextHandler, 
     } else if (Schema.hasVariantInput(item)) {
         const path = Data.Path.path(item.tag, PathId.toPath(parentHtmlId));
 
-        if (item.isArray) { 
+        if (item.isArray) {
             const a = ctxHandler.getArray(path);
-        
+
             for (let i = 0; i < a.length; i++) {
                 const elemPath = Data.Path.index(i, path);
                 const choice = ctxHandler.getVariantChoice(elemPath);
                 const htmlId = PathId.toId(elemPath);
                 const [winner, isAbove] = pickCandidateItem(htmlId, topMostHtmlId, currentRect);
-                
+
                 if (isAbove) {
                     topMostHtmlId = winner;
                 }
-                
+
                 topMostHtmlId = findTopMostVisibleItem(item.input[choice], ctxHandler, htmlId, currentRect, topMostHtmlId);
             }
 
@@ -91,7 +88,7 @@ function findTopMostVisibleItem(item: AnyItem, ctxHandler: _FormContextHandler, 
             if (isAbove) {
                 topMostHtmlId = winner;
             }
-            
+
             topMostHtmlId = findTopMostVisibleItem(item.input[choice], ctxHandler, htmlId, currentRect, topMostHtmlId);
         }
     }
@@ -111,24 +108,24 @@ function getTitles (htmlId: string, schema: AnyItem) {
 
     if (tokens.length < 1) {
         return '';
-    } 
+    }
 
     let tokenPath = '';
 
     const niceLabels = [];
-    
+
     for (const tok of tokens) {
         tokenPath = Traverse.objPath(tok, tokenPath);
         const item = Traverse.itemFromSchema(tokenPath, schema);
         niceLabels.push(<><div>{niceLabel(item.label)}</div><div className="inline">/</div></>);
     }
-    
+
     return niceLabels;
 }
 
 export function Breadcrumb (props: BreadcrumbProps) {
-    const [topMost, setTopMost] = React.useState(''); 
-    const [displayBreacrumb, setDisplayBreadcrumb] = React.useState(false); 
+    const [topMost, setTopMost] = React.useState('');
+    const [displayBreacrumb, setDisplayBreadcrumb] = React.useState(false);
 
     const { handler } = React.useContext(FormContextInstance);
 
@@ -154,6 +151,6 @@ export function Breadcrumb (props: BreadcrumbProps) {
         }
 
     }, [props.inputRef])
-   
+
     return <div className={`${displayBreacrumb ? 'breadcrumb-active' : 'breadcrumb'}`}>{getTitles(topMost, handler.schema())}</div>
 }
