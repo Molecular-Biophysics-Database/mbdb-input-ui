@@ -111,14 +111,16 @@ function getTitles(htmlId: string, schema: AnyItem) {
     }
 
     let tokenPath = '';
-
-    const niceLabels = [];
-
-    for (const tok of tokens) {
+    const niceLabels = new Array<React.ReactNode>();
+    tokens.forEach((tok, idx) => {
         tokenPath = Traverse.objPath(tok, tokenPath);
         const item = Traverse.itemFromSchema(tokenPath, schema);
-        niceLabels.push(<><div>{niceLabel(item.label)}</div><div className="inline">/</div></>);
-    }
+        niceLabels.push(
+            <React.Fragment key={idx}>
+                <div>{niceLabel(item.label)}</div><div className="inline">/</div>
+            </React.Fragment>
+        );
+    });
 
     return niceLabels;
 }
@@ -134,7 +136,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
 
         if (current === null) {
             return;
-        } 
+        }
 
         const currentRect = current.getBoundingClientRect()
 
