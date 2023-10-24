@@ -11,7 +11,7 @@ type BreadcrumbProps = {
     inputRef: React.RefObject<HTMLDivElement>,
 }
 
-function pickCandidateItem (htmlIdOne:string, htmlIdTwo:string, containerRect:DOMRect): [string, boolean] {
+function pickCandidateItem(htmlIdOne:string, htmlIdTwo:string, containerRect:DOMRect): [string, boolean] {
     const elemOne = document.getElementById(htmlIdOne);
     const elemTwo = document.getElementById(htmlIdTwo);
     const elemOneRect = elemOne?.getBoundingClientRect();
@@ -96,7 +96,7 @@ function findTopMostVisibleItem(item: AnyItem, ctxHandler: _FormContextHandler, 
     return topMostHtmlId;
 }
 
-function getTitles (htmlId: string, schema: AnyItem) {
+function getTitles(htmlId: string, schema: AnyItem) {
 
     if (htmlId === '') {
         return '';
@@ -123,7 +123,7 @@ function getTitles (htmlId: string, schema: AnyItem) {
     return niceLabels;
 }
 
-export function Breadcrumb (props: BreadcrumbProps) {
+export function Breadcrumb(props: BreadcrumbProps) {
     const [topMost, setTopMost] = React.useState('');
     const [displayBreacrumb, setDisplayBreadcrumb] = React.useState(false);
 
