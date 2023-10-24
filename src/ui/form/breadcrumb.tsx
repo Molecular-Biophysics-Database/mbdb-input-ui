@@ -12,11 +12,11 @@ type BreadcrumbProps = {
 }
 
 function pickCandidateItem(htmlIdOne:string, htmlIdTwo:string, containerRect:DOMRect): [string, boolean] {
-    const elemOne = document.getElementById(htmlIdOne);
-    const elemTwo = document.getElementById(htmlIdTwo);
+    const elemOne = htmlIdOne ? document.getElementById(htmlIdOne) : void 0;
+    const elemTwo = htmlIdTwo ? document.getElementById(htmlIdTwo) : void 0;
     const elemOneRect = elemOne?.getBoundingClientRect();
     const elemTwoRect = elemTwo?.getBoundingClientRect();
-    const elemOneOffset = elemOneRect ? elemOneRect.y - containerRect.y : -Number.MAX_SAFE_INTEGER; 
+    const elemOneOffset = elemOneRect ? elemOneRect.y - containerRect.y : -Number.MAX_SAFE_INTEGER;
     const elemTwoOffset = elemTwoRect ? elemTwoRect.y - containerRect.y : -Number.MAX_SAFE_INTEGER;
 
     if (elemTwoOffset < elemOneOffset) {
