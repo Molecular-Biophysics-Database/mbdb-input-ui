@@ -15,8 +15,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.12',
-                        title: '0.9.12',
+                        tag: '0.9.13',
+                        title: '0.9.13',
                     },
                 ],
                 help: {
@@ -50,7 +50,7 @@ export const SPR = [
                         minItems: 1,
                         input: 'string',
                         help: {
-                            en: 'List of keywords describing this particular record content, e.g. antibody, epitope, ligand optimization, SARS-CoV-2, agonist, antagonist, HIV, etc.',
+                            en: 'User chosen keywords describing the record content (e.g. antibody, epitope, ligand optimization, SARS-CoV-2, agonist, antagonist, HIV, etc.)',
                         },
                     },
                     {
@@ -1074,10 +1074,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1488,10 +1488,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1616,10 +1616,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1805,10 +1805,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1933,10 +1933,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2067,7 +2067,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -2140,10 +2140,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2373,10 +2373,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2548,10 +2548,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2676,10 +2676,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2810,7 +2810,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -2883,10 +2883,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3165,10 +3165,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3579,10 +3579,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3707,10 +3707,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3896,10 +3896,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4024,10 +4024,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4265,10 +4265,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4440,10 +4440,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4568,10 +4568,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4774,10 +4774,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4963,10 +4963,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5091,10 +5091,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5280,10 +5280,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5408,10 +5408,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5577,7 +5577,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -5650,10 +5650,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5997,10 +5997,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6125,10 +6125,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6243,7 +6243,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -6316,10 +6316,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6709,10 +6709,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6837,10 +6837,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6955,7 +6955,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -7028,10 +7028,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7428,10 +7428,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7556,10 +7556,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7674,7 +7674,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -7747,10 +7747,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8070,10 +8070,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8198,10 +8198,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8316,7 +8316,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -8389,10 +8389,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8857,10 +8857,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9271,10 +9271,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9399,10 +9399,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9588,10 +9588,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9716,10 +9716,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9957,10 +9957,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10132,10 +10132,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10260,10 +10260,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10545,10 +10545,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10673,10 +10673,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10791,7 +10791,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -10864,10 +10864,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11134,10 +11134,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11262,10 +11262,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11380,7 +11380,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -11453,10 +11453,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11830,10 +11830,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                        en: 'The upper error, i.e. the number added to the value',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                        en: 'The lower error, i.e. the number subtracted from the value',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11957,10 +11957,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                        en: 'The upper error, i.e. the number added to the value',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                        en: 'The lower error, i.e. the number subtracted from the value',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12087,10 +12087,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                        en: 'The upper error, i.e. the number added to the value',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                        en: 'The lower error, i.e. the number subtracted from the value',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12245,10 +12245,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12420,10 +12420,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12548,10 +12548,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12731,10 +12731,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13017,10 +13017,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13192,10 +13192,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13320,10 +13320,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13503,10 +13503,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13772,10 +13772,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14186,10 +14186,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14314,10 +14314,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14503,10 +14503,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14631,10 +14631,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14765,7 +14765,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -14838,10 +14838,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15071,10 +15071,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15246,10 +15246,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15374,10 +15374,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15508,7 +15508,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -15581,10 +15581,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15863,10 +15863,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16277,10 +16277,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16405,10 +16405,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16594,10 +16594,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16722,10 +16722,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16963,10 +16963,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17138,10 +17138,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17266,10 +17266,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17472,10 +17472,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17661,10 +17661,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17789,10 +17789,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17978,10 +17978,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18106,10 +18106,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18275,7 +18275,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -18348,10 +18348,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18695,10 +18695,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18823,10 +18823,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18941,7 +18941,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -19014,10 +19014,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19407,10 +19407,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19535,10 +19535,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19653,7 +19653,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -19726,10 +19726,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20126,10 +20126,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20254,10 +20254,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20372,7 +20372,7 @@ export const SPR = [
                                                         mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                         input: 'string',
                                                         help: {
-                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                            en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                         },
                                                     },
                                                     {
@@ -20445,10 +20445,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20768,10 +20768,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20896,10 +20896,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21014,7 +21014,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -21087,10 +21087,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21555,10 +21555,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21969,10 +21969,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22097,10 +22097,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22286,10 +22286,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22414,10 +22414,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22655,10 +22655,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22830,10 +22830,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22958,10 +22958,10 @@ export const SPR = [
                                                                                                 component: 'value-error',
                                                                                                 help: {
                                                                                                     upper_error: {
-                                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                                     },
                                                                                                     lower_error: {
-                                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                                     },
                                                                                                     errors_are_relative: {
                                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23243,10 +23243,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23371,10 +23371,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23489,7 +23489,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -23562,10 +23562,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23832,10 +23832,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23960,10 +23960,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24078,7 +24078,7 @@ export const SPR = [
                                                 mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/name',
                                                 input: 'string',
                                                 help: {
-                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record',
+                                                    en: 'Short descriptive name (id) of the constituent, must be unique within a record (e.g. NaCl, Human serum P1, Lysozyme, etc.)',
                                                 },
                                             },
                                             {
@@ -24151,10 +24151,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24349,10 +24349,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                en: 'The upper error, i.e. the number added to the value',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                en: 'The lower error, i.e. the number subtracted from the value',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24526,10 +24526,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                en: 'The upper error, i.e. the number added to the value',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                en: 'The lower error, i.e. the number subtracted from the value',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24717,7 +24717,7 @@ export const SPR = [
                                 minItems: 1,
                                 input: 'string',
                                 help: {
-                                    en: 'Additional information about the chemical environment can be specified here',
+                                    en: 'Additional information about the chemical environment can be specified here (e.g. prepared just prior to conducting the measurement, additional treatments like UV irradiation, specific storage container of chemical environment if that influenced the measurement etc.)',
                                 },
                             },
                         ],
@@ -24824,10 +24824,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                        en: 'The upper error, i.e. the number added to the value',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25238,10 +25238,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25366,10 +25366,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25555,10 +25555,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25683,10 +25683,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25941,10 +25941,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                        en: 'The upper error, i.e. the number added to the value',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26116,10 +26116,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26244,10 +26244,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26551,10 +26551,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26965,10 +26965,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27093,10 +27093,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27282,10 +27282,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27410,10 +27410,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27651,10 +27651,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27826,10 +27826,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27954,10 +27954,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28160,10 +28160,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                        en: 'The upper error, i.e. the number added to the value',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28349,10 +28349,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28477,10 +28477,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28666,10 +28666,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28794,10 +28794,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29201,10 +29201,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29329,10 +29329,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29731,10 +29731,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29859,10 +29859,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30268,10 +30268,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30396,10 +30396,10 @@ export const SPR = [
                                                                 component: 'value-error',
                                                                 help: {
                                                                     upper_error: {
-                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                     },
                                                                     lower_error: {
-                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                     },
                                                                     errors_are_relative: {
                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30728,10 +30728,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30856,10 +30856,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31333,10 +31333,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31747,10 +31747,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31875,10 +31875,10 @@ export const SPR = [
                                                                                 component: 'value-error',
                                                                                 help: {
                                                                                     upper_error: {
-                                                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                        en: 'The upper error, i.e. the number added to the value',
                                                                                     },
                                                                                     lower_error: {
-                                                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                                                     },
                                                                                     errors_are_relative: {
                                                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32064,10 +32064,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32192,10 +32192,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32433,10 +32433,10 @@ export const SPR = [
                                                                         component: 'value-error',
                                                                         help: {
                                                                             upper_error: {
-                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                             },
                                                                             lower_error: {
-                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                             },
                                                                             errors_are_relative: {
                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32608,10 +32608,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32736,10 +32736,10 @@ export const SPR = [
                                                                                         component: 'value-error',
                                                                                         help: {
                                                                                             upper_error: {
-                                                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                                                en: 'The upper error, i.e. the number added to the value',
                                                                                             },
                                                                                             lower_error: {
-                                                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                                                             },
                                                                                             errors_are_relative: {
                                                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33021,10 +33021,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33149,10 +33149,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33428,10 +33428,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33556,10 +33556,10 @@ export const SPR = [
                                                         component: 'value-error',
                                                         help: {
                                                             upper_error: {
-                                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                                en: 'The upper error, i.e. the number added to the value',
                                                             },
                                                             lower_error: {
-                                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                                en: 'The lower error, i.e. the number subtracted from the value',
                                                             },
                                                             errors_are_relative: {
                                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33877,10 +33877,10 @@ export const SPR = [
                         component: 'value-error',
                         help: {
                             upper_error: {
-                                en: 'The upper error, i.e. the number added to the parameter value',
+                                en: 'The upper error, i.e. the number added to the value',
                             },
                             lower_error: {
-                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                en: 'The lower error, i.e. the number subtracted from the value',
                             },
                             errors_are_relative: {
                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34300,10 +34300,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                        en: 'The upper error, i.e. the number added to the value',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                        en: 'The lower error, i.e. the number subtracted from the value',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34390,10 +34390,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                        en: 'The upper error, i.e. the number added to the value',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                        en: 'The lower error, i.e. the number subtracted from the value',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34677,10 +34677,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                        en: 'The upper error, i.e. the number added to the value',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34872,10 +34872,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                en: 'The upper error, i.e. the number added to the value',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                en: 'The lower error, i.e. the number subtracted from the value',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -35106,10 +35106,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the parameter value',
+                                                        en: 'The upper error, i.e. the number added to the value',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                        en: 'The lower error, i.e. the number subtracted from the value',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -35301,10 +35301,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the parameter value',
+                                                en: 'The upper error, i.e. the number added to the value',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the parameter value',
+                                                en: 'The lower error, i.e. the number subtracted from the value',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
