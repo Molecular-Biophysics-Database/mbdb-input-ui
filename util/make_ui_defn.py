@@ -37,14 +37,14 @@ class UIGSchemaError(Exception):
 class ImportedDefi:
     def __init__(self, defi: str):
         parts = defi.split('_')
-        self._js_name = ''.join([part.capitalize() for part in parts])
+        self._js_var = ''.join([part.capitalize() for part in parts])
         self._js_file = '-'.join([part.lower() for part in parts])
 
-    def file(self):
+    def jsFileName(self):
         return self._js_file
 
-    def name(self):
-        return self._js_name
+    def jsVarName(self):
+        return self._js_var
 
 
 class TypeDefnArg:
@@ -430,7 +430,7 @@ def to_js(schema_name, ui):
 
     if collected_imports:
         imports = "import { clone } from '../../util/just-clone';\n"
-        imports += '\n'.join(["import {{ {} }} from './{}';".format(imp.name(), imp.file()) for imp in collected_imports])
+        imports += '\n'.join(["import {{ {} }} from './{}';".format(imp.jsVarName(), imp.jsFileName()) for imp in collected_imports])
 
         return imports + '\n\n' + items
     else:
@@ -463,7 +463,7 @@ def to_js_item(item: Dict | ImportedDefi, indent: int, collected_imports: List[I
 
     if isinstance(item, ImportedDefi):
         collected_imports.append(item)
-        return '{}...clone({})'.format(SPC, item.name())
+        return '{}...clone({})'.format(SPC, item.jsVarName())
     else:
         out = ('' if no_lead_indent else SPC) + '{\n'
         for k, v in item.items():
