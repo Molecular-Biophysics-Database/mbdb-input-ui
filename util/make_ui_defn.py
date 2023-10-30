@@ -5,7 +5,7 @@ from pathlib import Path
 import pprint
 import re
 import traceback
-from typing import Dict, Union
+from typing import Dict, List, Union
 import uuid
 import yaml
 
@@ -32,6 +32,19 @@ class UIGParamsError(Exception):
 
 class UIGSchemaError(Exception):
     pass
+
+
+class ImportedDefi:
+    def __init__(self, defi: str):
+        parts = defi.split('_')
+        self._js_var = ''.join([part.capitalize() for part in parts])
+        self._js_file = '-'.join([part.lower() for part in parts])
+
+    def jsFileName(self):
+        return self._js_file
+
+    def jsVarName(self):
+        return self._js_var
 
 
 class TypeDefnArg:
@@ -67,6 +80,13 @@ def _mk_parser():
         type=str,
         required=False,
         help='Name of the schema. Used to generate more specific output.'
+    )
+    parser.add_argument(
+        '--imported_defis',
+        type=str,
+        required=False,
+        help='List of "$defs/<NAME>" definitions that will not be generated directly but imported from another file. It is your responsibility to make sure that all imported definitions are available',
+        nargs='+'
     )
 
     return parser
@@ -131,10 +151,13 @@ def get_custom_component(path):
     return c
 
 
-def get_item_from_defs(id, defs):
-    idx = id.rfind('/');
-    item_path = id[idx + 1:].split('/');
+def get_defi_path(defi: str):
+    idx = defi.rfind('/');
+    return defi[idx + 1:].split('/');
 
+
+def get_item_from_defs(defi, defs):
+    item_path = get_defi_path(defi)
     custom_item = get_custom_component(item_path)
 
     item = defs
@@ -161,12 +184,12 @@ def get_help_fields(item):
     return help_fields
 
 
-def item_defn(item, defs, name, mbdbPath):
+def item_defn(item, defs, name, mbdbPath, imported_defis):
     defn = {}
     help_fields = get_help_fields(item)
 
     if 'properties' in item:
-        defn['input'] = ui_defn(item['properties'], defs, mbdbPath)
+        defn['input'] = ui_defn(item['properties'], defs, mbdbPath, imported_defis)
     elif 'use' in item:
         inner_item, custom_item = get_item_from_defs(item['use'], defs)
         if custom_item:
@@ -179,7 +202,7 @@ def item_defn(item, defs, name, mbdbPath):
             if isinstance(inner_item, str):
                 defn['input'] = inner_item
             else:
-                defn = item_defn(inner_item, defs, name, mbdbPath)
+                defn = item_defn(inner_item, defs, name, mbdbPath, imported_defis)
     elif 'type' in item:
         t = item['type']
         if t == 'boolean':
@@ -221,7 +244,7 @@ def item_defn(item, defs, name, mbdbPath):
             variants = {}
             for name, schema in item['schemas'].items():
                 ui = make_ui_item(name, schema, mbdbPath)
-                inner_defn = item_defn(schema, defs, name, mbdbPath)
+                inner_defn = item_defn(schema, defs, name, mbdbPath, imported_defis)
 
                 if not mark_discriminator_item_as_discriminator(inner_defn, discriminator):
                     pp.pprint(inner_defn)
@@ -274,6 +297,14 @@ def item_defn(item, defs, name, mbdbPath):
     # defn['internalId'] = uuid_for_item()
 
     return defn
+
+
+def imported_defi(item: Dict, imported_defis: List[str]):
+    if not 'use' in item:
+        return None
+
+    defi = '_'.join(get_defi_path(item['use']))
+    return defi if (defi in imported_defis) else None
 
 
 def make_ui_item(name, props, mbdbPath):
@@ -338,7 +369,7 @@ def mbdb_tag(name):
     return name[:-2] if name.endswith('[]') else name
 
 
-def oarepo_definition_to_ui(input_file: Path):
+def oarepo_definition_to_ui(input_file: Path, imported_defis: List[str]):
     fh = open(input_file, 'r')
     model = yaml.safe_load(fh)
     fh.close()
@@ -351,7 +382,7 @@ def oarepo_definition_to_ui(input_file: Path):
     if not top_level_defn:
         raise UIGSchemaError('Model does not define anything')
 
-    return ui_defn(top_level_defn, defs, '')
+    return ui_defn(top_level_defn, defs, '', imported_defis)
 
 
 def repurpose_id_as_referenceable_id(defn, reference_as):
@@ -391,55 +422,68 @@ def repurpose_id_as_referenceable_id(defn, reference_as):
 
 
 def to_js(schema_name, ui):
-    out = f'export const {schema_name} = '
-    out += to_js_complex(ui, 0)
-    out += ';\n'
+    collected_imports: List[ImportedDefi] = []
 
-    return out
+    items = f'export const {schema_name} = '
+    items += to_js_complex(ui, 0, collected_imports)
+    items+= ';\n'
+
+    if collected_imports:
+        imports = "import { clone } from '../../util/just-clone';\n"
+        imports += '\n'.join(["import {{ {} }} from './{}';".format(imp.jsVarName(), imp.jsFileName()) for imp in collected_imports])
+
+        return imports + '\n\n' + items
+    else:
+        return items
 
 
-def to_js_complex(input, indent):
+def to_js_complex(input: List, indent: int, collected_imports: List[ImportedDefi]):
     SPC = PAD * indent
     out = '[\n'
 
     for item in input:
-        out += to_js_item(item, indent + 1) + ',\n'
+        out += to_js_item(item, indent + 1, collected_imports) + ',\n'
 
     out += SPC + ']'
 
     return out
 
 
-def to_js_input(input, indent):
+def to_js_input(input: Dict | List | str, indent: int, collected_imports: List[ImportedDefi]):
     if isinstance(input, list):
-        return to_js_complex(input, indent)
+        return to_js_complex(input, indent, collected_imports)
     elif isinstance(input, dict):
-        return to_js_variant(input, indent)
-    return f'\'{input}\''
+        return to_js_variant(input, indent, collected_imports)
+    else:
+        return f'\'{input}\''
 
 
-def to_js_item(item, indent, no_lead_indent = False):
+def to_js_item(item: Dict | ImportedDefi, indent: int, collected_imports: List[ImportedDefi], no_lead_indent = False):
     SPC = PAD * indent
-    out = ('' if no_lead_indent else SPC) + '{\n'
 
-    for k, v in item.items():
-        if k == 'input':
-            out += SPC + PAD + 'input: {},\n'.format(to_js_input(v, indent + 1))
-        else:
-            out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1))
+    if isinstance(item, ImportedDefi):
+        collected_imports.append(item)
+        return '{}...clone({})'.format(SPC, item.jsVarName())
+    else:
+        out = ('' if no_lead_indent else SPC) + '{\n'
+        for k, v in item.items():
+            if k == 'input':
+                out += SPC + PAD + 'input: {},\n'.format(to_js_input(v, indent + 1, collected_imports))
+            else:
+                out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1, collected_imports))
 
-    out += SPC + '}'
+        out += SPC + '}'
 
-    return out
+        return out
 
 
-def to_js_key(k):
+def to_js_key(k: str):
     if ' ' in k:
         return "'" + k + "'"
     return k
 
 
-def to_js_value(v, indent):
+def to_js_value(v, indent: int, collected_imports: List[ImportedDefi]):
     if isinstance(v, str):
         v = v.replace("'", "\\'")
         return f'\'{v}\''
@@ -450,9 +494,9 @@ def to_js_value(v, indent):
         out = '[\n'
         for elem in v:
             if isinstance(elem, dict):
-                out += to_js_item(elem, indent + 1) + ',\n'
+                out += to_js_item(elem, indent + 1, collected_imports) + ',\n'
             else:
-                out += SPC + PAD + to_js_value(elem, indent + 1) + ',\n'
+                out += SPC + PAD + to_js_value(elem, indent + 1, collected_imports) + ',\n'
         out += SPC + ']'
 
         return out
@@ -460,7 +504,7 @@ def to_js_value(v, indent):
         SPC = PAD * indent
         out = '{\n'
         for k, v in v.items():
-            out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1))
+            out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1, collected_imports))
         out += SPC + '}'
 
         return out
@@ -468,27 +512,31 @@ def to_js_value(v, indent):
         return v
 
 
-def to_js_variant(input, indent):
+def to_js_variant(input: Dict, indent: int, collected_imports: List[ImportedDefi]):
     SPC = PAD * indent
     out = '{\n'
 
     for k, v in input.items():
-        out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_item(v, indent + 1, True))
+        out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_item(v, indent + 1, collected_imports, True))
 
     out += SPC + '}'
 
     return out
 
 
-def ui_defn(defn, defs, parentMbdbPath):
+def ui_defn(defn, defs, parentMbdbPath, imported_defis):
     ui = []
     for name, props in defn.items():
-        mbdbPath = append_path(name, parentMbdbPath)
-        item = make_ui_item(name, props, mbdbPath)
-        input_defn = item_defn(props, defs, name, mbdbPath)
-        item = { **item, **input_defn }
-
-        ui.append(item)
+        ui_name = name.lower()
+        mbdbPath = append_path(ui_name, parentMbdbPath)
+        imported = imported_defi(props, imported_defis)
+        if imported:
+            ui.append(ImportedDefi(imported))
+        else:
+            item = make_ui_item(ui_name, props, mbdbPath)
+            input_defn = item_defn(props, defs, ui_name, mbdbPath, imported_defis)
+            item = { **item, **input_defn }
+            ui.append(item)
 
     return ui
 
@@ -510,7 +558,9 @@ if __name__ == '__main__':
         if not JSVarNameRegex.match(schema_name):
             raise UIGParamsError(f'"schema_name" must be a valid JavaScript variable name but "{schema_name}" is not.')
 
-        ui = oarepo_definition_to_ui(input_file)
+        imported_defis = args.imported_defis if args.imported_defis else []
+
+        ui = oarepo_definition_to_ui(input_file, imported_defis)
         js = to_js(schema_name, ui)
 
         output_file = args.output
