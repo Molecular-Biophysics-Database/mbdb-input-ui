@@ -349,6 +349,9 @@ export const MST = [
                                                         title: '% saturated',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The unit of the concentration',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_by',
@@ -375,6 +378,9 @@ export const MST = [
                                                         title: 'Other',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The means through which the concentration was obtained',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_protocol',
@@ -412,6 +418,9 @@ export const MST = [
                                                 },
                                             },
                                         ],
+                                        help: {
+                                            en: 'Concentration of the entity',
+                                        },
                                     },
                                 ],
                                 help: {
@@ -566,6 +575,9 @@ export const MST = [
                                                         title: '% saturated',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The unit of the concentration',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_by',
@@ -592,6 +604,9 @@ export const MST = [
                                                         title: 'Other',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The means through which the concentration was obtained',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_protocol',
@@ -629,6 +644,9 @@ export const MST = [
                                                 },
                                             },
                                         ],
+                                        help: {
+                                            en: 'Concentration of the entity',
+                                        },
                                     },
                                 ],
                                 help: {
@@ -737,6 +755,9 @@ export const MST = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the sample including',
+                        },
                     },
                     {
                         tag: 'measured_data',
@@ -798,6 +819,9 @@ export const MST = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Values for the independent variable, normally time, of the measured data',
+                                },
                             },
                             {
                                 tag: 'y_data',
@@ -852,6 +876,9 @@ export const MST = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Values for the dependent variable, normally fluorescence intensity, of the measured data',
+                                },
                             },
                         ],
                     },
@@ -950,6 +977,9 @@ export const MST = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of time used for reporting measurement data',
+                                },
                             },
                             {
                                 tag: 'f_cold_start',
@@ -1000,6 +1030,9 @@ export const MST = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'If the data was analyzed with time windows corresponding to fluorescence before and after an IR laser was heating the sample the edges of the time windows can be specified here',
+                        },
                     },
                     {
                         tag: 'data_processing_steps',
@@ -1177,6 +1210,9 @@ export const MST = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                        },
                     },
                 ],
                 help: {
@@ -1184,5 +1220,8 @@ export const MST = [
                 },
             },
         ],
+        help: {
+            en: 'The parameters of the experiment that is specific to MST/TRIC/Spectral Shift',
+        },
     },
 ];

@@ -130,6 +130,9 @@ export const SPR = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the supplier of the senor',
+                        },
                     },
                     {
                         tag: 'sensor_initialization',
@@ -164,6 +167,9 @@ export const SPR = [
                         },
                     },
                 ],
+                help: {
+                    en: 'Sensor used for the measurements',
+                },
             },
             {
                 tag: 'measurement_positions',
@@ -282,6 +288,9 @@ export const SPR = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the ligand and how it was immobilized',
+                        },
                     },
                 ],
                 help: {
@@ -448,8 +457,14 @@ export const SPR = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the time duration',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'The numerical value of the start point of the measurement step relative to the beginning of the measurement in the units defined in the general parameters',
+                        },
                     },
                     {
                         tag: 'time_length',
@@ -538,8 +553,14 @@ export const SPR = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the time duration',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'The numerical value of the total time of the measurement step took in the units defined in the general parameters',
+                        },
                     },
                     {
                         tag: 'flow',
@@ -577,6 +598,9 @@ export const SPR = [
                                         title: 'µl/s',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the flow-rate',
+                                },
                             },
                             {
                                 tag: 'direction',
@@ -612,6 +636,9 @@ export const SPR = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the flow during the measurement step',
+                        },
                     },
                 ],
                 help: {
@@ -865,6 +892,9 @@ export const SPR = [
                                                         title: '% saturated',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The unit of the concentration',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_by',
@@ -891,6 +921,9 @@ export const SPR = [
                                                         title: 'Other',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The means through which the concentration was obtained',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_protocol',
@@ -928,6 +961,9 @@ export const SPR = [
                                                 },
                                             },
                                         ],
+                                        help: {
+                                            en: 'Concentration of the entity',
+                                        },
                                     },
                                 ],
                                 help: {
@@ -1021,6 +1057,9 @@ export const SPR = [
                                                 title: '°F',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The unit of temperature',
+                                        },
                                     },
                                     {
                                         tag: 'obtained_by',
@@ -1047,6 +1086,9 @@ export const SPR = [
                                                 title: 'Other',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The means through which the temperature value was obtained',
+                                        },
                                     },
                                     {
                                         tag: 'controlled',
@@ -1060,6 +1102,9 @@ export const SPR = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Temperature of the sample while being measured',
+                                },
                             },
                             {
                                 tag: 'preparation',
@@ -1294,6 +1339,9 @@ export const SPR = [
                                                         title: '% saturated',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The unit of the concentration',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_by',
@@ -1320,6 +1368,9 @@ export const SPR = [
                                                         title: 'Other',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The means through which the concentration was obtained',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_protocol',
@@ -1357,6 +1408,9 @@ export const SPR = [
                                                 },
                                             },
                                         ],
+                                        help: {
+                                            en: 'Concentration of the entity',
+                                        },
                                     },
                                 ],
                                 help: {
@@ -1450,6 +1504,9 @@ export const SPR = [
                                                 title: '°F',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The unit of temperature',
+                                        },
                                     },
                                     {
                                         tag: 'obtained_by',
@@ -1476,6 +1533,9 @@ export const SPR = [
                                                 title: 'Other',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The means through which the temperature value was obtained',
+                                        },
                                     },
                                     {
                                         tag: 'controlled',
@@ -1489,6 +1549,9 @@ export const SPR = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Temperature of the sample while being measured',
+                                },
                             },
                             {
                                 tag: 'preparation',
@@ -1749,6 +1812,9 @@ export const SPR = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                        },
                     },
                 ],
                 help: {
@@ -1756,5 +1822,8 @@ export const SPR = [
                 },
             },
         ],
+        help: {
+            en: 'The parameters of the experiment that is specific to SPR',
+        },
     },
 ];
