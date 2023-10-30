@@ -34,11 +34,17 @@ class UIGSchemaError(Exception):
     pass
 
 
-class ImportedDefi:
-    def __init__(self, defi: str):
+class ImportedItem:
+    def __init__(self, defi: str, name: str, props: Dict, mbdbPath: str):
         parts = defi.split('_')
         self._js_var = ''.join([part.capitalize() for part in parts])
         self._js_file = '-'.join([part.lower() for part in parts])
+        self._name = name
+        self._props = props
+        self._mbdbPath = mbdbPath
+
+    def itemProps(self):
+        return make_ui_item(self._name, self._props, self._mbdbPath)
 
     def jsFileName(self):
         return self._js_file
@@ -87,6 +93,12 @@ def _mk_parser():
         required=False,
         help='List of "$defs/<NAME>" definitions that will not be generated directly but imported from another file. It is your responsibility to make sure that all imported definitions are available',
         nargs='+'
+    )
+    parser.add_argument(
+        '--partial',
+        required=False,
+        help='Schema will not be exported as a "TopLevelItem" but a plain object. This is useful when you want to create only partial schemas that can be imported by other schemas',
+        action='store_true'
     )
 
     return parser
@@ -421,12 +433,15 @@ def repurpose_id_as_referenceable_id(defn, reference_as):
         raise UIGSchemaError('Got a referenceable item that does not have complex input. I do not know what to do with that.')
 
 
-def to_js(schema_name, ui):
-    collected_imports: List[ImportedDefi] = []
+def to_js(schema_name, ui, as_partial: bool):
+    collected_imports: List[ImportedItem] = []
 
     items = f'export const {schema_name} = '
-    items += to_js_complex(ui, 0, collected_imports)
-    items+= ';\n'
+    items += to_js_item(ui[0], 0, collected_imports) if as_partial else to_js_complex(ui, 0, collected_imports)
+    items += ';\n'
+
+    if as_partial and len(ui) > 1:
+        _warn(f'Partial schemas should contain only one top-level object but the input schema defines {len(ui)} top-level objects. Only the first object was exported')
 
     if collected_imports:
         imports = "import { clone } from '../../util/just-clone';\n"
@@ -437,7 +452,7 @@ def to_js(schema_name, ui):
         return items
 
 
-def to_js_complex(input: List, indent: int, collected_imports: List[ImportedDefi]):
+def to_js_complex(input: List, indent: int, collected_imports: List[ImportedItem]):
     SPC = PAD * indent
     out = '[\n'
 
@@ -449,7 +464,7 @@ def to_js_complex(input: List, indent: int, collected_imports: List[ImportedDefi
     return out
 
 
-def to_js_input(input: Dict | List | str, indent: int, collected_imports: List[ImportedDefi]):
+def to_js_input(input: Dict | List | str, indent: int, collected_imports: List[ImportedItem]):
     if isinstance(input, list):
         return to_js_complex(input, indent, collected_imports)
     elif isinstance(input, dict):
@@ -458,23 +473,26 @@ def to_js_input(input: Dict | List | str, indent: int, collected_imports: List[I
         return f'\'{input}\''
 
 
-def to_js_item(item: Dict | ImportedDefi, indent: int, collected_imports: List[ImportedDefi], no_lead_indent = False):
+def to_js_item(item: Dict | ImportedItem, indent: int, collected_imports: List[ImportedItem], no_lead_indent = False):
     SPC = PAD * indent
 
-    if isinstance(item, ImportedDefi):
+    out = ('' if no_lead_indent else SPC) + '{\n'
+    if isinstance(item, ImportedItem):
+        out += '{}...clone({}),\n'.format(SPC + PAD, item.jsVarName())
+        for k, v in item.itemProps().items():
+            out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1, collected_imports))
+
         collected_imports.append(item)
-        return '{}...clone({})'.format(SPC, item.jsVarName())
     else:
-        out = ('' if no_lead_indent else SPC) + '{\n'
         for k, v in item.items():
             if k == 'input':
                 out += SPC + PAD + 'input: {},\n'.format(to_js_input(v, indent + 1, collected_imports))
             else:
                 out += SPC + PAD + '{}: {},\n'.format(to_js_key(k), to_js_value(v, indent + 1, collected_imports))
 
-        out += SPC + '}'
+    out += SPC + '}'
 
-        return out
+    return out
 
 
 def to_js_key(k: str):
@@ -483,7 +501,7 @@ def to_js_key(k: str):
     return k
 
 
-def to_js_value(v, indent: int, collected_imports: List[ImportedDefi]):
+def to_js_value(v, indent: int, collected_imports: List[ImportedItem]):
     if isinstance(v, str):
         v = v.replace("'", "\\'")
         return f'\'{v}\''
@@ -512,7 +530,7 @@ def to_js_value(v, indent: int, collected_imports: List[ImportedDefi]):
         return v
 
 
-def to_js_variant(input: Dict, indent: int, collected_imports: List[ImportedDefi]):
+def to_js_variant(input: Dict, indent: int, collected_imports: List[ImportedItem]):
     SPC = PAD * indent
     out = '{\n'
 
@@ -527,14 +545,14 @@ def to_js_variant(input: Dict, indent: int, collected_imports: List[ImportedDefi
 def ui_defn(defn, defs, parentMbdbPath, imported_defis):
     ui = []
     for name, props in defn.items():
-        ui_name = name.lower()
-        mbdbPath = append_path(ui_name, parentMbdbPath)
+        mbdbPath = append_path(name, parentMbdbPath)
+
         imported = imported_defi(props, imported_defis)
         if imported:
-            ui.append(ImportedDefi(imported))
+            ui.append(ImportedItem(imported, name, props, mbdbPath))
         else:
-            item = make_ui_item(ui_name, props, mbdbPath)
-            input_defn = item_defn(props, defs, ui_name, mbdbPath, imported_defis)
+            input_defn = item_defn(props, defs, name, mbdbPath, imported_defis)
+            item = make_ui_item(name, props, mbdbPath)
             item = { **item, **input_defn }
             ui.append(item)
 
@@ -561,7 +579,7 @@ if __name__ == '__main__':
         imported_defis = args.imported_defis if args.imported_defis else []
 
         ui = oarepo_definition_to_ui(input_file, imported_defis)
-        js = to_js(schema_name, ui)
+        js = to_js(schema_name, ui, args.partial)
 
         output_file = args.output
         if output_file:

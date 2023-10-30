@@ -38,6 +38,7 @@ do
         --input  "${INPUT_PATH}${imp}.yaml"   \
         --output "${OUTPUT_PATH}${OUTFILE}"   \
         --schema_name "$OUTVAR"               \
+        --partial                             \
         || fail "$imp"
 	echo "Finished converting imports"
 done
