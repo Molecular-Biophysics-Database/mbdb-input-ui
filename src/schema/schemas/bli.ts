@@ -161,6 +161,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the supplier of the plate',
+                        },
                     },
                     {
                         tag: 'sealing',
@@ -227,6 +230,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'The type of sealing used to seal the top of the plate',
+                        },
                     },
                 ],
                 help: {
@@ -328,6 +334,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the ligand and how it was immobilized',
+                        },
                     },
                     {
                         tag: 'sensor_id',
@@ -393,6 +402,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Information about the supplier of the senor',
+                        },
                     },
                     {
                         tag: 'hydration_time',
@@ -481,8 +493,14 @@ export const BLI = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the time duration',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'How long the sensor was hydrated before being employed',
+                        },
                     },
                     {
                         tag: 'previously_used',
@@ -656,8 +674,14 @@ export const BLI = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the time duration',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'The numerical value of the start point of the measurement step relative to the beginning of the measurement in the units defined in the general parameters',
+                        },
                     },
                     {
                         tag: 'time_length',
@@ -746,8 +770,14 @@ export const BLI = [
                                         title: 'years',
                                     },
                                 ],
+                                help: {
+                                    en: 'The unit of the time duration',
+                                },
                             },
                         ],
+                        help: {
+                            en: 'The numerical value of the total time of the measurement step took in the units defined in the general parameters',
+                        },
                     },
                     {
                         tag: 'shaking_speed',
@@ -809,6 +839,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'The numerical value of the shaking speed of the plate during the measurement step in the units defined in the general parameters',
+                        },
                     },
                 ],
                 help: {
@@ -1061,6 +1094,9 @@ export const BLI = [
                                                         title: '% saturated',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The unit of the concentration',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_by',
@@ -1087,6 +1123,9 @@ export const BLI = [
                                                         title: 'Other',
                                                     },
                                                 ],
+                                                help: {
+                                                    en: 'The means through which the concentration was obtained',
+                                                },
                                             },
                                             {
                                                 tag: 'obtained_protocol',
@@ -1124,6 +1163,9 @@ export const BLI = [
                                                 },
                                             },
                                         ],
+                                        help: {
+                                            en: 'Concentration of the entity',
+                                        },
                                     },
                                 ],
                                 help: {
@@ -1217,6 +1259,9 @@ export const BLI = [
                                                 title: '°F',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The unit of temperature',
+                                        },
                                     },
                                     {
                                         tag: 'obtained_by',
@@ -1243,6 +1288,9 @@ export const BLI = [
                                                 title: 'Other',
                                             },
                                         ],
+                                        help: {
+                                            en: 'The means through which the temperature value was obtained',
+                                        },
                                     },
                                     {
                                         tag: 'controlled',
@@ -1256,6 +1304,9 @@ export const BLI = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Temperature of the sample while being measured',
+                                },
                             },
                             {
                                 tag: 'preparation_protocol',
@@ -1293,6 +1344,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'Sample the sensor was in contact with during the measurement',
+                        },
                     },
                     {
                         tag: 'measured_data',
@@ -1354,6 +1408,9 @@ export const BLI = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Where the measured data time data is stored along side an ID and the unit',
+                                },
                             },
                             {
                                 tag: 'response',
@@ -1408,6 +1465,9 @@ export const BLI = [
                                         },
                                     },
                                 ],
+                                help: {
+                                    en: 'Where the measured response data is stored along side an ID and the unit',
+                                },
                             },
                         ],
                     },
@@ -1630,6 +1690,9 @@ export const BLI = [
                                 },
                             },
                         ],
+                        help: {
+                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                        },
                     },
                 ],
                 help: {
@@ -1637,5 +1700,8 @@ export const BLI = [
                 },
             },
         ],
+        help: {
+            en: 'The parameters of the experiment that is specific to BLI',
+        },
     },
 ];

@@ -165,8 +165,14 @@ export const GeneralParameters = {
                                     },
                                 },
                             ],
+                            help: {
+                                en: 'The person responsible for the research MBDB project, typically a project leader, principle investigator of group leader',
+                            },
                         },
                     ],
+                    help: {
+                        en: 'The MBDB project the records belongs to can be specified here. Projects are typically  longer running research projects that would be expected to get many MBDB records associated with it over time',
+                    },
                 },
                 {
                     tag: 'access_rights',
@@ -325,6 +331,9 @@ export const GeneralParameters = {
                     },
                 },
             ],
+            help: {
+                en: 'The metadata of the record itself',
+            },
         },
         {
             tag: 'depositors',
@@ -395,6 +404,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The person who made the deposition to MBDB',
+                    },
                 },
                 {
                     tag: 'principal_contact',
@@ -458,6 +470,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The person responsible for the record and the one to contact for inquiries, would typically be the principle investigator group leader, or laboratory head',
+                    },
                 },
                 {
                     tag: 'contributors',
@@ -527,6 +542,9 @@ export const GeneralParameters = {
                     },
                 },
             ],
+            help: {
+                en: 'Information about the depositors (authors) of the record',
+            },
         },
         {
             tag: 'associated_publications',
@@ -680,6 +698,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'Persistent link to publication where the data or derived parameters first appeared as well as basic information about the publication',
+                    },
                 },
                 {
                     tag: 'additional',
@@ -832,6 +853,9 @@ export const GeneralParameters = {
                     },
                 },
             ],
+            help: {
+                en: 'Information about if data in this record is associated with published literature, if applicable',
+            },
         },
         {
             tag: 'funding_reference',
@@ -872,6 +896,9 @@ export const GeneralParameters = {
                     title: 'Surface plasmon resonance (SPR)',
                 },
             ],
+            help: {
+                en: 'The type of experimental technique employed for collection of raw data',
+            },
         },
         {
             tag: 'collection_start_time',
@@ -944,6 +971,9 @@ export const GeneralParameters = {
                             title: 'TA Instruments',
                         },
                     ],
+                    help: {
+                        en: 'Name of the manufacturer of the instrument used for raw data collection',
+                    },
                 },
                 {
                     tag: 'name',
@@ -1111,8 +1141,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'external_databases',
@@ -1369,6 +1405,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                            },
                                         },
                                         {
                                             tag: 'expression_source_type',
@@ -1451,6 +1490,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -1546,6 +1588,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -1572,6 +1617,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -1585,6 +1633,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -1673,8 +1724,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -1712,6 +1769,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -1863,6 +1923,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -1889,6 +1952,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -1902,6 +1968,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -1990,8 +2059,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -2029,6 +2104,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -2237,6 +2315,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -2263,6 +2344,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -2300,6 +2384,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -2410,8 +2497,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'supplier',
@@ -2455,6 +2548,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -2606,6 +2702,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -2632,6 +2731,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -2645,6 +2747,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -2733,8 +2838,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -2772,6 +2883,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -2980,6 +3094,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -3006,6 +3123,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -3043,6 +3163,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -3202,8 +3325,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'external_databases',
@@ -3460,6 +3589,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'expression_source_type',
@@ -3542,6 +3674,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage',
@@ -3637,6 +3772,9 @@ export const GeneralParameters = {
                                                                                     title: '°F',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of temperature',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'obtained_by',
@@ -3663,6 +3801,9 @@ export const GeneralParameters = {
                                                                                     title: 'Other',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The means through which the temperature value was obtained',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'controlled',
@@ -3676,6 +3817,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The temperature the sample was stored at',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'duration',
@@ -3764,8 +3908,14 @@ export const GeneralParameters = {
                                                                                     title: 'years',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the time duration',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage_preparation',
@@ -3803,6 +3953,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -3954,6 +4107,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -3980,6 +4136,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -3993,6 +4152,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -4081,8 +4243,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -4120,6 +4288,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -4302,8 +4473,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'supplier',
@@ -4347,6 +4524,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -4498,6 +4678,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -4524,6 +4707,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -4537,6 +4723,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -4625,8 +4814,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -4664,6 +4859,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -4811,8 +5009,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the molecular assembly',
+                                            },
                                         },
                                         {
                                             tag: 'chemical_modifications',
@@ -4926,6 +5130,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the molecular assembly was purchased from a supplier, the name and catlog number can be specified here',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -5021,6 +5228,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -5047,6 +5257,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -5060,6 +5273,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -5148,8 +5364,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -5187,6 +5409,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the molecular assembly was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -5338,6 +5563,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -5364,6 +5592,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -5377,6 +5608,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -5465,8 +5699,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -5504,6 +5744,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -5747,6 +5990,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -5773,6 +6019,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -5810,6 +6059,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -6055,6 +6307,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -6081,6 +6336,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -6094,6 +6352,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -6182,8 +6443,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -6221,6 +6488,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -6413,6 +6683,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -6439,6 +6712,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -6476,6 +6752,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -6767,6 +7046,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -6793,6 +7075,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -6806,6 +7091,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -6894,8 +7182,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -6933,6 +7227,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -7125,6 +7422,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -7151,6 +7451,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -7188,6 +7491,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -7486,6 +7792,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -7512,6 +7821,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -7525,6 +7837,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -7613,8 +7928,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -7652,6 +7973,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -7844,6 +8168,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -7870,6 +8197,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -7907,6 +8237,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -8033,6 +8366,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The coordinates, in decimal notation, where the complex substance was collected',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -8128,6 +8464,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -8154,6 +8493,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -8167,6 +8509,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -8255,8 +8600,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -8294,6 +8645,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -8486,6 +8840,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -8512,6 +8869,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -8549,6 +8909,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -8709,6 +9072,9 @@ export const GeneralParameters = {
                                                                     title: 'm',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the size',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'median',
@@ -8756,6 +9122,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The size of the lipid assembly',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'components',
@@ -8894,8 +9263,14 @@ export const GeneralParameters = {
                                                                                     title: 'MDa',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the molecular weight',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The molecular weight of the polymer',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'external_databases',
@@ -9152,6 +9527,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'expression_source_type',
@@ -9234,6 +9612,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage',
@@ -9329,6 +9710,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -9355,6 +9739,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -9368,6 +9755,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -9456,8 +9846,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -9495,6 +9891,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'quality_controls',
@@ -9646,6 +10045,9 @@ export const GeneralParameters = {
                                                                                                     title: '°F',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of temperature',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'obtained_by',
@@ -9672,6 +10074,9 @@ export const GeneralParameters = {
                                                                                                     title: 'Other',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The means through which the temperature value was obtained',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'controlled',
@@ -9685,6 +10090,9 @@ export const GeneralParameters = {
                                                                                             },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The temperature the sample was stored at',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'duration',
@@ -9773,8 +10181,14 @@ export const GeneralParameters = {
                                                                                                     title: 'years',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of the time duration',
+                                                                                            },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'storage_preparation',
@@ -9812,6 +10226,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'report',
@@ -9994,8 +10411,14 @@ export const GeneralParameters = {
                                                                                     title: 'MDa',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the molecular weight',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The molecular weight of the polymer',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'supplier',
@@ -10039,6 +10462,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The name of the supplier and the catalog number of the chemical',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'quality_controls',
@@ -10190,6 +10616,9 @@ export const GeneralParameters = {
                                                                                                     title: '°F',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of temperature',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'obtained_by',
@@ -10216,6 +10645,9 @@ export const GeneralParameters = {
                                                                                                     title: 'Other',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The means through which the temperature value was obtained',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'controlled',
@@ -10229,6 +10661,9 @@ export const GeneralParameters = {
                                                                                             },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The temperature the sample was stored at',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'duration',
@@ -10317,8 +10752,14 @@ export const GeneralParameters = {
                                                                                                     title: 'years',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of the time duration',
+                                                                                            },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'storage_preparation',
@@ -10356,6 +10797,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'report',
@@ -10473,6 +10917,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The chemical origin where the complex substance was derived from',
+                                            },
                                         },
                                         {
                                             tag: 'preparation_protocol',
@@ -10603,6 +11050,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -10629,6 +11079,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -10642,6 +11095,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -10730,8 +11186,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -10769,6 +11231,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -10961,6 +11426,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -10987,6 +11455,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -11024,6 +11495,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -11192,6 +11666,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -11218,6 +11695,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -11231,6 +11711,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -11319,8 +11802,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -11358,6 +11847,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -11550,6 +12042,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -11576,6 +12071,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -11613,6 +12111,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -11767,6 +12268,9 @@ export const GeneralParameters = {
                                     },
                                 },
                             ],
+                            help: {
+                                en: 'If the protocol used for the performance test has been published, the publication can be specified here',
+                            },
                         },
                         {
                             tag: 'report',
@@ -11791,8 +12295,14 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'If a performance test of the instrument that was carried out, the details and results can be specified here',
+                    },
                 },
             ],
+            help: {
+                en: 'Information about the instrument being used to collect (measure) data',
+            },
         },
         {
             tag: 'physical_conditions_at_sample_handling',
@@ -11888,6 +12398,9 @@ export const GeneralParameters = {
                                     title: '°F',
                                 },
                             ],
+                            help: {
+                                en: 'The unit of temperature',
+                            },
                         },
                         {
                             tag: 'obtained_by',
@@ -11914,6 +12427,9 @@ export const GeneralParameters = {
                                     title: 'Other',
                                 },
                             ],
+                            help: {
+                                en: 'The means through which the temperature value was obtained',
+                            },
                         },
                         {
                             tag: 'controlled',
@@ -11927,6 +12443,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The storage temperature of the samples immediately prior to being measured and whether the temperature was actively being controlled (e.g. autosampler held at 15 degrees, stored on ice, room temperature)',
+                    },
                 },
                 {
                     tag: 'pressure',
@@ -12018,6 +12537,9 @@ export const GeneralParameters = {
                                     title: 'inchHg',
                                 },
                             ],
+                            help: {
+                                en: 'The unit of the pressure',
+                            },
                         },
                         {
                             tag: 'obtained_by',
@@ -12044,6 +12566,9 @@ export const GeneralParameters = {
                                     title: 'Other',
                                 },
                             ],
+                            help: {
+                                en: 'The means through which the pressure value was obtained',
+                            },
                         },
                         {
                             tag: 'controlled',
@@ -12057,6 +12582,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The storage pressure of the samples immediately prior to being measured and whether the pressure was actively being controlled, if applicable',
+                    },
                 },
                 {
                     tag: 'humidity',
@@ -12120,6 +12648,9 @@ export const GeneralParameters = {
                                     title: 'oz/y^3',
                                 },
                             ],
+                            help: {
+                                en: 'The unit of the humidity',
+                            },
                         },
                         {
                             tag: 'obtained_by',
@@ -12146,6 +12677,9 @@ export const GeneralParameters = {
                                     title: 'Other',
                                 },
                             ],
+                            help: {
+                                en: 'The means through which the humidity value was obtained',
+                            },
                         },
                         {
                             tag: 'controlled',
@@ -12159,6 +12693,9 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The storage humidity of the samples immediately prior to being measured and whether the humidity was actively being controlled, if applicable',
+                    },
                 },
                 {
                     tag: 'atmosphere',
@@ -12282,8 +12819,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'supplier',
@@ -12327,6 +12870,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -12478,6 +13024,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -12504,6 +13053,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -12517,6 +13069,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -12605,8 +13160,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -12644,6 +13205,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -12828,6 +13392,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -12854,6 +13421,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -12891,6 +13461,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -12901,8 +13474,14 @@ export const GeneralParameters = {
                             },
                         },
                     ],
+                    help: {
+                        en: 'The storage atmosphere of the samples immediately prior to being measured and whether the atmosphere was actively being controlled, if applicable',
+                    },
                 },
             ],
+            help: {
+                en: 'Information about the physical conditions immediately before sample handling. Especially relevant when the conditions differ from measurement conditions or where special precautions were taken (e.g. keeping samples on ice until measured, or stored under Argon atmosphere until it was measured)',
+            },
         },
         {
             tag: 'chemical_information',
@@ -13054,8 +13633,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'supplier',
@@ -13099,6 +13684,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -13250,6 +13838,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -13276,6 +13867,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -13289,6 +13883,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -13377,8 +13974,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -13416,6 +14019,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -13600,6 +14206,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -13626,6 +14235,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -13663,6 +14275,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -13809,8 +14424,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'external_databases',
@@ -14067,6 +14688,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                            },
                                         },
                                         {
                                             tag: 'expression_source_type',
@@ -14149,6 +14773,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -14244,6 +14871,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -14270,6 +14900,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -14283,6 +14916,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -14371,8 +15007,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -14410,6 +15052,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -14561,6 +15206,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -14587,6 +15235,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -14600,6 +15251,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -14688,8 +15342,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -14727,6 +15387,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -14935,6 +15598,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -14961,6 +15627,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -14998,6 +15667,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -15108,8 +15780,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the polymer',
+                                            },
                                         },
                                         {
                                             tag: 'supplier',
@@ -15153,6 +15831,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -15304,6 +15985,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -15330,6 +16014,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -15343,6 +16030,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -15431,8 +16121,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -15470,6 +16166,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -15678,6 +16377,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -15704,6 +16406,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -15741,6 +16446,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -15900,8 +16608,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'external_databases',
@@ -16158,6 +16872,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'expression_source_type',
@@ -16240,6 +16957,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage',
@@ -16335,6 +17055,9 @@ export const GeneralParameters = {
                                                                                     title: '°F',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of temperature',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'obtained_by',
@@ -16361,6 +17084,9 @@ export const GeneralParameters = {
                                                                                     title: 'Other',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The means through which the temperature value was obtained',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'controlled',
@@ -16374,6 +17100,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The temperature the sample was stored at',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'duration',
@@ -16462,8 +17191,14 @@ export const GeneralParameters = {
                                                                                     title: 'years',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the time duration',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage_preparation',
@@ -16501,6 +17236,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -16652,6 +17390,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -16678,6 +17419,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -16691,6 +17435,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -16779,8 +17526,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -16818,6 +17571,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -17000,8 +17756,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'supplier',
@@ -17045,6 +17807,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -17196,6 +17961,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -17222,6 +17990,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -17235,6 +18006,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -17323,8 +18097,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -17362,6 +18142,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -17509,8 +18292,14 @@ export const GeneralParameters = {
                                                             title: 'MDa',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the molecular weight',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The molecular weight of the molecular assembly',
+                                            },
                                         },
                                         {
                                             tag: 'chemical_modifications',
@@ -17624,6 +18413,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'If the molecular assembly was purchased from a supplier, the name and catlog number can be specified here',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -17719,6 +18511,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -17745,6 +18540,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -17758,6 +18556,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -17846,8 +18647,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -17885,6 +18692,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the molecular assembly was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'quality_controls',
@@ -18036,6 +18846,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -18062,6 +18875,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -18075,6 +18891,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -18163,8 +18982,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -18202,6 +19027,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'report',
@@ -18445,6 +19273,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -18471,6 +19302,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -18508,6 +19342,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -18753,6 +19590,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -18779,6 +19619,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -18792,6 +19635,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -18880,8 +19726,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -18919,6 +19771,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -19111,6 +19966,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -19137,6 +19995,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -19174,6 +20035,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -19465,6 +20329,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -19491,6 +20358,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -19504,6 +20374,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -19592,8 +20465,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -19631,6 +20510,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -19823,6 +20705,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -19849,6 +20734,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -19886,6 +20774,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -20184,6 +21075,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -20210,6 +21104,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -20223,6 +21120,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -20311,8 +21211,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -20350,6 +21256,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'additional_specifications',
@@ -20542,6 +21451,9 @@ export const GeneralParameters = {
                                                                     title: '% saturated',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the concentration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -20568,6 +21480,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the concentration was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_protocol',
@@ -20605,6 +21520,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                                    },
                                                 },
                                             ],
                                         },
@@ -20731,6 +21649,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The coordinates, in decimal notation, where the complex substance was collected',
+                                            },
                                         },
                                         {
                                             tag: 'storage',
@@ -20826,6 +21747,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -20852,6 +21776,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -20865,6 +21792,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -20953,8 +21883,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -20992,6 +21928,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -21184,6 +22123,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -21210,6 +22152,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -21247,6 +22192,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -21407,6 +22355,9 @@ export const GeneralParameters = {
                                                                     title: 'm',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the size',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'median',
@@ -21454,6 +22405,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The size of the lipid assembly',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'components',
@@ -21592,8 +22546,14 @@ export const GeneralParameters = {
                                                                                     title: 'MDa',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the molecular weight',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The molecular weight of the polymer',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'external_databases',
@@ -21850,6 +22810,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'expression_source_type',
@@ -21932,6 +22895,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage',
@@ -22027,6 +22993,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -22053,6 +23022,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -22066,6 +23038,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -22154,8 +23129,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -22193,6 +23174,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'quality_controls',
@@ -22344,6 +23328,9 @@ export const GeneralParameters = {
                                                                                                     title: '°F',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of temperature',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'obtained_by',
@@ -22370,6 +23357,9 @@ export const GeneralParameters = {
                                                                                                     title: 'Other',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The means through which the temperature value was obtained',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'controlled',
@@ -22383,6 +23373,9 @@ export const GeneralParameters = {
                                                                                             },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The temperature the sample was stored at',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'duration',
@@ -22471,8 +23464,14 @@ export const GeneralParameters = {
                                                                                                     title: 'years',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of the time duration',
+                                                                                            },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'storage_preparation',
@@ -22510,6 +23509,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'report',
@@ -22692,8 +23694,14 @@ export const GeneralParameters = {
                                                                                     title: 'MDa',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the molecular weight',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The molecular weight of the polymer',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'supplier',
@@ -22737,6 +23745,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The name of the supplier and the catalog number of the chemical',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'quality_controls',
@@ -22888,6 +23899,9 @@ export const GeneralParameters = {
                                                                                                     title: '°F',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of temperature',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'obtained_by',
@@ -22914,6 +23928,9 @@ export const GeneralParameters = {
                                                                                                     title: 'Other',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The means through which the temperature value was obtained',
+                                                                                            },
                                                                                         },
                                                                                         {
                                                                                             tag: 'controlled',
@@ -22927,6 +23944,9 @@ export const GeneralParameters = {
                                                                                             },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The temperature the sample was stored at',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'duration',
@@ -23015,8 +24035,14 @@ export const GeneralParameters = {
                                                                                                     title: 'years',
                                                                                                 },
                                                                                             ],
+                                                                                            help: {
+                                                                                                en: 'The unit of the time duration',
+                                                                                            },
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'storage_preparation',
@@ -23054,6 +24080,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'report',
@@ -23171,6 +24200,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The chemical origin where the complex substance was derived from',
+                                            },
                                         },
                                         {
                                             tag: 'preparation_protocol',
@@ -23301,6 +24333,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -23327,6 +24362,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -23340,6 +24378,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -23428,8 +24469,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -23467,6 +24514,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -23659,6 +24709,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -23685,6 +24738,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -23722,6 +24778,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -23890,6 +24949,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -23916,6 +24978,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -23929,6 +24994,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -24017,8 +25085,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -24056,6 +25130,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -24248,6 +25325,9 @@ export const GeneralParameters = {
                                                             title: '% saturated',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the concentration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -24274,6 +25354,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the concentration was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_protocol',
@@ -24311,6 +25394,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Concentration of the constituent including its relative concentration related to the collected sample or absolute concentration of the constituent',
+                                            },
                                         },
                                     ],
                                 },
@@ -24386,8 +25472,14 @@ export const GeneralParameters = {
                                             title: 'Other',
                                         },
                                     ],
+                                    help: {
+                                        en: 'The means through which the pH value was obtained',
+                                    },
                                 },
                             ],
+                            help: {
+                                en: 'The pH value of the chemical environment and how the value was determined',
+                            },
                         },
                         {
                             tag: 'ionic_strength',
@@ -24493,8 +25585,14 @@ export const GeneralParameters = {
                                             title: '% saturated',
                                         },
                                     ],
+                                    help: {
+                                        en: 'The unit of the ionic strength',
+                                    },
                                 },
                             ],
+                            help: {
+                                en: 'The ionic strength of the chemical environment',
+                            },
                         },
                         {
                             tag: 'dynamic_viscosity',
@@ -24580,8 +25678,14 @@ export const GeneralParameters = {
                                             title: 'Other',
                                         },
                                     ],
+                                    help: {
+                                        en: 'The means by which the dynamic viscosity was obtained',
+                                    },
                                 },
                             ],
+                            help: {
+                                en: 'The dynamic viscosity of the chemical environment',
+                            },
                         },
                         {
                             tag: 'degassing_method',
@@ -24706,6 +25810,9 @@ export const GeneralParameters = {
                                     },
                                 },
                             ],
+                            help: {
+                                en: 'If the chemical environment was subjected to ultrafiltration, the method method can be specified here',
+                            },
                         },
                         {
                             tag: 'additional_specifications',
@@ -24861,8 +25968,14 @@ export const GeneralParameters = {
                                                     title: 'MDa',
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The unit of the molecular weight',
+                                            },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The molecular weight of the polymer',
+                                    },
                                 },
                                 {
                                     tag: 'external_databases',
@@ -25119,6 +26232,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                    },
                                 },
                                 {
                                     tag: 'expression_source_type',
@@ -25201,6 +26317,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                    },
                                 },
                                 {
                                     tag: 'storage',
@@ -25296,6 +26415,9 @@ export const GeneralParameters = {
                                                             title: '°F',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of temperature',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -25322,6 +26444,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the temperature value was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'controlled',
@@ -25335,6 +26460,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The temperature the sample was stored at',
+                                            },
                                         },
                                         {
                                             tag: 'duration',
@@ -25423,8 +26551,14 @@ export const GeneralParameters = {
                                                             title: 'years',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the time duration',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Length of time the sample was stored before being measured',
+                                            },
                                         },
                                         {
                                             tag: 'storage_preparation',
@@ -25462,6 +26596,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                    },
                                 },
                                 {
                                     tag: 'quality_controls',
@@ -25613,6 +26750,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -25639,6 +26779,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -25652,6 +26795,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -25740,8 +26886,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -25779,6 +26931,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'report',
@@ -25978,8 +27133,14 @@ export const GeneralParameters = {
                                                     title: 'MDa',
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The unit of the molecular weight',
+                                            },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The molecular weight of the polymer',
+                                    },
                                 },
                                 {
                                     tag: 'supplier',
@@ -26023,6 +27184,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The name of the supplier and the catalog number of the chemical',
+                                    },
                                 },
                                 {
                                     tag: 'quality_controls',
@@ -26174,6 +27338,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -26200,6 +27367,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -26213,6 +27383,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -26301,8 +27474,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -26340,6 +27519,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'report',
@@ -26588,8 +27770,14 @@ export const GeneralParameters = {
                                                                     title: 'MDa',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the molecular weight',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The molecular weight of the polymer',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'external_databases',
@@ -26846,6 +28034,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'expression_source_type',
@@ -26928,6 +28119,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage',
@@ -27023,6 +28217,9 @@ export const GeneralParameters = {
                                                                             title: '°F',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of temperature',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'obtained_by',
@@ -27049,6 +28246,9 @@ export const GeneralParameters = {
                                                                             title: 'Other',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The means through which the temperature value was obtained',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'controlled',
@@ -27062,6 +28262,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The temperature the sample was stored at',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'duration',
@@ -27150,8 +28353,14 @@ export const GeneralParameters = {
                                                                             title: 'years',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the time duration',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Length of time the sample was stored before being measured',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage_preparation',
@@ -27189,6 +28398,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'quality_controls',
@@ -27340,6 +28552,9 @@ export const GeneralParameters = {
                                                                                     title: '°F',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of temperature',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'obtained_by',
@@ -27366,6 +28581,9 @@ export const GeneralParameters = {
                                                                                     title: 'Other',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The means through which the temperature value was obtained',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'controlled',
@@ -27379,6 +28597,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The temperature the sample was stored at',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'duration',
@@ -27467,8 +28688,14 @@ export const GeneralParameters = {
                                                                                     title: 'years',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the time duration',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage_preparation',
@@ -27506,6 +28733,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'report',
@@ -27688,8 +28918,14 @@ export const GeneralParameters = {
                                                                     title: 'MDa',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the molecular weight',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The molecular weight of the polymer',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'supplier',
@@ -27733,6 +28969,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The name of the supplier and the catalog number of the chemical',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'quality_controls',
@@ -27884,6 +29123,9 @@ export const GeneralParameters = {
                                                                                     title: '°F',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of temperature',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'obtained_by',
@@ -27910,6 +29152,9 @@ export const GeneralParameters = {
                                                                                     title: 'Other',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The means through which the temperature value was obtained',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'controlled',
@@ -27923,6 +29168,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The temperature the sample was stored at',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'duration',
@@ -28011,8 +29259,14 @@ export const GeneralParameters = {
                                                                                     title: 'years',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the time duration',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage_preparation',
@@ -28050,6 +29304,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'report',
@@ -28197,8 +29454,14 @@ export const GeneralParameters = {
                                                     title: 'MDa',
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The unit of the molecular weight',
+                                            },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The molecular weight of the molecular assembly',
+                                    },
                                 },
                                 {
                                     tag: 'chemical_modifications',
@@ -28312,6 +29575,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'If the molecular assembly was purchased from a supplier, the name and catlog number can be specified here',
+                                    },
                                 },
                                 {
                                     tag: 'storage',
@@ -28407,6 +29673,9 @@ export const GeneralParameters = {
                                                             title: '°F',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of temperature',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -28433,6 +29702,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the temperature value was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'controlled',
@@ -28446,6 +29718,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The temperature the sample was stored at',
+                                            },
                                         },
                                         {
                                             tag: 'duration',
@@ -28534,8 +29809,14 @@ export const GeneralParameters = {
                                                             title: 'years',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the time duration',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Length of time the sample was stored before being measured',
+                                            },
                                         },
                                         {
                                             tag: 'storage_preparation',
@@ -28573,6 +29854,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'Information about how the molecular assembly was stored between being acquired and measured, including temperature and duration',
+                                    },
                                 },
                                 {
                                     tag: 'quality_controls',
@@ -28724,6 +30008,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -28750,6 +30037,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -28763,6 +30053,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -28851,8 +30144,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -28890,6 +30189,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'report',
@@ -29259,6 +30561,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -29285,6 +30590,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -29298,6 +30606,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -29386,8 +30697,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -29425,6 +30742,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -29789,6 +31109,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -29815,6 +31138,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -29828,6 +31154,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -29916,8 +31245,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -29955,6 +31290,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -30326,6 +31664,9 @@ export const GeneralParameters = {
                                                                     title: '°F',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of temperature',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'obtained_by',
@@ -30352,6 +31693,9 @@ export const GeneralParameters = {
                                                                     title: 'Other',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The means through which the temperature value was obtained',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'controlled',
@@ -30365,6 +31709,9 @@ export const GeneralParameters = {
                                                             },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The temperature the sample was stored at',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'duration',
@@ -30453,8 +31800,14 @@ export const GeneralParameters = {
                                                                     title: 'years',
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The unit of the time duration',
+                                                            },
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'Length of time the sample was stored before being measured',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'storage_preparation',
@@ -30492,6 +31845,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                            },
                                         },
                                         {
                                             tag: 'additional_specifications',
@@ -30691,6 +32047,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The coordinates, in decimal notation, where the complex substance was collected',
+                                    },
                                 },
                                 {
                                     tag: 'storage',
@@ -30786,6 +32145,9 @@ export const GeneralParameters = {
                                                             title: '°F',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of temperature',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -30812,6 +32174,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the temperature value was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'controlled',
@@ -30825,6 +32190,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The temperature the sample was stored at',
+                                            },
                                         },
                                         {
                                             tag: 'duration',
@@ -30913,8 +32281,14 @@ export const GeneralParameters = {
                                                             title: 'years',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the time duration',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Length of time the sample was stored before being measured',
+                                            },
                                         },
                                         {
                                             tag: 'storage_preparation',
@@ -30952,6 +32326,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                    },
                                 },
                                 {
                                     tag: 'additional_specifications',
@@ -31185,6 +32562,9 @@ export const GeneralParameters = {
                                                             title: 'm',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the size',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'median',
@@ -31232,6 +32612,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The size of the lipid assembly',
+                                            },
                                         },
                                         {
                                             tag: 'components',
@@ -31370,8 +32753,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'external_databases',
@@ -31628,6 +33017,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer contains modifications such as non-natural aminoacids, post translational modification, or chemically modifications like labeling, it can be specified here',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'expression_source_type',
@@ -31710,6 +33102,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'If the polymer was purchased from a supplier, the name and catalog number can be specified here (Merck, SKU 10837059001)',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'storage',
@@ -31805,6 +33200,9 @@ export const GeneralParameters = {
                                                                                     title: '°F',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of temperature',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'obtained_by',
@@ -31831,6 +33229,9 @@ export const GeneralParameters = {
                                                                                     title: 'Other',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The means through which the temperature value was obtained',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'controlled',
@@ -31844,6 +33245,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The temperature the sample was stored at',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'duration',
@@ -31932,8 +33336,14 @@ export const GeneralParameters = {
                                                                                     title: 'years',
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The unit of the time duration',
+                                                                            },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'Length of time the sample was stored before being measured',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'storage_preparation',
@@ -31971,6 +33381,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'Information about how the polymer assembly between being acquired and measured, including temperature and duration',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -32122,6 +33535,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -32148,6 +33564,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -32161,6 +33580,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -32249,8 +33671,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -32288,6 +33716,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -32470,8 +33901,14 @@ export const GeneralParameters = {
                                                                             title: 'MDa',
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'The unit of the molecular weight',
+                                                                    },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The molecular weight of the polymer',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'supplier',
@@ -32515,6 +33952,9 @@ export const GeneralParameters = {
                                                                     },
                                                                 },
                                                             ],
+                                                            help: {
+                                                                en: 'The name of the supplier and the catalog number of the chemical',
+                                                            },
                                                         },
                                                         {
                                                             tag: 'quality_controls',
@@ -32666,6 +34106,9 @@ export const GeneralParameters = {
                                                                                             title: '°F',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of temperature',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'obtained_by',
@@ -32692,6 +34135,9 @@ export const GeneralParameters = {
                                                                                             title: 'Other',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The means through which the temperature value was obtained',
+                                                                                    },
                                                                                 },
                                                                                 {
                                                                                     tag: 'controlled',
@@ -32705,6 +34151,9 @@ export const GeneralParameters = {
                                                                                     },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'The temperature the sample was stored at',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'duration',
@@ -32793,8 +34242,14 @@ export const GeneralParameters = {
                                                                                             title: 'years',
                                                                                         },
                                                                                     ],
+                                                                                    help: {
+                                                                                        en: 'The unit of the time duration',
+                                                                                    },
                                                                                 },
                                                                             ],
+                                                                            help: {
+                                                                                en: 'Length of time the sample was stored before being measured',
+                                                                            },
                                                                         },
                                                                         {
                                                                             tag: 'storage_preparation',
@@ -32832,6 +34287,9 @@ export const GeneralParameters = {
                                                                             },
                                                                         },
                                                                     ],
+                                                                    help: {
+                                                                        en: 'How the sample was stored between the quality control was performed until it was measured, including temperature and duration',
+                                                                    },
                                                                 },
                                                                 {
                                                                     tag: 'report',
@@ -32949,6 +34407,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'The chemical origin where the complex substance was derived from',
+                                    },
                                 },
                                 {
                                     tag: 'preparation_protocol',
@@ -33079,6 +34540,9 @@ export const GeneralParameters = {
                                                             title: '°F',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of temperature',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -33105,6 +34569,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the temperature value was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'controlled',
@@ -33118,6 +34585,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The temperature the sample was stored at',
+                                            },
                                         },
                                         {
                                             tag: 'duration',
@@ -33206,8 +34676,14 @@ export const GeneralParameters = {
                                                             title: 'years',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the time duration',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Length of time the sample was stored before being measured',
+                                            },
                                         },
                                         {
                                             tag: 'storage_preparation',
@@ -33245,6 +34721,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                    },
                                 },
                                 {
                                     tag: 'additional_specifications',
@@ -33486,6 +34965,9 @@ export const GeneralParameters = {
                                                             title: '°F',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of temperature',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'obtained_by',
@@ -33512,6 +34994,9 @@ export const GeneralParameters = {
                                                             title: 'Other',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The means through which the temperature value was obtained',
+                                                    },
                                                 },
                                                 {
                                                     tag: 'controlled',
@@ -33525,6 +35010,9 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'The temperature the sample was stored at',
+                                            },
                                         },
                                         {
                                             tag: 'duration',
@@ -33613,8 +35101,14 @@ export const GeneralParameters = {
                                                             title: 'years',
                                                         },
                                                     ],
+                                                    help: {
+                                                        en: 'The unit of the time duration',
+                                                    },
                                                 },
                                             ],
+                                            help: {
+                                                en: 'Length of time the sample was stored before being measured',
+                                            },
                                         },
                                         {
                                             tag: 'storage_preparation',
@@ -33652,6 +35146,9 @@ export const GeneralParameters = {
                                             },
                                         },
                                     ],
+                                    help: {
+                                        en: 'Information about how the complex substance was stored between being acquired and measured, including temperature and duration',
+                                    },
                                 },
                                 {
                                     tag: 'additional_specifications',
@@ -33735,6 +35232,9 @@ export const GeneralParameters = {
                     },
                 },
             ],
+            help: {
+                en: 'Information about entities of interest that were being measured (e.g. Lysozyme) or used to alter the behaviour of the measured species (e.g. Peptidoglycan), and the chemical environments that was used in the measurement (e.g. buffers, cleaning solutions)',
+            },
         },
         {
             tag: 'derived_parameters',
