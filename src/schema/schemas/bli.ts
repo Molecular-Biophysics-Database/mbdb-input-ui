@@ -2,7 +2,14 @@ import { clone } from '../../util/just-clone';
 import { GeneralParameters } from './general-parameters';
 
 export const BLI = [
-    ...clone(GeneralParameters),
+    {
+        ...clone(GeneralParameters),
+        tag: 'general_parameters',
+        label: 'general_parameters',
+        isArray: false,
+        isRequired: true,
+        mbdbPath: 'general_parameters',
+    },
     {
         tag: 'method_specific_parameters',
         label: 'method_specific_parameters',
