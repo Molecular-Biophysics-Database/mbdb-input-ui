@@ -1,6 +1,6 @@
 import { MbdbData } from './data';
 import { Vocabulary } from './vocabulary';
-import { ComplexItem, Item, Schema, TopLevelItem, VariantItem } from '../schema';
+import {ComplexItem, DepositedFileMetadata, Item, Schema, TopLevelItem, VariantItem} from '../schema';
 import { FormContext } from '../context';
 import { Data, DataTree, Path } from '../schema/data';
 import { CalendarDate, Value } from '../schema/value';
@@ -50,7 +50,8 @@ function toCalendarDate(s: string): CalendarDate {
     return { year: nYear, month: nMonth, day: nDay };
 }
 
-async function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbData, parentPath: Path, data: DataTree, references: ReferenceAnchors,
+                              depositedFiles: Record<string, DepositedFileMetadata>, options: Options) {
     for (const innerItem of item.input) {
         if (innerItem.isArray) {
             const innerItemPath = Data.Path.path(innerItem.tag, parentPath);
@@ -59,18 +60,18 @@ async function toInternalData(item: TopLevelItem | ComplexItem, mbdbData: MbdbDa
 
             if (mbdbArray) {
                 for (let idx = 0; idx < mbdbArray.length; idx++) {
-                    await toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references, options);
+                    await toInternalDataItem(innerItem, mbdbData, Data.Path.index(idx, innerItemPath), data, references, depositedFiles, options);
                 }
             } else {
                 Data.set(data, innerItemPath, []);
             }
         } else {
-            await toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references, options);
+            await toInternalDataItem(innerItem, mbdbData, Data.Path.path(innerItem.tag, parentPath), data, references, depositedFiles, options);
         }
     }
 }
 
-async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, depositedFiles: Record<string, DepositedFileMetadata>, options: Options) {
     const indices = gatherArrayIndices(itemPath);
     const loadPath = MbdbData.Path.toPath(item.mbdbPath, indices);
 
@@ -82,10 +83,10 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
 
         makeComplexData(data, itemPath, !mbdbDataExists);
         if (mbdbDataExists) {
-            await toInternalData(item, mbdbData, itemPath, data, references, options);
+            await toInternalData(item, mbdbData, itemPath, data, references, depositedFiles, options);
         }
     } else if (Schema.hasVariantInput(item)) {
-        await toInternalDataVariant(item, mbdbData, itemPath, data, references, options);
+        await toInternalDataVariant(item, mbdbData, itemPath, data, references, depositedFiles, options);
     } else if (Schema.hasCustomInput(item)) {
         const cc = CustomComponentsRegister.get(item.component);
         if (!cc) {
@@ -178,6 +179,16 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
 
                 Data.set(data, itemPath, Value.emptyVocabularyEntry(!item.isRequired));
             }
+        } else if (Schema.hasFileInput(item)) {
+            const mbdbFile = MbdbData.getObject(mbdbData, loadPath);
+            if (mbdbFile) {
+                const url = mbdbFile['url'] as string
+                if (url && url.length>0) {
+                    const key = url.split('/').pop()!
+                    const fileMetadata = depositedFiles[key]
+                    Data.set(data, itemPath, Value.file(null, fileMetadata, true));
+                }
+            }
         } else {
             const mbdbScalar = MbdbData.getScalar(mbdbData, loadPath);
 
@@ -260,7 +271,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
     }
 }
 
-async function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, options: Options) {
+async function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, itemPath: Path, data: DataTree, references: ReferenceAnchors, depositedFiles: Record<string, DepositedFileMetadata>, options: Options) {
     const variantRoot = {} as DataTree;
     FormContext.makeVariantData(item, variantRoot, references);
 
@@ -294,7 +305,7 @@ async function toInternalDataVariant(item: VariantItem, mbdbData: MbdbData, item
         // Now we have the "root" and default data set for the Variant.
         // The next step is to descend into the variant to set the content. This must be done only for the type
         // specified by the discriminator.
-        await toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references, options);
+        await toInternalDataItem(item.input[discriminator], mbdbData, Data.Path.path(discriminator, itemPath), data, references, depositedFiles, options);
     }
 }
 
@@ -303,19 +314,20 @@ export type Options = {
 };
 
 export const Deserialize = {
-    async deserialize(ctx: FormContext, mbdbData: MbdbData, options?: Options) {
+    async deserialize(ctx: FormContext, mbdbData: MbdbData, depositedFiles: Record<string, DepositedFileMetadata>, options?: Options) {
         const data = {};
-        await toInternalData(ctx.schema, mbdbData, [], data, ctx.references, options ?? {});
+        await toInternalData(ctx.schema, mbdbData, [], data, ctx.references, depositedFiles, options ?? {});
 
         return data;
     },
 
     async fromFile(ctx: FormContext, file: File, options?: Options) {
         const text = await file.text();
-        return await Deserialize.fromJson(ctx, text, options);
+        // TODO: files for fromFile
+        return await Deserialize.fromJson(ctx, text, {}, options);
     },
 
-    async fromJson(ctx: FormContext, input: string, options?: Options) {
+    async fromJson(ctx: FormContext, input: string, depositedFiles: Record<string, DepositedFileMetadata>, options?: Options) {
         const json = JSON.parse(input);
         const metadata = json['metadata'];
 
@@ -323,6 +335,6 @@ export const Deserialize = {
             throw new Error('Mbdb source data must contain a "metadata" object. The object is either not present or it has a wrong type.');
         }
 
-        return await Deserialize.deserialize(ctx, metadata, options ?? {});
+        return await Deserialize.deserialize(ctx, metadata, depositedFiles,options ?? {});
     },
 };

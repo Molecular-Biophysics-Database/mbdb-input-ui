@@ -216,6 +216,21 @@ function App() {
                         <SIcon name='download' />
                         Save form as Mbdb data
                     </SButton>
+                    <SButton
+                        style={{ flex: 1 }}
+                        color='olive'
+                        onClick={() => {
+                            try {
+                                const json = MbdbSerialize.toJson(getData(), {ignoreErrors: true})
+                                doDownload('mbdb_data', json, FileTypes.json);
+                            } catch (errors) {
+                                console.log(errors);
+                            }
+                        }}
+                    >
+                        <SIcon name='download' />
+                        Save form as Mbdb data (no validation)
+                    </SButton>
                     <LoadFileButton
                         title='Load form from Mbdb data'
                         onLoaded={(file) => {

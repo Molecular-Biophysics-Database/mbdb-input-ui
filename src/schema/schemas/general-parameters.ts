@@ -35412,7 +35412,7 @@ export const GeneralParameters = {
             isRequired: true,
             mbdbPath: 'General_parameters/raw_measurements[]',
             minItems: 1,
-            input: 'url',
+            input: 'file',
             help: {
                 en: 'List of file(s) containing the raw measurements',
             },
