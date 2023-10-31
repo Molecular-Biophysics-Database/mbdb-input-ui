@@ -3,7 +3,6 @@ import {
     Button as SButton,
     Icon as SIcon,
     Input as SInput,
-    Dropdown as SDropdown,
     TextArea as STextArea
 } from 'semantic-ui-react';
 import { ItemLabel } from './label';
@@ -12,6 +11,7 @@ import { FormContextInstance } from '../../../context';
 import { Help } from '../../../schema';
 import { Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
+import OriginatesFrom from './originatesFrom';
 
 function FileName(props: { fileName: string, isValid: boolean, onClick: any }) {
     return (
@@ -106,20 +106,10 @@ export function FileInput(props: Props) {
                 <div className="mbdbi-item-label">
                     Originates from
                 </div>
-                <SDropdown
-                    selection
-                    options={[{
-                        text: 'Instrument software',
-                        value: 'Instrument software'
-                    },{
-                        text: 'User',
-                        value: 'User'
-                    },{
-                        text: 'MBDB',
-                        value: 'MBDB'
-                    }]}
-                    disabled={props.isDisabled || isEmpty}
-                    value={isEmpty ? '' : Value.toFile(v).metadata.originates_from}
+                <OriginatesFrom
+                    isDisabled={props.isDisabled || isEmpty}
+                    isEmpty={isEmpty}
+                    value={v}
                     onChange={
                         (ev, data) => {
                             if (!isEmpty) {
@@ -131,7 +121,7 @@ export function FileInput(props: Props) {
                             }
                         }
                     }
-                ></SDropdown>
+                />
                 <div className="mbdbi-item-label">
                     Description
                 </div>

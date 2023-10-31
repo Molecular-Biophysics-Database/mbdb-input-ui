@@ -76,9 +76,13 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
     const loadPath = MbdbData.Path.toPath(item.mbdbPath, indices);
 
     if (Schema.hasComplexInput(item)) {
-        const mbdbDataExists = !!MbdbData.getObject(mbdbData, loadPath);
-        if (!mbdbDataExists && item.isRequired) {
+        let mbdbDataExists = !!MbdbData.getObject(mbdbData, loadPath);
+        if (!mbdbDataExists && item.isRequired && !options.allowPartials) {
             throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
+        } 
+        if (!mbdbDataExists && item.isRequired) {
+            MbdbData.set(mbdbData, {}, loadPath)
+            mbdbDataExists = true;
         }
 
         makeComplexData(data, itemPath, !mbdbDataExists);
