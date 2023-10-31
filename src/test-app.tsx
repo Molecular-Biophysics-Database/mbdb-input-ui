@@ -117,8 +117,14 @@ function App() {
     const _submitToMbdb = (noSanityChecks = false) => {
         const { toApi, errors, files } = Mbdb.toData(keeper.get(dataId).data, noSanityChecks ? { dontPrune: true, ignoreErrors: true } : void 0);
 
+        const apiEndpoint = MbdbModels[selectedSchema].apiEndpoint
+        let ep = apiEndpoint.startsWith('/') ? apiEndpoint.substring(1) : apiEndpoint;
+        ep = ep.endsWith('/') ? ep.substring(0, ep.length - 1) : ep;
+
+        const url = `${Config.get('baseUrl')}/${ep}/`;
+
         if (errors.length === 0 || noSanityChecks) {
-            submitToMbdb(Config.get('baseUrl'), MbdbModels[selectedSchema].apiEndpoint, { metadata: toApi, files }, { asDraft: true }).then((res) => {
+            submitToMbdb(url, { metadata: toApi, files }, { asDraft: true }).then((res) => {
                 if (Result.isError(res)) {
                     ErrorDialog.show(makeSubmissionErrorDialog(res.error.code, res.error.errors, toApi, getData()));
                 }

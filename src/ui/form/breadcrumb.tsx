@@ -21,9 +21,9 @@ function pickCandidateItem(htmlIdOne:string, htmlIdTwo:string, containerRect:DOM
     const elemTwoOffset = elemTwoRect ? elemTwoRect.y - containerRect.y : Number.MIN_SAFE_INTEGER;
 
     if (elemTwoOffset < elemOneOffset) {
-        return [htmlIdOne, elemOneOffset <= 10]
+        return [htmlIdOne, elemOneOffset <= 0]
     } else {
-        return [htmlIdTwo, elemTwoOffset <= 10];
+        return [htmlIdTwo, elemTwoOffset <= 0];
     }
 }
 
@@ -147,9 +147,8 @@ function getTitles(htmlId: string, schema: AnyItem) {
     return niceLabels;
 }
 
-export function Breadcrumb(props: BreadcrumbProps) {
+export function Breadcrumb (props: BreadcrumbProps) {
     const [topMost, setTopMost] = React.useState('');
-    const [displayBreacrumb, setDisplayBreadcrumb] = React.useState(false);
 
     const { handler } = React.useContext(FormContextInstance);
 
@@ -166,7 +165,6 @@ export function Breadcrumb(props: BreadcrumbProps) {
             const topMostHtmlId = findTopMostVisibleItem(handler.schema(), handler, '', currentRect, '');
 
             setTopMost(topMostHtmlId);
-            setDisplayBreadcrumb(true);
         }
         current.addEventListener('scroll', onScrollEvent);
 
@@ -175,6 +173,6 @@ export function Breadcrumb(props: BreadcrumbProps) {
         }
 
     }, [props.inputRef])
-
-    return <div className={`${displayBreacrumb ? 'breadcrumb-active' : 'breadcrumb'}`}>{getTitles(topMost, handler.schema())}</div>
+   
+    return <div className={`${topMost ? 'breadcrumb-active' : 'breadcrumb'}`}>{getTitles(topMost, handler.schema())}</div>
 }

@@ -70,7 +70,8 @@ export function TopLevelItem(input: ComplexInput): TopLevelItem {
 export type DepositedFileMetadata = {
     key?: string,
     originates_from?: string,
-    description?: string
+    description?: string,
+    recommended_software?: string,
 }
 
 export type DepositedFile = {

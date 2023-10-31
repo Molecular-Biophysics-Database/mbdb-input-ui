@@ -6,6 +6,14 @@ function _badTypeFromApi(expected: string, got: string) {
     throw new Error(`Invalid API response, expected a ${expected} got ${got}`);
 }
 
+const JsonRequestUpdateParams: Partial<RequestInit> = {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    cache: 'no-cache',
+};
+
 const JsonRequestParams: Partial<RequestInit> = {
     method: 'POST',
     headers: {
@@ -62,14 +70,15 @@ function getErrors(data: Record<string, any>) {
     return _errors;
 }
 
-function getMetadataResponseInfo(data: Record<string, any>): { recordId: string, filesUrl: string } {
+function getMetadataResponseInfo(data: Record<string, any>): { recordId: string, filesUrl: string, links:Record<string,string> } {
     const recordId = data['id'];
     const filesUrl = data['links']?.['files'];
+    const links = data['links']??{};
 
     if (typeof recordId !== 'string') _badTypeFromApi('string', typeof recordId);
     if (typeof filesUrl !== 'string') _badTypeFromApi('string̈́', typeof filesUrl);
 
-    return { recordId, filesUrl };
+    return { recordId, filesUrl, links };
 }
 
 async function submitFiles(submissionUrl: string, files: DepositedFile[]): Promise<Result<undefined, { code: number, errors: string [] }>> {
@@ -125,12 +134,13 @@ async function submitFiles(submissionUrl: string, files: DepositedFile[]): Promi
     return OkResult(void 0);
 }
 
-async function submitMetadata(baseUrl: string, apiEndpoint: string, metadata: MbdbData, asDraft: boolean): Promise<
+async function submitMetadata( apiEndpoint: string, metadata: MbdbData, asDraft: boolean, update: boolean): Promise<
     Result<
         {
             draftErrors: string[],
             filesUrl: string,
             recordId: string,
+            links: Record<string,string>,
         },
         {
             code: number,
@@ -141,16 +151,15 @@ async function submitMetadata(baseUrl: string, apiEndpoint: string, metadata: Mb
     // BEWARE, BEWARE, BEWARE
     // The inconsistency, or rather lack of thereof, is about the hit you in the face.
     // This URL *must* end with a trailing slash, otherwise the API request will fail.
-    let ep = apiEndpoint.startsWith('/') ? apiEndpoint.substring(1) : apiEndpoint;
-    ep = ep.endsWith('/') ? ep.substring(0, ep.length - 1) : ep;
 
-    const url = `${baseUrl}/${ep}/`;
+    //let ep = apiEndpoint.startsWith('/') ? apiEndpoint.substring(1) : apiEndpoint;
+    //ep = ep.endsWith('/') ? ep.substring(0, ep.length - 1) : ep;
 
     try {
         const resp = await fetch(
-            url,
+            apiEndpoint,
             {
-                ...JsonRequestParams,
+                ...(update? JsonRequestUpdateParams : JsonRequestParams),
                 body: JSON.stringify(metadata),
             }
         );
@@ -177,8 +186,8 @@ async function submitMetadata(baseUrl: string, apiEndpoint: string, metadata: Mb
                     draftErrors = getErrors(json);
                 }
 
-                const { recordId, filesUrl } = getMetadataResponseInfo(json);
-                return OkResult({ draftErrors, filesUrl, recordId });
+                const { recordId, filesUrl, links } = getMetadataResponseInfo(json);
+                return OkResult({ draftErrors, filesUrl, recordId, links });
             } catch (e) {
                 return ErrorResult({ code: 0, errors: [`API reported a success but returned an unexpected response (${e})`] });
             }
@@ -189,15 +198,14 @@ async function submitMetadata(baseUrl: string, apiEndpoint: string, metadata: Mb
 }
 
 export async function submitToMbdb(
-    baseUrl: string,
     apiEndpoint: string,
     payload : {
         metadata: MbdbData,
         files: DepositedFile[]
     },
-    options?: Partial<{ asDraft: boolean }>
+    options?: Partial<{ asDraft: boolean, update: boolean }>
 ): Promise<MbdbSubmissionResult> {
-    const metadataRes = await submitMetadata(baseUrl, apiEndpoint, payload.metadata, !!options?.asDraft);
+    const metadataRes = await submitMetadata(apiEndpoint, payload.metadata, !!options?.asDraft, !!options?.update );
     if (Result.isError(metadataRes)) return ErrorResult({ code: metadataRes.error.code, errors: metadataRes.error.errors });
 
     const filesRes = await submitFiles(metadataRes.data.filesUrl, payload.files);
@@ -206,5 +214,6 @@ export async function submitToMbdb(
     return OkResult({
         draftErrors: metadataRes.data.draftErrors,
         recordId: metadataRes.data.recordId,
+        links: metadataRes.data.links,
     });
 }
