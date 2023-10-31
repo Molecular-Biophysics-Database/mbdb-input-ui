@@ -50,6 +50,7 @@ export const Common = {
 
     '*/pH': {
         dontTransformLabels: true,
+        label: 'pH',
     },
 
     '*/unit': {

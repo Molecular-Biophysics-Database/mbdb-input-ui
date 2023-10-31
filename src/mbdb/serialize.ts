@@ -87,14 +87,15 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
             }
         } else if (Schema.hasFileInput(item)) {
             assert(Value.isFile(v), 'Value is not a File');
-
-            if (options?.ignoreErrors && v.payload.file === null) return;
-
-            assert(v.payload.file !== null, 'Value of a file must not be null');
-            if (files.find((x) => x.file!.name === v.payload.file?.name)) {
-                errors.push(DataError(internalParentPath, `File named "${v.payload.file!.name}" is present more than once in the data.`));
+            if (v.payload.file || v.payload.metadata.key) {
+                if (files.find((x) => x.file!.name === v.payload.file?.name)) {
+                    errors.push(DataError(internalParentPath, `File named "${v.payload.file!.name}" is present more than once in the data.`));
+                } else {
+                    files.push(DepositedFile(v.payload.file, v.payload.metadata));
+                }
+                MbdbData.set(mbdbData, { url: `files/${v.payload.file?.name || v.payload.metadata.key}` }, storePath);
             } else {
-                files.push(DepositedFile(v.payload.file, v.payload.metadata));
+                assert(v.payload.file !== null, 'Value of a file must not be null');
             }
         } else if (Schema.hasNumericInput(item)) {
             const nv = item.input === 'int' ? parseInt(v.payload as string) : parseFloat(v.payload as string);
@@ -187,9 +188,9 @@ export const Serialize = {
         return { data, errors, files };
     },
 
-    toJson(ctx: FormContext) {
-        const { data, errors } = this.serialize(ctx, {});
-        if (errors.length !== 0) {
+    toJson(ctx: FormContext, options?: Options) {
+        const { data, errors } = this.serialize(ctx, options ?? {});
+        if (errors.length !== 0 && !options?.ignoreErrors) {
             throw errors;
         }
 

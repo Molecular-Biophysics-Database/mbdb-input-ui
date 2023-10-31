@@ -67,11 +67,18 @@ export function TopLevelItem(input: ComplexInput): TopLevelItem {
     return { tag: '__MBDB_Top_Level_Item', input };
 }
 
+export type DepositedFileMetadata = {
+    key?: string,
+    originates_from?: string,
+    description?: string
+}
+
 export type DepositedFile = {
     file: File | null,
-    metadata: string,
+    metadata: DepositedFileMetadata,
 };
-export function DepositedFile(file: File | null, metadata: string): DepositedFile {
+
+export function DepositedFile(file: File | null, metadata: DepositedFileMetadata): DepositedFile {
     return { file, metadata };
 }
 

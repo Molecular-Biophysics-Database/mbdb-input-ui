@@ -1,4 +1,4 @@
-import { DepositedFile, Item, Schema } from './';
+import {DepositedFile, DepositedFileMetadata, Item, Schema} from './';
 import { References } from './references';
 import { Tristate, isTristate } from './tristate';
 import { Uuid } from './uuid';
@@ -22,7 +22,7 @@ export type CalendarDate = {
 export type DepositedFilePayload = {
     __mbdb_stored_file: '__mbdb_stored_file',
 } & DepositedFile;
-function DepositedFilePayload(file: File | null, metadata: string): DepositedFilePayload {
+function DepositedFilePayload(file: File | null, metadata: DepositedFileMetadata): DepositedFilePayload {
     return {
         __mbdb_stored_file: '__mbdb_stored_file',
         file,
@@ -109,7 +109,7 @@ export const Value = {
     },
 
     emptyFile(isValid = false) {
-        const v = mkValue(DepositedFilePayload(null, ''));
+        const v = mkValue(DepositedFilePayload(null, {}));
         v.isValid = isValid;
 
         return v;
@@ -136,7 +136,7 @@ export const Value = {
         return this.vocabularyEntry('', '', null, isValid);
     },
 
-    file(file: File | null, metadata: string, isValid: boolean): TValue<DepositedFilePayload> {
+    file(file: File | null, metadata: DepositedFileMetadata, isValid: boolean): TValue<DepositedFilePayload> {
         const v = mkValue(DepositedFilePayload(file, metadata));
         v.isValid = isValid;
 

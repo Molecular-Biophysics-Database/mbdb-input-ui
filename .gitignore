@@ -6,3 +6,4 @@ tsconfig.development.tsbuildinfo
 dist/
 lib/
 node_modules/
+.idea
