@@ -12,6 +12,8 @@ import { FormContextInstance } from '../../../context';
 import { Help } from '../../../schema';
 import { Path } from '../../../schema/data';
 import { Value } from '../../../schema/value';
+import OriginatesFrom from './originatesFrom';
+import { Data } from '../../../schema/data';
 
 function FileName(props: { fileName: string, isValid: boolean }) {
     return (
@@ -38,6 +40,10 @@ export function FileInput(props: Props) {
 
     const v = handler.getValue(props.path);
     const isEmpty = Value.isEmpty(v);
+    
+    if ((v.payload as any).originates_from === undefined) {
+        (v.payload as any).originates_from = "Instrument software"
+    }
 
     return (
         <>
@@ -107,6 +113,12 @@ export function FileInput(props: Props) {
                         }}
                     />
                 </SForm>
+
+                {/* File originates from section */}
+                <div className='mbdbi-file-input-controls-wide'>File originates from:</div>
+                <div className='mbdbi-file-input-controls-wide'>
+                    <OriginatesFrom path={Data.Path.path("originates_from", props.path)} isDisabled={props.isDisabled} isRequired={props.isRequired} />
+                </div>
             </div>
         </>
     );

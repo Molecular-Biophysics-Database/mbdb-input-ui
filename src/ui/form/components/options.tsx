@@ -99,7 +99,7 @@ const _Selection = React.memo(function MSelection({ id, choices, noRightOffset, 
 
 export type Props = {
     choices: Choice[],
-    label: string,
+    label: string,re
     help?: Help,
     path: Path,
     isDisabled: boolean,
