@@ -48,7 +48,8 @@ const _TextualInput = React.memo(function MTextualInput({ id, isDisabled, text, 
         Object.is(prevProps.isDisabled, nextProps.isDisabled) &&
         Object.is(prevProps.text, nextProps.text) &&
         Object.is(prevProps.isValid, nextProps.isValid) &&
-        Object.is(prevProps.noRightOffset, nextProps.noRightOffset)
+        Object.is(prevProps.noRightOffset, nextProps.noRightOffset) &&
+        Object.is(prevProps.onChange, nextProps.onChange)
     );
 });
 
@@ -81,11 +82,13 @@ export function TextualInput(props: Props) {
     // WARNING: The text above is referenced in other parts of code. Keep that in mind if you
     //          modify it.
     const [localValue, setLocalValue] = React.useState(initialState(handler, props.path));
-    const onChange = (text: string) => {
+
+    const onChange = React.useMemo(() => (text: string) => {
         const newValue = Value.textual(text, props.validator ? props.validator(text) : true);
         handler.set(props.path, newValue, newValue.isValid === localValue.isValid && !props.alwaysUpdate);
         setLocalValue({ text, isValid: newValue.isValid });
-    };
+    }, [props.path, props.validator, props.alwaysUpdate]);
+
     React.useEffect(() => {
         const value = handler.getValue(props.path);
         const text = Value.toTextual(value);
