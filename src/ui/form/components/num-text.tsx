@@ -27,20 +27,18 @@ const _TextualInput = React.memo(function MTextualInput({ id, isDisabled, text, 
     noRightOffset?: boolean,
 }) {
     return (
-        <>
-            <SInput
-                className={clsx(!noRightOffset && 'mbdbi-right-offset')}
-                id={id}
-                type='text'
-                value={text}
-                error={!isValid}
-                onChange={(_ev, data) => {
-                    onChange(data.value)
-                }}
-                disabled={isDisabled}
-                fluid
-            />
-        </>
+        <SInput
+            className={clsx(!noRightOffset && 'mbdbi-right-offset')}
+            id={id}
+            type='text'
+            value={text}
+            error={!isValid}
+            onChange={(_ev, data) => {
+                onChange(data.value)
+            }}
+            disabled={isDisabled}
+            fluid
+        />
     );
 }, (prevProps, nextProps) => {
     return (
