@@ -386,7 +386,7 @@ export const SPR = [
                                 input: 'float',
                                 minimum: 0.0,
                                 help: {
-                                    en: 'Numerical value of the time point or duration',
+                                    en: 'The numerical value of the time point or duration',
                                 },
                             },
                             {
@@ -399,10 +399,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the value',
+                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -482,7 +482,7 @@ export const SPR = [
                                 input: 'float',
                                 minimum: 0.0,
                                 help: {
-                                    en: 'Numerical value of the time point or duration',
+                                    en: 'The numerical value of the time point or duration',
                                 },
                             },
                             {
@@ -495,10 +495,10 @@ export const SPR = [
                                 component: 'value-error',
                                 help: {
                                     upper_error: {
-                                        en: 'The upper error, i.e. the number added to the value',
+                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                     },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                     },
                                     errors_are_relative: {
                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -794,10 +794,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the value',
+                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -985,7 +985,7 @@ export const SPR = [
                                         mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/value',
                                         input: 'float',
                                         help: {
-                                            en: 'Numeric value of the temperature',
+                                            en: 'The numeric value of the temperature',
                                         },
                                     },
                                     {
@@ -998,10 +998,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the value',
+                                                en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the value',
+                                                en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1241,10 +1241,10 @@ export const SPR = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the value',
+                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1432,7 +1432,7 @@ export const SPR = [
                                         mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/value',
                                         input: 'float',
                                         help: {
-                                            en: 'Numeric value of the temperature',
+                                            en: 'The numeric value of the temperature',
                                         },
                                     },
                                     {
@@ -1445,10 +1445,10 @@ export const SPR = [
                                         component: 'value-error',
                                         help: {
                                             upper_error: {
-                                                en: 'The upper error, i.e. the number added to the value',
+                                                en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                             },
                                             lower_error: {
-                                                en: 'The lower error, i.e. the number subtracted from the value',
+                                                en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                             },
                                             errors_are_relative: {
                                                 en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1652,7 +1652,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/name',
                                 input: 'string',
                                 help: {
-                                    en: 'Descriptive name of the processing step',
+                                    en: 'Short descriptive name of the processing step',
                                 },
                             },
                             {
@@ -1730,7 +1730,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/model',
                                 input: 'string',
                                 help: {
-                                    en: 'Description of the model(e.g. 1:1 binding)',
+                                    en: 'Description of the model (e.g. 1:1 binding)',
                                 },
                             },
                             {
@@ -1741,7 +1741,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/software_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The name of the software that was used for doing the fitting (e.g. Excel)',
+                                    en: 'The name of the software that was used for doing the data fitting (e.g. Excel)',
                                 },
                             },
                             {
