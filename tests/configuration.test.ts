@@ -43,7 +43,7 @@ test('Invalid configuration checks', () => {
 
     badConfig = deepCopy(config);
     badConfig['general_parameters/associated_publications/main/publication_year'] = { defaultValue: 1700 };
-    expect(() => Configuration.configure(schema.schema, badConfig)).toThrow('Schema configuration error: Default value is outside the allowed range "1800 - 1.7976931348623157e+308".');
+    expect(() => Configuration.configure(schema.schema, badConfig)).toThrow('Schema configuration error: Default value is outside the allowed range "1900 - 1.7976931348623157e+308".');
 
     badConfig['general_parameters/associated_publications/main/publication_year'].defaultValue = 'text_is_not_okay_here';
     expect(() => Configuration.configure(schema.schema, badConfig)).toThrow('Schema configuration error: Invalid default value "text_is_not_okay_here" for item "publication_year".');
