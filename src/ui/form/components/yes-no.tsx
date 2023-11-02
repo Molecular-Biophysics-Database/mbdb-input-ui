@@ -2,11 +2,9 @@ import clsx from 'clsx';
 import React from 'react';
 import {
     Dropdown as SDropdown,
-    DropdownProps as SDropdownProps
 } from 'semantic-ui-react';
 import { ItemLabel } from './label';
 import { PathId } from '../path-id';
-import { SOnChange } from '../typedefs';
 import { FormContextInstance } from '../../../context';
 import { _FormContextHandler } from '../../../context/handler';
 import { Help } from '../../../schema';
@@ -102,34 +100,34 @@ const TristateOptions = [
     { value: Tristate.False, text: 'No' },
     { value: Tristate.NotSet, text: '(Not set)' },
 ];
-export const YesNoUnset = React.memo(function MYesNoUnset({ id, isDisabled, isRequired, path, handler, noRightOffset }: {
+export const YesNoUnset = React.memo(function MYesNoUnset({ id, value, isValid, isDisabled, onChange, noRightOffset }: {
     id: string,
+    value: Tristate
+    isValid: boolean,
     isDisabled: boolean,
-    isRequired: boolean,
-    path: Path,
-    handler: _FormContextHandler,
+    onChange: (value: Tristate) => void,
     noRightOffset?: boolean,
 }) {
-    const [localValue, setLocalValue] = React.useState(tristateInitialState(handler, path));
-    const onChange: SOnChange<SDropdownProps> = (_ev, data) => {
-        const v = data.value as Tristate;
-        const newValue = Value.tristate(v, v === Tristate.NotSet && isRequired ? false : true);
-
-        handler.set(path, newValue, newValue.isValid === localValue.isValid);
-        setLocalValue({ state: v, isValid: newValue.isValid });
-    };
-
     return (
         <SDropdown
             className={clsx(!noRightOffset && 'mbdbi-right-offset')}
             id={id}
-            value={localValue.state}
+            value={value}
+            error={!isValid}
             options={TristateOptions}
-            onChange={onChange}
+            onChange={(_ev, data) => onChange(data.value as Tristate)}
             disabled={isDisabled}
-            error={!localValue.isValid}
             selection
         />
+    );
+}, (prevProps, nextProps) => {
+    return (
+        Object.is(prevProps.id, nextProps.id) &&
+        Object.is(prevProps.value, nextProps.value) &&
+        Object.is(prevProps.isValid, nextProps.isValid) &&
+        Object.is(prevProps.isDisabled, nextProps.isDisabled) &&
+        Object.is(prevProps.noRightOffset, nextProps.noRightOffset) &&
+        Object.is(prevProps.onChange, nextProps.onChange)
     );
 });
 
@@ -137,15 +135,31 @@ export function TristateInput({ label, help, isDisabled, isRequired, path }: Pro
     const id = React.useMemo(() => PathId.toId(path), [path]);
     const { handler } = React.useContext(FormContextInstance);
 
+    const [localValue, setLocalValue] = React.useState(tristateInitialState(handler, path));
+    const onChange = React.useMemo(() => (state: Tristate) => {
+        const newValue = Value.tristate(state, state === Tristate.NotSet && isRequired ? false : true);
+
+        handler.set(path, newValue, newValue.isValid === localValue.isValid);
+        setLocalValue({ state, isValid: newValue.isValid });
+    }, [path, isRequired]);
+
+    React.useEffect(() => {
+        const value = handler.getValue(path);
+        const state = Value.toTristate(value);
+        if (state !== localValue.state || value.isValid !== localValue.isValid) {
+            setLocalValue({ state, isValid: value.isValid });
+        }
+    });
+
     return (
         <>
             <ItemLabel label={label} help={help} markAsRequired={isRequired} id={id} />
             <YesNoUnset
                 id={id}
+                value={localValue.state}
+                isValid={localValue.isValid}
                 isDisabled={isDisabled}
-                isRequired={isRequired}
-                path={path}
-                handler={handler}
+                onChange={onChange}
             />
         </>
     );
