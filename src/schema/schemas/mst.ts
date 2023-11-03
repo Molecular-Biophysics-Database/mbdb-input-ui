@@ -26,8 +26,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.5',
-                        title: '0.9.5',
+                        tag: '0.9.6',
+                        title: '0.9.6',
                     },
                 ],
                 help: {

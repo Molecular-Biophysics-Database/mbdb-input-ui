@@ -36,7 +36,7 @@ export default function OriginatesFrom({
           },
         ]}
         disabled={isDisabled || isEmpty}
-        value={isEmpty ? "" : Value.toFile(value).metadata.originates_from}
+        value={Value.toFile(value)?.metadata?.originates_from}
         onChange={onChange}
       ></SDropdown>
     </>

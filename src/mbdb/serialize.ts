@@ -93,7 +93,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                 } else {
                     files.push(DepositedFile(v.payload.file, v.payload.metadata));
                 }
-                MbdbData.set(mbdbData, { url: `files/${v.payload.file?.name || v.payload.metadata.key}` }, storePath);
+                MbdbData.set(mbdbData, `files/${v.payload.file?.name || v.payload.metadata.key}`, storePath);
             } else {
                 assert(v.payload.file !== null, 'Value of a file must not be null');
             }

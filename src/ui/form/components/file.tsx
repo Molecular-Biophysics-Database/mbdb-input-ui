@@ -40,6 +40,7 @@ export function FileInput(props: Props) {
     const v = handler.getValue(props.path);
     const isEmpty = Value.isEmpty(v);
 
+    console.log("value", v, Value.toFile(v))
     return (
         <>
             <ItemLabel label={props.label} markAsRequired={props.isRequired} help={props.help} id={id} />
@@ -127,7 +128,7 @@ export function FileInput(props: Props) {
                 </div>
                 <STextArea
                     disabled={props.isDisabled || isEmpty}
-                    value={isEmpty ? '' : Value.toFile(v).metadata.description}
+                    value={Value.toFile(v)?.metadata?.description || ""}
                     onChange={(ev, data) => {
                         if (!isEmpty) {
                             const f = Value.toFile(v);
