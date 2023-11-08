@@ -231,6 +231,8 @@ def item_defn(item, defs, name, mbdbPath, imported_defis):
                 defn['minimum'] = item['minimum']
             if 'maximum' in item:
                 defn['maximum'] = item['maximum']
+        elif t == 'file':
+            defn['input'] = 'file'
         elif t == 'date':
             defn['input'] = 'calendar-date'
         elif t == 'keyword':
