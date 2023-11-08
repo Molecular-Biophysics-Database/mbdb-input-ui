@@ -2,7 +2,7 @@ export const GeneralParameters = {
     tag: 'general_parameters',
     label: 'general_parameters',
     isArray: false,
-    isRequired: false,
+    isRequired: true,
     mbdbPath: 'general_parameters',
     input: [
         {
@@ -14,8 +14,8 @@ export const GeneralParameters = {
             input: 'options',
             choices: [
                 {
-                    tag: '0.9.14',
-                    title: '0.9.14',
+                    tag: '0.9.15',
+                    title: '0.9.15',
                 },
             ],
             help: {
@@ -2114,7 +2114,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -2893,7 +2893,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -4298,7 +4298,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -4869,7 +4869,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -5754,7 +5754,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -8340,29 +8340,29 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location',
                                             input: [
                                                 {
-                                                    tag: 's-n(latitude)',
-                                                    label: 's-n(latitude)',
+                                                    tag: 'latitude',
+                                                    label: 'latitude',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/s-n(latitude)',
+                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/latitude',
                                                     input: 'float',
                                                     minimum: -90.0,
                                                     maximum: 90.0,
                                                     help: {
-                                                        en: 'The latitude in degrees (decimal notation)',
+                                                        en: 'The latitude, from south to north, in degrees (decimal notation)',
                                                     },
                                                 },
                                                 {
-                                                    tag: 'w-e(longitude)',
-                                                    label: 'w-e(longitude)',
+                                                    tag: 'longitude',
+                                                    label: 'longitude',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/w-e(longitude)',
+                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/longitude',
                                                     input: 'float',
                                                     minimum: -180.0,
                                                     maximum: 180.0,
                                                     help: {
-                                                        en: 'The longitude in degrees (decimal notation)',
+                                                        en: 'The longitude, from west to east, in degrees (decimal notation)',
                                                     },
                                                 },
                                             ],
@@ -10236,7 +10236,7 @@ export const GeneralParameters = {
                                                                             isArray: false,
                                                                             isRequired: true,
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
-                                                                            input: 'url',
+                                                                            input: 'file',
                                                                             help: {
                                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                                             },
@@ -10807,7 +10807,7 @@ export const GeneralParameters = {
                                                                             isArray: false,
                                                                             isRequired: true,
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/report',
-                                                                            input: 'url',
+                                                                            input: 'file',
                                                                             help: {
                                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                                             },
@@ -12278,7 +12278,7 @@ export const GeneralParameters = {
                             isArray: false,
                             isRequired: true,
                             mbdbPath: 'general_parameters/instrument/performance_test/report',
-                            input: 'url',
+                            input: 'file',
                             help: {
                                 en: 'The file containing the report of the performance test, preferably in pdf',
                             },
@@ -13215,7 +13215,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -14029,7 +14029,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -15397,7 +15397,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -16176,7 +16176,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -17581,7 +17581,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -18152,7 +18152,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -19037,7 +19037,7 @@ export const GeneralParameters = {
                                                     isArray: false,
                                                     isRequired: true,
                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/report',
-                                                    input: 'url',
+                                                    input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                     },
@@ -21623,29 +21623,29 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location',
                                             input: [
                                                 {
-                                                    tag: 's-n(latitude)',
-                                                    label: 's-n(latitude)',
+                                                    tag: 'latitude',
+                                                    label: 'latitude',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/s-n(latitude)',
+                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/latitude',
                                                     input: 'float',
                                                     minimum: -90.0,
                                                     maximum: 90.0,
                                                     help: {
-                                                        en: 'The latitude in degrees (decimal notation)',
+                                                        en: 'The latitude, from south to north, in degrees (decimal notation)',
                                                     },
                                                 },
                                                 {
-                                                    tag: 'w-e(longitude)',
-                                                    label: 'w-e(longitude)',
+                                                    tag: 'longitude',
+                                                    label: 'longitude',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/w-e(longitude)',
+                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/longitude',
                                                     input: 'float',
                                                     minimum: -180.0,
                                                     maximum: 180.0,
                                                     help: {
-                                                        en: 'The longitude in degrees (decimal notation)',
+                                                        en: 'The longitude, from west to east, in degrees (decimal notation)',
                                                     },
                                                 },
                                             ],
@@ -23519,7 +23519,7 @@ export const GeneralParameters = {
                                                                             isArray: false,
                                                                             isRequired: true,
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
-                                                                            input: 'url',
+                                                                            input: 'file',
                                                                             help: {
                                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                                             },
@@ -24090,7 +24090,7 @@ export const GeneralParameters = {
                                                                             isArray: false,
                                                                             isRequired: true,
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/report',
-                                                                            input: 'url',
+                                                                            input: 'file',
                                                                             help: {
                                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                                             },
@@ -26941,7 +26941,7 @@ export const GeneralParameters = {
                                             isArray: false,
                                             isRequired: true,
                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                            input: 'url',
+                                            input: 'file',
                                             help: {
                                                 en: 'Report with the results of the quality control, as a pdf file',
                                             },
@@ -27529,7 +27529,7 @@ export const GeneralParameters = {
                                             isArray: false,
                                             isRequired: true,
                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                            input: 'url',
+                                            input: 'file',
                                             help: {
                                                 en: 'Report with the results of the quality control, as a pdf file',
                                             },
@@ -28743,7 +28743,7 @@ export const GeneralParameters = {
                                                             isArray: false,
                                                             isRequired: true,
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
-                                                            input: 'url',
+                                                            input: 'file',
                                                             help: {
                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                             },
@@ -29314,7 +29314,7 @@ export const GeneralParameters = {
                                                             isArray: false,
                                                             isRequired: true,
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/report',
-                                                            input: 'url',
+                                                            input: 'file',
                                                             help: {
                                                                 en: 'Report with the results of the quality control, as a pdf file',
                                                             },
@@ -30199,7 +30199,7 @@ export const GeneralParameters = {
                                             isArray: false,
                                             isRequired: true,
                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/report',
-                                            input: 'url',
+                                            input: 'file',
                                             help: {
                                                 en: 'Report with the results of the quality control, as a pdf file',
                                             },
@@ -32021,29 +32021,29 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location',
                                     input: [
                                         {
-                                            tag: 's-n(latitude)',
-                                            label: 's-n(latitude)',
+                                            tag: 'latitude',
+                                            label: 'latitude',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/s-n(latitude)',
+                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/latitude',
                                             input: 'float',
                                             minimum: -90.0,
                                             maximum: 90.0,
                                             help: {
-                                                en: 'The latitude in degrees (decimal notation)',
+                                                en: 'The latitude, from south to north, in degrees (decimal notation)',
                                             },
                                         },
                                         {
-                                            tag: 'w-e(longitude)',
-                                            label: 'w-e(longitude)',
+                                            tag: 'longitude',
+                                            label: 'longitude',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/w-e(longitude)',
+                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/longitude',
                                             input: 'float',
                                             minimum: -180.0,
                                             maximum: 180.0,
                                             help: {
-                                                en: 'The longitude in degrees (decimal notation)',
+                                                en: 'The longitude, from west to east, in degrees (decimal notation)',
                                             },
                                         },
                                     ],
@@ -33726,7 +33726,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -34297,7 +34297,7 @@ export const GeneralParameters = {
                                                                     isArray: false,
                                                                     isRequired: true,
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/report',
-                                                                    input: 'url',
+                                                                    input: 'file',
                                                                     help: {
                                                                         en: 'Report with the results of the quality control, as a pdf file',
                                                                     },
@@ -35409,12 +35409,16 @@ export const GeneralParameters = {
             tag: 'raw_measurements',
             label: 'raw_measurements',
             isArray: true,
-            isRequired: false,
+            isRequired: true,
             mbdbPath: 'general_parameters/raw_measurements[]',
+            minItems: 0,
             input: 'file',
             help: {
                 en: 'List of file(s) containing the raw measurements',
             },
         },
     ],
+    help: {
+        en: 'The general information of the measurements',
+    },
 };
