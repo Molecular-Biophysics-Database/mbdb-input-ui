@@ -27,9 +27,11 @@ function getDefaultTrivialData(item: Item, references: ReferenceAnchors) {
     return fakeRoot[item.tag];
 }
 
-function makeComplexData(data: DataTree, path: Path, markGroupEmpty: boolean) {
+function setComplexDataStub(data: DataTree, path: Path, markGroupEmpty: boolean) {
     // This creates an empty data tree just with the empty/not-empty tag.
-    // This is okay because the rest will be filled out elsewhere as required.
+    // This is okay because the rest will be filled out elsewhere as required
+    // and the result will be merged with the default data so it is okay
+    // to not have the complete data here.
     Data.set(data, path, { __mbdb_group_marked_empty: markGroupEmpty } as DataTree);
 }
 
@@ -76,16 +78,12 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
     const loadPath = MbdbData.Path.toPath(item.mbdbPath, indices);
 
     if (Schema.hasComplexInput(item)) {
-        let mbdbDataExists = !!MbdbData.getObject(mbdbData, loadPath);
+        const mbdbDataExists = !!MbdbData.getObject(mbdbData, loadPath);
         if (!mbdbDataExists && item.isRequired && !options.allowPartials) {
             throw new Error(`Item on MbdbPath "${item.mbdbPath}" is required but the MbdbData object does not contain it.`);
-        } 
-        if (!mbdbDataExists && item.isRequired) {
-            MbdbData.set(mbdbData, {}, loadPath)
-            mbdbDataExists = true;
         }
 
-        makeComplexData(data, itemPath, !mbdbDataExists);
+        setComplexDataStub(data, itemPath, !mbdbDataExists && !item.isRequired);
         if (mbdbDataExists) {
             await toInternalData(item, mbdbData, itemPath, data, references, depositedFiles, options);
         }
