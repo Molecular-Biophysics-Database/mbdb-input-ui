@@ -4,14 +4,12 @@ export const GeneralParameters = {
     isArray: false,
     isRequired: false,
     mbdbPath: 'general_parameters',
-    mbdbPath: 'general_parameters',
     input: [
         {
             tag: 'schema_version',
             label: 'schema_version',
             isArray: false,
             isRequired: true,
-            mbdbPath: 'general_parameters/schema_version',
             mbdbPath: 'general_parameters/schema_version',
             input: 'options',
             choices: [
@@ -30,14 +28,12 @@ export const GeneralParameters = {
             isArray: false,
             isRequired: true,
             mbdbPath: 'general_parameters/record_information',
-            mbdbPath: 'general_parameters/record_information',
             input: [
                 {
                     tag: 'title',
                     label: 'title',
                     isArray: false,
                     isRequired: true,
-                    mbdbPath: 'general_parameters/record_information/title',
                     mbdbPath: 'general_parameters/record_information/title',
                     input: 'string',
                     help: {
@@ -49,7 +45,6 @@ export const GeneralParameters = {
                     label: 'keywords',
                     isArray: true,
                     isRequired: true,
-                    mbdbPath: 'general_parameters/record_information/keywords[]',
                     mbdbPath: 'general_parameters/record_information/keywords[]',
                     minItems: 1,
                     input: 'string',
@@ -63,7 +58,6 @@ export const GeneralParameters = {
                     isArray: false,
                     isRequired: false,
                     mbdbPath: 'general_parameters/record_information/measurement_group_id',
-                    mbdbPath: 'general_parameters/record_information/measurement_group_id',
                     input: 'internal-id',
                     help: {
                         en: 'Unique and persistent identifier which can be generated upon deposition of the first if a group of data is deposited at the same time. These can be used to specified records are closely connected e.g. one sample measured with multiple techniques. For more loosely connected results the project field should be used as sole link',
@@ -75,14 +69,12 @@ export const GeneralParameters = {
                     isArray: false,
                     isRequired: false,
                     mbdbPath: 'general_parameters/record_information/project',
-                    mbdbPath: 'general_parameters/record_information/project',
                     input: [
                         {
                             tag: 'id',
                             label: 'id',
                             isArray: false,
                             isRequired: false,
-                            mbdbPath: 'general_parameters/record_information/project/id',
                             mbdbPath: 'general_parameters/record_information/project/id',
                             input: 'string',
                             help: {
@@ -35419,10 +35411,6 @@ export const GeneralParameters = {
             isArray: true,
             isRequired: false,
             mbdbPath: 'general_parameters/raw_measurements[]',
-            input: 'url',
-            isRequired: true,
-            mbdbPath: 'general_parameters/raw_measurements[]',
-            minItems: 1,
             input: 'file',
             help: {
                 en: 'List of file(s) containing the raw measurements',
