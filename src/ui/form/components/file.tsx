@@ -44,6 +44,10 @@ export function FileInput(props: Props) {
     return (
         <>
             <ItemLabel label={props.label} markAsRequired={props.isRequired} help={props.help} id={id} />
+
+
+
+
             <div className="mbdbi-item-grid mbdbi-file-input-controls-wide">
                 <div className="mbdbi-item-label">
                     File
@@ -104,6 +108,12 @@ export function FileInput(props: Props) {
                         ref={labelRef}
                     />
                 </div>
+
+
+
+
+
+
                 <div className="mbdbi-item-label">
                     Originates from
                 </div>
@@ -139,7 +149,38 @@ export function FileInput(props: Props) {
                         }
                     }}
                 />
-
+                <div className="mbdbi-item-label">
+                    Recommended software
+                </div>
+                <STextArea
+                    disabled={props.isDisabled || isEmpty}
+                    value={Value.toFile(v)?.metadata?.recommended_software || ""}
+                    onChange={(ev, data) => {
+                        if (!isEmpty) {
+                            const f = Value.toFile(v);
+                            handler.set(props.path, Value.file(f.file, {
+                                ...f.metadata,
+                                recommended_software: data.value as string
+                            }, v.isValid));
+                        }
+                    }}
+                />
+                <div className="mbdbi-item-label">
+                    Processing steps
+                </div>
+                <STextArea
+                    disabled={props.isDisabled || isEmpty}
+                    value={Value.toFile(v)?.metadata?.processing_steps || ""}
+                    onChange={(ev, data) => {
+                        if (!isEmpty) {
+                            const f = Value.toFile(v);
+                            handler.set(props.path, Value.file(f.file, {
+                                ...f.metadata,
+                                processing_steps: data.value as string
+                            }, v.isValid));
+                        }
+                    }}
+                />
             </div>
         </>
     );

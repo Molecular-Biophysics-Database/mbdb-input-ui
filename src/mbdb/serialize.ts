@@ -95,7 +95,7 @@ function toMbdbDataSimpleItem(internalData: DataTree, internalParentPath: Path, 
                 }
                 MbdbData.set(mbdbData, `files/${v.payload.file?.name || v.payload.metadata.key}`, storePath);
             } else {
-                assert(v.payload.file !== null, 'Value of a file must not be null');
+                // assert(v.payload.file !== null, 'Value of a file must not be null'); // removed so that edit page works
             }
         } else if (Schema.hasNumericInput(item)) {
             const nv = item.input === 'int' ? parseInt(v.payload as string) : parseFloat(v.payload as string);

@@ -97,6 +97,9 @@ async function submitFiles(submissionUrl: string, files: DepositedFile[]): Promi
 
     // 2) Upload the file content and the metadata
     for (const f of files) {
+        if (!f.file) {
+            continue
+        }
         const fh = f.file!;
         const fileUploadUrl = `${submissionUrl.endsWith('/') ? submissionUrl.substring(0, submissionUrl.length - 1) : submissionUrl}/${fh.name}`;
 

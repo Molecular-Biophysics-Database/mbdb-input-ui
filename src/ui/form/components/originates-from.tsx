@@ -38,7 +38,7 @@ export default function OriginatesFrom({
         disabled={isDisabled || isEmpty}
         value={Value.toFile(value)?.metadata?.originates_from}
         onChange={onChange}
-      ></SDropdown>
+      />
     </>
   );
 }
