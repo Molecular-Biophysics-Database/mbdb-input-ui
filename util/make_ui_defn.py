@@ -231,8 +231,6 @@ def item_defn(item, defs, name, mbdbPath, imported_defis):
                 defn['minimum'] = item['minimum']
             if 'maximum' in item:
                 defn['maximum'] = item['maximum']
-        elif t == 'file':
-            defn['input'] = 'file'
         elif t == 'date':
             defn['input'] = 'calendar-date'
         elif t == 'keyword':
@@ -277,9 +275,16 @@ def item_defn(item, defs, name, mbdbPath, imported_defis):
 
             defn['input'] = 'related-to'
             defn['relatesTo'] = mbdb_relates_to(item['model'])
-            defn['relatedKeys'] = mbdb_related_keys(item['keys']);
+            defn['relatedKeys'] = mbdb_related_keys(item['keys'])
+
         elif t == 'url':
-            defn['input'] = 'url'
+            # files are urls in the model, but they're marked with having (^)ui_file_context
+            if "ui_file_context" in [k.removeprefix("^") for k in item.keys()]:
+                defn['input'] = 'file'
+            # not all urls are files, some are just urls
+            else:
+                defn['input'] = 'url'
+
         elif t == 'uuid':
             defn['input'] = 'uuid'
         elif t == 'vocabulary':

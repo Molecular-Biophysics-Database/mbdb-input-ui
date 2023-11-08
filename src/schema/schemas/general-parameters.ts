@@ -35409,9 +35409,9 @@ export const GeneralParameters = {
             tag: 'raw_measurements',
             label: 'raw_measurements',
             isArray: true,
-            isRequired: true,
+            isRequired: false,
             mbdbPath: 'general_parameters/raw_measurements[]',
-            minItems: 0,
+            minItems: 1,
             input: 'file',
             help: {
                 en: 'List of file(s) containing the raw measurements',
