@@ -72,6 +72,7 @@ export type DepositedFileMetadata = {
     originates_from?: string,
     description?: string,
     recommended_software?: string,
+    processing_steps?: string,
 }
 
 export type DepositedFile = {

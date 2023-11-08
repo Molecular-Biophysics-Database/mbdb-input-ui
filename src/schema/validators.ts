@@ -207,6 +207,8 @@ export const Validators = {
             return isRequired
                 ? isUrl
                 : (v: string) => { return CommonValidators.isEmpty(v) || CommonValidators.isUrl(v) };
+        } else if (Schema.hasFileInput(item)) {
+            return CommonValidators.alwaysValid;
         }
 
         throw new Error(`No common validator is defined for item ${item.tag} of input type ${item.input}`);

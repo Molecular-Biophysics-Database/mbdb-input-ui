@@ -182,9 +182,9 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                 Data.set(data, itemPath, Value.emptyVocabularyEntry(!item.isRequired));
             }
         } else if (Schema.hasFileInput(item)) {
-            const mbdbFile = MbdbData.getObject(mbdbData, loadPath);
+            const mbdbFile = MbdbData.getScalar(mbdbData, loadPath);
             if (mbdbFile) {
-                const url = mbdbFile['url'] as string
+                const url = mbdbFile as string
                 if (url && url.length>0) {
                     const key = url.split('/').pop()!
                     const fileMetadata = depositedFiles[key]
@@ -219,7 +219,7 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     if (Schema.hasOptionsWithOtherInput(item)) {
                         Data.set(data, itemPath, Value.option(Schema.OtherChoice, mbdbScalar));
                     } else {
-                        throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an options item "${item.tag}" is not amongst the allowed choices and the item does not allow "other" choice.`);
+                        throw new Error(`Value of MbdbScalar on MbdbPath "${item.mbdbPath}" for an options item "${item.tag}" is not amongst the allowed choices and the item does not allow "other" choice. Actual value ${mbdbScalar}. Options ${item.choices.map(choice => choice.tag).join(",")}`);
                     }
                 } else {
                     Data.set(data, itemPath, Value.option(mbdbScalar));

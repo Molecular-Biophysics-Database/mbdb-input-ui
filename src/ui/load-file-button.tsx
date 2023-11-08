@@ -5,7 +5,6 @@ import {
     Icon as SIcon,
 } from 'semantic-ui-react';
 import { v4 } from 'uuid';
-import { FileTypes } from '../util/download';
 
 const Reserved = ['title', 'onLoaded'] as (keyof LoadFileButtonProps)[];
 function sbtnProps(props: LoadFileButtonProps) {
@@ -30,7 +29,6 @@ export function LoadFileButton(props: LoadFileButtonProps) {
             <input
                 type='file'
                 id={id}
-                accept={FileTypes.json.mimeType}
                 style={{ display: 'none' }}
                 onChange={(ev) => {
                     if (ev.currentTarget.files) props.onLoaded(ev.currentTarget.files[0]);

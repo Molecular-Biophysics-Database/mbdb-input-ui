@@ -35411,7 +35411,7 @@ export const GeneralParameters = {
             isArray: true,
             isRequired: false,
             mbdbPath: 'general_parameters/raw_measurements[]',
-            input: 'url',
+            input: 'file',
             help: {
                 en: 'List of file(s) containing the raw measurements',
             },

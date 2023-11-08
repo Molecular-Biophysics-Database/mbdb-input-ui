@@ -217,6 +217,8 @@ function checkItemDataSchema(data: Value, item: Item): boolean {
         return Value.isVocabularyEntry(data);
     } else if (Schema.hasIgnoredInput(item) || Schema.hasUnknownInput(item)) {
         return true;
+    } else if (Schema.hasFileInput(item)) {
+        return Value.isFile(data)
     } else {
         return Value.isTextual(data);
     }
