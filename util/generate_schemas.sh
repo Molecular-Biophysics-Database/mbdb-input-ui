@@ -29,27 +29,37 @@ OUTPUT_PATH=../src/schema/schemas/
 # Imports allow us to factor out common parts of models
 IMPORTS=(general_parameters)
 
-for imp in ${IMPORTS[@]}
-do
-    OUTFILE=$(tsify_file "${imp,,}")
-    OUTVAR=$(tsify_var "${imp,,}")
-    echo "Starting to convert $imp import"
+# for imp in ${IMPORTS[@]}
+# do
+#     OUTFILE=$(tsify_file "${imp}")
+#     OUTVAR=$(tsify_var "${imp}")
+#     echo "Starting to convert $imp import"
+#         ./make_ui_defn.py                     \
+#         --input  "${INPUT_PATH}${imp}.yaml"   \
+#         --output "${OUTPUT_PATH}${OUTFILE}"   \
+#         --schema_name "$OUTVAR"               \
+#         --partial                             \
+#         || fail "$imp"
+# 	echo "Finished converting imports"
+# done
+
+# MacOS uses older version of bash were some substitutions do not work
+echo "Starting to convert general_parameters import"
         ./make_ui_defn.py                     \
-        --input  "${INPUT_PATH}${imp}.yaml"   \
-        --output "${OUTPUT_PATH}${OUTFILE}"   \
-        --schema_name "$OUTVAR"               \
+        --input  "${INPUT_PATH}general_parameters.yaml"   \
+        --output "${OUTPUT_PATH}general-parameters.ts"   \
+        --schema_name GeneralParameters               \
         --partial                             \
         || fail "$imp"
-	echo "Finished converting imports"
-done
+
 
 
 MODELS=(MST BLI SPR)
 
 for mod in ${MODELS[@]}
 do
-    OUTFILE=$(tsify_file "${mod,,}")
-    echo "Starting to convert $mod model"
+    OUTFILE=$(tsify_file "$(echo $mod|tr [A-Z] [a-z])")
+    echo "Starting to convert $mod model" 
         ./make_ui_defn.py                     \
         --input  "${INPUT_PATH}${mod}.yaml"   \
         --output "${OUTPUT_PATH}${OUTFILE}"   \
