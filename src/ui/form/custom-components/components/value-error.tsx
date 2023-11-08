@@ -6,7 +6,7 @@ import { CustomComponent, DataError } from '../';
 import { PathId } from '../../path-id';
 import { ItemLabel } from '../../components/label';
 import { FloatInput } from '../../components/num-text';
-import { YesNoUnset } from '../../components/yes-no';
+import { TristateInput } from '../../components/yes-no';
 import { FormContextInstance } from '../../../../context';
 import { MbdbData } from '../../../../mbdb/data';
 import { Options } from '../../../../mbdb/deserialize';
@@ -188,6 +188,12 @@ export const ValueError: CustomComponent<ValueErrorData> = {
         const { handler } = React.useContext(FormContextInstance);
         const isMarkedEmpty = handler.isGroupMarkedEmpty(path);
 
+        const numValidator = React.useMemo(() => (v: string) => isMarkedEmpty || isDisabled ? true : validatorRequired(v), [isMarkedEmpty, isDisabled]);
+        const lowerErrorPath = React.useMemo(() => Data.Path.path('lower_error', path), [path]);
+        const upperErrorPath = React.useMemo(() => Data.Path.path('upper_error', path), [path]);
+        const errorLevelPath = React.useMemo(() => Data.Path.path('error_level', path), [path]);
+        const errorsAreRelativePath = React.useMemo(() => Data.Path.path('errors_are_relative', path), [path]);
+
         return (
             <React.Fragment key={reactKey}>
                 <ItemLabel label='Value error' markAsRequired={false} id={id} />
@@ -206,8 +212,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                         <FloatInput
                             label='Min'
                             help={getHelp(help, 'lower_error')}
-                            path={Data.Path.path('lower_error', path)}
-                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
+                            path={lowerErrorPath}
+                            validator={numValidator}
                             isRequired={Required.lower_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
@@ -216,8 +222,8 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                         <FloatInput
                             label='Max'
                             help={getHelp(help, 'upper_error')}
-                            path={Data.Path.path('upper_error', path)}
-                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
+                            path={upperErrorPath}
+                            validator={numValidator}
                             isRequired={Required.upper_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
@@ -226,20 +232,21 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                         <FloatInput
                             label='Error level'
                             help={getHelp(help, 'error_level')}
-                            path={Data.Path.path('error_level', path)}
-                            validator={(v) => isMarkedEmpty || isDisabled ? true : validatorRequired(v)}
+                            path={errorLevelPath}
+                            validator={numValidator}
                             isRequired={Required.upper_error}
                             isDisabled={isMarkedEmpty || isDisabled}
                         />
                     </div>
                     <ItemLabel id={idIsRel} markAsRequired={false} help={getHelp(help, 'errors_are_relative')} label='Errors are relative' />
-                    <YesNoUnset
-                        id={idIsRel}
-                        isDisabled={isMarkedEmpty || isDisabled}
-                        isRequired={Required.errors_are_relative}
-                        path={Data.Path.path('errors_are_relative', path)}
-                        handler={handler}
-                    />
+                    <div>
+                        <TristateInput
+                            label=''
+                            isDisabled={isMarkedEmpty || isDisabled}
+                            isRequired={Required.errors_are_relative}
+                            path={errorsAreRelativePath}
+                        />
+                    </div>
                 </div>
             </React.Fragment>
         );

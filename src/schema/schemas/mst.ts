@@ -56,7 +56,7 @@ export const MST = [
                     },
                 ],
                 help: {
-                    en: 'Type of physical parameter measured',
+                    en: 'The type of physical parameter that was sought',
                 },
             },
             {
@@ -81,7 +81,7 @@ export const MST = [
                     },
                 ],
                 help: {
-                    en: 'Which type of signal was measured',
+                    en: 'The type of signal that was being measured',
                 },
             },
             {
@@ -152,7 +152,7 @@ export const MST = [
                 minimum: 0.0,
                 maximum: 100.0,
                 help: {
-                    en: 'The power of the infrared LASER used in the experiment in percentages. A change in nomenclature occurred in Nanotemper\'s software, however the underlying data is still stored in percentages use the following conversion; Low = 20, Medium = 40, High = 60',
+                    en: 'The power of the infrared LASER used in the experiment in percentages. Even though a change in nomenclature occurred in Nanotemper\'s control software, the underlying data is still stored in percentages. Use the following conversion; Low = 20, Medium = 40, High = 60',
                 },
             },
             {
@@ -251,10 +251,10 @@ export const MST = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the value',
+                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -477,10 +477,10 @@ export const MST = [
                                                 component: 'value-error',
                                                 help: {
                                                     upper_error: {
-                                                        en: 'The upper error, i.e. the number added to the value',
+                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                     },
                                                     lower_error: {
-                                                        en: 'The lower error, i.e. the number subtracted from the value',
+                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                     },
                                                     errors_are_relative: {
                                                         en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -756,7 +756,7 @@ export const MST = [
                             },
                         ],
                         help: {
-                            en: 'Information about the sample including',
+                            en: 'Information about the sample including concentrations of ligands and targets, and which chemical environment the sample was composed of',
                         },
                     },
                     {
@@ -884,7 +884,7 @@ export const MST = [
                     },
                 ],
                 help: {
-                    en: 'List of the information about each measurement, including, target(s), ligand(s), chemical environment, and position of the sample within the instrument',
+                    en: 'List of the information about each measurement. This includes target(s), ligand(s), chemical environment, and the position of the sample within the instrument',
                 },
             },
             {
@@ -922,7 +922,7 @@ export const MST = [
                             'name',
                         ],
                         help: {
-                            en: 'List of measurement links that was analyzed together',
+                            en: 'List of the measurements that was analyzed together for a specific parameter',
                         },
                     },
                     {
@@ -990,7 +990,7 @@ export const MST = [
                                 input: 'float',
                                 minimum: -100.0,
                                 help: {
-                                    en: 'Numerical value of the start point of time interval used to establish the initial fluorescence, F_cold',
+                                    en: 'Numerical value of the start-point of time interval used to establish the initial fluorescence, F_cold',
                                 },
                             },
                             {
@@ -1002,7 +1002,7 @@ export const MST = [
                                 input: 'float',
                                 minimum: -100.0,
                                 help: {
-                                    en: 'Numerical value of the end point of time interval used to establish the initial fluorescence, F_cold',
+                                    en: 'Numerical value of the end-point of time interval used to establish the initial fluorescence, F_cold',
                                 },
                             },
                             {
@@ -1014,7 +1014,7 @@ export const MST = [
                                 input: 'float',
                                 minimum: 0.0,
                                 help: {
-                                    en: 'Numerical value of the start point of time interval used to establish the fluorescence temperature induced change in fluorescence, F_hot',
+                                    en: 'Numerical value of the start-point of time interval used to establish the fluorescence temperature induced change in fluorescence, F_hot',
                                 },
                             },
                             {
@@ -1026,7 +1026,7 @@ export const MST = [
                                 input: 'float',
                                 minimum: 0.0,
                                 help: {
-                                    en: 'Numerical value of the end point of time interval used to establish the fluorescence temperature induced change in fluorescence, F_hot',
+                                    en: 'Numerical value of the end-point of time interval used to establish the fluorescence temperature induced change in fluorescence, F_hot',
                                 },
                             },
                         ],
@@ -1050,7 +1050,7 @@ export const MST = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/name',
                                 input: 'string',
                                 help: {
-                                    en: 'Descriptive name of the processing step',
+                                    en: 'Short descriptive name of the processing step',
                                 },
                             },
                             {
@@ -1128,7 +1128,7 @@ export const MST = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/model',
                                 input: 'string',
                                 help: {
-                                    en: 'Description of the model(e.g. 1:1 binding)',
+                                    en: 'Description of the model (e.g. 1:1 binding)',
                                 },
                             },
                             {
@@ -1139,7 +1139,7 @@ export const MST = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/software_name',
                                 input: 'string',
                                 help: {
-                                    en: 'The name of the software that was used for doing the fitting (e.g. Excel)',
+                                    en: 'The name of the software that was used for doing the data fitting (e.g. Excel)',
                                 },
                             },
                             {
@@ -1216,7 +1216,7 @@ export const MST = [
                     },
                 ],
                 help: {
-                    en: 'Details of how the data was processed and model in order to derive parameters from it',
+                    en: 'Details of how the data was processed and modelled in order to derive parameters from it',
                 },
             },
         ],

@@ -1,8 +1,9 @@
 export const GeneralParameters = {
-    tag: 'General_parameters',
-    label: 'General_parameters',
+    tag: 'general_parameters',
+    label: 'general_parameters',
     isArray: false,
     isRequired: false,
+    mbdbPath: 'general_parameters',
     mbdbPath: 'general_parameters',
     input: [
         {
@@ -11,11 +12,12 @@ export const GeneralParameters = {
             isArray: false,
             isRequired: true,
             mbdbPath: 'general_parameters/schema_version',
+            mbdbPath: 'general_parameters/schema_version',
             input: 'options',
             choices: [
                 {
-                    tag: '0.9.13',
-                    title: '0.9.13',
+                    tag: '0.9.14',
+                    title: '0.9.14',
                 },
             ],
             help: {
@@ -28,12 +30,14 @@ export const GeneralParameters = {
             isArray: false,
             isRequired: true,
             mbdbPath: 'general_parameters/record_information',
+            mbdbPath: 'general_parameters/record_information',
             input: [
                 {
                     tag: 'title',
                     label: 'title',
                     isArray: false,
                     isRequired: true,
+                    mbdbPath: 'general_parameters/record_information/title',
                     mbdbPath: 'general_parameters/record_information/title',
                     input: 'string',
                     help: {
@@ -45,6 +49,7 @@ export const GeneralParameters = {
                     label: 'keywords',
                     isArray: true,
                     isRequired: true,
+                    mbdbPath: 'general_parameters/record_information/keywords[]',
                     mbdbPath: 'general_parameters/record_information/keywords[]',
                     minItems: 1,
                     input: 'string',
@@ -58,6 +63,7 @@ export const GeneralParameters = {
                     isArray: false,
                     isRequired: false,
                     mbdbPath: 'general_parameters/record_information/measurement_group_id',
+                    mbdbPath: 'general_parameters/record_information/measurement_group_id',
                     input: 'internal-id',
                     help: {
                         en: 'Unique and persistent identifier which can be generated upon deposition of the first if a group of data is deposited at the same time. These can be used to specified records are closely connected e.g. one sample measured with multiple techniques. For more loosely connected results the project field should be used as sole link',
@@ -69,12 +75,14 @@ export const GeneralParameters = {
                     isArray: false,
                     isRequired: false,
                     mbdbPath: 'general_parameters/record_information/project',
+                    mbdbPath: 'general_parameters/record_information/project',
                     input: [
                         {
                             tag: 'id',
                             label: 'id',
                             isArray: false,
                             isRequired: false,
+                            mbdbPath: 'general_parameters/record_information/project/id',
                             mbdbPath: 'general_parameters/record_information/project/id',
                             input: 'string',
                             help: {
@@ -89,7 +97,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/record_information/project/title',
                             input: 'string',
                             help: {
-                                en: 'Short title of the MBDB project',
+                                en: 'Short title of the project',
                             },
                         },
                         {
@@ -100,7 +108,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/record_information/project/description',
                             input: 'string',
                             help: {
-                                en: 'Short description of what the MBDB project is about',
+                                en: 'Short description of what the project is about',
                             },
                         },
                         {
@@ -161,17 +169,17 @@ export const GeneralParameters = {
                                         'props.country',
                                     ],
                                     help: {
-                                        en: 'The affiliation of the person',
+                                        en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                                     },
                                 },
                             ],
                             help: {
-                                en: 'The person responsible for the research MBDB project, typically a project leader, principle investigator of group leader',
+                                en: 'The person responsible for the project, typically a project leader, principle investigator, or group leader',
                             },
                         },
                     ],
                     help: {
-                        en: 'The MBDB project the records belongs to can be specified here. Projects are typically  longer running research projects that would be expected to get many MBDB records associated with it over time',
+                        en: 'Projects are typically longer running research projects that would be expected to have several records associated with them over time',
                     },
                 },
                 {
@@ -266,7 +274,7 @@ export const GeneralParameters = {
                     mbdbPath: 'general_parameters/record_information/resource_type',
                     input: 'string',
                     help: {
-                        en: 'Datacite item which will show the type of experiment (MST/BLI/SPR)',
+                        en: 'DataCite item which shows type of dataset the record is and corresponds directly to which kind of technique was used (MST/BLI/SPR)',
                     },
                 },
                 {
@@ -305,7 +313,7 @@ export const GeneralParameters = {
                         },
                     ],
                     help: {
-                        en: 'Subject category the record data belongs to default is Biophysics',
+                        en: 'DataCite subject category the record data belongs to default is Biophysics',
                     },
                 },
                 {
@@ -332,7 +340,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'The metadata of the record itself',
+                en: 'Information about the record itself, including whether this particular record is associated with other records',
             },
         },
         {
@@ -400,7 +408,7 @@ export const GeneralParameters = {
                                 'props.country',
                             ],
                             help: {
-                                en: 'The affiliation of the person',
+                                en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                             },
                         },
                     ],
@@ -466,7 +474,7 @@ export const GeneralParameters = {
                                 'props.country',
                             ],
                             help: {
-                                en: 'The affiliation of the person',
+                                en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                             },
                         },
                     ],
@@ -533,7 +541,7 @@ export const GeneralParameters = {
                                 'props.country',
                             ],
                             help: {
-                                en: 'The affiliation of the person',
+                                en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                             },
                         },
                     ],
@@ -543,7 +551,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'Information about the depositors (authors) of the record',
+                en: 'Information about the depositors (authors) of this record',
             },
         },
         {
@@ -589,7 +597,7 @@ export const GeneralParameters = {
                             isRequired: true,
                             mbdbPath: 'general_parameters/associated_publications/main/publication_year',
                             input: 'int',
-                            minimum: 1800,
+                            minimum: 1900,
                             help: {
                                 en: 'The publication year',
                             },
@@ -653,12 +661,12 @@ export const GeneralParameters = {
                                         'props.country',
                                     ],
                                     help: {
-                                        en: 'The affiliation of the person',
+                                        en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                                     },
                                 },
                             ],
                             help: {
-                                en: 'The authors of the publication',
+                                en: 'Information about the authors of the publication',
                             },
                         },
                         {
@@ -699,7 +707,7 @@ export const GeneralParameters = {
                         },
                     ],
                     help: {
-                        en: 'Persistent link to publication where the data or derived parameters first appeared as well as basic information about the publication',
+                        en: 'Information about the publication where the raw data or derived parameters first appeared',
                     },
                 },
                 {
@@ -739,7 +747,7 @@ export const GeneralParameters = {
                             isRequired: true,
                             mbdbPath: 'general_parameters/associated_publications/additional[]/publication_year',
                             input: 'int',
-                            minimum: 1800,
+                            minimum: 1900,
                             help: {
                                 en: 'The publication year',
                             },
@@ -803,12 +811,12 @@ export const GeneralParameters = {
                                         'props.country',
                                     ],
                                     help: {
-                                        en: 'The affiliation of the person',
+                                        en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                                     },
                                 },
                             ],
                             help: {
-                                en: 'The authors of the publication',
+                                en: 'Information about the authors of the publication',
                             },
                         },
                         {
@@ -849,12 +857,12 @@ export const GeneralParameters = {
                         },
                     ],
                     help: {
-                        en: 'Additional publications can be specified here, if applicable',
+                        en: 'Information about publications in addition to the main publication',
                     },
                 },
             ],
             help: {
-                en: 'Information about if data in this record is associated with published literature, if applicable',
+                en: 'Information about if data in this record is associated with published literature',
             },
         },
         {
@@ -872,7 +880,7 @@ export const GeneralParameters = {
                 'props.funder_name',
             ],
             help: {
-                en: 'List of information about the grants that supported depositors',
+                en: 'List of information about the grants that supported generation of the raw data annotated by this record. Note that this information is based on OpenAire Projects',
             },
         },
         {
@@ -897,7 +905,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'The type of experimental technique employed for collection of raw data',
+                en: 'The type of experimental technique used for collecting the raw data annotated by this record',
             },
         },
         {
@@ -908,7 +916,7 @@ export const GeneralParameters = {
             mbdbPath: 'general_parameters/collection_start_time',
             input: 'calendar-date',
             help: {
-                en: 'The time when collection of the data began',
+                en: 'The date when collection of the raw data began',
             },
         },
         {
@@ -1103,10 +1111,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1159,7 +1167,7 @@ export const GeneralParameters = {
                                             minItems: 1,
                                             input: 'string',
                                             help: {
-                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                             },
                                         },
                                         {
@@ -1221,7 +1229,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/synthesis[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -1291,7 +1299,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/biological_postprocessing[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -1361,7 +1369,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/modifications/chemical[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -1516,7 +1524,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -1529,10 +1537,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1653,7 +1661,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -1666,10 +1674,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1851,7 +1859,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -1864,10 +1872,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -1988,7 +1996,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -2001,10 +2009,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2217,10 +2225,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2459,10 +2467,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2630,7 +2638,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -2643,10 +2651,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2767,7 +2775,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -2780,10 +2788,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -2996,10 +3004,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3185,7 +3193,7 @@ export const GeneralParameters = {
                                             minItems: 1,
                                             input: 'string',
                                             help: {
-                                                en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. 1YQ2; PDB); information about the individual components should be specified in the details of the individual components',
+                                                en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. PDB:1YQ2 ); information about the individual components should be specified in the details of the individual components',
                                             },
                                         },
                                         {
@@ -3287,10 +3295,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3343,7 +3351,7 @@ export const GeneralParameters = {
                                                             minItems: 1,
                                                             input: 'string',
                                                             help: {
-                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                             },
                                                         },
                                                         {
@@ -3405,7 +3413,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/synthesis[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -3475,7 +3483,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -3545,7 +3553,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/modifications/chemical[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -3700,7 +3708,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/storage/temperature/value',
                                                                             input: 'float',
                                                                             help: {
-                                                                                en: 'Numeric value of the temperature',
+                                                                                en: 'The numeric value of the temperature',
                                                                             },
                                                                         },
                                                                         {
@@ -3713,10 +3721,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -3837,7 +3845,7 @@ export const GeneralParameters = {
                                                                             input: 'float',
                                                                             minimum: 0.0,
                                                                             help: {
-                                                                                en: 'Numerical value of the time point or duration',
+                                                                                en: 'The numerical value of the time point or duration',
                                                                             },
                                                                         },
                                                                         {
@@ -3850,10 +3858,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4035,7 +4043,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -4048,10 +4056,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4172,7 +4180,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -4185,10 +4193,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4435,10 +4443,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4606,7 +4614,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -4619,10 +4627,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4743,7 +4751,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -4756,10 +4764,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -4971,10 +4979,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5045,7 +5053,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/chemical_modifications[]/modification',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'The type of modification',
+                                                        en: 'The common name/type of the modification',
                                                     },
                                                 },
                                                 {
@@ -5156,7 +5164,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -5169,10 +5177,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5293,7 +5301,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -5306,10 +5314,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5491,7 +5499,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -5504,10 +5512,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5628,7 +5636,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -5641,10 +5649,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -5892,10 +5900,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6235,7 +6243,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -6248,10 +6256,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6372,7 +6380,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -6385,10 +6393,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6585,10 +6593,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -6974,7 +6982,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -6987,10 +6995,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7111,7 +7119,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -7124,10 +7132,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7324,10 +7332,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7505,11 +7513,11 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]',
                                             input: [
                                                 {
-                                                    tag: 'Genetic_material',
-                                                    label: 'Genetic_material',
+                                                    tag: 'genetic_material',
+                                                    label: 'genetic_material',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/Genetic_material',
+                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/genetic_material',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -7720,7 +7728,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -7733,10 +7741,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -7857,7 +7865,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -7870,10 +7878,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8070,10 +8078,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8340,11 +8348,11 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location',
                                             input: [
                                                 {
-                                                    tag: 'S-N(latitude)',
-                                                    label: 'S-N(latitude)',
+                                                    tag: 's-n(latitude)',
+                                                    label: 's-n(latitude)',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/S-N(latitude)',
+                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/s-n(latitude)',
                                                     input: 'float',
                                                     minimum: -90.0,
                                                     maximum: 90.0,
@@ -8353,11 +8361,11 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                                 {
-                                                    tag: 'W-E(longitude)',
-                                                    label: 'W-E(longitude)',
+                                                    tag: 'w-e(longitude)',
+                                                    label: 'w-e(longitude)',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/W-E(longitude)',
+                                                    mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/location/w-e(longitude)',
                                                     input: 'float',
                                                     minimum: -180.0,
                                                     maximum: 180.0,
@@ -8392,7 +8400,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -8405,10 +8413,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8529,7 +8537,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -8542,10 +8550,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -8742,10 +8750,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9225,10 +9233,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9281,7 +9289,7 @@ export const GeneralParameters = {
                                                                     minItems: 1,
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                                     },
                                                                 },
                                                                 {
@@ -9343,7 +9351,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/synthesis[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -9413,7 +9421,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -9483,7 +9491,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/modifications/chemical[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -9638,7 +9646,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/storage/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -9651,10 +9659,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9775,7 +9783,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -9788,10 +9796,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -9973,7 +9981,7 @@ export const GeneralParameters = {
                                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                             input: 'float',
                                                                                             help: {
-                                                                                                en: 'Numeric value of the temperature',
+                                                                                                en: 'The numeric value of the temperature',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -9986,10 +9994,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10110,7 +10118,7 @@ export const GeneralParameters = {
                                                                                             input: 'float',
                                                                                             minimum: 0.0,
                                                                                             help: {
-                                                                                                en: 'Numerical value of the time point or duration',
+                                                                                                en: 'The numerical value of the time point or duration',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -10123,10 +10131,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10373,10 +10381,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10544,7 +10552,7 @@ export const GeneralParameters = {
                                                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                             input: 'float',
                                                                                             help: {
-                                                                                                en: 'Numeric value of the temperature',
+                                                                                                en: 'The numeric value of the temperature',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -10557,10 +10565,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10681,7 +10689,7 @@ export const GeneralParameters = {
                                                                                             input: 'float',
                                                                                             minimum: 0.0,
                                                                                             help: {
-                                                                                                en: 'Numerical value of the time point or duration',
+                                                                                                en: 'The numerical value of the time point or duration',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -10694,10 +10702,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -10978,7 +10986,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -10991,10 +10999,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11115,7 +11123,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -11128,10 +11136,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11328,10 +11336,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11594,7 +11602,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -11607,10 +11615,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11731,7 +11739,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -11744,10 +11752,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -11944,10 +11952,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12159,7 +12167,7 @@ export const GeneralParameters = {
                                     isRequired: true,
                                     mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/publication_year',
                                     input: 'int',
-                                    minimum: 1800,
+                                    minimum: 1900,
                                     help: {
                                         en: 'The publication year',
                                     },
@@ -12223,12 +12231,12 @@ export const GeneralParameters = {
                                                 'props.country',
                                             ],
                                             help: {
-                                                en: 'The affiliation of the person',
+                                                en: 'The affiliation of the person. Note that this is based on the Research Organization Registry (ROR)',
                                             },
                                         },
                                     ],
                                     help: {
-                                        en: 'The authors of the publication',
+                                        en: 'Information about the authors of the publication',
                                     },
                                 },
                                 {
@@ -12301,7 +12309,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'Information about the instrument being used to collect (measure) data',
+                en: 'Information about the instrument being used to collect (measure) the raw data annotated by this record',
             },
         },
         {
@@ -12326,7 +12334,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value',
                             input: 'float',
                             help: {
-                                en: 'Numeric value of the temperature',
+                                en: 'The numeric value of the temperature',
                             },
                         },
                         {
@@ -12339,10 +12347,10 @@ export const GeneralParameters = {
                             component: 'value-error',
                             help: {
                                 upper_error: {
-                                    en: 'The upper error, i.e. the number added to the value',
+                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                 },
                                 lower_error: {
-                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                 },
                                 errors_are_relative: {
                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12462,7 +12470,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value',
                             input: 'float',
                             help: {
-                                en: 'Numeric value of the pressure',
+                                en: 'The numeric value of the pressure',
                             },
                         },
                         {
@@ -12475,10 +12483,10 @@ export const GeneralParameters = {
                             component: 'value-error',
                             help: {
                                 upper_error: {
-                                    en: 'The upper error, i.e. the number added to the value',
+                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                 },
                                 lower_error: {
-                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                 },
                                 errors_are_relative: {
                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12601,7 +12609,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value',
                             input: 'float',
                             help: {
-                                en: 'Numeric value of the humidity',
+                                en: 'The numeric value of the humidity',
                             },
                         },
                         {
@@ -12614,10 +12622,10 @@ export const GeneralParameters = {
                             component: 'value-error',
                             help: {
                                 upper_error: {
-                                    en: 'The upper error, i.e. the number added to the value',
+                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                 },
                                 lower_error: {
-                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                 },
                                 errors_are_relative: {
                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12781,10 +12789,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -12952,7 +12960,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -12965,10 +12973,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13089,7 +13097,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -13102,10 +13110,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13294,10 +13302,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13480,7 +13488,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'Information about the physical conditions immediately before sample handling. Especially relevant when the conditions differ from measurement conditions or where special precautions were taken (e.g. keeping samples on ice until measured, or stored under Argon atmosphere until it was measured)',
+                en: 'Information about the physical conditions immediately before sample handling. Especially relevant when the conditions differ from the measurement conditions or where special precautions were taken (e.g. keeping samples on ice until measured, or stored under Argon atmosphere until it was measured)',
             },
         },
         {
@@ -13595,10 +13603,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13766,7 +13774,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -13779,10 +13787,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -13903,7 +13911,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -13916,10 +13924,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14108,10 +14116,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14386,10 +14394,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14442,7 +14450,7 @@ export const GeneralParameters = {
                                             minItems: 1,
                                             input: 'string',
                                             help: {
-                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                             },
                                         },
                                         {
@@ -14504,7 +14512,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/synthesis[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -14574,7 +14582,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/biological_postprocessing[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -14644,7 +14652,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/modifications/chemical[]/modification',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'The type of modification',
+                                                                en: 'The common name/type of the modification',
                                                             },
                                                         },
                                                         {
@@ -14799,7 +14807,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -14812,10 +14820,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -14936,7 +14944,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -14949,10 +14957,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15134,7 +15142,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -15147,10 +15155,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15271,7 +15279,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -15284,10 +15292,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15500,10 +15508,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15742,10 +15750,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -15913,7 +15921,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -15926,10 +15934,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16050,7 +16058,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -16063,10 +16071,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16279,10 +16287,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16468,7 +16476,7 @@ export const GeneralParameters = {
                                             minItems: 1,
                                             input: 'string',
                                             help: {
-                                                en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. 1YQ2; PDB); information about the individual components should be specified in the details of the individual components',
+                                                en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. PDB:1YQ2 ); information about the individual components should be specified in the details of the individual components',
                                             },
                                         },
                                         {
@@ -16570,10 +16578,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -16626,7 +16634,7 @@ export const GeneralParameters = {
                                                             minItems: 1,
                                                             input: 'string',
                                                             help: {
-                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                             },
                                                         },
                                                         {
@@ -16688,7 +16696,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/synthesis[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -16758,7 +16766,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -16828,7 +16836,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/modifications/chemical[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -16983,7 +16991,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/storage/temperature/value',
                                                                             input: 'float',
                                                                             help: {
-                                                                                en: 'Numeric value of the temperature',
+                                                                                en: 'The numeric value of the temperature',
                                                                             },
                                                                         },
                                                                         {
@@ -16996,10 +17004,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17120,7 +17128,7 @@ export const GeneralParameters = {
                                                                             input: 'float',
                                                                             minimum: 0.0,
                                                                             help: {
-                                                                                en: 'Numerical value of the time point or duration',
+                                                                                en: 'The numerical value of the time point or duration',
                                                                             },
                                                                         },
                                                                         {
@@ -17133,10 +17141,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17318,7 +17326,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -17331,10 +17339,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17455,7 +17463,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -17468,10 +17476,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17718,10 +17726,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -17889,7 +17897,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -17902,10 +17910,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18026,7 +18034,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -18039,10 +18047,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18254,10 +18262,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18328,7 +18336,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/chemical_modifications[]/modification',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'The type of modification',
+                                                        en: 'The common name/type of the modification',
                                                     },
                                                 },
                                                 {
@@ -18439,7 +18447,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -18452,10 +18460,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18576,7 +18584,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -18589,10 +18597,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18774,7 +18782,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -18787,10 +18795,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -18911,7 +18919,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -18924,10 +18932,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19175,10 +19183,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19518,7 +19526,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -19531,10 +19539,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19655,7 +19663,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -19668,10 +19676,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -19868,10 +19876,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20257,7 +20265,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -20270,10 +20278,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20394,7 +20402,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -20407,10 +20415,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20607,10 +20615,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -20788,11 +20796,11 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]',
                                             input: [
                                                 {
-                                                    tag: 'Genetic_material',
-                                                    label: 'Genetic_material',
+                                                    tag: 'genetic_material',
+                                                    label: 'genetic_material',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/Genetic_material',
+                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/genetic_material',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -21003,7 +21011,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -21016,10 +21024,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21140,7 +21148,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -21153,10 +21161,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21353,10 +21361,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21623,11 +21631,11 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location',
                                             input: [
                                                 {
-                                                    tag: 'S-N(latitude)',
-                                                    label: 'S-N(latitude)',
+                                                    tag: 's-n(latitude)',
+                                                    label: 's-n(latitude)',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/S-N(latitude)',
+                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/s-n(latitude)',
                                                     input: 'float',
                                                     minimum: -90.0,
                                                     maximum: 90.0,
@@ -21636,11 +21644,11 @@ export const GeneralParameters = {
                                                     },
                                                 },
                                                 {
-                                                    tag: 'W-E(longitude)',
-                                                    label: 'W-E(longitude)',
+                                                    tag: 'w-e(longitude)',
+                                                    label: 'w-e(longitude)',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/W-E(longitude)',
+                                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/location/w-e(longitude)',
                                                     input: 'float',
                                                     minimum: -180.0,
                                                     maximum: 180.0,
@@ -21675,7 +21683,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -21688,10 +21696,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -21812,7 +21820,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -21825,10 +21833,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22025,10 +22033,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22508,10 +22516,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -22564,7 +22572,7 @@ export const GeneralParameters = {
                                                                     minItems: 1,
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                                     },
                                                                 },
                                                                 {
@@ -22626,7 +22634,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/synthesis[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -22696,7 +22704,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -22766,7 +22774,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/modifications/chemical[]/modification',
                                                                                     input: 'string',
                                                                                     help: {
-                                                                                        en: 'The type of modification',
+                                                                                        en: 'The common name/type of the modification',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -22921,7 +22929,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/storage/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -22934,10 +22942,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23058,7 +23066,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -23071,10 +23079,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23256,7 +23264,7 @@ export const GeneralParameters = {
                                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                             input: 'float',
                                                                                             help: {
-                                                                                                en: 'Numeric value of the temperature',
+                                                                                                en: 'The numeric value of the temperature',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -23269,10 +23277,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23393,7 +23401,7 @@ export const GeneralParameters = {
                                                                                             input: 'float',
                                                                                             minimum: 0.0,
                                                                                             help: {
-                                                                                                en: 'Numerical value of the time point or duration',
+                                                                                                en: 'The numerical value of the time point or duration',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -23406,10 +23414,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23656,10 +23664,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23827,7 +23835,7 @@ export const GeneralParameters = {
                                                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                             input: 'float',
                                                                                             help: {
-                                                                                                en: 'Numeric value of the temperature',
+                                                                                                en: 'The numeric value of the temperature',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -23840,10 +23848,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -23964,7 +23972,7 @@ export const GeneralParameters = {
                                                                                             input: 'float',
                                                                                             minimum: 0.0,
                                                                                             help: {
-                                                                                                en: 'Numerical value of the time point or duration',
+                                                                                                en: 'The numerical value of the time point or duration',
                                                                                             },
                                                                                         },
                                                                                         {
@@ -23977,10 +23985,10 @@ export const GeneralParameters = {
                                                                                             component: 'value-error',
                                                                                             help: {
                                                                                                 upper_error: {
-                                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                                 },
                                                                                                 lower_error: {
-                                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                                 },
                                                                                                 errors_are_relative: {
                                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24261,7 +24269,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -24274,10 +24282,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24398,7 +24406,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -24411,10 +24419,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24611,10 +24619,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -24877,7 +24885,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -24890,10 +24898,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25014,7 +25022,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -25027,10 +25035,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25227,10 +25235,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25407,18 +25415,18 @@ export const GeneralParameters = {
                             },
                         },
                         {
-                            tag: 'pH',
-                            label: 'pH',
+                            tag: 'ph',
+                            label: 'ph',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH',
+                            mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ph',
                             input: [
                                 {
                                     tag: 'value',
                                     label: 'value',
                                     isArray: false,
                                     isRequired: true,
-                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH/value',
+                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ph/value',
                                     input: 'float',
                                     help: {
                                         en: 'The pH value of the solution',
@@ -25429,15 +25437,15 @@ export const GeneralParameters = {
                                     label: 'value_error',
                                     isArray: false,
                                     isRequired: false,
-                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH/value_error',
+                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ph/value_error',
                                     input: 'custom',
                                     component: 'value-error',
                                     help: {
                                         upper_error: {
-                                            en: 'The upper error, i.e. the number added to the value',
+                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                         },
                                         lower_error: {
-                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                         },
                                         errors_are_relative: {
                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25452,7 +25460,7 @@ export const GeneralParameters = {
                                     label: 'obtained_by',
                                     isArray: false,
                                     isRequired: true,
-                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/pH/obtained_by',
+                                    mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/ph/obtained_by',
                                     input: 'options',
                                     choices: [
                                         {
@@ -25623,10 +25631,10 @@ export const GeneralParameters = {
                                     component: 'value-error',
                                     help: {
                                         upper_error: {
-                                            en: 'The upper error, i.e. the number added to the value',
+                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                         },
                                         lower_error: {
-                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                         },
                                         errors_are_relative: {
                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25930,10 +25938,10 @@ export const GeneralParameters = {
                                             component: 'value-error',
                                             help: {
                                                 upper_error: {
-                                                    en: 'The upper error, i.e. the number added to the value',
+                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                 },
                                                 lower_error: {
-                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                 },
                                                 errors_are_relative: {
                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -25986,7 +25994,7 @@ export const GeneralParameters = {
                                     minItems: 1,
                                     input: 'string',
                                     help: {
-                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                     },
                                 },
                                 {
@@ -26048,7 +26056,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/synthesis[]/modification',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'The type of modification',
+                                                        en: 'The common name/type of the modification',
                                                     },
                                                 },
                                                 {
@@ -26118,7 +26126,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/biological_postprocessing[]/modification',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'The type of modification',
+                                                        en: 'The common name/type of the modification',
                                                     },
                                                 },
                                                 {
@@ -26188,7 +26196,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/modifications/chemical[]/modification',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'The type of modification',
+                                                        en: 'The common name/type of the modification',
                                                     },
                                                 },
                                                 {
@@ -26343,7 +26351,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                     input: 'float',
                                                     help: {
-                                                        en: 'Numeric value of the temperature',
+                                                        en: 'The numeric value of the temperature',
                                                     },
                                                 },
                                                 {
@@ -26356,10 +26364,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26480,7 +26488,7 @@ export const GeneralParameters = {
                                                     input: 'float',
                                                     minimum: 0.0,
                                                     help: {
-                                                        en: 'Numerical value of the time point or duration',
+                                                        en: 'The numerical value of the time point or duration',
                                                     },
                                                 },
                                                 {
@@ -26493,10 +26501,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26678,7 +26686,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -26691,10 +26699,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -26815,7 +26823,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -26828,10 +26836,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27021,7 +27029,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -27095,10 +27103,10 @@ export const GeneralParameters = {
                                             component: 'value-error',
                                             help: {
                                                 upper_error: {
-                                                    en: 'The upper error, i.e. the number added to the value',
+                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                 },
                                                 lower_error: {
-                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                 },
                                                 errors_are_relative: {
                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27266,7 +27274,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -27279,10 +27287,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27403,7 +27411,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -27416,10 +27424,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27609,7 +27617,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -27630,7 +27638,7 @@ export const GeneralParameters = {
                                     minItems: 1,
                                     input: 'string',
                                     help: {
-                                        en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. 1YQ2; PDB); information about the individual components should be specified in the details of the individual components',
+                                        en: 'List of identifiers to records in external databases containing information about the molecular assembly as a whole can be specified here (e.g. PDB:1YQ2 ); information about the individual components should be specified in the details of the individual components',
                                     },
                                 },
                                 {
@@ -27732,10 +27740,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -27788,7 +27796,7 @@ export const GeneralParameters = {
                                                     minItems: 1,
                                                     input: 'string',
                                                     help: {
-                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                        en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                     },
                                                 },
                                                 {
@@ -27850,7 +27858,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/synthesis[]/modification',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'The type of modification',
+                                                                        en: 'The common name/type of the modification',
                                                                     },
                                                                 },
                                                                 {
@@ -27920,7 +27928,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/biological_postprocessing[]/modification',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'The type of modification',
+                                                                        en: 'The common name/type of the modification',
                                                                     },
                                                                 },
                                                                 {
@@ -27990,7 +27998,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/modifications/chemical[]/modification',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'The type of modification',
+                                                                        en: 'The common name/type of the modification',
                                                                     },
                                                                 },
                                                                 {
@@ -28145,7 +28153,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/storage/temperature/value',
                                                                     input: 'float',
                                                                     help: {
-                                                                        en: 'Numeric value of the temperature',
+                                                                        en: 'The numeric value of the temperature',
                                                                     },
                                                                 },
                                                                 {
@@ -28158,10 +28166,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28282,7 +28290,7 @@ export const GeneralParameters = {
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
-                                                                        en: 'Numerical value of the time point or duration',
+                                                                        en: 'The numerical value of the time point or duration',
                                                                     },
                                                                 },
                                                                 {
@@ -28295,10 +28303,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28480,7 +28488,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                             input: 'float',
                                                                             help: {
-                                                                                en: 'Numeric value of the temperature',
+                                                                                en: 'The numeric value of the temperature',
                                                                             },
                                                                         },
                                                                         {
@@ -28493,10 +28501,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28617,7 +28625,7 @@ export const GeneralParameters = {
                                                                             input: 'float',
                                                                             minimum: 0.0,
                                                                             help: {
-                                                                                en: 'Numerical value of the time point or duration',
+                                                                                en: 'The numerical value of the time point or duration',
                                                                             },
                                                                         },
                                                                         {
@@ -28630,10 +28638,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -28880,10 +28888,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29051,7 +29059,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                             input: 'float',
                                                                             help: {
-                                                                                en: 'Numeric value of the temperature',
+                                                                                en: 'The numeric value of the temperature',
                                                                             },
                                                                         },
                                                                         {
@@ -29064,10 +29072,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29188,7 +29196,7 @@ export const GeneralParameters = {
                                                                             input: 'float',
                                                                             minimum: 0.0,
                                                                             help: {
-                                                                                en: 'Numerical value of the time point or duration',
+                                                                                en: 'The numerical value of the time point or duration',
                                                                             },
                                                                         },
                                                                         {
@@ -29201,10 +29209,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29416,10 +29424,10 @@ export const GeneralParameters = {
                                             component: 'value-error',
                                             help: {
                                                 upper_error: {
-                                                    en: 'The upper error, i.e. the number added to the value',
+                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                 },
                                                 lower_error: {
-                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                 },
                                                 errors_are_relative: {
                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29490,7 +29498,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/chemical_modifications[]/modification',
                                             input: 'string',
                                             help: {
-                                                en: 'The type of modification',
+                                                en: 'The common name/type of the modification',
                                             },
                                         },
                                         {
@@ -29601,7 +29609,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                     input: 'float',
                                                     help: {
-                                                        en: 'Numeric value of the temperature',
+                                                        en: 'The numeric value of the temperature',
                                                     },
                                                 },
                                                 {
@@ -29614,10 +29622,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29738,7 +29746,7 @@ export const GeneralParameters = {
                                                     input: 'float',
                                                     minimum: 0.0,
                                                     help: {
-                                                        en: 'Numerical value of the time point or duration',
+                                                        en: 'The numerical value of the time point or duration',
                                                     },
                                                 },
                                                 {
@@ -29751,10 +29759,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -29936,7 +29944,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -29949,10 +29957,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30073,7 +30081,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -30086,10 +30094,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30314,7 +30322,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -30489,7 +30497,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -30502,10 +30510,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30626,7 +30634,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -30639,10 +30647,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -30816,7 +30824,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -31037,7 +31045,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -31050,10 +31058,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31174,7 +31182,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -31187,10 +31195,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31364,7 +31372,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -31377,11 +31385,11 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]',
                                     input: [
                                         {
-                                            tag: 'Genetic_material',
-                                            label: 'Genetic_material',
+                                            tag: 'genetic_material',
+                                            label: 'genetic_material',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/Genetic_material',
+                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/genetic_material',
                                             input: 'options',
                                             choices: [
                                                 {
@@ -31592,7 +31600,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                             input: 'float',
                                                             help: {
-                                                                en: 'Numeric value of the temperature',
+                                                                en: 'The numeric value of the temperature',
                                                             },
                                                         },
                                                         {
@@ -31605,10 +31613,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31729,7 +31737,7 @@ export const GeneralParameters = {
                                                             input: 'float',
                                                             minimum: 0.0,
                                                             help: {
-                                                                en: 'Numerical value of the time point or duration',
+                                                                en: 'The numerical value of the time point or duration',
                                                             },
                                                         },
                                                         {
@@ -31742,10 +31750,10 @@ export const GeneralParameters = {
                                                             component: 'value-error',
                                                             help: {
                                                                 upper_error: {
-                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                 },
                                                                 lower_error: {
-                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                 },
                                                                 errors_are_relative: {
                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -31919,7 +31927,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -32021,11 +32029,11 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location',
                                     input: [
                                         {
-                                            tag: 'S-N(latitude)',
-                                            label: 'S-N(latitude)',
+                                            tag: 's-n(latitude)',
+                                            label: 's-n(latitude)',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/S-N(latitude)',
+                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/s-n(latitude)',
                                             input: 'float',
                                             minimum: -90.0,
                                             maximum: 90.0,
@@ -32034,11 +32042,11 @@ export const GeneralParameters = {
                                             },
                                         },
                                         {
-                                            tag: 'W-E(longitude)',
-                                            label: 'W-E(longitude)',
+                                            tag: 'w-e(longitude)',
+                                            label: 'w-e(longitude)',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/W-E(longitude)',
+                                            mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/location/w-e(longitude)',
                                             input: 'float',
                                             minimum: -180.0,
                                             maximum: 180.0,
@@ -32073,7 +32081,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                     input: 'float',
                                                     help: {
-                                                        en: 'Numeric value of the temperature',
+                                                        en: 'The numeric value of the temperature',
                                                     },
                                                 },
                                                 {
@@ -32086,10 +32094,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32210,7 +32218,7 @@ export const GeneralParameters = {
                                                     input: 'float',
                                                     minimum: 0.0,
                                                     help: {
-                                                        en: 'Numerical value of the time point or duration',
+                                                        en: 'The numerical value of the time point or duration',
                                                     },
                                                 },
                                                 {
@@ -32223,10 +32231,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32400,7 +32408,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -32715,10 +32723,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -32771,7 +32779,7 @@ export const GeneralParameters = {
                                                             minItems: 1,
                                                             input: 'string',
                                                             help: {
-                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g Q8KRF6, UniProt)',
+                                                                en: 'List of identifiers to records in external databases containing information about the polymer can be specified here (e.g UNIPROT:Q8KRF6)',
                                                             },
                                                         },
                                                         {
@@ -32833,7 +32841,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/synthesis[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -32903,7 +32911,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/biological_postprocessing[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -32973,7 +32981,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/modifications/chemical[]/modification',
                                                                             input: 'string',
                                                                             help: {
-                                                                                en: 'The type of modification',
+                                                                                en: 'The common name/type of the modification',
                                                                             },
                                                                         },
                                                                         {
@@ -33128,7 +33136,7 @@ export const GeneralParameters = {
                                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/storage/temperature/value',
                                                                             input: 'float',
                                                                             help: {
-                                                                                en: 'Numeric value of the temperature',
+                                                                                en: 'The numeric value of the temperature',
                                                                             },
                                                                         },
                                                                         {
@@ -33141,10 +33149,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33265,7 +33273,7 @@ export const GeneralParameters = {
                                                                             input: 'float',
                                                                             minimum: 0.0,
                                                                             help: {
-                                                                                en: 'Numerical value of the time point or duration',
+                                                                                en: 'The numerical value of the time point or duration',
                                                                             },
                                                                         },
                                                                         {
@@ -33278,10 +33286,10 @@ export const GeneralParameters = {
                                                                             component: 'value-error',
                                                                             help: {
                                                                                 upper_error: {
-                                                                                    en: 'The upper error, i.e. the number added to the value',
+                                                                                    en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                 },
                                                                                 lower_error: {
-                                                                                    en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                    en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                 },
                                                                                 errors_are_relative: {
                                                                                     en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33463,7 +33471,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -33476,10 +33484,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33600,7 +33608,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -33613,10 +33621,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -33863,10 +33871,10 @@ export const GeneralParameters = {
                                                                     component: 'value-error',
                                                                     help: {
                                                                         upper_error: {
-                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                         },
                                                                         lower_error: {
-                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                         },
                                                                         errors_are_relative: {
                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34034,7 +34042,7 @@ export const GeneralParameters = {
                                                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                                     input: 'float',
                                                                                     help: {
-                                                                                        en: 'Numeric value of the temperature',
+                                                                                        en: 'The numeric value of the temperature',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -34047,10 +34055,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34171,7 +34179,7 @@ export const GeneralParameters = {
                                                                                     input: 'float',
                                                                                     minimum: 0.0,
                                                                                     help: {
-                                                                                        en: 'Numerical value of the time point or duration',
+                                                                                        en: 'The numerical value of the time point or duration',
                                                                                     },
                                                                                 },
                                                                                 {
@@ -34184,10 +34192,10 @@ export const GeneralParameters = {
                                                                                     component: 'value-error',
                                                                                     help: {
                                                                                         upper_error: {
-                                                                                            en: 'The upper error, i.e. the number added to the value',
+                                                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                                                         },
                                                                                         lower_error: {
-                                                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                                                         },
                                                                                         errors_are_relative: {
                                                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34468,7 +34476,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                     input: 'float',
                                                     help: {
-                                                        en: 'Numeric value of the temperature',
+                                                        en: 'The numeric value of the temperature',
                                                     },
                                                 },
                                                 {
@@ -34481,10 +34489,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34605,7 +34613,7 @@ export const GeneralParameters = {
                                                     input: 'float',
                                                     minimum: 0.0,
                                                     help: {
-                                                        en: 'Numerical value of the time point or duration',
+                                                        en: 'The numerical value of the time point or duration',
                                                     },
                                                 },
                                                 {
@@ -34618,10 +34626,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -34795,7 +34803,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -34893,7 +34901,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/storage/temperature/value',
                                                     input: 'float',
                                                     help: {
-                                                        en: 'Numeric value of the temperature',
+                                                        en: 'The numeric value of the temperature',
                                                     },
                                                 },
                                                 {
@@ -34906,10 +34914,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -35030,7 +35038,7 @@ export const GeneralParameters = {
                                                     input: 'float',
                                                     minimum: 0.0,
                                                     help: {
-                                                        en: 'Numerical value of the time point or duration',
+                                                        en: 'The numerical value of the time point or duration',
                                                     },
                                                 },
                                                 {
@@ -35043,10 +35051,10 @@ export const GeneralParameters = {
                                                     component: 'value-error',
                                                     help: {
                                                         upper_error: {
-                                                            en: 'The upper error, i.e. the number added to the value',
+                                                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                                                         },
                                                         lower_error: {
-                                                            en: 'The lower error, i.e. the number subtracted from the value',
+                                                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                                                         },
                                                         errors_are_relative: {
                                                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -35220,7 +35228,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substance which cannot be exactly specified as for its chemical composition, e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -35261,7 +35269,7 @@ export const GeneralParameters = {
                     mbdbPath: 'general_parameters/derived_parameters[]/name',
                     input: 'string',
                     help: {
-                        en: 'Descriptive name (id) of the parameter (e.g. Kd between Lysozyme and VHH). Must be unique with in a record',
+                        en: 'Descriptive name (id) of the derived parameter (e.g. Kd of Lysozyme and VHH2). Must be unique within a record',
                     },
                 },
                 {
@@ -35376,10 +35384,10 @@ export const GeneralParameters = {
                     component: 'value-error',
                     help: {
                         upper_error: {
-                            en: 'The upper error, i.e. the number added to the value',
+                            en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
                         },
                         lower_error: {
-                            en: 'The lower error, i.e. the number subtracted from the value',
+                            en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
                         },
                         errors_are_relative: {
                             en: 'Whether the errors should be interpreted as relative errors in percent',
@@ -35409,6 +35417,9 @@ export const GeneralParameters = {
             tag: 'raw_measurements',
             label: 'raw_measurements',
             isArray: true,
+            isRequired: false,
+            mbdbPath: 'general_parameters/raw_measurements[]',
+            input: 'url',
             isRequired: true,
             mbdbPath: 'general_parameters/raw_measurements[]',
             minItems: 1,

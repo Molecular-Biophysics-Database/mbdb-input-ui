@@ -48,7 +48,7 @@ export const Common = {
         ],
     },
 
-    '*/pH': {
+    '*/ph': {
         dontTransformLabels: true,
         label: 'pH',
     },
