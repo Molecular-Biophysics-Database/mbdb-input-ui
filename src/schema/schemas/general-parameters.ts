@@ -35409,7 +35409,7 @@ export const GeneralParameters = {
             tag: 'raw_measurements',
             label: 'raw_measurements',
             isArray: true,
-            isRequired: true,
+            isRequired: false,
             mbdbPath: 'General_parameters/raw_measurements[]',
             minItems: 1,
             input: 'url',
