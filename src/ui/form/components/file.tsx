@@ -1,11 +1,13 @@
+import clsx from "clsx";
 import React from "react";
 import {
   Button as SButton,
   Icon as SIcon,
   TextArea as STextArea,
 } from "semantic-ui-react";
-import { ItemLabel } from "./label";
+import { ItemLabel, SectionLabel } from "./label";
 import { PathId } from "../path-id";
+import { sectionBgCls, subtreeHasErrors, useDarkBlock } from '../util';
 import { FormContextInstance } from "../../../context";
 import { Help } from "../../../schema";
 import { Path } from "../../../schema/data";
@@ -27,28 +29,36 @@ type Props = {
   isRequired: boolean;
   isDisabled: boolean;
   path: Path;
+  checkForErrors: boolean;
+  nestLevel: number;
 };
 export function FileInput(props: Props) {
   const id = React.useMemo(() => PathId.toId(props.path), [props.path]);
   const fiId = React.useMemo(() => id + "_fileinput", [id]);
   const { handler } = React.useContext(FormContextInstance);
   const labelRef = React.useRef<HTMLLabelElement>(null);
+  const hasErrors = props.isDisabled ? false : subtreeHasErrors(handler.data(), props.path, handler.schema());
+  const darkBlk = useDarkBlock(props.nestLevel);
 
   const v = handler.getValue(props.path);
   const isEmpty = Value.isEmpty(v);
 
   console.log("value", v, Value.toFile(v));
   return (
-    <>
-      <ItemLabel
+    <div className={clsx(
+        'mbdbi-section',
+        hasErrors && 'mbdbi-section-has-errors',
+        'mbdbi-block',
+        sectionBgCls(darkBlk, props.isDisabled)
+    )} id={id}>
+      <SectionLabel
         label={props.label}
         markAsRequired={props.isRequired}
         help={props.help}
-        id={id}
       />
 
       <div className="mbdbi-item-grid mbdbi-file-input-controls-wide">
-        <div className="mbdbi-item-label">File</div>
+        <ItemLabel label="File" markAsRequired={false} id="file" />
         <div className="mbdbi-file-input-controls">
           {/* File selection section */}
 
@@ -82,30 +92,33 @@ export function FileInput(props: Props) {
           <label id={id} htmlFor={fiId} ref={labelRef} />
         </div>
 
-        <div className="mbdbi-item-label">Originates from</div>
-        <OriginatesFrom
-          isDisabled={props.isDisabled || isEmpty}
-          isEmpty={isEmpty}
-          value={v}
-          onChange={(ev, data) => {
-            if (!isEmpty) {
-              const f = Value.toFile(v);
-              handler.set(
-                props.path,
-                Value.file(
-                  f.file,
-                  {
-                    ...f.metadata,
-                    originates_from: data.value as string,
-                  },
-                  v.isValid
-                )
-              );
-            }
-          }}
-        />
-        <div className="mbdbi-item-label">Description</div>
+        <ItemLabel label="Originates from" markAsRequired={true} id="originates-from" />
+        <div className="mbdbi-right-offset">
+          <OriginatesFrom
+            isDisabled={props.isDisabled || isEmpty}
+            isEmpty={isEmpty}
+            value={v}
+            onChange={(ev, data) => {
+              if (!isEmpty) {
+                const f = Value.toFile(v);
+                handler.set(
+                  props.path,
+                  Value.file(
+                    f.file,
+                    {
+                      ...f.metadata,
+                      originates_from: data.value as string,
+                    },
+                    v.isValid
+                  )
+                );
+              }
+            }}
+          />
+        </div>
+        <ItemLabel label="Description" markAsRequired={false} id="description" />
         <STextArea
+          className="mbdbi-right-offset"
           disabled={props.isDisabled || isEmpty}
           value={Value.toFile(v)?.metadata?.description || ""}
           onChange={(ev, data) => {
@@ -125,8 +138,9 @@ export function FileInput(props: Props) {
             }
           }}
         />
-        <div className="mbdbi-item-label">Recommended software</div>
+        <ItemLabel label="Recommended software" markAsRequired={false} id="recommended-software" />
         <STextArea
+          className="mbdbi-right-offset"
           disabled={props.isDisabled || isEmpty}
           value={Value.toFile(v)?.metadata?.recommended_software || ""}
           onChange={(ev, data) => {
@@ -146,8 +160,9 @@ export function FileInput(props: Props) {
             }
           }}
         />
-        <div className="mbdbi-item-label">Processing steps</div>
+        <ItemLabel label="Processing steps" markAsRequired={false} id="processing-steps" />
         <STextArea
+          className="mbdbi-right-offset"
           disabled={props.isDisabled || isEmpty}
           value={Value.toFile(v)?.metadata?.processing_steps || ""}
           onChange={(ev, data) => {
@@ -168,6 +183,6 @@ export function FileInput(props: Props) {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }

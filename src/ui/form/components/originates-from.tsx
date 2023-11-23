@@ -18,27 +18,26 @@ export default function OriginatesFrom({
   onChange: (event: React.SyntheticEvent, data: DropdownProps) => void,
 }) {
   return (
-    <>
-      <SDropdown
-        selection
-        options={[
-          {
-            text: "Instrument software",
-            value: "Instrument software",
-          },
-          {
-            text: "User",
-            value: "User",
-          },
-          {
-            text: "MBDB",
-            value: "MBDB",
-          },
-        ]}
-        disabled={isDisabled || isEmpty}
-        value={Value.toFile(value)?.metadata?.originates_from}
-        onChange={onChange}
-      />
-    </>
+    <SDropdown
+      style={{ width: "100%" }}
+      selection
+      options={[
+        {
+          text: "Instrument software",
+          value: "Instrument software",
+        },
+        {
+          text: "User",
+          value: "User",
+        },
+        {
+          text: "MBDB",
+          value: "MBDB",
+        },
+      ]}
+      disabled={isDisabled || isEmpty}
+      value={Value.toFile(value)?.metadata?.originates_from}
+      onChange={onChange}
+    />
   );
 }
