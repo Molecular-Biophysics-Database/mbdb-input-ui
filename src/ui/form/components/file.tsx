@@ -57,7 +57,7 @@ export function FileInput(props: Props) {
         help={props.help}
       />
 
-      <div className="mbdbi-item-grid mbdbi-file-input-controls-wide">
+      <div className="mbdbi-item-grid">
         <ItemLabel label="File" markAsRequired={false} id="file" />
         <div className="mbdbi-file-input-controls">
           {/* File selection section */}
