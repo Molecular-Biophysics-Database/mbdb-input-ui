@@ -20,33 +20,54 @@ import {objKeys} from '../../../util';
 // If you are reading this, you probably want to throw this away and write your own
 // component for vocabulary searches. Have fun...
 
-type VocLoadedAction = {
-    type: 'voc-loaded';
-    voc: Vocabulary,
+type Cleared = {
+    type: 'cleared',
+}
+type PrefetchDone = {
+    type: 'prefetch-done',
+}
+type PrefetchFailed = {
+    type: 'prefetch-failed',
+    error: string,
+}
+type Searching = {
+    type: 'searching',
 };
-type SearchAction = {
-    type: 'search',
+type SearchDone = {
+    type: 'search-done',
     results: SearchResult[],
 };
+type SearchFailed = {
+    type: 'search-failed',
+    error: string,
+};
+type Transition = Cleared | PrefetchDone | PrefetchFailed | Searching | SearchDone | SearchFailed;
+
 type SearchResult = {
     title: string, // This needs to be here to keep in line with the props expected by the custom rendering function
     __vocabularyentry: VocabularyEntry; // Don't ask and don't rename...
 };
 
-type Actions = SearchAction | VocLoadedAction;
 
 const InitialState = {
     loading: true as boolean,
-    vocabulary: [] as Vocabulary,
     results: [] as SearchResult[],
+    error: '' as string,
 };
-const EmptyResults = [] as SearchResult[];
 
-function doReduce(state: typeof InitialState, action: Actions) {
-    if (action.type === 'voc-loaded') {
-        return { ...state, loading: false, vocabulary: action.voc };
-    } else if (action.type === 'search') {
-        return { ...state, results: action.results };
+function doReduce(state: typeof InitialState, trans: Transition) {
+    if (trans.type === 'cleared') {
+        return { ...state, loading: false, results: [], error: '' };
+    } else if (trans.type === 'prefetch-done') {
+        return { ...state, loading: false, results: [], error: '' };
+    } else if (trans.type === 'prefetch-failed') {
+        return { ...state, loading: false, results: [], error: trans.error };
+    } else if (trans.type === 'search-done') {
+        return { ...state, loading: false, results: trans.results, error: '' };
+    } else if (trans.type === 'search-failed') {
+        return { ...state, loading: false, results: [], error: trans.error };
+    } else if (trans.type === 'searching' ) {
+        return { ...state, loading: true, error: '' };
     } else {
         return state;
     }
@@ -84,7 +105,7 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
     loading: boolean,
     value: string,
     results: SearchResult[],
-    vocabulary: Vocabulary,
+    error: string,
     onSearch: (ev: SyntheticEvent, data: object) => void,
     onSelected: (ev: SyntheticEvent, data: object) => void,
     handler: _FormContextHandler
@@ -92,16 +113,18 @@ const MVocabularyInput = React.memo(function _VocabularyInput(props: {
     return (
         <>
             <ItemLabel id={props.id} label={props.label} markAsRequired={props.isRequired} help={props.help} />
-            <SSearch
-                id={props.id}
-                loading={props.loading}
-                value={props.value}
-                results={props.results}
-                onResultSelect={props.onSelected}
-                onSearchChange={props.onSearch}
-                resultRenderer={Result}
-            >
-            </SSearch>
+            <div style={{ alignItems: 'center', display: 'flex', gap: 'var(--mbdbi-hgap)' }}>
+                <SSearch
+                    id={props.id}
+                    loading={props.loading}
+                    value={props.value}
+                    results={props.results}
+                    onResultSelect={props.onSelected}
+                    onSearchChange={props.onSearch}
+                    resultRenderer={Result}
+                />
+                {props.error ? <div className='mbdbi-strong ' style={{ color: 'red' }}>Error: {props.error}</div> : null }
+            </div>
         </>
     );
 }, (prevProps, nextProps) => {
@@ -127,34 +150,45 @@ export function VocabularyInput(props: Props) {
     const [state, dispatch] = React.useReducer(doReduce, InitialState);
 
     const onSearch = React.useMemo(() => (_ev: SyntheticEvent, data: Record<string, any>) => {
+        // Block user input if there is a vocabulary lookup operation in progress.
+        // A better solution would be to cancel the current operation and start a new one.
+        // However, having cancellable vocabulary requests would require another level
+        // of complexity.
+        // We may need to revisit this if it turns out to be too annoying in practice.
+        if (state.loading) return;
+
         handler.set(props.path, Value.emptyVocabularyEntry(false));
 
         if (!data['value'] || typeof data['value'] !== 'string') {
-            dispatch({ type: 'search', results: EmptyResults });
+            dispatch({ type: 'cleared' });
 
             // User has cleared the field, invalidate the data
             handler.set(props.path, Value.emptyVocabularyEntry(!props.isRequired));
         } else {
-            const query = data.value;
-            const lwrQuery = query.toLowerCase();
-            const results = state.vocabulary.filter((x) => x.title.en.toLowerCase().includes(lwrQuery)).map((x) => ({ title: x.title.en, __vocabularyentry: x }));
-
-            dispatch({ type: 'search', results });
-
             // User has changed the input field. Let's create an invalid value
             // with the title that matches the user input. Otherwise we'd mess up the display
             const emptyish = Value.emptyVocabularyEntry(false);
-            emptyish.payload.title = query;
+            emptyish.payload.title = data.value;
             handler.set(props.path, emptyish);
+
+            dispatch({ type: 'searching' });
+
+            Vocabulary.search(props.vocabularyType, data.value).then((entries) => {
+                const results = entries.map((x) => ({ title: x.title.en, __vocabularyentry: x }));
+
+                dispatch({ type: 'search-done', results });
+            }).catch((e) => {
+                dispatch({ type: 'search-failed', error: e.message });
+            });
         }
     }, [state, props.path]);
 
     const onSelected = React.useMemo(() => {
         return (_ev: SyntheticEvent, data: Record<string, any>) => {
-        const ve = data.result.__vocabularyentry as VocabularyEntry;
-        const v = Value.vocabularyEntry(ve.id, ve.title.en, ve, true);
+            const ve = data.result.__vocabularyentry as VocabularyEntry;
+            const v = Value.vocabularyEntry(ve.id, ve.title.en, ve, true);
 
-        handler.set(props.path, v);
+            handler.set(props.path, v);
         }
     }, [props.path]);
 
@@ -163,14 +197,9 @@ export function VocabularyInput(props: Props) {
         //       before the vocabulary fetch operation completes. This might
         //       trigger a warning in React because this function will attempts
         //       to change the state of an unmounted component.
-        Vocabulary.get(props.vocabularyType).then((voc) => {
-            dispatch({ type: 'voc-loaded', voc });
-        }).catch(e => {
-            console.error(`Failed to get vocabulary: ${(e as Error).message}`);
-            // TODO: We need to indicate to the user that the vocabulary has failed to loaded
-            //       and provide an option to try to reaload it.
-            dispatch({ type: 'voc-loaded', voc: [] });
-        });
+        Vocabulary.prefetch(props.vocabularyType).then(() => {
+            dispatch({ type: 'prefetch-done' });
+        }).catch((e) => dispatch({ type: 'prefetch-failed', error: e.message }));
     }, [props.vocabularyType]);
 
     const v = Value.toVocabularyEntry(handler.getValue(props.path));
@@ -184,7 +213,7 @@ export function VocabularyInput(props: Props) {
             loading={state.loading}
             value={v.title}
             results={state.results}
-            vocabulary={state.vocabulary}
+            error={state.error}
             onSearch={onSearch}
             onSelected={onSelected}
             handler={handler}
