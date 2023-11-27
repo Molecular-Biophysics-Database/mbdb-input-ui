@@ -162,7 +162,17 @@ export function scalarComponent(item: Item, isRequired: boolean, nestLevel: numb
     } else if (Schema.hasVocabularyInput(item)) {
         return <VocabularyInput label={label} help={item.help} path={path} isRequired={isRequired} vocabularyType={item.vocabularyType} key={key} />;
     } else if (Schema.hasFileInput(item)) {
-        return <FileInput label={label} help={item.help} path={path} isRequired={isRequired} isDisabled={isDisabled} />;
+        return (
+            <FileInput
+                label={label}
+                help={item.help}
+                path={path}
+                isRequired={isRequired}
+                nestLevel={nestLevel}
+                isDisabled={isDisabled}
+                checkForErrors={checkForErrors}
+            />
+        );
     } else if (Schema.hasCustomInput(item)) {
         const Maker = Register.get(item.component).Component;
         assert(!!Maker, `No custom component "${item.component}"`);

@@ -141,14 +141,11 @@
 }
 
 .mbdbi-file-input-controls {
+    align-items: center;
     display: grid;
     column-gap: var(--mbdbi-hgap);
-    grid-template-columns: 20em 7em 7em 1fr;
+    grid-template-columns: 10em auto auto 1fr;
 
-}
-
-.mbdbi-file-input-controls-wide {
-    grid-column: 1 / 4;
 }
 
 .mbdbi-form-nav-list-item-title {
