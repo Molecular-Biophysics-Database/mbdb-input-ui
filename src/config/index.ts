@@ -4,6 +4,7 @@ const ConfigObj = {
     baseUrl: '',
     isDevel: false as boolean,
     vocabulariesApiEndpoint: '',
+    vocabulariesApiMaximumHitsCap: void 0 as (undefined | number),
 };
 export type AppConfig = typeof ConfigObj;
 

@@ -1,3 +1,4 @@
+import { ErrorResult, OkResult, Result } from './result';
 import { assert } from '../assert';
 
 const StringEncoder = new TextEncoder();
@@ -101,6 +102,23 @@ export const Net = {
                 throw new Error(`Request has timed out after ${fetch.timedOutAfter} ms`);
             } else {
                 throw e;
+            }
+        }
+    },
+
+    async resolveFetchNothrow(fetch: AbortableFetch): Promise<Result<Response, { type: 'timeout' } | { type: 'error', e: Error }>> {
+        try {
+            const resp = await fetch.response;
+
+            if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+            return OkResult(resp);
+        } catch (e) {
+            if (fetch.timeoutTimer) clearTimeout(fetch.timeoutTimer);
+
+            if (Net.isAbortError(e as Error) && fetch.timedOutAfter) {
+                return ErrorResult({ type: 'timeout' });
+            } else {
+                return ErrorResult({ type: 'error', e: (e as Error) });
             }
         }
     },

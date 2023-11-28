@@ -41,6 +41,18 @@ function validateVocabulary(v: VocabularyEntry, vocabularyType: string, isRequir
     if (Value.isEmptyVocabularyEntry(Value.vocabularyEntry(id, title, data, false))) {
         return !isRequired;
     } else {
+        // TODO:
+        // We are checking if the ID of the vocabulary entry is a valid ID. An ID is considered valid
+        // if there is an entry with a matching ID in the vocabulary.
+        // Ideally, we would want to query the remote repository on the backend because that is
+        // the determining authority. To do that we would have to issue a network request and
+        // that is an async operation. Unfortunataly, we cannot call async operations from here.
+        //
+        // The next best thing to do is to get the cached copy of the local vocabulary and
+        // check against that. There is, however, no guarantee that the cached copy is a complete
+        // copy of the repome repository. As a result, we may incorrectly flag the data as invalid
+        // This is sad but the only way out would be to asyncify the entire Validator API.
+
         const voc = Vocabulary.getCached(vocabularyType);
         if (!voc) return true; // If we do not have a vocabulary to check against, optimistically assume that the value is okay
 

@@ -160,12 +160,11 @@ async function toInternalDataItem(item: Item, mbdbData: MbdbData, itemPath: Path
                     throw new Error(`Item on MbdbPath "${item.mbdbPath}" is a Vocabulary item but its id has a wrong type.`);
                 } else {
                     try {
-                        const voc = await Vocabulary.get(item.vocabularyType);
-                        const vocItem = voc.find((e) => e.id === id);
-                        if (vocItem === undefined) {
+                        const vocEntry = await Vocabulary.getById(item.vocabularyType, id);
+                        if (vocEntry === undefined) {
                             throw new Error(`Item on MbdbPath "${item.mbdbPath}" is a Vocabulary item but its id does not exist in the vocabulary that is currently available.`);
                         } else {
-                            Data.set(data, itemPath, Value.vocabularyEntry(id, vocItem.title.en, vocItem, true));
+                            Data.set(data, itemPath, Value.vocabularyEntry(id, vocEntry.title.en, vocEntry, true));
                         }
                     } catch (e) {
                         console.warn(`Failed to fetch vocabulary "${item.vocabularyType}" for item on MbdbPath "${item.mbdbPath}".`);
