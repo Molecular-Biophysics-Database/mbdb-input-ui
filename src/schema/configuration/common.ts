@@ -67,6 +67,14 @@ export const Common = {
             { tag: 'title', index: 0 },
         ],
     },
+    
+    'general_parameters/chemical_information/chemical_environments': {
+        order: [
+            { tag: 'name', index: 0 },
+            { tag: 'solvent', index: 1 },
+            { tag: 'constituents', index: 2 },
+        ],
+    },
 
     'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/synthesis/protocol': {
         order: [
