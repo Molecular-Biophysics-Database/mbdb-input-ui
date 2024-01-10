@@ -14,8 +14,8 @@ export const GeneralParameters = {
             input: 'options',
             choices: [
                 {
-                    tag: '0.9.15',
-                    title: '0.9.15',
+                    tag: '0.9.16',
+                    title: '0.9.16',
                 },
             ],
             help: {
@@ -568,7 +568,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/associated_publications/main/pid',
                             input: 'string',
                             help: {
-                                en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN)',
+                                en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN, URN)',
                             },
                         },
                         {
@@ -718,7 +718,7 @@ export const GeneralParameters = {
                             mbdbPath: 'general_parameters/associated_publications/additional[]/pid',
                             input: 'string',
                             help: {
-                                en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN)',
+                                en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN, URN)',
                             },
                         },
                         {
@@ -854,7 +854,7 @@ export const GeneralParameters = {
                 },
             ],
             help: {
-                en: 'Information about if data in this record is associated with published literature',
+                en: 'If the data in this record occurs in published literature (article, journal, thesis), information about the literature can be specified here',
             },
         },
         {
@@ -1072,7 +1072,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/sequence',
                                             input: 'string',
                                             help: {
-                                                en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                             },
                                         },
                                         {
@@ -2405,7 +2405,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/inchikey',
                                             input: 'string',
                                             help: {
-                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                             },
                                         },
                                         {
@@ -3256,7 +3256,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/sequence',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                                en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                             },
                                                         },
                                                         {
@@ -4381,7 +4381,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/components[]/inchikey',
                                                             input: 'string',
                                                             help: {
-                                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                             },
                                                         },
                                                         {
@@ -9194,7 +9194,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/sequence',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                                        en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                                     },
                                                                 },
                                                                 {
@@ -10319,7 +10319,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/instrument/performance_test/sample_composition[]/details/components[]/inchikey',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                        en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                     },
                                                                 },
                                                                 {
@@ -12138,7 +12138,7 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/instrument/performance_test/published_test_protocol/pid',
                                     input: 'string',
                                     help: {
-                                        en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN)',
+                                        en: 'Persistent identifier associated with the publication (e.g. DOI, ISBN, URN)',
                                     },
                                 },
                                 {
@@ -12305,25 +12305,25 @@ export const GeneralParameters = {
             },
         },
         {
-            tag: 'physical_conditions_at_sample_handling',
-            label: 'physical_conditions_at_sample_handling',
+            tag: 'physical_conditions_prior_to_measurement',
+            label: 'physical_conditions_prior_to_measurement',
             isArray: false,
             isRequired: false,
-            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling',
+            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement',
             input: [
                 {
                     tag: 'temperature',
                     label: 'temperature',
                     isArray: false,
                     isRequired: false,
-                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature',
+                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature',
                     input: [
                         {
                             tag: 'value',
                             label: 'value',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/value',
                             input: 'float',
                             help: {
                                 en: 'The numeric value of the temperature',
@@ -12334,7 +12334,7 @@ export const GeneralParameters = {
                             label: 'value_error',
                             isArray: false,
                             isRequired: false,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/value_error',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/value_error',
                             input: 'custom',
                             component: 'value-error',
                             help: {
@@ -12357,7 +12357,7 @@ export const GeneralParameters = {
                             label: 'operational_value',
                             isArray: false,
                             isRequired: false,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/operational_value',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/operational_value',
                             input: 'options',
                             choices: [
                                 {
@@ -12382,7 +12382,7 @@ export const GeneralParameters = {
                             label: 'unit',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/unit',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/unit',
                             input: 'options',
                             choices: [
                                 {
@@ -12407,7 +12407,7 @@ export const GeneralParameters = {
                             label: 'obtained_by',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/obtained_by',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/obtained_by',
                             input: 'options',
                             choices: [
                                 {
@@ -12436,7 +12436,7 @@ export const GeneralParameters = {
                             label: 'controlled',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/temperature/controlled',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/temperature/controlled',
                             input: 'boolean',
                             help: {
                                 en: 'Whether the temperature was actively controlled',
@@ -12452,14 +12452,14 @@ export const GeneralParameters = {
                     label: 'pressure',
                     isArray: false,
                     isRequired: false,
-                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure',
+                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure',
                     input: [
                         {
                             tag: 'value',
                             label: 'value',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure/value',
                             input: 'float',
                             help: {
                                 en: 'The numeric value of the pressure',
@@ -12470,7 +12470,7 @@ export const GeneralParameters = {
                             label: 'value_error',
                             isArray: false,
                             isRequired: false,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/value_error',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure/value_error',
                             input: 'custom',
                             component: 'value-error',
                             help: {
@@ -12493,7 +12493,7 @@ export const GeneralParameters = {
                             label: 'unit',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/unit',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure/unit',
                             input: 'options',
                             choices: [
                                 {
@@ -12546,7 +12546,7 @@ export const GeneralParameters = {
                             label: 'obtained_by',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/obtained_by',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure/obtained_by',
                             input: 'options',
                             choices: [
                                 {
@@ -12575,7 +12575,7 @@ export const GeneralParameters = {
                             label: 'controlled',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/pressure/controlled',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/pressure/controlled',
                             input: 'boolean',
                             help: {
                                 en: 'Whether the pressure was actively controlled',
@@ -12591,14 +12591,14 @@ export const GeneralParameters = {
                     label: 'humidity',
                     isArray: false,
                     isRequired: false,
-                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity',
+                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity',
                     input: [
                         {
                             tag: 'value',
                             label: 'value',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity/value',
                             input: 'float',
                             help: {
                                 en: 'The numeric value of the humidity',
@@ -12609,7 +12609,7 @@ export const GeneralParameters = {
                             label: 'value_error',
                             isArray: false,
                             isRequired: false,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/value_error',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity/value_error',
                             input: 'custom',
                             component: 'value-error',
                             help: {
@@ -12632,7 +12632,7 @@ export const GeneralParameters = {
                             label: 'unit',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/unit',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity/unit',
                             input: 'options',
                             choices: [
                                 {
@@ -12657,7 +12657,7 @@ export const GeneralParameters = {
                             label: 'obtained_by',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/obtained_by',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity/obtained_by',
                             input: 'options',
                             choices: [
                                 {
@@ -12686,7 +12686,7 @@ export const GeneralParameters = {
                             label: 'controlled',
                             isArray: false,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/humidity/controlled',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/humidity/controlled',
                             input: 'boolean',
                             help: {
                                 en: 'Whether the humidity was actively controlled',
@@ -12702,14 +12702,14 @@ export const GeneralParameters = {
                     label: 'atmosphere',
                     isArray: false,
                     isRequired: false,
-                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere',
+                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere',
                     input: [
                         {
                             tag: 'composition',
                             label: 'composition',
                             isArray: true,
                             isRequired: true,
-                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]',
+                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]',
                             minItems: 1,
                             input: {
                                 Chemical: {
@@ -12717,17 +12717,17 @@ export const GeneralParameters = {
                                     label: 'Chemical',
                                     isArray: false,
                                     isRequired: true,
-                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]',
+                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]',
                                     input: [
                                         {
                                             tag: 'inchikey',
                                             label: 'inchikey',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/inchikey',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/inchikey',
                                             input: 'string',
                                             help: {
-                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                             },
                                         },
                                         {
@@ -12735,7 +12735,7 @@ export const GeneralParameters = {
                                             label: 'additional_identifiers',
                                             isArray: true,
                                             isRequired: false,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/additional_identifiers[]',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/additional_identifiers[]',
                                             minItems: 1,
                                             input: 'string',
                                             help: {
@@ -12747,7 +12747,7 @@ export const GeneralParameters = {
                                             label: 'isotopic_labeling',
                                             isArray: false,
                                             isRequired: false,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/isotopic_labeling',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/isotopic_labeling',
                                             input: 'string',
                                             help: {
                                                 en: 'If the isotopic composition of the chemical was altered from the naturally occurring one, it can be specified here (e.g. 15N, 13C)',
@@ -12758,14 +12758,14 @@ export const GeneralParameters = {
                                             label: 'molecular_weight',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/molecular_weight',
                                             input: [
                                                 {
                                                     tag: 'value',
                                                     label: 'value',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/molecular_weight/value',
                                                     input: 'float',
                                                     help: {
                                                         en: 'The numerical value of the molecular weight',
@@ -12776,7 +12776,7 @@ export const GeneralParameters = {
                                                     label: 'value_error',
                                                     isArray: false,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/value_error',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/molecular_weight/value_error',
                                                     input: 'custom',
                                                     component: 'value-error',
                                                     help: {
@@ -12799,7 +12799,7 @@ export const GeneralParameters = {
                                                     label: 'unit',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/molecular_weight/unit',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/molecular_weight/unit',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -12833,14 +12833,14 @@ export const GeneralParameters = {
                                             label: 'supplier',
                                             isArray: false,
                                             isRequired: false,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/supplier',
                                             input: [
                                                 {
                                                     tag: 'name',
                                                     label: 'name',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/name',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/supplier/name',
                                                     input: 'string',
                                                     help: {
                                                         en: 'Name of the supplier',
@@ -12851,7 +12851,7 @@ export const GeneralParameters = {
                                                     label: 'catalog_number',
                                                     isArray: false,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/catalog_number',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/supplier/catalog_number',
                                                     input: 'string',
                                                     help: {
                                                         en: 'The catalog number or identifier of the item',
@@ -12862,7 +12862,7 @@ export const GeneralParameters = {
                                                     label: 'further_information',
                                                     isArray: true,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/supplier/further_information[]',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/supplier/further_information[]',
                                                     minItems: 1,
                                                     input: 'string',
                                                     help: {
@@ -12879,7 +12879,7 @@ export const GeneralParameters = {
                                             label: 'quality_controls',
                                             isArray: true,
                                             isRequired: false,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]',
                                             minItems: 1,
                                             input: [
                                                 {
@@ -12887,7 +12887,7 @@ export const GeneralParameters = {
                                                     label: 'parameter',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/parameter',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/parameter',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -12924,7 +12924,7 @@ export const GeneralParameters = {
                                                     label: 'technique',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/technique',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/technique',
                                                     input: 'string',
                                                     help: {
                                                         en: 'Which technique was used (e.g. SDS-PAGE MALDI-TOF, DLS, etc.)',
@@ -12935,21 +12935,21 @@ export const GeneralParameters = {
                                                     label: 'storage_until_measurement',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement',
                                                     input: [
                                                         {
                                                             tag: 'temperature',
                                                             label: 'temperature',
                                                             isArray: false,
                                                             isRequired: true,
-                                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature',
+                                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature',
                                                             input: [
                                                                 {
                                                                     tag: 'value',
                                                                     label: 'value',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value',
                                                                     input: 'float',
                                                                     help: {
                                                                         en: 'The numeric value of the temperature',
@@ -12960,7 +12960,7 @@ export const GeneralParameters = {
                                                                     label: 'value_error',
                                                                     isArray: false,
                                                                     isRequired: false,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/value_error',
                                                                     input: 'custom',
                                                                     component: 'value-error',
                                                                     help: {
@@ -12983,7 +12983,7 @@ export const GeneralParameters = {
                                                                     label: 'operational_value',
                                                                     isArray: false,
                                                                     isRequired: false,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/operational_value',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/operational_value',
                                                                     input: 'options',
                                                                     choices: [
                                                                         {
@@ -13008,7 +13008,7 @@ export const GeneralParameters = {
                                                                     label: 'unit',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/unit',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/unit',
                                                                     input: 'options',
                                                                     choices: [
                                                                         {
@@ -13033,7 +13033,7 @@ export const GeneralParameters = {
                                                                     label: 'obtained_by',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/obtained_by',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/obtained_by',
                                                                     input: 'options',
                                                                     choices: [
                                                                         {
@@ -13062,7 +13062,7 @@ export const GeneralParameters = {
                                                                     label: 'controlled',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/temperature/controlled',
                                                                     input: 'boolean',
                                                                     help: {
                                                                         en: 'Whether the temperature was actively controlled',
@@ -13078,14 +13078,14 @@ export const GeneralParameters = {
                                                             label: 'duration',
                                                             isArray: false,
                                                             isRequired: false,
-                                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration',
+                                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration',
                                                             input: [
                                                                 {
                                                                     tag: 'value',
                                                                     label: 'value',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value',
                                                                     input: 'float',
                                                                     minimum: 0.0,
                                                                     help: {
@@ -13097,7 +13097,7 @@ export const GeneralParameters = {
                                                                     label: 'value_error',
                                                                     isArray: false,
                                                                     isRequired: false,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/value_error',
                                                                     input: 'custom',
                                                                     component: 'value-error',
                                                                     help: {
@@ -13120,7 +13120,7 @@ export const GeneralParameters = {
                                                                     label: 'unit',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/unit',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/duration/unit',
                                                                     input: 'options',
                                                                     choices: [
                                                                         {
@@ -13174,7 +13174,7 @@ export const GeneralParameters = {
                                                             label: 'storage_preparation',
                                                             isArray: true,
                                                             isRequired: false,
-                                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]',
+                                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]',
                                                             minItems: 1,
                                                             input: [
                                                                 {
@@ -13182,7 +13182,7 @@ export const GeneralParameters = {
                                                                     label: 'name',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/name',
                                                                     input: 'string',
                                                                     help: {
                                                                         en: 'Descriptive name of the step',
@@ -13193,7 +13193,7 @@ export const GeneralParameters = {
                                                                     label: 'description',
                                                                     isArray: false,
                                                                     isRequired: true,
-                                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
+                                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/storage_until_measurement/storage_preparation[]/description',
                                                                     input: 'string',
                                                                     help: {
                                                                         en: 'Short description of the step',
@@ -13214,7 +13214,7 @@ export const GeneralParameters = {
                                                     label: 'report',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/quality_controls[]/report',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/quality_controls[]/report',
                                                     input: 'file',
                                                     help: {
                                                         en: 'Report with the results of the quality control, as a pdf file',
@@ -13230,7 +13230,7 @@ export const GeneralParameters = {
                                             label: 'additional_specifications',
                                             isArray: true,
                                             isRequired: false,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/additional_specifications[]',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/additional_specifications[]',
                                             minItems: 1,
                                             input: 'string',
                                             help: {
@@ -13242,7 +13242,7 @@ export const GeneralParameters = {
                                             label: 'name',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/name',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/name',
                                             input: 'string',
                                             help: {
                                                 en: 'Short descriptive name (id) of the constituent, must be unique within a record',
@@ -13253,7 +13253,7 @@ export const GeneralParameters = {
                                             label: 'type',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/type',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/type',
                                             input: 'variant-discriminator',
                                             choices: [
                                                 {
@@ -13270,14 +13270,14 @@ export const GeneralParameters = {
                                             label: 'concentration',
                                             isArray: false,
                                             isRequired: true,
-                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration',
+                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration',
                                             input: [
                                                 {
                                                     tag: 'value',
                                                     label: 'value',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/value',
                                                     input: 'float',
                                                     minimum: -1.0,
                                                     help: {
@@ -13289,7 +13289,7 @@ export const GeneralParameters = {
                                                     label: 'value_error',
                                                     isArray: false,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/value_error',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/value_error',
                                                     input: 'custom',
                                                     component: 'value-error',
                                                     help: {
@@ -13312,7 +13312,7 @@ export const GeneralParameters = {
                                                     label: 'unit',
                                                     isArray: false,
                                                     isRequired: true,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/unit',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/unit',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -13401,7 +13401,7 @@ export const GeneralParameters = {
                                                     label: 'obtained_by',
                                                     isArray: false,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_by',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/obtained_by',
                                                     input: 'options',
                                                     choices: [
                                                         {
@@ -13430,7 +13430,7 @@ export const GeneralParameters = {
                                                     label: 'obtained_protocol',
                                                     isArray: true,
                                                     isRequired: false,
-                                                    mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]',
+                                                    mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/obtained_protocol[]',
                                                     minItems: 1,
                                                     input: [
                                                         {
@@ -13438,7 +13438,7 @@ export const GeneralParameters = {
                                                             label: 'name',
                                                             isArray: false,
                                                             isRequired: true,
-                                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/name',
+                                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/obtained_protocol[]/name',
                                                             input: 'string',
                                                             help: {
                                                                 en: 'Descriptive name of the step',
@@ -13449,7 +13449,7 @@ export const GeneralParameters = {
                                                             label: 'description',
                                                             isArray: false,
                                                             isRequired: true,
-                                                            mbdbPath: 'general_parameters/physical_conditions_at_sample_handling/atmosphere/composition[]/concentration/obtained_protocol[]/description',
+                                                            mbdbPath: 'general_parameters/physical_conditions_prior_to_measurement/atmosphere/composition[]/concentration/obtained_protocol[]/description',
                                                             input: 'string',
                                                             help: {
                                                                 en: 'Short description of the step',
@@ -13541,7 +13541,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/solvent[]/inchikey',
                                             input: 'string',
                                             help: {
-                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                             },
                                         },
                                         {
@@ -14355,7 +14355,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/sequence',
                                             input: 'string',
                                             help: {
-                                                en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                             },
                                         },
                                         {
@@ -15688,7 +15688,7 @@ export const GeneralParameters = {
                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/inchikey',
                                             input: 'string',
                                             help: {
-                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                             },
                                         },
                                         {
@@ -16539,7 +16539,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/sequence',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                                en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                             },
                                                         },
                                                         {
@@ -17664,7 +17664,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/components[]/inchikey',
                                                             input: 'string',
                                                             help: {
-                                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                             },
                                                         },
                                                         {
@@ -22477,7 +22477,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/sequence',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                                        en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                                     },
                                                                 },
                                                                 {
@@ -23602,7 +23602,7 @@ export const GeneralParameters = {
                                                                     mbdbPath: 'general_parameters/chemical_information/chemical_environments[]/constituents[]/details/components[]/inchikey',
                                                                     input: 'string',
                                                                     help: {
-                                                                        en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                        en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                                     },
                                                                 },
                                                                 {
@@ -25899,7 +25899,7 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/sequence',
                                     input: 'string',
                                     help: {
-                                        en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                        en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                     },
                                 },
                                 {
@@ -27021,7 +27021,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -27041,7 +27041,7 @@ export const GeneralParameters = {
                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/inchikey',
                                     input: 'string',
                                     help: {
-                                        en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                        en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                     },
                                 },
                                 {
@@ -27609,7 +27609,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -27701,7 +27701,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/sequence',
                                                     input: 'string',
                                                     help: {
-                                                        en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                        en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                     },
                                                 },
                                                 {
@@ -28826,7 +28826,7 @@ export const GeneralParameters = {
                                                     mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/components[]/inchikey',
                                                     input: 'string',
                                                     help: {
-                                                        en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                        en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                     },
                                                 },
                                                 {
@@ -30314,7 +30314,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -30816,7 +30816,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -31364,7 +31364,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -31919,7 +31919,7 @@ export const GeneralParameters = {
                                                 },
                                             ],
                                             help: {
-                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                                en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                             },
                                         },
                                     ],
@@ -32400,7 +32400,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -32684,7 +32684,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/sequence',
                                                             input: 'string',
                                                             help: {
-                                                                en: 'Primary sequence of the polymer, using single letter codes, including variant (e.g. SAGRELLE, AGTTA,). For non-natural see link for nomenclature',
+                                                                en: 'Primary sequence of the polymer, using single letter codes (e.g. SAGRELLE, AGTTA). In case of non-natural amino acids or nucleotides, please place the monomer in brackets',
                                                             },
                                                         },
                                                         {
@@ -33809,7 +33809,7 @@ export const GeneralParameters = {
                                                             mbdbPath: 'general_parameters/chemical_information/entities_of_interest[]/details/components[]/inchikey',
                                                             input: 'string',
                                                             help: {
-                                                                en: '[InChIKey]() identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
+                                                                en: 'InChIKey identifier of the chemical. In case of chemical polymers please specify the InChIKey of the monomer and specify the specific type in the additional identifiers field (e.g. if PEG 3350 was employed, the InChiKey of ethylene glycol, i.e. LYCAIKOWRPUZTN-UHFFFAOYSA-N should be specified here)',
                                                             },
                                                         },
                                                         {
@@ -34795,7 +34795,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
@@ -35220,7 +35220,7 @@ export const GeneralParameters = {
                                         },
                                     ],
                                     help: {
-                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
+                                        en: 'The type of the entity, where the options are (biological) Polymer, Chemical, Molecular assembly (also includes all proteins composed of more than one polypeptide chain) or Complex substance. Chemical polymers such as PEG 5000 should be described as being a Chemical. Complex substance refers to substances which are not exactly specified by their exact chemical composition by the time measurement were performed, but e.g. blood, serum, plant extract',
                                     },
                                 },
                             ],
