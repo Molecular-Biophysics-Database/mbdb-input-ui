@@ -26,8 +26,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.6',
-                        title: '0.9.6',
+                        tag: '0.9.7',
+                        title: '0.9.7',
                     },
                 ],
                 help: {
@@ -191,7 +191,7 @@ export const MST = [
                         mbdbPath: 'method_specific_parameters/measurements[]/position',
                         input: 'string',
                         help: {
-                            en: 'Position of the measured sample within the instrument',
+                            en: 'Position where the container (capillary) of the measured sample within the instrument (e.g. 1, 2, 3)',
                         },
                     },
                     {
