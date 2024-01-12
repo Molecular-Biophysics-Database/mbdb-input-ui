@@ -1,4 +1,17 @@
 export const Common = {
+    'general_parameters':{
+        order: [
+            {tag: 'raw_measurement_files', index: 0},
+            {tag: 'record_information', index: 1},
+            {tag: 'depositors', index: 2},
+            {tag: 'funding_reference', index: 3},
+            {tag: 'associated_publication', index: 4},
+            {tag: 'chemical_information', index: 5},
+            {tag: 'results', index: 6},
+            {tag: 'instrument', index: 7},
+        ]
+    },
+
     '*/Chemical': {
         order: [
             { tag: 'name', index: 0 },
@@ -62,11 +75,6 @@ export const Common = {
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/instrument/performance_test/published_test_protocol': {
-        order: [
-            { tag: 'title', index: 0 },
-        ],
-    },
     
     'general_parameters/chemical_information/chemical_environments': {
         order: [
@@ -91,11 +99,7 @@ export const Common = {
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/supplier': {
-        order: [
-            { tag: 'name', index: 0 },
-        ],
-    },
+
 
     'general_parameters/record_information': {
         order: [
@@ -120,9 +124,6 @@ export const Common = {
             defaultValue: 'Biophysics',
         },
 
-        'general_parameters/record_information/project/id': {
-            dontDisplay: true,
-        },
 
     'general_parameters/schema_version': {
         dontDisplay: true,
