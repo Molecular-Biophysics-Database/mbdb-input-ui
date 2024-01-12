@@ -206,7 +206,7 @@ export const ValueError: CustomComponent<ValueErrorData> = {
                                 handler.update();
                             }}
                         />
-                        <div>(Do not provide this data)</div>
+                        <div>(Not available)</div>
                     </div>
                     <div style={Cell}>
                         <FloatInput

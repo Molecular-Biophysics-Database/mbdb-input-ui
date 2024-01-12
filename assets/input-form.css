@@ -133,11 +133,15 @@
 }
 
 .mbdbi-field-is-required-marker-item {
-    color: #777;
+    color: #555;
+    font-weight: bold;
+    font-size: var(--mbdbi-font-large);
 }
 
 .mbdbi-field-is-required-marker-section {
     color: black;
+    font-size: var(--mbdbi-font-large);
+    font-weight: bold;
 }
 
 .mbdbi-file-input-controls {
