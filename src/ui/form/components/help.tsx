@@ -12,6 +12,7 @@ export function HelpPopup({ help }: { help?: Help }) {
         <SPopup
             content={helpText}
             trigger={<div className='mbdbi-help-popup-trigger'>(?)</div>}
+            position='top center'
         />
     );
 }

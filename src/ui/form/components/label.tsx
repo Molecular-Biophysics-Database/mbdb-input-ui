@@ -10,6 +10,7 @@ function RequiredMark({ trigger }: { trigger: JSX.Element }) {
         <SPopup
             content='This field is required and cannot be left blank or unset'
             trigger={trigger}
+            position='top center'
         />
     );
 }
