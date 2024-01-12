@@ -26,8 +26,8 @@ export const MST = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.7',
-                        title: '0.9.7',
+                        tag: '0.9.8',
+                        title: '0.9.8',
                     },
                 ],
                 help: {
@@ -156,6 +156,54 @@ export const MST = [
                 },
             },
             {
+                tag: 'temperature',
+                label: 'temperature',
+                isArray: false,
+                isRequired: false,
+                mbdbPath: 'method_specific_parameters/temperature',
+                input: [
+                    {
+                        tag: 'value',
+                        label: 'value',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/temperature/value',
+                        input: 'float',
+                        help: {
+                            en: 'The numeric value of the temperature',
+                        },
+                    },
+                    {
+                        tag: 'unit',
+                        label: 'unit',
+                        isArray: false,
+                        isRequired: true,
+                        mbdbPath: 'method_specific_parameters/temperature/unit',
+                        input: 'options',
+                        choices: [
+                            {
+                                tag: 'K',
+                                title: 'K',
+                            },
+                            {
+                                tag: '°C',
+                                title: '°C',
+                            },
+                            {
+                                tag: '°F',
+                                title: '°F',
+                            },
+                        ],
+                        help: {
+                            en: 'The unit of temperature',
+                        },
+                    },
+                ],
+                help: {
+                    en: 'The temperature of the sample chamber while the measurement was performed',
+                },
+            },
+            {
                 tag: 'measurements',
                 label: 'measurements',
                 isArray: true,
@@ -239,29 +287,6 @@ export const MST = [
                                                 minimum: -1.0,
                                                 help: {
                                                     en: 'The numerical value of the concentration, -1 if unknown',
-                                                },
-                                            },
-                                            {
-                                                tag: 'value_error',
-                                                label: 'value_error',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/value_error',
-                                                input: 'custom',
-                                                component: 'value-error',
-                                                help: {
-                                                    upper_error: {
-                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                                    },
-                                                    lower_error: {
-                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                                    },
-                                                    errors_are_relative: {
-                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                                    },
-                                                    error_level: {
-                                                        en: 'How many standard deviations the error corresponds to',
-                                                    },
                                                 },
                                             },
                                             {
@@ -353,70 +378,6 @@ export const MST = [
                                                     en: 'The unit of the concentration',
                                                 },
                                             },
-                                            {
-                                                tag: 'obtained_by',
-                                                label: 'obtained_by',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/obtained_by',
-                                                input: 'options',
-                                                choices: [
-                                                    {
-                                                        tag: 'Measurement',
-                                                        title: 'Measurement',
-                                                    },
-                                                    {
-                                                        tag: 'Calculation',
-                                                        title: 'Calculation',
-                                                    },
-                                                    {
-                                                        tag: 'Assumption',
-                                                        title: 'Assumption',
-                                                    },
-                                                    {
-                                                        tag: 'Other',
-                                                        title: 'Other',
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'The means through which the concentration was obtained',
-                                                },
-                                            },
-                                            {
-                                                tag: 'obtained_protocol',
-                                                label: 'obtained_protocol',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/obtained_protocol[]',
-                                                minItems: 1,
-                                                input: [
-                                                    {
-                                                        tag: 'name',
-                                                        label: 'name',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/obtained_protocol[]/name',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Descriptive name of the step',
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: 'description',
-                                                        label: 'description',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/targets[]/concentration/obtained_protocol[]/description',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Short description of the step',
-                                                        },
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'Information of how the concentration was obtained (e.g, Absorbance at 280 nm, buffer absorbance subtraction, extinction coefficient',
-                                                },
-                                            },
                                         ],
                                         help: {
                                             en: 'Concentration of the entity',
@@ -424,15 +385,15 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of names (ids), from the entities of interest defined in the general parameters, of directly measured entities and entities at constant concentration for a series of measurements and their concentration',
+                                    en: 'List of names (ids), from the entities of interest defined in the general parameters, of directly measured entities and entities',
                                 },
                             },
                             {
-                                tag: 'ligands',
-                                label: 'ligands',
+                                tag: 'target_modifiers',
+                                label: 'target_modifiers',
                                 isArray: true,
                                 isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -440,7 +401,7 @@ export const MST = [
                                         label: 'entity',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/entity',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/entity',
                                         input: 'related-to',
                                         relatesTo: 'entity',
                                         relatedKeys: [
@@ -453,14 +414,14 @@ export const MST = [
                                         label: 'concentration',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration',
                                         input: [
                                             {
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/value',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration/value',
                                                 input: 'float',
                                                 minimum: -1.0,
                                                 help: {
@@ -468,34 +429,11 @@ export const MST = [
                                                 },
                                             },
                                             {
-                                                tag: 'value_error',
-                                                label: 'value_error',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/value_error',
-                                                input: 'custom',
-                                                component: 'value-error',
-                                                help: {
-                                                    upper_error: {
-                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                                    },
-                                                    lower_error: {
-                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                                    },
-                                                    errors_are_relative: {
-                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                                    },
-                                                    error_level: {
-                                                        en: 'How many standard deviations the error corresponds to',
-                                                    },
-                                                },
-                                            },
-                                            {
                                                 tag: 'unit',
                                                 label: 'unit',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/unit',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration/unit',
                                                 input: 'options',
                                                 choices: [
                                                     {
@@ -579,70 +517,6 @@ export const MST = [
                                                     en: 'The unit of the concentration',
                                                 },
                                             },
-                                            {
-                                                tag: 'obtained_by',
-                                                label: 'obtained_by',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/obtained_by',
-                                                input: 'options',
-                                                choices: [
-                                                    {
-                                                        tag: 'Measurement',
-                                                        title: 'Measurement',
-                                                    },
-                                                    {
-                                                        tag: 'Calculation',
-                                                        title: 'Calculation',
-                                                    },
-                                                    {
-                                                        tag: 'Assumption',
-                                                        title: 'Assumption',
-                                                    },
-                                                    {
-                                                        tag: 'Other',
-                                                        title: 'Other',
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'The means through which the concentration was obtained',
-                                                },
-                                            },
-                                            {
-                                                tag: 'obtained_protocol',
-                                                label: 'obtained_protocol',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/obtained_protocol[]',
-                                                minItems: 1,
-                                                input: [
-                                                    {
-                                                        tag: 'name',
-                                                        label: 'name',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/obtained_protocol[]/name',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Descriptive name of the step',
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: 'description',
-                                                        label: 'description',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/obtained_protocol[]/description',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Short description of the step',
-                                                        },
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'Information of how the concentration was obtained (e.g, Absorbance at 280 nm, buffer absorbance subtraction, extinction coefficient',
-                                                },
-                                            },
                                         ],
                                         help: {
                                             en: 'Concentration of the entity',
@@ -650,7 +524,7 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of names (ids) of entities (from the entities of interest defined in the general parameters) that were used to alter the behavior of the target(s) or entities present at varying concentrations for a series of measurements and their concentration',
+                                    en: 'List of names (ids) of entities (from the entities of interest defined in the general parameters) that were used to alter the behavior of the target(s)',
                                 },
                             },
                             {
@@ -667,11 +541,11 @@ export const MST = [
                                 ],
                             },
                             {
-                                tag: 'container',
-                                label: 'container',
+                                tag: 'measurement_container',
+                                label: 'measurement_container',
                                 isArray: false,
                                 isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/container',
+                                mbdbPath: 'method_specific_parameters/measurements[]/sample/measurement_container',
                                 input: 'options',
                                 choices: [
                                     {
@@ -716,7 +590,7 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'The container the sample was in',
+                                    en: 'The container the sample was in during the measurement',
                                 },
                             },
                             {
@@ -751,136 +625,13 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of steps taken to prepare the sample',
+                                    en: 'List of steps taken to prepare the sample, ending at the point where it was placed in the measurement container',
                                 },
                             },
                         ],
                         help: {
                             en: 'Information about the sample including concentrations of ligands and targets, and which chemical environment the sample was composed of',
                         },
-                    },
-                    {
-                        tag: 'measured_data',
-                        label: 'measured_data',
-                        isArray: false,
-                        isRequired: false,
-                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data',
-                        input: [
-                            {
-                                tag: 'x_data',
-                                label: 'x_data',
-                                isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/measured_data/x_data',
-                                input: [
-                                    {
-                                        tag: 'id',
-                                        label: 'id',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/x_data/id',
-                                        input: 'uuid',
-                                        help: {
-                                            en: 'Unique ID for the measured data to be used as a link',
-                                        },
-                                    },
-                                    {
-                                        tag: 'name',
-                                        label: 'name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/x_data/name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Short descriptive name of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'values',
-                                        label: 'values',
-                                        isArray: true,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/x_data/values[]',
-                                        minItems: 1,
-                                        input: 'float',
-                                        help: {
-                                            en: 'The numerical values of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'unit',
-                                        label: 'unit',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/x_data/unit',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The numerical values of the data series',
-                                        },
-                                    },
-                                ],
-                                help: {
-                                    en: 'Values for the independent variable, normally time, of the measured data',
-                                },
-                            },
-                            {
-                                tag: 'y_data',
-                                label: 'y_data',
-                                isArray: false,
-                                isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/measured_data/y_data',
-                                input: [
-                                    {
-                                        tag: 'id',
-                                        label: 'id',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/y_data/id',
-                                        input: 'uuid',
-                                        help: {
-                                            en: 'Unique ID for the measured data to be used as a link',
-                                        },
-                                    },
-                                    {
-                                        tag: 'name',
-                                        label: 'name',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/y_data/name',
-                                        input: 'string',
-                                        help: {
-                                            en: 'Short descriptive name of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'values',
-                                        label: 'values',
-                                        isArray: true,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/y_data/values[]',
-                                        minItems: 1,
-                                        input: 'float',
-                                        help: {
-                                            en: 'The numerical values of the data series',
-                                        },
-                                    },
-                                    {
-                                        tag: 'unit',
-                                        label: 'unit',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/measured_data/y_data/unit',
-                                        input: 'string',
-                                        help: {
-                                            en: 'The numerical values of the data series',
-                                        },
-                                    },
-                                ],
-                                help: {
-                                    en: 'Values for the dependent variable, normally fluorescence intensity, of the measured data',
-                                },
-                            },
-                        ],
                     },
                 ],
                 help: {
@@ -1084,17 +835,6 @@ export const MST = [
                                 input: 'string',
                                 help: {
                                     en: 'The version of the software that was used for the step',
-                                },
-                            },
-                            {
-                                tag: 'software_tool',
-                                label: 'software_tool',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/software_tool',
-                                input: 'string',
-                                help: {
-                                    en: 'The name of the tool within the specified software, i.e. a particular method called or "button pressed" (e.g. equation solver, buffer subtraction)',
                                 },
                             },
                             {
