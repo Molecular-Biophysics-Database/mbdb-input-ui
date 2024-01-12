@@ -51,7 +51,7 @@ const _GroupContainerHeader = React.memo(function MGroupContainerHeader({ handle
                             }}
                             disabled={isDisabled || !canMarkEmpty}
                         />
-                        {!canMarkEmpty ? '(This section contains data that could be referenced elsewhere and cannot be omitted)' : '(Do not provide this data)'}
+                        {!canMarkEmpty ? '(This section contains data that could be referenced elsewhere and cannot be omitted)' : '(Not available)'}
                     </>
                 )
                 : null

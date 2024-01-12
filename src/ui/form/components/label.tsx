@@ -27,7 +27,7 @@ export const ItemLabel = React.memo(function _ItemLabel({ label, markAsRequired,
         <div className='mbdbi-item-label'>
             <label className='mbdbi-item-label-text' htmlFor={id}>
                 <span>{label}</span>
-                {markAsRequired ? <RequiredMark trigger={<span className='mbdbi-field-is-required-marker mbdbi-field-is-required-marker-item'>{'\u25A0'}</span>} /> : null}
+                {markAsRequired ? <RequiredMark trigger={<span className='mbdbi-field-is-required-marker mbdbi-field-is-required-marker-item'>{'\u002A'}</span>} /> : null}
             </label>
             <HelpPopup help={help} />
         </div>
@@ -41,7 +41,7 @@ export const SectionLabel = React.memo(function _SectionLabel({ label, markAsReq
         <div className='mbdbi-section-label'>
             <label className='mbdbi-section-label-text'>
                 {label}
-                {markAsRequired ? <RequiredMark trigger={<span className='mbdbi-field-is-required-marker mbdbi-field-is-required-marker-section'>{'\u25A0'}</span>} /> : null}
+                {markAsRequired ? <RequiredMark trigger={<span className='mbdbi-field-is-required-marker mbdbi-field-is-required-marker-section'>{'\u002A'}</span>} /> : null}
             </label>
             <HelpPopup help={help} />
         </div>
