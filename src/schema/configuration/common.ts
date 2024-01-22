@@ -6,9 +6,11 @@ export const Common = {
             {tag: 'depositors', index: 2},
             {tag: 'funding_reference', index: 3},
             {tag: 'associated_publication', index: 4},
-            {tag: 'chemical_information', index: 5},
-            {tag: 'results', index: 6},
+            {tag: 'entities_of_interest', index: 5},
+            {tag: 'chemical_environments', index: 6},
             {tag: 'instrument', index: 7},
+            {tag: 'collection_start_time', index: 8},
+            {tag: 'results', index: 9},
         ]
     },
 
@@ -75,8 +77,9 @@ export const Common = {
             { tag: 'name', index: 0 },
         ],
     },
+
     
-    'general_parameters/chemical_information/chemical_environments': {
+    'general_parameters/chemical_environments': {
         order: [
             { tag: 'name', index: 0 },
             { tag: 'solvent', index: 1 },
@@ -84,17 +87,17 @@ export const Common = {
         ],
     },
 
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/synthesis/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/synthesis/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/biological_postprocessing/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/biological_postprocessing/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/chemical/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/chemical/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],

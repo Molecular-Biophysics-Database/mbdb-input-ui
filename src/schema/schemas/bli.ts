@@ -26,8 +26,8 @@ export const BLI = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.3',
-                        title: '0.9.3',
+                        tag: '0.9.4',
+                        title: '0.9.4',
                     },
                 ],
                 help: {
@@ -738,11 +738,8 @@ export const BLI = [
                                 input: 'custom',
                                 component: 'value-error',
                                 help: {
-                                    upper_error: {
-                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound. The same unit as the value being described is assumed, if relative errors are given please give it in fractional form (e.g. 0.01 for 1 %',
-                                    },
                                     lower_error: {
-                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound. The same unit as the value being described is assumed, if relative errors are given please give it in fractional form (e.g. 0.01 for 1 %)',
+                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound. The same unit as the value being described is assumed, if relative errors are provided, please provide it in fractional form (e.g.  0.01 for 1 %)',
                                     },
                                     is_relative: {
                                         en: 'True if the error values given should be interpreted as relative errors (fractional uncertainty)',
@@ -1115,13 +1112,13 @@ export const BLI = [
                 minItems: 1,
                 input: [
                     {
-                        tag: 'derived_parameter',
-                        label: 'derived_parameter',
+                        tag: 'result',
+                        label: 'result',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/result',
                         input: 'related-to',
-                        relatesTo: 'derived-parameter',
+                        relatesTo: 'result',
                         relatedKeys: [
                             'id',
                             'name',
@@ -1260,7 +1257,7 @@ export const BLI = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/quality',
                                 input: 'float',
                                 help: {
-                                    en: 'Numerical value representing the quality estimate of the derived parameter',
+                                    en: 'Numerical value representing the quality estimate of the result',
                                 },
                             },
                             {
@@ -1310,12 +1307,12 @@ export const BLI = [
                             },
                         ],
                         help: {
-                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                            en: 'The details of how data fitting of the data to obtain the result was performed',
                         },
                     },
                 ],
                 help: {
-                    en: 'Details of how the data was processed and model in order to derive parameters from it',
+                    en: 'The details of how data fitting was performed to obtain the result',
                 },
             },
         ],

@@ -385,15 +385,15 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of names (ids), from the entities of interest defined in the general parameters, of directly measured entities and entities',
+                                    en: 'List of names (ids), from the entities of interest defined in the general parameters, of directly measured entities',
                                 },
                             },
                             {
-                                tag: 'target_modifiers',
-                                label: 'target_modifiers',
+                                tag: 'ligands',
+                                label: 'ligands',
                                 isArray: true,
                                 isRequired: true,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -401,7 +401,7 @@ export const MST = [
                                         label: 'entity',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/entity',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/entity',
                                         input: 'related-to',
                                         relatesTo: 'entity',
                                         relatedKeys: [
@@ -414,14 +414,14 @@ export const MST = [
                                         label: 'concentration',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration',
                                         input: [
                                             {
                                                 tag: 'value',
                                                 label: 'value',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration/value',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/value',
                                                 input: 'float',
                                                 minimum: -1.0,
                                                 help: {
@@ -433,7 +433,7 @@ export const MST = [
                                                 label: 'unit',
                                                 isArray: false,
                                                 isRequired: true,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/target_modifiers[]/concentration/unit',
+                                                mbdbPath: 'method_specific_parameters/measurements[]/sample/ligands[]/concentration/unit',
                                                 input: 'options',
                                                 choices: [
                                                     {
@@ -594,11 +594,11 @@ export const MST = [
                                 },
                             },
                             {
-                                tag: 'preparation',
-                                label: 'preparation',
+                                tag: 'preparation_protocol',
+                                label: 'preparation_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -606,7 +606,7 @@ export const MST = [
                                         label: 'name',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -617,7 +617,7 @@ export const MST = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/sample/preparation_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -625,7 +625,7 @@ export const MST = [
                                     },
                                 ],
                                 help: {
-                                    en: 'List of steps taken to prepare the sample, ending at the point where it was placed in the measurement container',
+                                    en: 'List of steps taken to prepare the sample, ending at the point where it was placed in the measurement container. Information include operations like filtration and which filter material and pore-size was used should be added',
                                 },
                             },
                         ],
@@ -647,13 +647,13 @@ export const MST = [
                 minItems: 1,
                 input: [
                     {
-                        tag: 'derived_parameter',
-                        label: 'derived_parameter',
+                        tag: 'result',
+                        label: 'result',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/result',
                         input: 'related-to',
-                        relatesTo: 'derived-parameter',
+                        relatesTo: 'result',
                         relatedKeys: [
                             'id',
                             'name',
@@ -901,7 +901,7 @@ export const MST = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/quality',
                                 input: 'float',
                                 help: {
-                                    en: 'Numerical value representing the quality estimate of the derived parameter',
+                                    en: 'Numerical value representing the quality estimate of the result',
                                 },
                             },
                             {
@@ -951,12 +951,12 @@ export const MST = [
                             },
                         ],
                         help: {
-                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                            en: 'The details of how data fitting was performed to obtain the result',
                         },
                     },
                 ],
                 help: {
-                    en: 'Details of how the data was processed and modelled in order to derive parameters from it',
+                    en: 'The details of how data analysis was performed to obtain the result',
                 },
             },
         ],

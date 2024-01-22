@@ -26,8 +26,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.2',
-                        title: '0.9.2',
+                        tag: '0.9.3',
+                        title: '0.9.3',
                     },
                 ],
                 help: {
@@ -886,11 +886,11 @@ export const SPR = [
                                 },
                             },
                             {
-                                tag: 'preparation',
-                                label: 'preparation',
+                                tag: 'preparation_protocol',
+                                label: 'preparation_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -898,7 +898,7 @@ export const SPR = [
                                         label: 'name',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -909,7 +909,7 @@ export const SPR = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -1158,11 +1158,11 @@ export const SPR = [
                                 },
                             },
                             {
-                                tag: 'preparation',
-                                label: 'preparation',
+                                tag: 'preparation_protocol',
+                                label: 'preparation_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -1170,7 +1170,7 @@ export const SPR = [
                                         label: 'name',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -1181,7 +1181,7 @@ export const SPR = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -1211,13 +1211,13 @@ export const SPR = [
                 minItems: 1,
                 input: [
                     {
-                        tag: 'derived_parameter',
-                        label: 'derived_parameter',
+                        tag: 'result',
+                        label: 'result',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/result',
                         input: 'related-to',
-                        relatesTo: 'derived-parameter',
+                        relatesTo: 'result',
                         relatedKeys: [
                             'id',
                             'name',
@@ -1356,7 +1356,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/quality',
                                 input: 'float',
                                 help: {
-                                    en: 'Numerical value representing the quality estimate of the derived parameter',
+                                    en: 'Numerical value representing the quality estimate of the result',
                                 },
                             },
                             {
@@ -1406,7 +1406,7 @@ export const SPR = [
                             },
                         ],
                         help: {
-                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                            en: 'The details of how data fitting was performed to obtain the result',
                         },
                     },
                 ],
