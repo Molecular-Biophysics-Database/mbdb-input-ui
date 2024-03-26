@@ -26,8 +26,8 @@ export const SPR = [
                 input: 'options',
                 choices: [
                     {
-                        tag: '0.9.2',
-                        title: '0.9.2',
+                        tag: '0.9.3',
+                        title: '0.9.3',
                     },
                 ],
                 help: {
@@ -390,29 +390,6 @@ export const SPR = [
                                 },
                             },
                             {
-                                tag: 'value_error',
-                                label: 'value_error',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/start_time/value_error',
-                                input: 'custom',
-                                component: 'value-error',
-                                help: {
-                                    upper_error: {
-                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                    },
-                                    lower_error: {
-                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                    },
-                                    errors_are_relative: {
-                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                    },
-                                    error_level: {
-                                        en: 'How many standard deviations the error corresponds to',
-                                    },
-                                },
-                            },
-                            {
                                 tag: 'unit',
                                 label: 'unit',
                                 isArray: false,
@@ -483,29 +460,6 @@ export const SPR = [
                                 minimum: 0.0,
                                 help: {
                                     en: 'The numerical value of the time point or duration',
-                                },
-                            },
-                            {
-                                tag: 'value_error',
-                                label: 'value_error',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurement_protocol[]/time_length/value_error',
-                                input: 'custom',
-                                component: 'value-error',
-                                help: {
-                                    upper_error: {
-                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                    },
-                                    lower_error: {
-                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                    },
-                                    errors_are_relative: {
-                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                    },
-                                    error_level: {
-                                        en: 'How many standard deviations the error corresponds to',
-                                    },
                                 },
                             },
                             {
@@ -785,29 +739,6 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'value_error',
-                                                label: 'value_error',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/value_error',
-                                                input: 'custom',
-                                                component: 'value-error',
-                                                help: {
-                                                    upper_error: {
-                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                                    },
-                                                    lower_error: {
-                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                                    },
-                                                    errors_are_relative: {
-                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                                    },
-                                                    error_level: {
-                                                        en: 'How many standard deviations the error corresponds to',
-                                                    },
-                                                },
-                                            },
-                                            {
                                                 tag: 'unit',
                                                 label: 'unit',
                                                 isArray: false,
@@ -896,70 +827,6 @@ export const SPR = [
                                                     en: 'The unit of the concentration',
                                                 },
                                             },
-                                            {
-                                                tag: 'obtained_by',
-                                                label: 'obtained_by',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_by',
-                                                input: 'options',
-                                                choices: [
-                                                    {
-                                                        tag: 'Measurement',
-                                                        title: 'Measurement',
-                                                    },
-                                                    {
-                                                        tag: 'Calculation',
-                                                        title: 'Calculation',
-                                                    },
-                                                    {
-                                                        tag: 'Assumption',
-                                                        title: 'Assumption',
-                                                    },
-                                                    {
-                                                        tag: 'Other',
-                                                        title: 'Other',
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'The means through which the concentration was obtained',
-                                                },
-                                            },
-                                            {
-                                                tag: 'obtained_protocol',
-                                                label: 'obtained_protocol',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]',
-                                                minItems: 1,
-                                                input: [
-                                                    {
-                                                        tag: 'name',
-                                                        label: 'name',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/name',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Descriptive name of the step',
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: 'description',
-                                                        label: 'description',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/analytes[]/concentration/obtained_protocol[]/description',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Short description of the step',
-                                                        },
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'Information of how the concentration was obtained (e.g, Absorbance at 280 nm, buffer absorbance subtraction, extinction coefficient',
-                                                },
-                                            },
                                         ],
                                         help: {
                                             en: 'Concentration of the entity',
@@ -989,54 +856,6 @@ export const SPR = [
                                         },
                                     },
                                     {
-                                        tag: 'value_error',
-                                        label: 'value_error',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/value_error',
-                                        input: 'custom',
-                                        component: 'value-error',
-                                        help: {
-                                            upper_error: {
-                                                en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                            },
-                                            lower_error: {
-                                                en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                            },
-                                            errors_are_relative: {
-                                                en: 'Whether the errors should be interpreted as relative errors in percent',
-                                            },
-                                            error_level: {
-                                                en: 'How many standard deviations the error corresponds to',
-                                            },
-                                        },
-                                    },
-                                    {
-                                        tag: 'operational_value',
-                                        label: 'operational_value',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/operational_value',
-                                        input: 'options',
-                                        choices: [
-                                            {
-                                                tag: 'Room temperature',
-                                                title: 'Room temperature',
-                                            },
-                                            {
-                                                tag: 'On Ice',
-                                                title: 'On Ice',
-                                            },
-                                            {
-                                                tag: 'Other',
-                                                title: 'Other',
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'If the temperature was defined by the procedure rather than the numerical value the value can be specified here (e.g. Room temperature, on ice, etc.)',
-                                        },
-                                    },
-                                    {
                                         tag: 'unit',
                                         label: 'unit',
                                         isArray: false,
@@ -1061,57 +880,17 @@ export const SPR = [
                                             en: 'The unit of temperature',
                                         },
                                     },
-                                    {
-                                        tag: 'obtained_by',
-                                        label: 'obtained_by',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/obtained_by',
-                                        input: 'options',
-                                        choices: [
-                                            {
-                                                tag: 'Measurement',
-                                                title: 'Measurement',
-                                            },
-                                            {
-                                                tag: 'Calculation',
-                                                title: 'Calculation',
-                                            },
-                                            {
-                                                tag: 'Assumption',
-                                                title: 'Assumption',
-                                            },
-                                            {
-                                                tag: 'Other',
-                                                title: 'Other',
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'The means through which the temperature value was obtained',
-                                        },
-                                    },
-                                    {
-                                        tag: 'controlled',
-                                        label: 'controlled',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/temperature/controlled',
-                                        input: 'boolean',
-                                        help: {
-                                            en: 'Whether the temperature was actively controlled',
-                                        },
-                                    },
                                 ],
                                 help: {
                                     en: 'Temperature of the sample while being measured',
                                 },
                             },
                             {
-                                tag: 'preparation',
-                                label: 'preparation',
+                                tag: 'preparation_protocol',
+                                label: 'preparation_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -1119,7 +898,7 @@ export const SPR = [
                                         label: 'name',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -1130,7 +909,7 @@ export const SPR = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/samples[]/preparation_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -1232,29 +1011,6 @@ export const SPR = [
                                                 },
                                             },
                                             {
-                                                tag: 'value_error',
-                                                label: 'value_error',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/value_error',
-                                                input: 'custom',
-                                                component: 'value-error',
-                                                help: {
-                                                    upper_error: {
-                                                        en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                                    },
-                                                    lower_error: {
-                                                        en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                                    },
-                                                    errors_are_relative: {
-                                                        en: 'Whether the errors should be interpreted as relative errors in percent',
-                                                    },
-                                                    error_level: {
-                                                        en: 'How many standard deviations the error corresponds to',
-                                                    },
-                                                },
-                                            },
-                                            {
                                                 tag: 'unit',
                                                 label: 'unit',
                                                 isArray: false,
@@ -1343,70 +1099,6 @@ export const SPR = [
                                                     en: 'The unit of the concentration',
                                                 },
                                             },
-                                            {
-                                                tag: 'obtained_by',
-                                                label: 'obtained_by',
-                                                isArray: false,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_by',
-                                                input: 'options',
-                                                choices: [
-                                                    {
-                                                        tag: 'Measurement',
-                                                        title: 'Measurement',
-                                                    },
-                                                    {
-                                                        tag: 'Calculation',
-                                                        title: 'Calculation',
-                                                    },
-                                                    {
-                                                        tag: 'Assumption',
-                                                        title: 'Assumption',
-                                                    },
-                                                    {
-                                                        tag: 'Other',
-                                                        title: 'Other',
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'The means through which the concentration was obtained',
-                                                },
-                                            },
-                                            {
-                                                tag: 'obtained_protocol',
-                                                label: 'obtained_protocol',
-                                                isArray: true,
-                                                isRequired: false,
-                                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]',
-                                                minItems: 1,
-                                                input: [
-                                                    {
-                                                        tag: 'name',
-                                                        label: 'name',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/name',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Descriptive name of the step',
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: 'description',
-                                                        label: 'description',
-                                                        isArray: false,
-                                                        isRequired: true,
-                                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/analytes[]/concentration/obtained_protocol[]/description',
-                                                        input: 'string',
-                                                        help: {
-                                                            en: 'Short description of the step',
-                                                        },
-                                                    },
-                                                ],
-                                                help: {
-                                                    en: 'Information of how the concentration was obtained (e.g, Absorbance at 280 nm, buffer absorbance subtraction, extinction coefficient',
-                                                },
-                                            },
                                         ],
                                         help: {
                                             en: 'Concentration of the entity',
@@ -1436,54 +1128,6 @@ export const SPR = [
                                         },
                                     },
                                     {
-                                        tag: 'value_error',
-                                        label: 'value_error',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/value_error',
-                                        input: 'custom',
-                                        component: 'value-error',
-                                        help: {
-                                            upper_error: {
-                                                en: 'The upper error, i.e. the number that should be added the value to get the upper bound',
-                                            },
-                                            lower_error: {
-                                                en: 'The lower error, i.e. the number that should be subtracted from the value to get the lower bound',
-                                            },
-                                            errors_are_relative: {
-                                                en: 'Whether the errors should be interpreted as relative errors in percent',
-                                            },
-                                            error_level: {
-                                                en: 'How many standard deviations the error corresponds to',
-                                            },
-                                        },
-                                    },
-                                    {
-                                        tag: 'operational_value',
-                                        label: 'operational_value',
-                                        isArray: false,
-                                        isRequired: false,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/operational_value',
-                                        input: 'options',
-                                        choices: [
-                                            {
-                                                tag: 'Room temperature',
-                                                title: 'Room temperature',
-                                            },
-                                            {
-                                                tag: 'On Ice',
-                                                title: 'On Ice',
-                                            },
-                                            {
-                                                tag: 'Other',
-                                                title: 'Other',
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'If the temperature was defined by the procedure rather than the numerical value the value can be specified here (e.g. Room temperature, on ice, etc.)',
-                                        },
-                                    },
-                                    {
                                         tag: 'unit',
                                         label: 'unit',
                                         isArray: false,
@@ -1508,57 +1152,17 @@ export const SPR = [
                                             en: 'The unit of temperature',
                                         },
                                     },
-                                    {
-                                        tag: 'obtained_by',
-                                        label: 'obtained_by',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/obtained_by',
-                                        input: 'options',
-                                        choices: [
-                                            {
-                                                tag: 'Measurement',
-                                                title: 'Measurement',
-                                            },
-                                            {
-                                                tag: 'Calculation',
-                                                title: 'Calculation',
-                                            },
-                                            {
-                                                tag: 'Assumption',
-                                                title: 'Assumption',
-                                            },
-                                            {
-                                                tag: 'Other',
-                                                title: 'Other',
-                                            },
-                                        ],
-                                        help: {
-                                            en: 'The means through which the temperature value was obtained',
-                                        },
-                                    },
-                                    {
-                                        tag: 'controlled',
-                                        label: 'controlled',
-                                        isArray: false,
-                                        isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/temperature/controlled',
-                                        input: 'boolean',
-                                        help: {
-                                            en: 'Whether the temperature was actively controlled',
-                                        },
-                                    },
                                 ],
                                 help: {
                                     en: 'Temperature of the sample while being measured',
                                 },
                             },
                             {
-                                tag: 'preparation',
-                                label: 'preparation',
+                                tag: 'preparation_protocol',
+                                label: 'preparation_protocol',
                                 isArray: true,
                                 isRequired: false,
-                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]',
+                                mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]',
                                 minItems: 1,
                                 input: [
                                     {
@@ -1566,7 +1170,7 @@ export const SPR = [
                                         label: 'name',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/name',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]/name',
                                         input: 'string',
                                         help: {
                                             en: 'Descriptive name of the step',
@@ -1577,7 +1181,7 @@ export const SPR = [
                                         label: 'description',
                                         isArray: false,
                                         isRequired: true,
-                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation[]/description',
+                                        mbdbPath: 'method_specific_parameters/measurements[]/reference_samples[]/preparation_protocol[]/description',
                                         input: 'string',
                                         help: {
                                             en: 'Short description of the step',
@@ -1607,13 +1211,13 @@ export const SPR = [
                 minItems: 1,
                 input: [
                     {
-                        tag: 'derived_parameter',
-                        label: 'derived_parameter',
+                        tag: 'result',
+                        label: 'result',
                         isArray: false,
                         isRequired: false,
-                        mbdbPath: 'method_specific_parameters/data_analysis[]/derived_parameter',
+                        mbdbPath: 'method_specific_parameters/data_analysis[]/result',
                         input: 'related-to',
-                        relatesTo: 'derived-parameter',
+                        relatesTo: 'result',
                         relatedKeys: [
                             'id',
                             'name',
@@ -1689,17 +1293,6 @@ export const SPR = [
                                 },
                             },
                             {
-                                tag: 'software_tool',
-                                label: 'software_tool',
-                                isArray: false,
-                                isRequired: false,
-                                mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/software_tool',
-                                input: 'string',
-                                help: {
-                                    en: 'The name of the tool within the specified software, i.e. a particular method called or "button pressed" (e.g. equation solver, buffer subtraction)',
-                                },
-                            },
-                            {
                                 tag: 'link_to_source_code',
                                 label: 'link_to_source_code',
                                 isArray: false,
@@ -1707,7 +1300,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_processing_steps[]/link_to_source_code',
                                 input: 'url',
                                 help: {
-                                    en: 'If processing was performed with software where the source code is legally available a link can be specified here (e.g. self-written python script in a GitHub repository',
+                                    en: 'If processing was performed with software where the source code is freely available a link can be specified here (e.g. self-written python script in a GitHub repository',
                                 },
                             },
                         ],
@@ -1763,7 +1356,7 @@ export const SPR = [
                                 mbdbPath: 'method_specific_parameters/data_analysis[]/data_fitting/quality',
                                 input: 'float',
                                 help: {
-                                    en: 'Numerical value representing the quality estimate of the derived parameter',
+                                    en: 'Numerical value representing the quality estimate of the result',
                                 },
                             },
                             {
@@ -1813,7 +1406,7 @@ export const SPR = [
                             },
                         ],
                         help: {
-                            en: 'The details of how data fitting of the data to obtain the derived parameter was performed',
+                            en: 'The details of how data fitting was performed to obtain the result',
                         },
                     },
                 ],

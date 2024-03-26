@@ -22,17 +22,12 @@ export const Common = {
                 { tag: 'description', index: 1 },
             ],
         },
-    '*/Complex substance of chemical origin': {
-        order: [
-            { tag: 'name', index: 0 },
-        ],
-    },
     '*/Complex substance of environmental origin': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    '*/Complex substance of industrial production origin': {
+    '*/Complex substance of industrial origin': {
         order: [
             { tag: 'name', index: 0 },
         ],
@@ -57,18 +52,8 @@ export const Common = {
         dontTransformContent: true,
     },
 
-    'general_parameters/instrument': {
-        order: [
-            { tag: 'name', index: 0 },
-        ],
-    },
-    'general_parameters/instrument/performance_test/published_test_protocol': {
-        order: [
-            { tag: 'title', index: 0 },
-        ],
-    },
-    
-    'general_parameters/chemical_information/chemical_environments': {
+
+    'general_parameters/chemical_environments': {
         order: [
             { tag: 'name', index: 0 },
             { tag: 'solvent', index: 1 },
@@ -76,27 +61,21 @@ export const Common = {
         ],
     },
 
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/synthesis/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/synthesis/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/biological_postprocessing/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/biological_postprocessing/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/modifications/chemical/protocol': {
+    'general_parameters/entities_of_interest/Polymer/modifications/chemical/protocol': {
         order: [
             { tag: 'name', index: 0 },
         ],
     },
-    'general_parameters/chemical_information/entities_of_interest/Polymer/supplier': {
-        order: [
-            { tag: 'name', index: 0 },
-        ],
-    },
-
     'general_parameters/record_information': {
         order: [
             { tag: 'title', index: 0 },
@@ -118,10 +97,6 @@ export const Common = {
         'general_parameters/record_information/subject_category': {
             dontDisplay: true,
             defaultValue: 'Biophysics',
-        },
-
-        'general_parameters/record_information/project/id': {
-            dontDisplay: true,
         },
 
     'general_parameters/schema_version': {
